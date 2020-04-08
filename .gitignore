@@ -2,14 +2,8 @@
 node_modules
 jspm_packages
 
-# Serverless directories
-.serverless
-
 # environment variables
-.env
+.env*
+.now
 
-# js files
 *.js
-
-# ssh files
-*.ssh
