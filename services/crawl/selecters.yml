@@ -27,6 +27,47 @@ flareup.co.kr:
 
 store.musinsa.com:
   <<: *base
-  name: '#page_product_detail > div.right_area.page_detail_product > div.right_contents.section_product_summary > span > span'
-  originalPrice: '#goods_price > del'
+  originalPrice: '#goods_price'
   salePrice: '#sale_price'
+
+wconcept.co.kr:
+  <<: *base
+  name: meta[property="og:description"]
+  originalPrice: meta[property="rb:originalPrice"]
+  salePrice: meta[property="rb:salePrice"]
+
+coor.kr:
+  <<: *base
+  name: '#form1 > div > h3'
+  originalPrice: 'input#price'
+  salePrice: 'input#disprice'
+
+espionage.co.kr:
+  name: 'title'
+  imageUrl: 'img#lens_img'
+  originalPrice: 'td.price > div.tb-left > strike'
+  salePrice: 'td.price > div.tb-left > span'
+
+noirlarmes.co.kr:
+  <<: *base
+  name: 'h4[itemprop="name"]'
+  originalPrice: 'p.price > del > span'
+  salePrice: 'p.price > ins > span'
+
+afterpray.com:
+  <<: *base
+  originalPrice: '#shopProductPrice > span'
+  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
+
+kolonmall.com:
+  name: 'meta[property="rb:itemName"]'
+  imageUrl: 'meta[property="rb:itemImage"]'
+  originalPrice: 'meta[property="rb:originalPrice"]'
+  salePrice: 'meta[property="rb:salePrice"]'
+
+carhartt-wip.co.kr:
+  <<: *base
+  name: '#goodsForm > div > div.product_detail_tit > div.txt02'
+  imageUrl: 'div.product_detail_img > img:nth-child(1)'
+  originalPrice: '#goodsForm > div > div.product_detail_price > span.ico_price'
+  salePrice: '#goodsForm > div > div.product_detail_price > span.discount_price'

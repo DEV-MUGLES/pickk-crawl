@@ -1,6 +1,6 @@
 ## Item Info Crawler
 
-> Zeit now, Axios, Cheerio
+> Zeit now, Cheerio
 
 ### Getting Started
 

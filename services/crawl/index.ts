@@ -1,10 +1,13 @@
-import axios from 'axios';
 import * as cheerio from 'cheerio';
 import * as yaml from 'js-yaml';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { ISelecter } from 'interfaces/ISelecter';
+import * as crawlers from './crawlers';
+
+import { ISelecter } from '../../interfaces/ISelecter';
+import { requestHtml, parseValue, correct } from '../../lib';
+import { CrawlResult } from '../../types/Crawl';
 
 export default class CrawlService {
   private url: string;
@@ -18,7 +21,7 @@ export default class CrawlService {
   }
 
   private getHost = (url: string): string => {
-    return new URL(url).hostname;
+    return new URL(url).hostname.replace('www.', '');
   };
 
   private getSelecter = (host: string): ISelecter => {
@@ -28,27 +31,22 @@ export default class CrawlService {
     return selecters[host] || selecters.base;
   };
 
-  public crawl = async () => {
-    const { data: body } = await axios(this.url);
+  public crawl = async (): Promise<CrawlResult> => {
+    console.log(this.selecter);
+    const body = await requestHtml(this.url);
     const $ = cheerio.load(body);
-    return Object.keys(this.selecter).reduce((acc, key) => {
+
+    const crawlerName = this.host.replace(/\./g, '');
+    if (crawlers[crawlerName]) {
+      return crawlers[crawlerName]($, this.selecter);
+    }
+
+    const result = Object.keys(this.selecter).reduce((acc, key) => {
       return {
         ...acc,
-        [key]: this.getValue($, key, this.selecter[key]),
+        [key]: parseValue($, key, this.selecter[key]),
       };
-    }, {});
-  };
-
-  private getValue = ($: CheerioStatic, key: string, selecter: string) => {
-    if (selecter.includes('meta')) {
-      return $(selecter).last().attr().content;
-    }
-    if (key === 'originalPrice' || key === 'salePrice') {
-      return $(selecter)
-        .last()
-        .text()
-        .replace(/[^0-9]/g, '');
-    }
-    return $(selecter).last().text().trim();
+    }, {} as CrawlResult);
+    return correct(result);
   };
 }

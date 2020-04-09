@@ -10,18 +10,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apicache": "^1.5.3",
-    "axios": "^0.19.2",
+    "charset": "^1.0.1",
     "cheerio": "^1.0.0-rc.3",
-    "express": "^4.17.1",
+    "iconv-lite": "^0.5.1",
     "js-yaml": "^3.13.1",
+    "jschardet": "^2.1.1",
+    "request": "^2.88.2",
     "url": "^0.11.0"
   },
   "devDependencies": {
     "@now/node": "^1.5.0",
+    "@types/charset": "^1.0.1",
     "@types/cheerio": "^0.22.16",
     "@types/js-yaml": "^3.12.3",
     "@types/node": "^13.7.4",
+    "@types/request": "^2.48.4",
     "tslint": "^6.0.0",
     "tslint-config-standard": "^9.0.0",
     "typescript": "^3.8.2"
