@@ -32,7 +32,6 @@ export default class CrawlService {
   };
 
   public crawl = async (): Promise<CrawlResult> => {
-    console.log(this.selecter);
     const body = await requestHtml(this.url);
     const $ = cheerio.load(body);
 

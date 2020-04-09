@@ -9,7 +9,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     res.json({ ...data, url });
   } catch (err) {
     res.status(500).send({
-      message: err.message,
+      message: err ? err.message : '',
     });
   }
 };

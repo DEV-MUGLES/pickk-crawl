@@ -1,6 +1,7 @@
 import request from 'request';
 import charset from 'charset'; // 해당 사이트의 charset값을 알 수 있게 해준다.
 import { decode } from 'iconv-lite';
+import axios from 'axios';
 
 import { strToNumber } from './Parser';
 import { CrawlResult } from 'types/Crawl';
@@ -12,15 +13,20 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
       {
         url: sourceUrl, // 원하는 url값을 입력
         encoding: null, // 해당 값을 null로 해주어야 제대로 iconv가 제대로 decode 해준다.
-        headers: { 'User-Agent': 'Mozilla/5.0' },
+        headers: {
+          'User-Agent':
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36',
+        },
       },
-      (error, res, body) => {
+      async (error, res, body) => {
+        console.log(res.statusCode);
         if (!error && res.statusCode === 200) {
           const enc = charset(res.headers, body); // 해당 사이트의 charset값을 획득
           const iResult = decode(body, enc); // 획득한 charset값으로 body를 디코딩
           resolve(iResult);
         } else {
-          reject(error);
+          const { data: body } = await axios(sourceUrl);
+          resolve(body);
         }
       }
     );
