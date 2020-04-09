@@ -1,5 +1,5 @@
 import { ISelecter } from 'interfaces/ISelecter';
-import { parseValue, select } from '../../lib';
+import { parseValue, selectAll } from '../../lib';
 import { CrawlResult } from '../../types/Crawl';
 
 export const storemusinsacom = (
@@ -35,13 +35,7 @@ export const espionagecokr = (
   $: CheerioStatic,
   selecter: ISelecter
 ): CrawlResult => {
-  const result = Object.keys(selecter).reduce((acc, key) => {
-    return {
-      ...acc,
-      [key]: parseValue($, key, selecter[key]),
-    };
-  }, {} as CrawlResult);
-
+  const result = selectAll($, selecter);
   return {
     ...result,
     originalPrice:
@@ -53,14 +47,24 @@ export const noirlarmescokr = (
   $: CheerioStatic,
   selecter: ISelecter
 ): CrawlResult => {
-  const result = Object.keys(selecter).reduce((acc, key) => {
-    return {
-      ...acc,
-      [key]: parseValue($, key, selecter[key]),
-    };
-  }, {} as CrawlResult);
-
+  const result = selectAll($, selecter);
   const myPrice = Number(parseValue($, 'originalPrice', 'p.price > span'));
+
+  return {
+    ...result,
+    originalPrice: result.originalPrice || myPrice,
+    salePrice: result.salePrice || myPrice,
+  };
+};
+
+export const conversecokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const myPrice = Number(
+    parseValue($, 'originalPrice', 'p.product-price > span')
+  );
 
   return {
     ...result,

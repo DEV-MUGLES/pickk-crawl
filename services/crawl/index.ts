@@ -6,7 +6,7 @@ import * as path from 'path';
 import * as crawlers from './crawlers';
 
 import { ISelecter } from '../../interfaces/ISelecter';
-import { requestHtml, parseValue, correct } from '../../lib';
+import { requestHtml, parseValue, correct, selectAll } from '../../lib';
 import { CrawlResult } from '../../types/Crawl';
 
 export default class CrawlService {
@@ -40,12 +40,7 @@ export default class CrawlService {
       return crawlers[crawlerName]($, this.selecter);
     }
 
-    const result = Object.keys(this.selecter).reduce((acc, key) => {
-      return {
-        ...acc,
-        [key]: parseValue($, key, this.selecter[key]),
-      };
-    }, {} as CrawlResult);
+    const result = selectAll($, this.selecter);
     return correct(result);
   };
 }

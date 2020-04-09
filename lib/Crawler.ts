@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { strToNumber } from './Parser';
 import { CrawlResult } from 'types/Crawl';
+import { ISelecter } from 'interfaces/ISelecter';
 
 // crawl using request
 export const requestHtml = async (sourceUrl: string): Promise<string> => {
@@ -19,7 +20,6 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
         },
       },
       async (error, res, body) => {
-        console.log(res.statusCode);
         if (!error && res.statusCode === 200) {
           const enc = charset(res.headers, body); // 해당 사이트의 charset값을 획득
           const iResult = decode(body, enc); // 획득한 charset값으로 body를 디코딩
@@ -33,6 +33,15 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
   });
 };
 
+export const selectAll = ($: CheerioStatic, selecter: ISelecter) => {
+  return Object.keys(selecter).reduce((acc, key) => {
+    return {
+      ...acc,
+      [key]: parseValue($, key, selecter[key]),
+    };
+  }, {} as CrawlResult);
+};
+
 export const select = ($: CheerioStatic, selecter: string): string => {
   try {
     if (selecter.includes('meta')) {
@@ -43,6 +52,9 @@ export const select = ($: CheerioStatic, selecter: string): string => {
     }
     if (selecter.includes('img')) {
       return $(selecter).last().attr().src;
+    }
+    if (selecter[selecter.length - 1] === 'a') {
+      return $(selecter).last().attr().href;
     }
     return unescape($(selecter).last().text().trim());
   } catch {
