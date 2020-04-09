@@ -71,3 +71,134 @@ carhartt-wip.co.kr:
   imageUrl: 'div.product_detail_img > img:nth-child(1)'
   originalPrice: '#goodsForm > div > div.product_detail_price > span.ico_price'
   salePrice: '#goodsForm > div > div.product_detail_price > span.discount_price'
+
+nike.com:
+  <<: *base
+  originalPrice: 'body > section > section > section > article > article.contents.margin-small.pt_product-detail > div > div.info-wrap_product_n.uk-width-medium-1-1.uk-width-large-2-5 > div > div > div.uk-hidden-small.uk-position-relative > div > div.uk-float-right > span > strong'
+  salePrice: 'body > section > section > section > article > article.contents.margin-small.pt_product-detail > div > div.info-wrap_product_n.uk-width-medium-1-1.uk-width-large-2-5 > div > div > div.uk-hidden-small.uk-position-relative > div > div.uk-float-right > span.price-sale'
+
+nbkorea.com:
+  <<: *base
+  originalPrice: 'div.price > span.won'
+  salePrice: 'div.price > span.sale'
+
+converse.co.kr:
+  name: 'h1.product-name'
+  imageUrl: 'div.product-image-container.col-12.col-md-7.col-lg-8 > div.pdp-images.pdp-gallery-main > div.pdp-primary-image.display-small-up > img'
+  originalPrice: 'p.product-price > span.retail'
+  salePrice: 'p.product-price > span.sale'
+
+asics.com:
+  name: 'h1[itemprop="name"]'
+  imageUrl: 'ul.product-primary-image > li:nth-child(1) > a'
+  originalPrice: 'div.product-price > span.price-standard'
+  salePrice: 'div.product-price > span.price-sales'
+
+personal-pack.com:
+  name: '#mk_center > form:nth-child(16) > table:nth-child(8) > tbody > tr:nth-child(1) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(1) > td > span'
+  imageUrl: '#lens_img'
+  originalPrice: '#mk_price_value'
+  salePrice: '#change_discount_price_wh'
+
+zavanas.com:
+  <<: *base
+  name: 'title'
+  originalPrice: 'div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
+  salePrice: 'div.table-opt > table > tbody > tr:nth-child(2) > td > div'
+
+cosstores.com:
+  name: '#product-detail-name'
+  imageUrl: 'div.slider > a[href="#gallery-product-0"] > div > img'
+  originalPrice: '#priceValue'
+  salePrice: '#priceValue'
+
+plac-official.com:
+  <<: *base
+  imageUrl: 'div.goods-thumb > ul >  li > a > img'
+  originalPrice: 'div.goods-info > table > tbody > tr:nth-child(1) > td > span'
+  salePrice: 'div.goods-info > table > tbody > tr:nth-child(2) > td > b'
+
+giordano.co.kr: &giordano
+  name: 'h3.name'
+  imageUrl: '#mimg_div > img'
+  originalPrice: 'div.price > span.sell > strong'
+  salePrice: 'div.price > del'
+
+m.giordano.co.kr:
+  <<: *giordano
+  name: '#detail > form > div > div.wrap_inner.first > p.prd_name'
+
+lafudgestore.com:
+  <<: *base
+  name: 'div.detailArea0 > div:nth-child(1) > div.headingArea > h2'
+  originalPrice: '#span_product_price_custom > strike'
+
+insilence.co.kr:
+  <<: *base
+  originalPrice: '#span_product_price_custom > strike'
+
+spao.elandmall.com:
+  name: 'meta[property="recopick:title"]'
+  imageUrl: '#desc_1 > div.detail_viewer > div > div.dt_ve_wideview > img'
+  originalPrice: 'meta[property="recopick:price"]'
+  salePrice: 'meta[property="recopick:sale_price"]'
+
+shoopen.elandmall.com:
+  name: 'meta[property="recopick:title"]'
+  imageUrl: '#desc_1 > div.detail_viewer > div > div.dt_ve_wideview > img'
+  originalPrice: 'meta[property="recopick:price"]'
+  salePrice: 'meta[property="recopick:sale_price"]'
+
+www2.hm.com:
+  name: 'section.name-price > h1'
+  imageUrl: 'div.product-detail-main-image-container > img'
+  originalPrice: 'body > div.tealiumProductviewtag.productview.parbase > script'
+  salePrice: 'section.name-price > div > div > span.price-value'
+
+ssfshop.com:
+  name: 'meta[property="rb:itemName"]'
+  imageUrl: 'div.gallery > ul > li:nth-child(1) > a > img'
+  originalPrice: 'meta[property="product:price:amount"]'
+  salePrice: 'meta[property="product:sale_price:amount"]'
+
+lfmall.co.kr:
+  name: 'meta[property="rb:itemName"]'
+  imageUrl: 'meta[property="rb:itemImage"]'
+  originalPrice: 'meta[property="rb:originalPrice"]'
+  salePrice: 'meta[property="rb:salePrice"]'
+
+u-ping.co.kr:
+  <<: *base
+  originalPrice: '#span_product_price_custom > strike'
+
+romanticpirates.com:
+  name: 'title'
+  imageUrl: '#productDetail > div > div.thumb-info > div > center > div > img'
+  originalPrice: 'input#price'
+  salePrice: 'input#disprice'
+
+6ft.co.kr:
+  <<: *base
+  originalPrice: '#span_product_price_custom > strike'
+
+jemutshop.com:
+  name: 'title'
+  imageUrl: '#lens_img'
+  originalPrice: 'div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
+  salePrice: 'div.table-opt > table > tbody > tr:nth-child(2) > td > div'
+
+beslow.co.kr:
+  name: 'div.detail-product-name > div:nth-child(2) > span'
+  imageUrl: 'div.detail-img > ul.detail-img-list > li:nth-child(1)'
+  originalPrice: 'div.detail-sale > div:nth-child(1) > span:nth-child(3)'
+  salePrice: 'div.detail-sale > div:nth-child(1) > span:nth-child(1)'
+
+stussy.co.kr:
+  name: 'h1[itemprop="name"]'
+  imageUrl: '#galleries-wrapper > ul:nth-child(1) > li:nth-child(1) > img'
+  originalPrice: '#product-price-45590 > span'
+  salePrice: '#product-price-45590 > span'
+
+esnocturne.com:
+  <<: *base
+  originalPrice: '#span_product_price_custom > strike'

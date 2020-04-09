@@ -20,13 +20,13 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
         },
       },
       async (error, res, body) => {
-        if (!error && res.statusCode === 200) {
+        if (!error && res.statusCode === 200 && body.length > 1000) {
           const enc = charset(res.headers, body); // 해당 사이트의 charset값을 획득
-          const iResult = decode(body, enc); // 획득한 charset값으로 body를 디코딩
+          const iResult = decode(body, enc || 'utf-8'); // 획득한 charset값으로 body를 디코딩
           resolve(iResult);
         } else {
-          const { data: body } = await axios(sourceUrl);
-          resolve(body);
+          const { data } = await axios(sourceUrl);
+          resolve(data);
         }
       }
     );
@@ -78,7 +78,7 @@ export const parseValue = (
 };
 
 export const correct = (result: CrawlResult): CrawlResult => {
-  const { originalPrice, salePrice } = result;
+  const { imageUrl, originalPrice, salePrice } = result;
   if (originalPrice === 0 || salePrice === 0) {
     return {
       ...result,
@@ -91,6 +91,12 @@ export const correct = (result: CrawlResult): CrawlResult => {
       ...result,
       originalPrice: salePrice,
       salePrice: originalPrice,
+    };
+  }
+  if (imageUrl[0] === '/') {
+    return {
+      ...result,
+      imageUrl: 'https:' + result.imageUrl,
     };
   }
   return result;
