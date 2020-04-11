@@ -42,6 +42,12 @@ export default class CrawlService {
       (crawlers[crawlerName] || selectAll)($, this.selecter)
     );
 
-    return { ...result, brandKor: brandNames[this.host] || result.brandKor };
+    return {
+      ...result,
+      brandKor:
+        brandNames[this.host] !== undefined
+          ? brandNames[this.host]
+          : result.brandKor,
+    };
   };
 }
