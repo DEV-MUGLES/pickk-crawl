@@ -7,6 +7,7 @@ export const storemusinsacom = (
   selecter: ISelecter
 ): CrawlResult => {
   const name = $(selecter.name).last().attr().content;
+  const brandKor = $(selecter.brandKor).last().text();
   const imageUrl = $(selecter.imageUrl).last().attr().content;
   const originalPrice = Number(
     $(selecter.originalPrice)
@@ -25,6 +26,7 @@ export const storemusinsacom = (
 
   return {
     name: name.slice(name.indexOf(') ') + 2, name.indexOf(' - ')),
+    brandKor: brandKor.slice(0, brandKor.indexOf('(')),
     imageUrl,
     originalPrice,
     salePrice,
@@ -110,7 +112,6 @@ export const giordanocokr = (
   selecter: ISelecter
 ): CrawlResult => {
   const result = selectAll($, selecter);
-  console.log(result.name);
 
   return correct({
     ...result,
@@ -143,6 +144,37 @@ export const shoopenelandmallcom = (
     imageUrl:
       result.imageUrl ||
       'https:' + (parseValue($, 'imageUrl', '#d_elevate_img') as string),
+  });
+};
+
+export const wconceptcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  const scriptHtml = $(selecter.brandKor).html();
+
+  const SEARCH_TEXT = '$brandnamekr = "';
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf('"', start);
+  const brandKor = scriptHtml.slice(start, end);
+
+  return correct({
+    ...result,
+    brandKor,
+  });
+};
+
+export const lfmallcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    brandKor: result.brandKor.slice(1, result.brandKor.indexOf(']')),
   });
 };
 

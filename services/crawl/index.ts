@@ -8,6 +8,7 @@ import * as crawlers from './crawlers';
 import { ISelecter } from '../../interfaces/ISelecter';
 import { requestHtml, parseValue, correct, selectAll } from '../../lib';
 import { CrawlResult } from '../../types/Crawl';
+import { brandNames } from './brand-names';
 
 export default class CrawlService {
   private url: string;
@@ -36,11 +37,11 @@ export default class CrawlService {
     const $ = cheerio.load(body);
 
     const crawlerName = this.host.replace(/\.|-/g, '');
-    if (crawlers[crawlerName]) {
-      return crawlers[crawlerName]($, this.selecter);
-    }
 
-    const result = selectAll($, this.selecter);
-    return correct(result);
+    const result = correct(
+      (crawlers[crawlerName] || selectAll)($, this.selecter)
+    );
+
+    return { ...result, brandKor: brandNames[this.host] || result.brandKor };
   };
 }

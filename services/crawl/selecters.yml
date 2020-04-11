@@ -1,5 +1,6 @@
 base: &base
   name: meta[property="og:title"]
+  brandKor: meta[property="og:site_name"]
   imageUrl: meta[property="og:image"]
   originalPrice: meta[property="product:price:amount"]
   salePrice: meta[property="product:sale_price:amount"]
@@ -27,12 +28,14 @@ flareup.co.kr:
 
 store.musinsa.com:
   <<: *base
+  brandKor: 'title'
   originalPrice: '#goods_price'
   salePrice: '#sale_price'
 
 wconcept.co.kr:
   <<: *base
-  name: meta[property="og:description"]
+  name: meta[property="rb:itemName"]
+  brandKor: 'body > script:nth-child(33)'
   originalPrice: meta[property="rb:originalPrice"]
   salePrice: meta[property="rb:salePrice"]
 
@@ -61,6 +64,7 @@ afterpray.com:
 
 kolonmall.com:
   name: 'meta[property="rb:itemName"]'
+  brandKor: meta[property="rb:brandName"]
   imageUrl: 'meta[property="rb:itemImage"]'
   originalPrice: 'meta[property="rb:originalPrice"]'
   salePrice: 'meta[property="rb:salePrice"]'
@@ -163,6 +167,7 @@ ssfshop.com:
 
 lfmall.co.kr:
   name: 'meta[property="rb:itemName"]'
+  brandKor: 'meta[property="og:description"]'
   imageUrl: 'meta[property="rb:itemImage"]'
   originalPrice: 'meta[property="rb:originalPrice"]'
   salePrice: 'meta[property="rb:salePrice"]'
