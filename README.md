@@ -4,6 +4,12 @@
 
 ### Getting Started
 
+Need now 2.0 (Latest) to deploy
+
+```
+npm i -g now
+```
+
 ```shell script
 # test locally
 $ now dev

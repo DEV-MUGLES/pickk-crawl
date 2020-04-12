@@ -6,7 +6,7 @@ import * as path from 'path';
 import * as crawlers from './crawlers';
 
 import { ISelecter } from '../../interfaces/ISelecter';
-import { requestHtml, parseValue, correct, selectAll } from '../../lib';
+import { requestHtml, correct, selectAll } from '../../lib';
 import { CrawlResult } from '../../types/Crawl';
 import { brandNames } from './brand-names';
 

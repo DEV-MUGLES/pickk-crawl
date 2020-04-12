@@ -133,13 +133,12 @@ m.giordano.co.kr:
   name: '#detail > form > div > div.wrap_inner.first > p.prd_name'
 
 lafudgestore.com:
-  <<: *base
+  <<: *custom_price
   name: 'div.detailArea0 > div:nth-child(1) > div.headingArea > h2'
   originalPrice: '#span_product_price_custom > strike'
 
 insilence.co.kr:
-  <<: *base
-  originalPrice: '#span_product_price_custom > strike'
+  <<: *custom_price
 
 spao.elandmall.com:
   name: 'meta[property="recopick:title"]'
@@ -173,8 +172,7 @@ lfmall.co.kr:
   salePrice: 'meta[property="rb:salePrice"]'
 
 u-ping.co.kr:
-  <<: *base
-  originalPrice: '#span_product_price_custom > strike'
+  <<: *custom_price
 
 romanticpirates.com:
   name: 'title'
@@ -183,8 +181,7 @@ romanticpirates.com:
   salePrice: 'input#disprice'
 
 6ft.co.kr:
-  <<: *base
-  originalPrice: '#span_product_price_custom > strike'
+  <<: *custom_price
 
 jemutshop.com:
   name: 'title'
@@ -205,5 +202,4 @@ stussy.co.kr:
   salePrice: '#product-price-45590 > span'
 
 esnocturne.com:
-  <<: *base
-  originalPrice: '#span_product_price_custom > strike'
+  <<: *custom_price
