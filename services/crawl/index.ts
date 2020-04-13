@@ -45,8 +45,8 @@ export default class CrawlService {
     return {
       ...result,
       brandKor:
-        brandNames[this.host] !== undefined
-          ? brandNames[this.host]
+        brandNames[this.host.replace('m.', '')] !== undefined
+          ? brandNames[this.host.replace('m.', '')]
           : result.brandKor,
     };
   };

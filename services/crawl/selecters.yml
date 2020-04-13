@@ -5,6 +5,13 @@ base: &base
   originalPrice: meta[property="product:price:amount"]
   salePrice: meta[property="product:sale_price:amount"]
 
+rb: &rb
+  name: meta[property="rb:itemName"]
+  brandKor: meta[property="og:site_name"]
+  imageUrl: meta[property="rb:itemImage"]
+  originalPrice: meta[property="rb:originalPrice"]
+  salePrice: meta[property="rb:salePrice"]
+
 custom_price: &custom_price
   <<: *base
   originalPrice: '#span_product_price_custom > strike'  
@@ -44,6 +51,9 @@ minimalgarmentslab.com:
 alphaindustrieskorea.com:
   <<: *custom_price
 
+theknitcompany.com:
+  <<: *custom_price
+
 romanticmove.com:
   <<: *base
   originalPrice: '#detail_inner > div.xans-element-.xans-product.xans-product-detail.top_inner > div.detailArea > div.infoArea.soldout_displaynone > div.de_price > div.de_custom > span'
@@ -61,11 +71,14 @@ currentstore.co.kr:
 flareup.co.kr:
   <<: *custom_price
 
-store.musinsa.com:
+store.musinsa.com: &musinsa
   <<: *base
   brandKor: 'title'
   originalPrice: '#goods_price'
   salePrice: '#sale_price'
+
+m.store.musinsa.com:
+  <<: *musinsa
 
 wconcept.co.kr:
   <<: *base
@@ -160,10 +173,10 @@ plac-official.com:
 giordano.co.kr: &giordano
   name: 'h3.name'
   imageUrl: '#mimg_div > img'
-  originalPrice: 'div.price > span.sell > strong'
-  salePrice: 'div.price > del'
+  originalPrice: 'div.price > del'
+  salePrice: 'div.price > span.sell > strong'
 
-m.giordano.co.kr:
+m.giordano.co.kr: &m.giordano
   <<: *giordano
   name: '#detail > form > div > div.wrap_inner.first > p.prd_name'
 
@@ -238,3 +251,167 @@ stussy.co.kr:
 
 esnocturne.com:
   <<: *custom_price
+
+barrels.co.kr:
+  name: '#itemTitle'
+  brandKor: '#itemTitle'
+  imageUrl: 'div.thumbnail_show.plus_cursor > span.photo > img'
+  originalPrice: 'div.price_info > dl > dd.first:nth-child(2) > p.price'
+  salePrice: 'div.price_info > dl > dd > div > p.member_price'
+
+underarmour.co.kr:
+  <<: *base
+  imageUrl: 'div.product-primary-image > a.product-image.main-image > img[itemprop="image"]'
+  originalPrice: 'div.product-price > span.price-standard-pricebooksale'
+  salePrice: 'meta[itemprop="price"]'
+
+thenorthfacekorea.co.kr:
+  <<: *base
+  name: 'meta[property="og:description"]'
+  imageUrl: 'div.product-gallery-wrap.bottom > div.product-thumb > ul > li.thumb-list:nth-child(1) > a > img'
+  originalPrice: 'div.price-wrap > span.price-sale'
+  salePrice: 'div.price-wrap > span.price > strong'
+
+kr.puma.com:
+  <<: *base
+  originalPrice: 'td.price > span.puma_price_line.puma_fixed_price'
+  salePrice: 'td.price > span.puma_red_p.puma_selling_price'
+
+fila.co.kr:
+  <<: *base
+  name: 'div.product_name > span'
+  originalPrice: 'span.normal_price'
+  salePrice: 'span.sale_price'
+
+shop.adidas.co.kr:
+  <<: *base
+  name: '#p_prod_bas'
+  originalPrice: 'head'
+
+zara.com:
+  <<: *base
+  originalPrice: 'body > script'
+
+shop.vans.co.kr:
+  <<: *base
+  name: 'h1.title-wrap > a > span.tit'
+  originalPrice: 'div.price-wrap > span.price > strong'
+
+drmartens.co.kr:
+  <<: *base
+  originalPrice: 'main.AppMain.toNone'
+
+levi.co.kr:
+  <<: *base
+  originalPrice: 'div.product-price > span.price-standard'
+  salePrice: 'div.product-price > span.price-sales'
+
+discovery-expedition.com:
+  <<: *base
+  originalPrice: 'dd.payment-price > em > del'
+  salePrice: 'dd.payment-price > em'
+
+naturestore.co.kr:
+  <<: *base
+  brandKor: 'title'
+  originalPrice: '#frmView > div > div > div.item_detail_list > dl:nth-child(1) > dd > span'
+  salePrice: '#frmView > div > div > div.item_detail_list > dl.item_price > dd > strong > strong'
+
+neikidnis.com:
+  <<: *custom_price
+
+dunststudio.com: &dunststudio
+  <<: *base
+  originalPrice: 'div.price_box > div:nth-child(1)'
+  salePrice: 'div.price_box > div:nth-child(2)'
+
+m.dunststudio.com:
+  <<: *dunststudio
+
+urbanstoff.com:
+  <<: *base
+  name: '#goods_spec > form > div:nth-child(4) > b'
+
+modified.co.kr:
+  <<: *custom_price
+
+eduardo.co.kr:
+  <<: *custom_price
+  name: '#rightbar > div > div > div.detailArea0 > div.xans-element-.xans-product.xans-product-detail.infoArea > div:nth-child(1) > h2'
+
+mngu.co.kr:
+  <<: *base
+  originalPrice: 'span > span > span > span > span > span > span[lang="EN-US"] > font[face="Arial"] > span'
+
+amonmovement.com:
+  <<: *base
+  name: '#contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > div.xans-element-.xans-product.xans-product-detaildesign > table > tbody > tr:nth-child(1) > td > span'
+  brandKor: meta[property="og:title"]
+  imageUrl: '#contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.xans-element-.xans-product.xans-product-image.imgArea > div.keyImg > img'
+
+leire.co.kr:
+  <<: *base
+  name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
+
+ordinarypeople.co.kr:
+  <<: *custom_price
+
+sevenselah.com:
+  <<: *custom_price
+
+concepts1one.co.kr:
+  <<: *giordano
+
+m.concepts1one.co.kr:
+  <<: *m.giordano
+
+tbhshop.co.kr:
+  <<: *base
+  brandKor: '#core_info > div > div.prd_title > p.brand'
+  originalPrice: '#sell_prc_str'
+  salePrice: '#coupon_prc'
+
+smartstore.naver.com:
+  <<: *base
+  name: 'dt.prd_name > strong'
+  originalPrice: 'div.area_cost > strong > span.original > span.thm'
+  salePrice: 'div.area_cost > strong > span.thm'
+
+bants.co.kr:
+  <<: *base
+  originalPrice: 'p.product-price > span.custom-price'
+
+mlb-korea.com:
+  <<: *base
+  originalPrice: 'div.info.prds > div.price.norm > div.prc > span.p.s'
+  salePrice: 'div.info.prds > div.price.norm > div.prc > span.p.n'
+
+llud.co.kr:
+  <<: *base
+  brandKor: 'meta[name="keywords"]'
+  originalPrice: '#detail_top > div > ul > li.right > div > div.info_text > div.cont > ul:nth-child(1) > li.td > span'
+
+ative.kr:
+  <<: *base
+  originalPrice: '#contents > section.wrap-goods-view > div.information > div.relation-price > dl.wrap-price-area > dd:nth-child(2) > em'
+  salePrice: '#contents > section.wrap-goods-view > div.information > div.relation-price > dl.wrap-price-area > dd > span.wrap-price.font-en > strong.price'
+
+aroundthecorner.com:
+  <<: *base
+  brandKor: 'div.brand-info.clearfix > span.brand-name.pull-left'
+  originalPrice: 'div.product-price.clearfix > div.price.pull-left > p.selling-price'
+  salePrice: 'div.product-price.clearfix > div.price.pull-left > p.reduce-price > strong'
+
+tngt.co.kr:
+  <<: *rb
+
+lab-101.com:
+  <<: *base
+  name: '#form1 > div > div.row.product-header > div.col.col50.floatleft > p'
+  imageUrl: 'div.row.product-images > ul > li:nth-child(2) > img'
+  originalPrice: 'p.product-price > span.product-custom'
+  salePrice: 'p.product-price'
+
+goodnation.co.kr:
+  <<: *base
+  originalPrice: '#span_product_price_custom'

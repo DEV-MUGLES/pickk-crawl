@@ -78,26 +78,22 @@ export const parseValue = (
 };
 
 export const correct = (result: CrawlResult): CrawlResult => {
-  const { imageUrl, originalPrice, salePrice } = result;
-  if (originalPrice === 0 || salePrice === 0) {
-    return {
-      ...result,
-      originalPrice: originalPrice + salePrice,
-      salePrice: originalPrice + salePrice,
-    };
+  const { imageUrl: iu, originalPrice: op, salePrice: sp } = result;
+
+  let imageUrl = iu;
+  let originalPrice = op;
+  let salePrice = sp;
+
+  if (op === 0 || sp === 0) {
+    originalPrice = op + sp;
+    salePrice = op + sp;
   }
   if (originalPrice < salePrice) {
-    return {
-      ...result,
-      originalPrice: salePrice,
-      salePrice: originalPrice,
-    };
+    originalPrice = salePrice;
+    salePrice = originalPrice;
   }
-  if (imageUrl[0] === '/') {
-    return {
-      ...result,
-      imageUrl: 'https:' + result.imageUrl,
-    };
+  if (iu[0] === '/') {
+    imageUrl = 'https:' + result.imageUrl;
   }
-  return result;
+  return { ...result, imageUrl, originalPrice, salePrice };
 };
