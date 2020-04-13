@@ -7,7 +7,42 @@ base: &base
 
 custom_price: &custom_price
   <<: *base
-  originalPrice: '#span_product_price_custom > strike'
+  originalPrice: '#span_product_price_custom > strike'  
+
+sperone.co.kr:
+  <<: *custom_price
+
+josepht.co.kr:
+  <<: *base
+  originalPrice: 'dl.item_price > dd > strong > strong'
+
+massnoun.com:
+  <<: *custom_price
+
+toffee.co.kr:
+  <<: *base
+  originalPrice: '#span_product_price_custom'
+
+crump.co.kr:
+  <<: *base
+  name: 'div.infoArea > h3'
+
+milletclassic.com:
+  <<: *custom_price
+  name: 'div.xans-element-.xans-product.xans-product-detaildesign > table > tbody > tr:nth-child(1) > td > span'
+
+thet-shirtmuseum.com:
+  name: '#leftInfo > p.title'
+  imageUrl: 'div.prd-detail > ul > li:nth-child(1) > a > img'
+  originalPrice: 'dl.sellPrice > dd > div > strike'
+  salePrice: 'dl.sellPrice > dd > div > span'
+
+minimalgarmentslab.com:
+  <<: *custom_price
+  name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
+
+alphaindustrieskorea.com:
+  <<: *custom_price
 
 romanticmove.com:
   <<: *base
