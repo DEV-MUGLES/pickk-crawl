@@ -6,7 +6,7 @@ import * as path from 'path';
 import * as crawlers from './crawlers';
 
 import { ISelecter } from '../../interfaces/ISelecter';
-import { requestHtml, correct, selectAll } from '../../lib';
+import { requestHtml, correct, selectAll, parseHostName } from '../../lib';
 import { CrawlResult } from '../../types/Crawl';
 import { brandNames } from './brand-names';
 
@@ -22,13 +22,14 @@ export default class CrawlService {
   }
 
   private getHost = (url: string): string => {
-    return new URL(url).hostname.replace('www.', '');
+    return parseHostName(new URL(url).hostname);
   };
 
   private getSelecter = (host: string): ISelecter => {
     const selecters = yaml.safeLoad(
       fs.readFileSync(path.resolve(__dirname, './selecters.yml'), 'utf8')
     );
+
     return selecters[host] || selecters.base;
   };
 

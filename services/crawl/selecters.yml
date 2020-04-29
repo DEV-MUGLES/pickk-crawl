@@ -21,7 +21,7 @@ recopick: &recopick
 
 custom_price: &custom_price
   <<: *base
-  originalPrice: '#span_product_price_custom > strike'  
+  originalPrice: '#span_product_price_custom > strike'
 
 sperone.co.kr:
   <<: *custom_price
@@ -396,7 +396,6 @@ tngt.co.kr:
   <<: *rb
 
 lab-101.com:
-  <<: *base
   name: '#form1 > div > div.row.product-header > div.col.col50.floatleft > p'
   imageUrl: 'div.row.product-images > ul > li:nth-child(2) > img'
   originalPrice: 'p.product-price > span.product-custom'
@@ -406,6 +405,28 @@ goodnation.co.kr:
   <<: *base
   originalPrice: '#span_product_price_custom'
 
+inrows.co.kr:
+  <<: *base
+  name: 'title'
+  imageUrl: '#lens_img'
+  originalPrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
+  salePrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div'
+
+wildbricks.com:
+  <<: *base
+  name: 'div.detailArea > div.infoArea > div.headingArea > h2'
+
+monsterrepublic.co.kr:
+  <<: *base
+  name: '#goods_spec > form > div:nth-child(4) > b'
+  imageUrl: '#containerArea > script:nth-child(3)'
+  originalPrice: '#consumer > del'
+  salePrice: '#price'
+
+eastpak.co.kr:
+  <<: *custom_price
+
+runningnose.kr:
 ssg.com:
   <<: *base
   brandKor: 'div.cdtl_prd_info > span > a'
@@ -429,7 +450,7 @@ akmall.com:
   <<: *base
   brandKor: 'div.info_top > h2'
   originalPrice: 'li.c_price > span.g_price > i'
-  salePrice:  'li.c_price > i'
+  salePrice: 'li.c_price > i'
 
 thehyundai.com:
   <<: *base
@@ -486,9 +507,9 @@ g9.co.kr:
   brandKor: '#subjText3'
   originalPrice: '#sDPrice2'
 
-elandmall.com: 
+elandmall.com:
   <<: *recopick
-  
+
 whoau.elandmall.com:
   <<: *recopick
 
@@ -554,7 +575,7 @@ farfetch.com:
   brandKor: meta[itemProp="name"]
   originalPrice: meta[itemProp="highPrice"]
   salePrice: meta[property="og:price:amount"]
-  
+
 aboki.net:
   <<: *base
   name: 'h3.tit-prd'
@@ -582,8 +603,8 @@ snuv.co.kr:
 
 hyperround.com:
   <<: *base
-  name: "#sit_title"
-  originalPrice: "#sit_ov > div.sit_info > table > tbody > tr:nth-child(2) > td > strike"
+  name: '#sit_title'
+  originalPrice: '#sit_ov > div.sit_info > table > tbody > tr:nth-child(2) > td > strike'
   salePrice: '#sit_ov > div.sit_info > table > tbody > tr:nth-child(3) > td > strong'
 
 justsaturday.net:
@@ -607,6 +628,18 @@ nomanual-official.com:
   originalPrice: '#shopProductPrice > span'
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
 
+ziosongzio.com:
+  <<: *base
+  name: '#form1 > div > div.info > h3'
+  imageUrl: '#productDetail > div > div.detailArea_bg > div.responsive_detail > div > img'
+  originalPrice: 'div.prd_price > strike'
+  salePrice: 'div.prd_price > em'
+
+topten10mall.com:
+  <<: *base
+  imageUrl: '#goods_form > div.title > p'
+  originalPrice: '#goods_form > div.info_wrap.price_info > ul > li:nth-child(1) > span'
+  salePrice: '#goods_form > div.info_wrap.price_info > ul > li > span.selling_price'
 wvproject.co.kr:
   name: 'h3.tit-prd > ul > li > strong'
   imageUrl: '#lens_img'
@@ -615,7 +648,7 @@ wvproject.co.kr:
 
 minimalcode.co.kr:
   <<: *custom_price
-  
+
 samsonitemall.co.kr:
   <<: *base
   brandKor: '#pdpMain > div.desktop-hidden.product-detail-top > div.product-brand-name'
@@ -660,7 +693,7 @@ grooverhyme.co.kr:
 
 compagno.co.kr:
   <<: *base
-  originalPrice: '#span_product_price_custom' 
+  originalPrice: '#span_product_price_custom'
 
 lomort.co.kr:
   <<: *custom_price
@@ -718,7 +751,7 @@ fredperrykorea.com:
   <<: *base
   originalPrice: 'div.price > table > tbody > tr > td > del'
   salePrice: meta[property="og:description"]
-  
+
 shinwonmall.com:
   <<: *base
   name: meta[property="og:description"]

@@ -168,6 +168,18 @@ export const _wconceptcokr = (
   });
 };
 
+export const _lfmallcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    brandKor: result.brandKor.slice(1, result.brandKor.indexOf(']')),
+  });
+};
+
 export const _www2hmcom = (
   $: CheerioStatic,
   selecter: ISelecter
@@ -315,7 +327,10 @@ export const _shopadidascokr = (
   });
 };
 
-export const _zaracom = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
+export const _zaracom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   let scriptHtml;
@@ -512,7 +527,10 @@ export const _lludcokr = (
   });
 };
 
-export const _ativekr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
+export const _ativekr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   return correct({
@@ -540,7 +558,7 @@ export const _lab101com = (
   });
 };
 
-export const _goodnationcokr = (
+export const goodnationcokr = (
   $: CheerioStatic,
   selecter: ISelecter
 ): CrawlResult => {
@@ -552,17 +570,122 @@ export const _goodnationcokr = (
   });
 };
 
-export const _ssgcom = (
+export const _inrowscokr = (
   $: CheerioStatic,
   selecter: ISelecter
 ): CrawlResult => {
   const result = selectAll($, selecter);
-  
-  let brandKor = unescape($(selecter.brandKor).last().text().trim()).replace('#','');
-  if(brandKor.includes('(')){
-    brandKor = brandKor.slice(0,brandKor.indexOf('('));
+
+  const salePriceStr = $(selecter.salePrice).html();
+  const salePrice = Number(
+    salePriceStr
+      .slice(
+        salePriceStr.indexOf('</strike>') + 1,
+        salePriceStr.indexOf('&#xA0')
+      )
+      .replace(/[^0-9]/g, '')
+  );
+
+  return correct({
+    ...result,
+    imageUrl: 'http://www.inrows.co.kr' + result.imageUrl,
+    salePrice,
+  });
+};
+
+export const _lambydcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    name: result.name.slice(0, result.name.length - 18),
+  });
+};
+
+export const _monsterrepubliccokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const scriptHtml = $(selecter.imageUrl).html();
+
+  const SEARCH_TEXT = '.jpg\' : "..';
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf('"', start);
+  const imageUrl =
+    'http://monsterrepublic.co.kr/shop' + scriptHtml.slice(start, end);
+
+  return correct({
+    ...result,
+    imageUrl,
+  });
+};
+
+export const _ziosongziocom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    imageUrl: 'http://www.ziosongzio.com' + result.imageUrl,
+  });
+};
+
+export const _topten10mallcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  let { brandKor } = result;
+  if (brandKor === 'TOPTEN10') brandKor = '탑텐';
+  if (brandKor === 'POLHAM') brandKor = '폴햄';
+  if (brandKor === 'ZIOZIA') brandKor = '지오지아';
+
+  const goodsNo = result.imageUrl.slice(result.imageUrl.indexOf(' / ') + 4);
+
+  const salePriceStr = $(selecter.salePrice).html();
+  const salePrice = Number(
+    salePriceStr.slice(0, salePriceStr.indexOf(' &#x')).replace(/[^0-9]/g, '')
+  );
+
+  return correct({
+    ...result,
+    imageUrl: 'https://d2gocqzpnajr77.cloudfront.net/' + goodsNo + '_M',
+    salePrice,
+  });
+};
+
+export const _kolonmallcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  let { brandKor } = result;
+  if (brandKor === 'CUSTOMELLOW') brandKor = '커스텀멜로우';
+
+  return correct({
+    ...result,
+  });
+};
+
+export const _ssgcom = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  let brandKor = unescape($(selecter.brandKor).last().text().trim()).replace(
+    '#',
+    ''
+  );
+  if (brandKor.includes('(')) {
+    brandKor = brandKor.slice(0, brandKor.indexOf('('));
   }
-  
+
   return correct({
     ...result,
     brandKor,
@@ -574,9 +697,9 @@ export const _goodsellottecom = (
   selecter: ISelecter
 ): CrawlResult => {
   const result = selectAll($, selecter);
-  
+
   const brandKor = unescape($(selecter.brandKor).last().text().trim());
-  
+
   return correct({
     ...result,
     brandKor,
@@ -601,7 +724,7 @@ export const _akmallcom = (
 ): CrawlResult => {
   const result = selectAll($, selecter);
 
-  const brandKor = result.brandKor.slice(0,result.brandKor.indexOf('브'))
+  const brandKor = result.brandKor.slice(0, result.brandKor.indexOf('브'));
 
   return correct({
     ...result,
@@ -614,103 +737,147 @@ export const _thehyundaicom = (
   selecter: ISelecter
 ): CrawlResult => {
   const result = selectAll($, selecter);
-  
+
   const brandKorStr = $(selecter.brandKor).html();
   let brandKor = unescape($(selecter.brandKor).last().text().trim());
-  if(brandKorStr.includes('img')){
-    brandKor=$(selecter.brandKor + '> img').last().attr().alt;
+  if (brandKorStr.includes('img')) {
+    brandKor = $(selecter.brandKor + '> img')
+      .last()
+      .attr().alt;
   }
-  
+
   return correct({
     ...result,
     brandKor,
   });
 };
 
-export const _mariomallcokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _mariomallcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  
-  const brandKor = result.brandKor.slice(0,result.brandKor.indexOf('브')-1)
+
+  const brandKor = result.brandKor.slice(0, result.brandKor.indexOf('브') - 1);
 
   return correct({
     ...result,
     brandKor,
   });
-}
+};
 
-export const _departmentssgcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _departmentssgcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  
-  let brandKor = unescape($(selecter.brandKor).last().text().trim()).replace('#','');
-  if(brandKor.includes('(')){
-    brandKor = brandKor.slice(0,brandKor.indexOf('('));
+
+  let brandKor = unescape($(selecter.brandKor).last().text().trim()).replace(
+    '#',
+    ''
+  );
+  if (brandKor.includes('(')) {
+    brandKor = brandKor.slice(0, brandKor.indexOf('('));
   }
 
   return correct({
     ...result,
     brandKor,
   });
-}
+};
 
-export const _fashionpluscokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _fashionpluscokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  
+
   const salePriceStr = $(selecter.salePrice).html();
-  const salePrice = Number(salePriceStr.slice(0,salePriceStr.indexOf('<span>')).replace(/[^0-9]/g, ''));
-  
+  const salePrice = Number(
+    salePriceStr.slice(0, salePriceStr.indexOf('<span>')).replace(/[^0-9]/g, '')
+  );
+
   return correct({
     ...result,
     salePrice,
   });
-}
+};
 
-
-export const _coupangcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _coupangcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  
+
   const brandKor = unescape($(selecter.brandKor).last().text().trim());
 
   return correct({
     ...result,
     brandKor,
   });
-}
+};
 
-export const _shoppinginterparkcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _shoppinginterparkcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  
+
   const originalPriceStr = $(selecter.originalPrice).html();
-  const ORIGINAL_SEARCH_TEXT = '"sale_price":'
+  const ORIGINAL_SEARCH_TEXT = '"sale_price":';
   const SALE_SEARCH_TEXT = '"item_price":';
   const SALE_SEARCH_TEXT_END = 'var egsLogManager';
-  const originalPrice = Number(originalPriceStr.slice(originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT)+ORIGINAL_SEARCH_TEXT.length,originalPriceStr.indexOf(SALE_SEARCH_TEXT)).replace(/[^0-9]/g, ''));
-  const salePrice = Number(originalPriceStr.slice(originalPriceStr.indexOf(SALE_SEARCH_TEXT)+SALE_SEARCH_TEXT.length, originalPriceStr.indexOf(SALE_SEARCH_TEXT_END)).replace(/[^0-9]/g, ''));
+  const originalPrice = Number(
+    originalPriceStr
+      .slice(
+        originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT) +
+          ORIGINAL_SEARCH_TEXT.length,
+        originalPriceStr.indexOf(SALE_SEARCH_TEXT)
+      )
+      .replace(/[^0-9]/g, '')
+  );
+  const salePrice = Number(
+    originalPriceStr
+      .slice(
+        originalPriceStr.indexOf(SALE_SEARCH_TEXT) + SALE_SEARCH_TEXT.length,
+        originalPriceStr.indexOf(SALE_SEARCH_TEXT_END)
+      )
+      .replace(/[^0-9]/g, '')
+  );
 
   return correct({
     ...result,
     originalPrice,
-    salePrice
+    salePrice,
   });
-}
+};
 
-export const _g9cokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _g9cokr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
   const result = selectAll($, selecter);
-  
-  const name = result.name.slice(0,result.name.indexOf('|'));
+
+  const name = result.name.slice(0, result.name.indexOf('|'));
 
   return correct({
     ...result,
-    name
+    name,
   });
-}
+};
 
-export const _4xrcokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _4xrcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  const hasBrandName = result.name.includes(':')
+  const hasBrandName = result.name.includes(':');
 
-  const brandKor = hasBrandName ? result.name.slice(0,result.name.indexOf(":")-1): '4xr';
-  const name = hasBrandName ? result.name.slice(result.name.indexOf(":")+2) : result.name;
-  const salePrice = result.salePrice < 100 ? result.originalPrice : result.salePrice;
+  const brandKor = hasBrandName
+    ? result.name.slice(0, result.name.indexOf(':') - 1)
+    : '4xr';
+  const name = hasBrandName
+    ? result.name.slice(result.name.indexOf(':') + 2)
+    : result.name;
+  const salePrice =
+    result.salePrice < 100 ? result.originalPrice : result.salePrice;
 
   return correct({
     ...result,
@@ -719,9 +886,12 @@ export const _4xrcokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
     name,
     imageUrl: 'http://www.4xr.co.kr' + result.imageUrl,
   });
-}
+};
 
-export const _gvgcokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _gvgcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   const brandKor = result.brandKor.slice(0, result.brandKor.indexOf('('));
@@ -730,9 +900,12 @@ export const _gvgcokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
     ...result,
     brandKor,
   });
-}
+};
 
-export const _farfetchcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _farfetchcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   let { brandKor } = result;
@@ -763,119 +936,158 @@ export const _farfetchcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>
   if (brandKor === 'Off-White') brandKor = '오프화이트';
   if (brandKor === 'Stone Island') brandKor = '스톤아일랜드';
   if (brandKor === 'Thom Browne') brandKor = '톰 브라운';
-  if (brandKor === 'Church\'s') brandKor = '처치스';
+  if (brandKor === "Church's") brandKor = '처치스';
   if (brandKor === 'Marsèll') brandKor = '마르셀';
   if (brandKor === 'Officine Creative') brandKor = '오피치네 크레아티베';
   if (brandKor === 'Santoni') brandKor = '산토니';
-  if (brandKor === 'Tod\'s') brandKor = '토즈';
+  if (brandKor === "Tod's") brandKor = '토즈';
   if (brandKor === 'Adidas') brandKor = '아디다스';
   if (brandKor === 'Common Projects') brandKor = '커먼 프로젝트';
   if (brandKor === 'Nike') brandKor = '나이키';
-  
-  const name = result.name.slice(0,result.name.indexOf("-")-1);
+
+  const name = result.name.slice(0, result.name.indexOf('-') - 1);
   return correct({
     ...result,
     brandKor,
     name,
   });
-}
+};
 
-export const _abokinet= ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _abokinet = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  
-  return correct({
-    ...result,
-  imageUrl: 'https://www.aboki.net' +result.imageUrl
-  })
-}
-
-export const _jogunshopcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
-  const result = selectAll($, selecter);
-
-  const name = result.name.slice(0,result.name.indexOf("<br>"))
 
   return correct({
     ...result,
-    name
-  })
-}
+    imageUrl: 'https://www.aboki.net' + result.imageUrl,
+  });
+};
 
-export const _timemeccacokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _jogunshopcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  const isContainBrand = result.name.indexOf("[") === 0;
-  const brandKor = isContainBrand ? result.name.slice(1,result.name.indexOf("]")).replace(/[A-Za-z]/g,''):'';
+
+  const name = result.name.slice(0, result.name.indexOf('<br>'));
+
+  return correct({
+    ...result,
+    name,
+  });
+};
+
+export const _timemeccacokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const isContainBrand = result.name.indexOf('[') === 0;
+  const brandKor = isContainBrand
+    ? result.name.slice(1, result.name.indexOf(']')).replace(/[A-Za-z]/g, '')
+    : '';
 
   return correct({
     ...result,
     brandKor,
-  })
-}
+  });
+};
 
-export const _snuvcokr  = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _snuvcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   const originalPriceStr = $(selecter.originalPrice).html();
   const hasSalePrice = originalPriceStr.includes('strike');
-  const originalPriceSelecter = hasSalePrice ? selecter.originalPrice + " > strike" : selecter.originalPrice + " > div"
-  const originalPrice = strToNumber(unescape($(originalPriceSelecter).last().text().trim()));
-  
-  const brandKorSelecter = hasSalePrice ? selecter.brandKor + " > tr:nth-child(5) > td > div" : selecter.brandKor + " > tr:nth-child(4) > td > div"; 
+  const originalPriceSelecter = hasSalePrice
+    ? selecter.originalPrice + ' > strike'
+    : selecter.originalPrice + ' > div';
+  const originalPrice = strToNumber(
+    unescape($(originalPriceSelecter).last().text().trim())
+  );
+
+  const brandKorSelecter = hasSalePrice
+    ? selecter.brandKor + ' > tr:nth-child(5) > td > div'
+    : selecter.brandKor + ' > tr:nth-child(4) > td > div';
   const brandKor = unescape($(brandKorSelecter).last().text().trim());
 
   return correct({
     ...result,
     originalPrice,
     brandKor,
-    imageUrl: "https://www.snuv.co.kr" + result.imageUrl
-  })
-}
+    imageUrl: 'https://www.snuv.co.kr' + result.imageUrl,
+  });
+};
 
-export const _labelarchivecom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _labelarchivecom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
-  const name = result.name.slice(0,result.name.indexOf(' : LABEL ARCHIVE 라벨 아카이브'));
+  const name = result.name.slice(
+    0,
+    result.name.indexOf(' : LABEL ARCHIVE 라벨 아카이브')
+  );
 
   return correct({
     ...result,
-    name    
-  })
-}
+    name,
+  });
+};
 
-export const _flukecompanycom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _flukecompanycom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   return correct({
     ...result,
-    imageUrl: "https://www.flukecompany.com"+result.imageUrl
-  })
-}
+    imageUrl: 'https://www.flukecompany.com' + result.imageUrl,
+  });
+};
 
-
-export const _wvprojectcokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _wvprojectcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   return correct({
     ...result,
-    imageUrl: "https://www.wvproject.co.kr"+result.imageUrl
-  })
-}
+    imageUrl: 'https://www.wvproject.co.kr' + result.imageUrl,
+  });
+};
 
-export const _samsonitemallcokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _samsonitemallcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
-  const isSale = $(selecter.salePrice).html().includes('strong')
-  const salePrice = isSale ? result.salePrice.toString().replace(result.originalPrice.toString(),'') : result.salePrice;
+  const isSale = $(selecter.salePrice).html().includes('strong');
+  const salePrice = isSale
+    ? result.salePrice.toString().replace(result.originalPrice.toString(), '')
+    : result.salePrice;
 
   return correct({
     ...result,
-    salePrice:Number(salePrice)  
-  })
-}
+    salePrice: Number(salePrice),
+  });
+};
 
-export const _heightsstorecom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _heightsstorecom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
-  let brandKor = result.brandKor.replace('See all brand product','');
+  let brandKor = result.brandKor.replace('See all brand product', '');
   if (brandKor === 'have a good time') brandKor = '해브어굿타임';
   if (brandKor === 'Stussy') brandKor = '스투시';
   if (brandKor === 'Richardson') brandKor = '리차드슨';
@@ -883,137 +1095,208 @@ export const _heightsstorecom = ($:CheerioStatic, selecter:ISelecter):CrawlResul
 
   return correct({
     ...result,
-    brandKor
-  })
-}
+    brandKor,
+  });
+};
 
-export const _urbanstoffcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _urbanstoffcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   const salePriceStr = $(selecter.salePrice).html();
-  const saleAmount = Number(salePriceStr.replace('&#xC6D0;','').replace(/[^0-9-]/g,''));
-  
-  const salePrice = saleAmount < 0 ? result.originalPrice + saleAmount : result.originalPrice;
-  const imageUrl = 'https://www.urbanstoff.com/shop'+$(selecter.imageUrl).last().attr().src.slice(2);
+  const saleAmount = Number(
+    salePriceStr.replace('&#xC6D0;', '').replace(/[^0-9-]/g, '')
+  );
 
-  return correct({
-  ...result,
-  imageUrl,
-  salePrice
-  })
-}
-
-export const _gncostylecom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
-  const result = selectAll($, selecter);
-
-  let {brandKor} = result;
-  if(brandKor==='T.I FOR MEN') brandKor='티아이포맨'
-  if(brandKor==='COVETBLAN') brandKor='코벳블랑'
-  if(brandKor==='Thursday Island') brandKor='써스데이아일랜드'
-  
-  return correct({
-  ...result,
-  brandKor
-  })
-}
-
-export const _yanthirteencom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
-  const result = selectAll($, selecter);
-
-  const SALE_SEARCH_TEXT = 'product_price'
-  const SALE_SEARCH_TEXT_END = 'option_type'
-  const html = $('html').html()
-  const salePrice = Number(html.slice(html.indexOf(SALE_SEARCH_TEXT), html.indexOf(SALE_SEARCH_TEXT_END)).replace(/[^0-9]/g, ''));
+  const salePrice =
+    saleAmount < 0 ? result.originalPrice + saleAmount : result.originalPrice;
+  const imageUrl =
+    'https://www.urbanstoff.com/shop' +
+    $(selecter.imageUrl).last().attr().src.slice(2);
 
   return correct({
     ...result,
-    imageUrl: "https://www.yanthirteen.com" +result.imageUrl,
-    salePrice
-  })
-}
+    imageUrl,
+    salePrice,
+  });
+};
 
-export const _hfashionmallcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _gncostylecom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  let { brandKor } = result;
+  if (brandKor === 'T.I FOR MEN') brandKor = '티아이포맨';
+  if (brandKor === 'COVETBLAN') brandKor = '코벳블랑';
+  if (brandKor === 'Thursday Island') brandKor = '써스데이아일랜드';
+
+  return correct({
+    ...result,
+    brandKor,
+  });
+};
+
+export const _yanthirteencom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  const SALE_SEARCH_TEXT = 'product_price';
+  const SALE_SEARCH_TEXT_END = 'option_type';
+  const html = $('html').html();
+  const salePrice = Number(
+    html
+      .slice(html.indexOf(SALE_SEARCH_TEXT), html.indexOf(SALE_SEARCH_TEXT_END))
+      .replace(/[^0-9]/g, '')
+  );
+
+  return correct({
+    ...result,
+    imageUrl: 'https://www.yanthirteen.com' + result.imageUrl,
+    salePrice,
+  });
+};
+
+export const _hfashionmallcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   const html = $('html').html();
   const BRAND_SERACH_TEXT = 'recopick:author" content="';
   const BRAND_SEARCH_TEXT_END = '<meta property="recopick:title';
-  const brandKorStr = html.slice(html.indexOf(BRAND_SERACH_TEXT)+BRAND_SERACH_TEXT.length, html.indexOf(BRAND_SEARCH_TEXT_END));
-  let brandKor = brandKorStr.slice(0,brandKorStr.indexOf('">'));
+  const brandKorStr = html.slice(
+    html.indexOf(BRAND_SERACH_TEXT) + BRAND_SERACH_TEXT.length,
+    html.indexOf(BRAND_SEARCH_TEXT_END)
+  );
+  let brandKor = brandKorStr.slice(0, brandKorStr.indexOf('">'));
 
-  if(brandKor==='TOMMY HILFIGER') brandKor = '타미힐피거'
-  if(brandKor==='CALVIN KLEIN') brandKor = '캘빈클라인'
+  if (brandKor === 'TOMMY HILFIGER') brandKor = '타미힐피거';
+  if (brandKor === 'CALVIN KLEIN') brandKor = '캘빈클라인';
 
-  return correct({...result,brandKor})
-}
+  return correct({ ...result, brandKor });
+};
 
-export const _phos333com = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _phos333com = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   const salePrice = Number($(selecter.salePrice).attr('value'));
   const originalPriceStr = $(selecter.originalPrice).html();
-  const ORIGINAL_SEARCH_TEXT = "&#xC2DC;&#xC911;&#xAC00;&#xACA9;";
-  const ORIGINAL_SEARCH_TEXT_END = "won</td></tr>";
-  const originalPrice = Number(originalPriceStr.slice(originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT)+ORIGINAL_SEARCH_TEXT.length, originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT_END)).replace(/[^0-9]/g,""));
-  
-  
-  return correct({...result,salePrice,originalPrice});
-}
+  const ORIGINAL_SEARCH_TEXT = '&#xC2DC;&#xC911;&#xAC00;&#xACA9;';
+  const ORIGINAL_SEARCH_TEXT_END = 'won</td></tr>';
+  const originalPrice = Number(
+    originalPriceStr
+      .slice(
+        originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT) +
+          ORIGINAL_SEARCH_TEXT.length,
+        originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT_END)
+      )
+      .replace(/[^0-9]/g, '')
+  );
 
-export const _guglobalcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+  return correct({ ...result, salePrice, originalPrice });
+};
+
+export const _guglobalcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   const originalPrice = Number($(selecter.originalPrice).attr('value'));
 
-  return correct({...result, originalPrice})
-}
+  return correct({ ...result, originalPrice });
+};
 
-export const _shinwonmallcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _shinwonmallcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  let {brandKor} = result;
-  if(brandKor==='FAHRENHEIT') brandKor='지이크 파렌하이트'
-  if(brandKor==='SIEG') brandKor='지이크'
-  if(brandKor==='ISABEY') brandKor='이사베이'
-  if(brandKor==='GINNASIX') brandKor='기나식스'
-  if(brandKor==='iCONIQ') brandKor='아이코닉'
-  if(brandKor==='MARKM') brandKor='마크엠'
-  if(brandKor==='BESTIBELLI') brandKor='베스띠벨리'
-  if(brandKor==='VIKI') brandKor='비키'
+  let { brandKor } = result;
+  if (brandKor === 'FAHRENHEIT') brandKor = '지이크 파렌하이트';
+  if (brandKor === 'SIEG') brandKor = '지이크';
+  if (brandKor === 'ISABEY') brandKor = '이사베이';
+  if (brandKor === 'GINNASIX') brandKor = '기나식스';
+  if (brandKor === 'iCONIQ') brandKor = '아이코닉';
+  if (brandKor === 'MARKM') brandKor = '마크엠';
+  if (brandKor === 'BESTIBELLI') brandKor = '베스띠벨리';
+  if (brandKor === 'VIKI') brandKor = '비키';
 
-  return correct({...result,brandKor})
-}
+  return correct({ ...result, brandKor });
+};
 
-export const _shopreebokcokr = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _shopreebokcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   const head = $('head').html();
-  const ORIGINAL_SEARCH_TEXT = 'jQuery("#sn_price").html("<span class=\'won\'></span>"'
-  const SALE_SEARCH_TEXT = 'jQuery("#ss_price").html("<span class=\'won\'></span>"'
-  const SALE_SEARCH_TEXT_END = "jQuery(\"#sn_price\").show();"
-  const originalPrice = Number(head.slice(head.indexOf(ORIGINAL_SEARCH_TEXT)+ORIGINAL_SEARCH_TEXT.length,head.indexOf(SALE_SEARCH_TEXT)).replace(/[^0-9]/g,''))
-  const salePrice = Number(head.slice(head.indexOf(SALE_SEARCH_TEXT)+SALE_SEARCH_TEXT.length,head.indexOf(SALE_SEARCH_TEXT_END)).replace(/[^0-9]/g,''));
+  const ORIGINAL_SEARCH_TEXT =
+    'jQuery("#sn_price").html("<span class=\'won\'></span>"';
+  const SALE_SEARCH_TEXT =
+    'jQuery("#ss_price").html("<span class=\'won\'></span>"';
+  const SALE_SEARCH_TEXT_END = 'jQuery("#sn_price").show();';
+  const originalPrice = Number(
+    head
+      .slice(
+        head.indexOf(ORIGINAL_SEARCH_TEXT) + ORIGINAL_SEARCH_TEXT.length,
+        head.indexOf(SALE_SEARCH_TEXT)
+      )
+      .replace(/[^0-9]/g, '')
+  );
+  const salePrice = Number(
+    head
+      .slice(
+        head.indexOf(SALE_SEARCH_TEXT) + SALE_SEARCH_TEXT.length,
+        head.indexOf(SALE_SEARCH_TEXT_END)
+      )
+      .replace(/[^0-9]/g, '')
+  );
 
   return correct({
     ...result,
     originalPrice,
-    salePrice
-  })
-}
+    salePrice,
+  });
+};
 
-export const _toptentopten10mallcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+export const _toptentopten10mallcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
-  
-  const salePriceStr = $(selecter.salePrice).html()
-  const salePrice = Number(salePriceStr.slice(0,salePriceStr.indexOf('&#xC6D0')).replace(/[^0-9]/g,''));
 
-  return correct({...result,salePrice})
-}
+  const salePriceStr = $(selecter.salePrice).html();
+  const salePrice = Number(
+    salePriceStr
+      .slice(0, salePriceStr.indexOf('&#xC6D0'))
+      .replace(/[^0-9]/g, '')
+  );
 
-export const _skonoshopcom = ($:CheerioStatic, selecter:ISelecter):CrawlResult =>{
+  return correct({ ...result, salePrice });
+};
+
+export const _skonoshopcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
   const result = selectAll($, selecter);
 
   const imageUrlStr = $(selecter.imageUrl).html();
-  const imageUrl = imageUrlStr.includes('<ul>') ? $('#lens_img').attr('src') : $(selecter.imageUrl + " > li > img").attr('src');
+  const imageUrl = imageUrlStr.includes('<ul>')
+    ? $('#lens_img').attr('src')
+    : $(selecter.imageUrl + ' > li > img').attr('src');
 
-  return correct({...result, imageUrl: 'https://skonoshop.com' + imageUrl});
-}
+  return correct({ ...result, imageUrl: 'https://skonoshop.com' + imageUrl });
+};
