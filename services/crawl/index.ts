@@ -36,8 +36,8 @@ export default class CrawlService {
     const body = await requestHtml(this.url);
     const $ = cheerio.load(body);
 
-    const crawlerName = this.host.replace(/\.|-/g, '');
-
+    const crawlerName = '_' +this.host.replace(/\.|-/g, '');
+    
     const result = correct(
       (crawlers[crawlerName] || selectAll)($, this.selecter)
     );
