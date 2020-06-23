@@ -37,10 +37,9 @@ export default class CrawlService {
 
   public crawl = async (): Promise<CrawlResult> => {
     if (phanties.includes(this.host)) {
-      console.log('hi');
       return axios
         .get(`https://pickk-crawl.tk/info/?url=${this.url}`)
-        .then((res) => res.data);
+        .then((res) => correct(res.data));
     }
 
     const body = await requestHtml(this.url);
@@ -52,12 +51,12 @@ export default class CrawlService {
       (crawlers[crawlerName] || selectAll)($, this.selecter)
     );
 
+    const host = this.host.indexOf('m.') === 0 ? this.host.slice(2) : this.host;
+
     return {
       ...result,
       brandKor:
-        brandNames[this.host.replace('m.', '')] !== undefined
-          ? brandNames[this.host.replace('m.', '')]
-          : result.brandKor,
+        brandNames[host] !== undefined ? brandNames[host] : result.brandKor,
     };
   };
 }

@@ -217,7 +217,7 @@ u-ping.co.kr:
   <<: *custom_price
 
 romanticpirates.com:
-  name: 'title'
+  name: 'h3.tit-prd'
   imageUrl: '#productDetail > div > div.thumb-info > div > center > div > img'
   originalPrice: 'input#price'
   salePrice: 'input#disprice'
@@ -233,6 +233,7 @@ jemutshop.com:
 
 beslow.co.kr:
   name: 'div.detail-product-name > div:nth-child(2) > span'
+  brandKor: 'div.detail-brand-name > a > span'
   imageUrl: 'div.detail-img > ul.detail-img-list > li:nth-child(1)'
   originalPrice: 'div.detail-sale > div:nth-child(1) > span:nth-child(3)'
   salePrice: 'div.detail-sale > div:nth-child(1) > span:nth-child(1)'
@@ -638,6 +639,7 @@ ziosongzio.com:
 topten10mall.com:
   <<: *base
   imageUrl: '#goods_form > div.title > p'
+  brandKor: '#goods_form > div.title > p > strong'
   originalPrice: '#goods_form > div.info_wrap.price_info > ul > li:nth-child(1) > span'
   salePrice: '#goods_form > div.info_wrap.price_info > ul > li > span.selling_price'
 wvproject.co.kr:
@@ -802,3 +804,223 @@ blackyak.com:
   <<: *base
   originalPrice: 'div.price_n > div.price_s'
   salePrice: 'div.price_n > div.price_o'
+
+guesskorea.com:
+  <<: *base
+  brandKor: meta[property="og:description"]
+  originalPrice: 'div.price > del'
+  salePrice: 'div.price > strong'
+
+eshop.kappakorea.net:
+  <<: *base
+  originalPrice: '#form1 > div.gd-price._discount > span.sale'
+  salePrice: meta[property="product:price:amount"]
+
+wooyoungmi.com:
+  <<: *base
+  name: meta[name="keywords"]
+  brandKor: meta[name="author"]
+
+kangolkorea.com:
+  <<: *base
+  originalPrice: '#span_product_price_custom > strike'
+
+emart.ssg.com:
+  <<: *base
+  originalPrice: 'span.cdtl_old_price > em'
+  salePrice: 'span.cdtl_new_price > em'
+
+shop.mango.com:
+  <<: *base
+  salePrice: 'head'
+
+kr.mcmworldwide.com:
+  <<: *base
+  originalPrice: 'span.product-standard-price > span.price-value'
+  salePrice: 'span.product-sales-price > span.price-value'
+
+stylelq.com:
+  <<: *base
+  originalPrice: 'div.col.col-1-1-lg.col-1-2-xl.caption > div > div:nth-child(1) > div.col.desc > span'
+  salePrice: meta[property="product:price:amount"]
+
+seikoboutique.co.kr:
+  <<: *base
+  originalPrice: '#frmView > input[type=hidden]:nth-child(5)'
+  salePrice: '#frmView > input[type=hidden]:nth-child(4)'
+
+bottegaveneta.com:
+  <<: *base
+  originalPrice: 'span.price > span.value'
+
+montblanc.com:
+  <<: *base
+  originalPrice: 'span.mb-pdp-price'
+
+givenchy.com:
+  name: 'head > title'
+  salePrice: 'body'
+
+ysl.com:
+  <<: *base
+  salePrice: '#itemPrice > div > div > span.price > span.value'
+
+moncler.com:
+  <<: *base
+  salePrice: 'div.col-12.col-md-6.product-details > div.prices > div > span > span > span'
+
+apc-korea.com:
+  <<: *base
+  name: 'div.product-shop > div.product-name > h1'
+  originalPrice: '#price > span > price'
+  salePrice: '#discountPrice > span:nth-child(1) > price'
+
+kr.burberry.com:
+  <<: *base
+  name: '#product-transactional-panel > div.product-transactional-panel-container.js-master-favourites-container > div > div > div > h1'
+  originalPrice: meta[property="og:price:amount"]
+
+stoneisland.com:
+  <<: *base
+  originalPrice: 'div.hidden > div.itemPrice > span.price > span.value'
+
+alexandermcqueen.com:
+  <<: *base
+  originalPrice: 'div.hidden > div.itemPrice > span.price > span.value'
+
+mooseknuckleskorea.com:
+  <<: *base
+  name: meta[name="description"]
+
+dior.com:
+  <<: *base
+  originalPrice: 'head'
+
+haharchive.com:
+  <<: *base
+  originalPrice: '#shopProductPrice > span.productPriceWithDiscountSpan'
+  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
+
+shop.timberland.co.kr:
+  <<: *base
+  name: h1.title-wrap
+  originalPrice: span.price > strong
+  salePrice: span.price-sale
+
+gentlemonster.com:
+  <<: *base
+  name: p.product_detail_name.font_title
+  originalPrice: p.product_detail_price.font_title
+
+camelwork.co.kr:
+  <<: *custom_price
+
+mainbooth.co.kr:
+  <<: *custom_price
+
+konusbrand.co.kr:
+  <<: *custom_price
+
+coucou-store.com:
+  <<: *base
+  name: h3.tit-prd
+  originalPrice: td.price > div.tb-left > strike
+  salePrice: td.price.sell_price >  div.tb-left
+
+unalloyed.kr:
+  <<: *custom_price
+  name: 'div.detailArea > div.infoArea > h3'
+
+oofos.co.kr:
+  <<: *base
+  originalPrice: '#frmView > div > div > div.item_detail_list > dl.item_price > dd > strong > strong'
+
+glothes.co.kr:
+  <<: *base
+  name: 'title'
+  salePrice: '#span_product_coupon_dc_price'
+
+sonamustore.com:
+  <<: *base
+  name: '#contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > div.headingArea > h2'
+
+shoemarker.co.kr:
+  <<: *base
+  brandKor: 'div.title-wrap > span.brand'
+  originalPrice: 'div.title-wrap > span.price > strong'
+  salePrice: 'div.title-wrap > span.price > span.dis'
+
+filsonkorea.co.kr:
+  <<: *base
+  name: '#goods_spec > form > div > h3'
+  imageUrl: 'img#objImg'
+  originalPrice: '#consumer'
+  salePrice: '#price'
+
+ocokorea.com:
+  <<: *base
+  name: '#contents > div > div > div.basics.clear.mb80 > div.p__info.fr > div.p__text_box.clear > div > div.name'
+  brandKor: '#contents > div > div > div.basics.clear.mb80 > div.p__info.fr > div.p__text_box.clear > div > div.category_map > a > span'
+  originalPrice: '#contents > div > div > div.basics.clear.mb80 > div.p__info.fr > div.p__text.coupon > span.text2.pr1'
+  salePrice: '#contents > div > div > div.basics.clear.mb80 > div.p__info.fr > div.p__text.coupon > span.text7'
+
+hotsunglass.co.kr:
+  <<: *base
+  name: '#orgClone > div > div.infoWrap > h1'
+
+istyle24.com:
+  <<: *base
+  originalPrice: '#product_total > div.product_wrap_top.clearfix > div.product-detail > div.product_price > div.original_price > span'
+  salePrice: '#product_total > div.product_wrap_top.clearfix > div.product-detail > div.product_price > div.now_price > span.price_number'
+
+patagonia.co.kr:
+  <<: *base
+  name: '#goods_spec > div.goods-infomation-container > div.goods-options > div.m_prd_nm > p.goods-title'
+  imageUrl: '#goods-images-list > li.goods-image-item.__active:nth-child(1) > img'
+  originalPrice: '#goods_spec > div.goods-infomation-container > div.goods-options > div.m_prd_nm > p.goods-title-price'
+
+oohahh.co.kr:
+  <<: *base
+  name: 'h1[itemprop="name"]'
+  imageUrl: 'div.images > a[itemprop="image"] > img'
+  originalPrice: 'div[itemprop="offers"] > p.price > del > span.amount'
+  salePrice: 'div[itemprop="offers"] > p.price > ins > span.amount'
+
+byc.co.kr:
+  <<: *base
+  originalPrice: '#consumer'
+  salePrice: '#price'
+
+thesortie.com:
+  <<: *base
+  name: '#prod_goods_form > header > div.view_tit.no-margin-top'
+  originalPrice: 'span.real_price'
+
+kr.moscot.com:
+  <<: *base
+
+deadendkr.cafe24.com:
+  <<: *base
+  name: '#contents > div.xans-element-.xans-product.xans-product-detail > div.headingArea > h2'
+  originalPrice: '#contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > div.xans-element-.xans-product.xans-product-detaildesign > table > tbody > tr:nth-child(4) > td > span'
+
+shop.amoebaculture.com:
+  <<: *base
+  name: '#form1 > div > h3'
+  imageUrl: '#productDetail > div.page-body > div.thumb-info > div.thumb-wrap.prdThumbArea > div.multiImgArea.swiper-container > ul > li:nth-child(1) > div > a'
+  originalPrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div'
+
+rockingag.com:
+  <<: *base
+  originalPrice: '#prdInfo > table > tbody:nth-child(2) > tr:nth-child(2) > td > strong'
+
+fillike.com:
+  <<: *base
+  originalPrice: '#prod_goods_form > header > div.pay_detail.full-width > div > span > span.sale_price.body_font_color_50'
+  salePrice: '#prod_goods_form > header > div.pay_detail.full-width > div > span > span.real_price'
+
+hago.kr:
+  <<: *base
+  brandKor: '#frmView > div > div.brand-info > h2 > a'
+  originalPrice: '#frmView > div > div.info-block > div.item > ul > li:nth-child(1) > div > b'
+  salePrice: '#frmView > div > div.info-block > div.item > ul > li.price.vip-coupon > div:nth-child(2) > span:nth-child(3) > strong'

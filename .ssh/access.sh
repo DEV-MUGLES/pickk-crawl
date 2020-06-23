@@ -1,0 +1,1 @@
+ssh -i ./.ssh/item-info-crawl.pem ubuntu@18.189.27.21

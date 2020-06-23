@@ -93,7 +93,9 @@ export const _zavanascom = (
   return {
     ...result,
     originalPrice: result.originalPrice || myPrice,
-    salePrice: result.salePrice || myPrice,
+    salePrice:
+      (result.salePrice <= 100 ? result.originalPrice : result.salePrice) ||
+      myPrice,
   };
 };
 
@@ -232,10 +234,29 @@ export const _beslowcokr = (
     parseValue($, 'originalPrice', 'div.detail-price >  span:nth-child(1)')
   );
 
+  let brandKor = result.brandKor;
+  if (brandKor === 'BESLOW STANDARD') brandKor = '비슬로우 스탠다드';
+  if (brandKor === 'DIMITRI BLACK') brandKor = '디미트리 블랙';
+  if (brandKor === 'OUTSTANDING') brandKor = '아웃스탠딩';
+  if (brandKor === 'Ramolin') brandKor = '라모랭';
+  if (brandKor === 'FRIZM WORKS') brandKor = '프리즘웍스';
+  if (brandKor === 'BESLOW PURPLE') brandKor = '비슬로우 퍼플';
+  if (brandKor === 'BESLOW ORIGINALS') brandKor = '비슬로우 오리지널스';
+  if (brandKor === 'SHOOPEN X BESLOW') brandKor = '슈펜 X 비슬로우';
+  if (brandKor === 'THE RESQ') brandKor = '더레스큐';
+  if (brandKor === 'VANONE') brandKor = '반원';
+  if (brandKor === 'MOAA') brandKor = '모아';
+  if (brandKor === 'MAGOODGAN') brandKor = '맥우드건';
+  if (brandKor === 'MONOFLOW') brandKor = '모노플로우';
+  if (brandKor === 'node archive') brandKor = '노드 아카이브';
+  if (brandKor === 'MOAA') brandKor = '모아';
+  if (brandKor === 'MOAA') brandKor = '모아';
+
   return correct({
     ...result,
     imageUrl: $(selecter.imageUrl).attr()['data-src'],
     originalPrice: result.originalPrice || myPrice,
+    brandKor,
   });
 };
 
@@ -646,6 +667,7 @@ export const _topten10mallcom = (
   if (brandKor === 'TOPTEN10') brandKor = '탑텐';
   if (brandKor === 'POLHAM') brandKor = '폴햄';
   if (brandKor === 'ZIOZIA') brandKor = '지오지아';
+  if (brandKor === 'AND Z') brandKor = '앤드지';
 
   const goodsNo = result.imageUrl.slice(result.imageUrl.indexOf(' / ') + 4);
 
@@ -657,6 +679,7 @@ export const _topten10mallcom = (
   return correct({
     ...result,
     imageUrl: 'https://d2gocqzpnajr77.cloudfront.net/' + goodsNo + '_M',
+    brandKor,
     salePrice,
   });
 };
@@ -669,9 +692,15 @@ export const _kolonmallcom = (
 
   let { brandKor } = result;
   if (brandKor === 'CUSTOMELLOW') brandKor = '커스텀멜로우';
+  if (brandKor === 'SERIES') brandKor = '시리즈';
+  if (brandKor === 'COURONNE') brandKor = '쿠론';
+  if (brandKor === 'KOLON SPORT') brandKor = '코오롱스포츠';
+  if (brandKor === 'HEAD') brandKor = '헤드';
+  if (brandKor === 'SUECOMMA BONNIE') brandKor = '슈콤마보니';
 
   return correct({
     ...result,
+    brandKor,
   });
 };
 
@@ -1299,4 +1328,593 @@ export const _skonoshopcom = (
     : $(selecter.imageUrl + ' > li > img').attr('src');
 
   return correct({ ...result, imageUrl: 'https://skonoshop.com' + imageUrl });
+};
+
+export const _guesskoreacom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    brandKor: result.brandKor.slice(0, 2),
+  });
+};
+
+export const _wooyoungmicom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    name: result.name.split(',')[0],
+  });
+};
+
+export const _shopmangocom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const scriptHtml = $(selecter.salePrice).html();
+  let search_text, start, end;
+
+  search_text = '"originalPrice":';
+  start = scriptHtml.indexOf(search_text) + search_text.length;
+  end = scriptHtml.indexOf(',', start);
+  const originalPrice = Number(scriptHtml.slice(start, end));
+
+  search_text = '"salePrice":"';
+  start = scriptHtml.indexOf(search_text) + search_text.length;
+  end = scriptHtml.indexOf('"', start);
+  const salePrice = Number(scriptHtml.slice(start, end));
+
+  return correct({
+    ...result,
+    name: result.name.split('-')[0].trim(),
+    originalPrice,
+    salePrice,
+  });
+};
+
+export const _stylenandacom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    name: result.name.split('#')[0].trim(),
+  });
+};
+
+export const _stylelqcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  let originalPrice = Number(
+    $(selecter.originalPrice)
+      .last()
+      .text()
+      .replace(/[^0-9]/g, '')
+  );
+  if (originalPrice === 0) {
+    originalPrice = Number(
+      $(
+        'div.col.col-1-1-lg.col-1-2-xl.caption > div > div:nth-child(1) > div.col.desc'
+      )
+        .last()
+        .text()
+        .replace(/[^0-9]/g, '')
+    );
+  }
+  return correct({
+    ...result,
+    name: result.name.slice(result.name.indexOf(']') + 1),
+    originalPrice,
+  });
+};
+
+export const _bottegavenetacom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    name: result.name.split('-')[1].trim(),
+  });
+};
+
+export const _etcseoulcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const [brandKor, name] = result.name.split(']');
+  return correct({
+    ...result,
+    brandKor: brandKor.trim(),
+    name: name.trim() + ']',
+  });
+};
+
+export const _montblanccom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    name: result.name.split('|')[0].trim(),
+  });
+};
+
+export const _thombrownecom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const [name, brandKor] = result.name.split('|');
+  return correct({
+    ...result,
+    name: name.trim(),
+    brandKor: brandKor.trim(),
+  });
+};
+
+export const _givenchycom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const scriptHtml = $(selecter.salePrice).html();
+  let search_text, start, end;
+  search_text = 'itemprop="image" src="';
+  start = scriptHtml.indexOf(search_text) + search_text.length;
+  end = scriptHtml.indexOf('"', start);
+  const imageUrl = scriptHtml.slice(start, end);
+  search_text = '<meta itemprop="price" content="';
+  start = scriptHtml.indexOf(search_text) + search_text.length;
+  end = scriptHtml.indexOf('.', start);
+  const originalPrice = Number(scriptHtml.slice(start, end));
+  const salePrice = originalPrice;
+  return correct({
+    ...result,
+    name: result.name.split('|')[0].trim(),
+    imageUrl,
+    originalPrice,
+    salePrice,
+  });
+};
+
+export const _monclercom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    name: result.name.split('|')[0].trim(),
+  });
+};
+
+export const _acnestudioscom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    name: result.name.trim(),
+  });
+};
+
+export const _stoneislandcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    name: result.name.split('Stone Island')[0].trim(),
+  });
+};
+
+export const _alexandermcqueencom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    name: result.name.split('|')[0].trim(),
+  });
+};
+
+export const _diorcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const scriptHtml = $(selecter.originalPrice).html();
+  const SEARCH_TEXT = '"price":';
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf(',', start);
+  const originalPrice = Number(scriptHtml.slice(start, end));
+
+  return correct({
+    ...result,
+    name: result.name.split('-')[0].trim(),
+    originalPrice,
+  });
+};
+
+export const _shoptimberlandcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  console.log(result);
+  return correct({
+    ...result,
+    name: result.name.replace(' - Timberland', ''),
+  });
+};
+
+export const _acha1com = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  console.log(result);
+  return correct({
+    ...result,
+    name: result.name
+      .slice(
+        result.name.indexOf('%할인') >= 0
+          ? result.name.indexOf('%할인') + 3 + 1
+          : 0
+      )
+      .replace('[ACHA/아차]', ''),
+  });
+};
+
+export const _coucoustorecom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const scriptHtml = $(selecter.salePrice).html();
+  const SEARCH_TEXT = '-&gt;';
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf('&#xC6D0;', start);
+  const salePrice = strToNumber(scriptHtml.slice(start, end));
+
+  return correct({
+    ...result,
+    salePrice,
+  });
+};
+
+export const _unalloyedkr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const scriptHtml = $(selecter.name).html();
+  const SEARCH_TEXT = '<span';
+  const name = scriptHtml.includes(SEARCH_TEXT)
+    ? scriptHtml.slice(0, scriptHtml.indexOf(SEARCH_TEXT))
+    : scriptHtml;
+
+  return correct({
+    ...result,
+    name,
+  });
+};
+
+export const _iamshoponlinecom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  let brandKor = result.name.slice(0, result.name.indexOf(':') - 1);
+  if (brandKor === 'N.HOOLYWOOD') brandKor = '엔 헐리우드';
+  if (brandKor === 'IVSI') brandKor = '아이비즈아이';
+  if (brandKor === 'Auralee') brandKor = '오라리';
+  if (brandKor === 'BIRTHDAYSUIT') brandKor = '벌스데이수트';
+  if (brandKor === 'Camiel Fortgens') brandKor = '카미엘 포트겐스';
+  if (brandKor === 'OUR LEGACY') brandKor = '아워레가시';
+  if (brandKor === 'SALOMON') brandKor = '살로몬';
+  if (brandKor === 'KIM CLOTHING') brandKor = '킴클로딩';
+  if (brandKor === 'NEEDLES') brandKor = '니들스';
+  if (brandKor === 'AECA WHITE') brandKor = '에이카화이트';
+  if (brandKor === 'AFTER PRAY') brandKor = '애프터프레이';
+  if (brandKor === 'ATELIER KHJ') brandKor = '아뜰리에 케이에이치제이';
+  if (brandKor === 'Ancient Greek Sandals') brandKor = '에인션트 그릭 샌들';
+  if (brandKor === 'ASICS') brandKor = '아식스';
+  if (brandKor === 'Bauhaus-Archiv') brandKor = '바우하우스';
+  if (brandKor === 'Baracuta') brandKor = '바라쿠타';
+  if (brandKor === 'BIRKENSTOCK') brandKor = '버켄스탁';
+  if (brandKor === 'Bonne Suit') brandKor = '보네 수트';
+  if (brandKor === 'BROWNYARD') brandKor = '브라운야드';
+  if (brandKor === 'CHAMPION') brandKor = '챔피온';
+  if (brandKor === 'CLAMP') brandKor = '클램프';
+  if (brandKor === 'CLASS') brandKor = '클래스';
+  if (brandKor === 'Common Projects') brandKor = '커먼프로젝트';
+  if (brandKor === 'de bonne facture') brandKor = '드 보네 팩터';
+  if (brandKor === 'Document') brandKor = '도큐먼트';
+  if (brandKor === 'Dr. Martens') brandKor = '닥터마틴';
+  if (brandKor === 'Eastlogue') brandKor = '이스트로그';
+  if (brandKor === 'Engineered Garments') brandKor = '엔지니어드가먼츠';
+  if (brandKor === 'E. Tautz') brandKor = '이타우즈';
+  if (brandKor === 'ERNEST W. BAKER') brandKor = '어니스트베이커';
+
+  return correct({
+    ...result,
+    name: result.name.slice(result.name.indexOf(':') + 1),
+    brandKor,
+  });
+};
+
+export const _derobekr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    name: result.name.replace('- 드로브 derobe 공식 온라인 스토어', ''),
+  });
+};
+
+export const _glothescokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const scriptHtml = $(selecter.salePrice).html();
+  const SEARCH_TEXT = '&#xC6D0;';
+  const salePrice = Number(
+    (scriptHtml.includes(SEARCH_TEXT)
+      ? scriptHtml.slice(0, scriptHtml.indexOf(SEARCH_TEXT))
+      : scriptHtml
+    ).replace(/[^0-9]/g, '')
+  );
+  return correct({
+    ...result,
+    name: result.name.slice(result.name.indexOf('.') + 1),
+    salePrice,
+  });
+};
+
+export const _ssolantcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    name: result.name.slice(result.name.indexOf(']') + 1),
+  });
+};
+
+export const _shoemarkercokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  let brandKor = result.brandKor;
+  if (brandKor === 'ADIDAS') brandKor = '아디다스';
+  if (brandKor === 'NIKE') brandKor = '나이키';
+  if (brandKor === 'CROCS') brandKor = '크록스';
+  if (brandKor === 'CLAYONG') brandKor = '클레용';
+  if (brandKor === 'FILA') brandKor = '휠라';
+  if (brandKor === 'PUMA') brandKor = '푸마';
+  if (brandKor === 'CONVERSE') brandKor = '컨버스';
+  if (brandKor === 'REEBOK') brandKor = '리복';
+  if (brandKor === 'FREDPERRY') brandKor = '프레드페리';
+  if (brandKor === 'SUPERGA') brandKor = '수페르가';
+  if (brandKor === 'LACOSTE') brandKor = '라코스테';
+  if (brandKor === 'NEW BALANCE') brandKor = '뉴발란스';
+  if (brandKor === 'TEVA') brandKor = '테바';
+  if (brandKor === 'NERDY') brandKor = '널디';
+  if (brandKor === 'HEAD') brandKor = '헤드';
+  if (brandKor === '6FT') brandKor = '식스핏';
+  if (brandKor === 'DR. MARTENS') brandKor = '닥터마틴';
+  if (brandKor === 'MLB') brandKor = 'MLB';
+  if (brandKor === 'ROMANTIC MOVE') brandKor = '로맨틱무브';
+  if (brandKor === 'SKONO') brandKor = '스코노';
+  if (brandKor === 'MARVEL') brandKor = '마블';
+  if (brandKor === 'LEMINE') brandKor = '르마인';
+  if (brandKor === 'BSQT') brandKor = 'BSQT';
+  if (brandKor === 'SKECHERS') brandKor = '스케처스';
+
+  return correct({
+    ...result,
+    brandKor,
+  });
+};
+
+export const _filsonkoreacokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    imageUrl: 'http://www.filsonkorea.co.kr/shop/' + result.imageUrl.slice(3),
+  });
+};
+
+export const _savagecokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    name: result.name.replace('(세비지)', ''),
+  });
+};
+
+export const _hotsunglasscokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    brandKor: result.brandKor.replace(' - 핫선글라스', ''),
+  });
+};
+
+export const _istyle24com = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    brandKor: $(
+      '#product_total > div.product_wrap_top.clearfix > div.product-detail > div.product_brand > a'
+    )
+      .text()
+      .replace('바로가기', ''),
+  });
+};
+
+export const _patagoniacokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    imageUrl: 'http://www.patagonia.co.kr' + result.imageUrl,
+  });
+};
+
+export const _varzarcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    name: result.name.replace('[바잘] ', ''),
+  });
+};
+
+export const _layerstorekr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  let brandKor = result.name.split(' ')[0];
+  if (brandKor === 'LIFUL') brandKor = '라이풀';
+  if (brandKor === 'KANCO') brandKor = '칸코';
+  if (brandKor === 'FUZZ') brandKor = '퍼즈';
+
+  return correct({
+    ...result,
+    brandKor,
+  });
+};
+
+export const _byccokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const txtCut = $('div.goods_tit > p.txtcut').text();
+
+  return correct({
+    ...result,
+    name: (txtCut ? txtCut + ' ' : '') + result.name,
+  });
+};
+
+export const _thesortiecom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    name: result.name.replace('솔티  - ', ''),
+  });
+};
+
+export const _deadendkrcafe24com = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  const origianlPriceText = $(selecter.originalPrice).text();
+  const originalPrice = Number(
+    origianlPriceText
+      .slice(0, origianlPriceText.indexOf('--->') + 1)
+      .replace(/[^0-9]/g, '')
+  );
+
+  return correct({
+    ...result,
+    name: result.name.replace('솔티  - ', ''),
+    originalPrice,
+  });
+};
+
+export const _shopamoebaculturecom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+    imageUrl: 'http://shop.amoebaculture.com' + result.imageUrl,
+  });
+};
+
+export const _fillikecom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    name: result.name.replace(' : FILLIKE 필리케', ''),
+  });
+};
+
+export const _hagokr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
+  const result = selectAll($, selecter);
+  const brandKor = $(selecter.brandKor).text();
+  const originalPrice =
+    result.originalPrice ||
+    Number(
+      $(
+        '#frmView > div > div.info-block > div.item > ul > li:nth-child(1) > div > strong'
+      )
+        .text()
+        .replace(/[^0-9]/g, '')
+    );
+
+  return correct({
+    ...result,
+    brandKor,
+    originalPrice,
+  });
 };

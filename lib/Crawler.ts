@@ -23,10 +23,14 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
         if (!error && res.statusCode === 200 && body.length > 1000) {
           const enc = charset(res.headers, body); // 해당 사이트의 charset값을 획득
           const iResult = decode(body, enc || 'utf-8'); // 획득한 charset값으로 body를 디코딩
-          console.log(iResult);
           resolve(iResult);
         } else {
-          const { data } = await axios(sourceUrl);
+          const { data } = await axios.get(sourceUrl, {
+            headers: {
+              'User-Agent':
+                'Mozilla/5.0 (compatible; Yeti/1.1; +http://naver.me/spd)',
+            },
+          });
           resolve(data);
         }
       }
@@ -79,8 +83,9 @@ export const parseValue = (
 };
 
 export const correct = (result: CrawlResult): CrawlResult => {
-  const { imageUrl: iu, originalPrice: op, salePrice: sp } = result;
+  const { name: n, imageUrl: iu, originalPrice: op, salePrice: sp } = result;
 
+  let name = n;
   let imageUrl = iu;
   let originalPrice = op;
   let salePrice = sp;
@@ -97,7 +102,9 @@ export const correct = (result: CrawlResult): CrawlResult => {
   if (iu[0] === '/') {
     imageUrl = 'https:' + result.imageUrl;
   }
-  return { ...result, imageUrl, originalPrice, salePrice };
+  name = name.replace('[29CM단독] ', '');
+
+  return { ...result, name: name.trim(), imageUrl, originalPrice, salePrice };
 };
 
 export const parseHostName = (hostname: string): string => {
