@@ -199,4 +199,5 @@ export const brandNames = {
   'rockingag.com': '락킹에이지',
   'fillike.com': '필리케',
   'cottonbell.co.kr': '코튼벨',
+  'aspivot.com': '에스파이벗',
 };
