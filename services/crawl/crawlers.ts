@@ -1937,3 +1937,37 @@ export const _madgoatofficialcom = (
     originalPrice,
   });
 };
+
+export const _wuzustudiocom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const scriptHtml = $(selecter.imageUrl).html();
+  const SEARCH_TEXT = '<meta property="og:image" content="';
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf('" />', start);
+  const imageUrl = scriptHtml.slice(start, end);
+  const salePrice = Number(
+    $(selecter.salePrice)
+      .text()
+      .split("(")[0]
+      .trim()
+      .replace(/[^0-9]/g, "")
+  );
+  return correct({
+    ...result,
+    salePrice,
+    imageUrl,
+  });
+};
+
+export const _oddoneoutcokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  return correct({
+    ...result,
+  });
+};

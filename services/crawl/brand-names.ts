@@ -201,4 +201,10 @@ export const brandNames = {
   "cottonbell.co.kr": "코튼벨",
   "aspivot.com": "에스파이벗",
   "madgoat-official.com": "매드고트",
+  "oddoneout.co.kr": "오드원아웃",
+  "roccirocci.com": "로씨로씨",
+  "ojos.kr": "오호스",
+  "ames-worldwide.com": "아메스월드와이드",
+  "ballute.co.kr": "발루트",
+  "letterfrommoon.com": "레터프롬문",
 };

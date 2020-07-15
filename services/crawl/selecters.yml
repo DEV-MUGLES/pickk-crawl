@@ -1030,3 +1030,24 @@ madgoat-official.com:
   name: "title"
   originalPrice: "body"
   salePrice: "#span_product_price_text"
+
+wuzustudio.com:
+  name: "div.infoArea > div.xans-element-.xans-product.xans-product-detaildesign > table > tbody > tr:nth-child(1) > td > span"
+  brandKor: meta[property="og:title"]
+  originalPrice: "#span_product_price_text"
+  salePrice: "#span_product_price_sale"
+  imageUrl: "head"
+
+oddoneout.co.kr:
+  <<: *base
+  name: "#prdInfo > tbody > tr:nth-child(1) > td > span"
+  salePrice: "#span_product_price_text"
+
+ojos.kr:
+  <<: *base
+  originalPrice: "#shopProductPrice > span.productPriceWithDiscountSpan"
+  salePrice: "#shopProductPrice > span.productDiscountPriceSpan"
+
+ballute.co.kr:
+  <<: *base
+  name: "title"
