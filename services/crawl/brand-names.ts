@@ -207,4 +207,11 @@ export const brandNames = {
   "ames-worldwide.com": "아메스월드와이드",
   "ballute.co.kr": "발루트",
   "letterfrommoon.com": "레터프롬문",
+  "hyoji.co.kr": "효지노리코",
+  "fanacult.com": "파나컬트",
+  "nordstudio.co.kr": "노드스튜디오",
+  "k-ing.kr": "킹아카이브",
+  "13month.com": "써틴먼스",
+  "aqostudio.com": "아코스튜디오스페이스",
+  "fuza.world": "퓨자",
 };

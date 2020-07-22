@@ -1962,12 +1962,37 @@ export const _wuzustudiocom = (
   });
 };
 
-export const _oddoneoutcokr = (
+export const _hyojicokr = (
   $: CheerioStatic,
   selecter: ISelecter
 ): CrawlResult => {
   const result = selectAll($, selecter);
+
   return correct({
     ...result,
+    imageUrl: "http://www.hyoji.co.kr" + result.imageUrl,
+  });
+};
+
+export const _kingkr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    name: result.name.split("/")[1].trim(),
+  });
+};
+
+export const _costumeoclockcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const [brandKor, name] = result.name.split("[")[1].split("]");
+
+  return correct({
+    ...result,
+    name: name.trim(),
+    brandKor,
   });
 };

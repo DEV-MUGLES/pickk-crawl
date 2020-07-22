@@ -1051,3 +1051,13 @@ ojos.kr:
 ballute.co.kr:
   <<: *base
   name: "title"
+
+hyoji.co.kr:
+  name: "title"
+  originalPrice: "div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike"
+  salePrice: "div.table-opt > table > tbody > tr:nth-child(2) > td > div"
+  imageUrl: "#productDetail > div.page-body > div.thumb-info > div > div > img"
+
+denmade.co.kr:
+  <<: *base
+  originalPrice: "#span_product_price_custom > strike"
