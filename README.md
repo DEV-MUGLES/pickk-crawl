@@ -48,6 +48,7 @@ For host without images selector (not partner)
   "imageUrl": "https://image.msscdn.net/images/goods_img/20160322/324275/324275_2_500.jpg",
   "originalPrice": 59000,
   "salePrice": 44200,
+  "images": [],
   "url": "https://store.musinsa.com/app/product/detail/324275/0"
 }
 ```
@@ -67,7 +68,8 @@ For host with images selector (partner)
     "https://image.examples.com",
     "https://image.examples.com",
     "https://image.examples.com"
-  ]
+  ],
+  "url": "https://store.musinsa.com/app/product/detail/324275/0"
 }
 ```
 
