@@ -1065,4 +1065,9 @@ hyoji.co.kr:
 denmade.co.kr:
   <<: *base
   originalPrice: '#span_product_price_custom > strike'
-  originalPrice: "#span_product_price_custom > strike"
+
+smartstore.naver.com/juan_homme:
+  <<: *base
+  originalPrice: '#wrap > div > div.prd_detail_basic > div.info > form > fieldset > div._copyable > dl > dd > div.area_cost > strong > span.original > span.thm'
+  salePrice: '#wrap > div > div.prd_detail_basic > div.info > form > fieldset > div._copyable > dl > dd > div.area_cost > strong > span.thm'
+  images: 'div.se-main-container > div > div > div > div > a > img'

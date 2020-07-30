@@ -1996,3 +1996,15 @@ export const _costumeoclockcom = (
     brandKor,
   });
 };
+
+export const _smartstorenavercomjuanhomme = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+
+  return correct({
+    ...result,
+    name: result.name.replace(' : JUAN HOMME', ''),
+  });
+};
