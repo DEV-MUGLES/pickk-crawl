@@ -52,7 +52,7 @@ export default class CrawlService {
     const brandHost =
       this.host.indexOf('m.') === 0 ? this.host.slice(2) : this.host;
 
-    const parseImageUrl = (imageUrl: string): string => {
+    const correctImageUrl = (imageUrl: string): string => {
       const baseUrl = `https://${new URL(this.url).hostname}`;
 
       if (imageUrl.indexOf('//') === 0) {
@@ -63,7 +63,7 @@ export default class CrawlService {
       }
       return imageUrl;
     };
-    const images = result.images?.map(parseImageUrl) || [];
+    const images = result.images?.map(correctImageUrl) || [];
 
     return {
       ...result,
