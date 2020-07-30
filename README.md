@@ -1,25 +1,83 @@
 ## Item Info Crawler
 
-> Zeit now, Cheerio
+> Vercel, Cheerio
 
 ### Getting Started
 
-Need now 2.0 (Latest) to deploy
+Need vercel 19.2.0 (Latest) to deploy
 
 ```
-npm i -g now
+npm i -g vercel
 ```
 
 ```shell script
 # test locally
-$ now dev
+$ vercel dev
 # deploy
-$ now
+$ vercel
 ```
 
-### Deploy with ZEIT Now
+### API Reference
 
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gywlsp/item-info-crawl)
+this service has only one api end point
+
+#### Show Current User
+
+Get simple info of item crawled by given url
+
+**URL** : `/api/crawl/?url=[url]`
+
+**Method** : `GET`
+
+**Auth required** : None
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For host without images selector (not partner)
+
+```json
+{
+  "name": "아리조나 에바 블랙 129421",
+  "brandKor": "버켄스탁",
+  "imageUrl": "https://image.msscdn.net/images/goods_img/20160322/324275/324275_2_500.jpg",
+  "originalPrice": 59000,
+  "salePrice": 44200,
+  "url": "https://store.musinsa.com/app/product/detail/324275/0"
+}
+```
+
+For host with images selector (partner)
+
+```json
+{
+  "name": "[빅톤 착용] 수아레 유니섹스 365 반팔티 화이트",
+  "brandKor": "수아레",
+  "imageUrl": "https://image.msscdn.net/images/goods_img/20160322/324275/324275_2_500.jpg",
+  "originalPrice": 25000,
+  "salePrice": 21250,
+  "images": [
+    "https://image.examples.com",
+    "https://image.examples.com",
+    "https://image.examples.com",
+    "https://image.examples.com",
+    "https://image.examples.com"
+  ]
+}
+```
+
+## Notes
+
+- For hosts included in the phanties, return results processed in option-crawler.
+
+### Deploy with Vercel
+
+[![Deploy with Vercel](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gywlsp/item-info-crawl)
 
 ### 미완
 
@@ -27,14 +85,6 @@ $ now
 2. 세일 아닌게 없음 : 인사일런스, 인로우스,
 3. 막혀있음 or 불가능 : 삼성물산, 29cm, 아트닷컴(abc마트, 그랜드스테이지), 무신사 공유링크, 데상트스토어(엄브로, 데상트, 르꼬끄, 먼싱웨어), 하이버, 스타일쉐어
 4. 공홈이 없음 : 커스텀에이드, 트래블, 브랜슨, 지프, 야세, 트리플에이, 페이퍼리즘
-5. 이미지 긁기 불가 : 르아르, 매드고트(이미지가 너무 긺) 등
+5. 이미지 긁기 불가 : 르아르 등
 6. 브랜드 긁기 불가 : 굿네이션, 레이어 등
 7. 정가 긁기 불가 : 로에일(상품페이지에 정가를 안 써놓음)
-
-### 추가 브랜드 목록
-
-1. 1차 : 더니트컴퍼니, 페이탈리즘, 피스워커, 가먼트레이블, 바나나핏, 86로드, 벨리에, 론트, 로맨틱무브, 낫앤낫, 수아레, 커스텀어클락, 핸스, 메종미네드, 모드나인, 커런트, 페이브먼트, 파츠, 플레어업, , 코오롱몰, 무신사, w컨셉, 쿠어, 에스피오나지, 느와르라르메스, 애프터프레이, 칼하트, 나이키, 뉴발란스, 컨버스, 아식스, 퍼스널팩, 자바나스, 엘무드, 토니웩, LAYER, 디네댓, 코스, 플랙, 지오다노, 지오다노m, 라퍼지스토어, 인사일런스, 드로우핏, 버튼서울, 유니클로, 스파오, H&M, LF몰, 유핑, 로맨틱파이어리츠, 유니폼브릿지, 여피, 에이징ccc, 식스핏, 슈펜, 제멋, 비슬로우, 마하그리드, 87mm, 널디, 비바스튜디오, 커버낫, 알렌느, 로맨틱크라운, 스투시, 아임낫어휴먼비잉, 챔피온(LF), 마크곤잘레스, 이에스엔, 무신사m, 배럴즈, 언더아머, 노스페이스, 에잇세컨즈, 퓨마, 휠라, 아디다스, 자라, 반스, 닥터마틴, 리바이스, 디스커버리 익스페디션, 내셔널지오그래픽 어패럴, 네이키드니스, 키르시, 던스트, 미나브, 모디파이드, 비욘드클로젯, 에두아르도,
-
-2. 1.5차 : mngu, 아몬무브먼트, 르아르, 오디너리피플, 세븐셀라
-
-3. 2차 : 애드, 알파인더스트리, 파르티멘토, 도프제이슨, 브랜디드, 로파이, 필루미네이트, mmgl, 크리틱, 이스트쿤스트, 더티셔츠뮤지엄, 집시, 어텐션로우, 니티드, 밀레클레식, 세인트페인, 크럼프, 오베르, 제로, 프리즘웍스, 토피, 로스트가든, 매스노운, 조셉트, 메종드스페로네, 랩101, 커스텀에이드, 컨셉원, TBH SHOP(마인드브릿지, 베이직하우스, 쥬씨주디), 네이버스마트스토어, 폴로랄프로렌, 반츠, 트래블, 브랜슨, 지프, mlb, 야세, LLUD, 에이티브, 어라운드더코너, 트리플에이,
