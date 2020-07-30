@@ -8,7 +8,7 @@ import * as crawlers from './crawlers';
 import phanties from './phanties';
 
 import { ISelecter } from '../../interfaces/ISelecter';
-import { requestHtml, correct, selectAll, parseHostName } from '../../lib';
+import { requestHtml, correct, selectAll, getHostName } from '../../lib';
 import { CrawlResult } from '../../types/Crawl';
 import { brandNames } from './brand-names';
 
@@ -23,9 +23,7 @@ export default class CrawlService {
     this.selecter = this.getSelecter(this.host);
   }
 
-  private getHost = (url: string): string => {
-    return parseHostName(new URL(url).hostname);
-  };
+  private getHost = (url: string): string => getHostName(url);
 
   private getSelecter = (host: string): ISelecter => {
     const selecters = yaml.safeLoad(
@@ -45,18 +43,32 @@ export default class CrawlService {
     const body = await requestHtml(this.url);
     const $ = cheerio.load(body);
 
-    const crawlerName = '_' + this.host.replace(/\.|-/g, '');
+    const crawlerName = '_' + this.host.replace(/\.|-|_|\//g, '');
 
     const result = correct(
       (crawlers[crawlerName] || selectAll)($, this.selecter)
     );
 
-    const host = this.host.indexOf('m.') === 0 ? this.host.slice(2) : this.host;
+    const brandHost =
+      this.host.indexOf('m.') === 0 ? this.host.slice(2) : this.host;
+
+    const parseImageUrl = (imageUrl: string): string => {
+      const baseUrl = `https://${new URL(this.url).hostname}`;
+
+      if (imageUrl.indexOf('//') === 0) {
+        return `https:${imageUrl}`;
+      }
+      if (imageUrl[0] === '/') {
+        return baseUrl + imageUrl;
+      }
+      return imageUrl;
+    };
+    const images = result.images?.map(parseImageUrl) || [];
 
     return {
       ...result,
-      brandKor:
-        brandNames[host] !== undefined ? brandNames[host] : result.brandKor,
+      brandKor: brandNames[brandHost] || result.brandKor,
+      images,
     };
   };
 }

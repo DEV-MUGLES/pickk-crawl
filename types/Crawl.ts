@@ -4,4 +4,5 @@ export type CrawlResult = {
   imageUrl: string;
   originalPrice: number;
   salePrice: number;
+  images?: string[];
 };

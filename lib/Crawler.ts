@@ -67,11 +67,22 @@ export const select = ($: CheerioStatic, selecter: string): string => {
   }
 };
 
+export const selectImages = ($: CheerioStatic, selecter: string): string[] => {
+  const images = [];
+  $(selecter).each((i, ele) => {
+    images.push(ele.attribs['src'] || ele.attribs['ec-data-src']);
+  });
+  return images;
+};
+
 export const parseValue = (
   $: CheerioStatic,
   key: string,
   selecter: string
-): string | number => {
+): string | number | string[] => {
+  if (key === 'images') {
+    return selectImages($, selecter);
+  }
   const value = select($, selecter);
   if (key === 'name' && value[0] === '[' && value[value.length - 1] === ']') {
     return value.slice(1, value.length - 1);
@@ -107,7 +118,8 @@ export const correct = (result: CrawlResult): CrawlResult => {
   return { ...result, name: name.trim(), imageUrl, originalPrice, salePrice };
 };
 
-export const parseHostName = (hostname: string): string => {
+export const getHostName = (url: string): string => {
+  const { hostname } = new URL(url);
   if (hostname.includes('topten10mall.com')) {
     return 'topten10mall.com';
   }
