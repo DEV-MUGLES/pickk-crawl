@@ -4,4 +4,5 @@ export interface ISelecter {
   imageUrl: string;
   originalPrice: string;
   salePrice: string;
+  images?: string;
 }
