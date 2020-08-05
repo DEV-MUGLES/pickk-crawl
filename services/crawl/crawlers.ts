@@ -1562,7 +1562,6 @@ export const _shoptimberlandcokr = (
   selecter: ISelecter
 ): CrawlResult => {
   const result = selectAll($, selecter);
-  console.log(result);
   return correct({
     ...result,
     name: result.name.replace(" - Timberland", ""),
@@ -1574,7 +1573,6 @@ export const _acha1com = (
   selecter: ISelecter
 ): CrawlResult => {
   const result = selectAll($, selecter);
-  console.log(result);
   return correct({
     ...result,
     name: result.name
@@ -2090,5 +2088,24 @@ export const _dgrecokr = (
   return correct({
     ...result,
     originalPrice,
+  });
+};
+
+export const _esfaicokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const images = [];
+  $(selecter.images)
+    .find("img")
+    .each((_, ele) => {
+      images.push(ele.attribs["src"] || ele.attribs["ec-data-src"]);
+    });
+
+  return correct({
+    ...result,
+    name: result.name.split("]")[1].trim(),
+    images: images.map((image) => correctImageUrl(image, "esfai.co.kr")),
   });
 };

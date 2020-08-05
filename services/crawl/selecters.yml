@@ -1083,7 +1083,7 @@ luoespac.co.kr:
 
 esfai.co.kr:
   <<: *base
-  images: "#mun_productDetail > div > p:nth-child(4) > img"
+  images: "#mun_productDetail"
 
 nodearchive.com:
   <<: *base
