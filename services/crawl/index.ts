@@ -1,16 +1,16 @@
-import axios from "axios";
-import * as cheerio from "cheerio";
-import * as yaml from "js-yaml";
-import * as fs from "fs";
-import * as path from "path";
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+import * as yaml from 'js-yaml';
+import * as fs from 'fs';
+import * as path from 'path';
 
-import * as crawlers from "./crawlers";
-import phanties from "./phanties";
+import * as crawlers from './crawlers';
+import phanties from './phanties';
 
-import { ISelecter } from "../../interfaces/ISelecter";
-import { requestHtml, correct, selectAll, getHostName } from "../../lib";
-import { CrawlResult } from "../../types/Crawl";
-import { brandNames } from "./brand-names";
+import { ISelecter } from '../../interfaces/ISelecter';
+import { requestHtml, correct, selectAll, getHostName } from '../../lib';
+import { CrawlResult } from '../../types/Crawl';
+import { brandNames } from './brand-names';
 
 export default class CrawlService {
   private url: string;
@@ -27,7 +27,7 @@ export default class CrawlService {
 
   private getSelecter = (host: string): ISelecter => {
     const selecters = yaml.safeLoad(
-      fs.readFileSync(path.resolve(__dirname, "./selecters.yml"), "utf8")
+      fs.readFileSync(path.resolve(__dirname, './selecters.yml'), 'utf8')
     );
 
     return selecters[host] || selecters.base;
@@ -43,14 +43,14 @@ export default class CrawlService {
     const body = await requestHtml(this.url);
     const $ = cheerio.load(body);
 
-    const crawlerName = "_" + this.host.replace(/\.|-|_|\//g, "");
+    const crawlerName = '_' + this.host.replace(/\.|-|_|\//g, '');
 
     const result = correct(
       (crawlers[crawlerName] || selectAll)($, this.selecter)
     );
 
     const brandHost =
-      this.host.indexOf("m.") === 0 ? this.host.slice(2) : this.host;
+      this.host.indexOf('m.') === 0 ? this.host.slice(2) : this.host;
 
     const images =
       result.images
@@ -62,6 +62,7 @@ export default class CrawlService {
       ...result,
       brandKor: brandNames[brandHost] || result.brandKor,
       images,
+      isSoldout: result.isSoldout || false,
     };
   };
 }
@@ -69,10 +70,10 @@ export default class CrawlService {
 export const correctImageUrl = (imageUrl: string, hostname: string): string => {
   const baseUrl = `https://${hostname}`;
 
-  if (imageUrl.indexOf("//") === 0) {
+  if (imageUrl.indexOf('//') === 0) {
     return `https:${imageUrl}`;
   }
-  if (imageUrl[0] === "/") {
+  if (imageUrl[0] === '/') {
     return baseUrl + imageUrl;
   }
   return imageUrl;
