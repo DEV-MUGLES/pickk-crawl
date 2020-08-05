@@ -5,4 +5,5 @@ export type CrawlResult = {
   originalPrice: number;
   salePrice: number;
   images?: string[];
+  isSoldout?: boolean;
 };

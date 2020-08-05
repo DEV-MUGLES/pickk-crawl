@@ -5,4 +5,5 @@ export interface ISelecter {
   originalPrice: string;
   salePrice: string;
   images?: string;
+  isSoldout?: string;
 }
