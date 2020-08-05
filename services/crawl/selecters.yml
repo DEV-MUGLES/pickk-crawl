@@ -26,10 +26,6 @@ custom_price: &custom_price
 sperone.co.kr:
   <<: *custom_price
 
-josepht.co.kr:
-  <<: *base
-  originalPrice: 'dl.item_price > dd > strong > strong'
-
 massnoun.com:
   <<: *custom_price
 
@@ -54,33 +50,32 @@ thet-shirtmuseum.com:
 minimalgarmentslab.com:
   <<: *custom_price
   name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
+  isSoldout: '#mun_paymentButton > span'
+  images: 'div#mun_productDetail img'
 
 alphaindustrieskorea.com:
-  <<: *custom_price
-
-theknitcompany.com:
   <<: *custom_price
 
 garment-lable.com:
   <<: *base
   images: '#prdDetail > div.cont > img'
-
-romanticmove.com:
-  <<: *base
-  originalPrice: '#detail_inner > div.xans-element-.xans-product.xans-product-detail.top_inner > div.detailArea > div.infoArea.soldout_displaynone > div.de_price > div.de_custom > span'
+  isSoldout: '#viewbox_c > div > div > div.xans-element-.xans-product.xans-product-action > div.ec-base-button1 > span.displaynone'
 
 notnnot.com:
   <<: *custom_price
+  isSoldout: 'div.xans-product-action span'
+  images: 'div#prdDetail .cont img'
 
 costumeoclock.com:
   <<: *custom_price
+  isSoldout: 'div.btnArea span'
+  images: 'div#prdDetail .cont img'
 
 currentstore.co.kr:
   <<: *custom_price
   name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
-
-flareup.co.kr:
-  <<: *custom_price
+  isSoldout: 'div#mun_paymentButton span'
+  images: 'div#mun_productDetail img'
 
 store.musinsa.com: &musinsa
   <<: *base
@@ -410,14 +405,6 @@ goodnation.co.kr:
   <<: *base
   originalPrice: '#span_product_price_custom'
 
-inrows.co.kr:
-  <<: *base
-  name: 'title'
-  imageUrl: '#lens_img'
-  originalPrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
-  salePrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div'
-  images: '#productDetail > div > div.prd-detail > img'
-
 wildbricks.com:
   <<: *base
   name: 'div.detailArea > div.infoArea > div.headingArea > h2'
@@ -629,11 +616,6 @@ flukecompany.com:
   originalPrice: 'td.price > div > strike'
   salePrice: 'td.price.sell_price > div'
 
-nomanual-official.com:
-  <<: *base
-  originalPrice: '#shopProductPrice > span'
-  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
-
 ziosongzio.com:
   <<: *base
   name: '#form1 > div > div.info > h3'
@@ -742,11 +724,6 @@ lacoste.com:
   imageUrl: 'div.cell-12.l-relative.l-overflow-hidden.cell-mt-25.offset-mt-0 > div > div > div > div > picture > img'
   originalPrice: ''
   salePrice: 'div.l-vmargin--small.flex.flex--align-start.flex--space-between.padding-m-2 > div > p'
-
-phos333.com:
-  <<: *base
-  originalPrice: 'form > table > tbody'
-  salePrice: '#it_price'
 
 gu-global.com:
   name: 'div.gu_product_detail_order > div.gu_product_tl'
@@ -984,13 +961,6 @@ patagonia.co.kr:
   imageUrl: '#goods-images-list > li.goods-image-item.__active:nth-child(1) > img'
   originalPrice: '#goods_spec > div.goods-infomation-container > div.goods-options > div.m_prd_nm > p.goods-title-price'
 
-oohahh.co.kr:
-  <<: *base
-  name: 'h1[itemprop="name"]'
-  imageUrl: 'div.images > a[itemprop="image"] > img'
-  originalPrice: 'div[itemprop="offers"] > p.price > del > span.amount'
-  salePrice: 'div[itemprop="offers"] > p.price > ins > span.amount'
-
 byc.co.kr:
   <<: *base
   originalPrice: '#consumer'
@@ -1036,36 +1006,17 @@ madgoat-official.com:
   originalPrice: 'body'
   salePrice: '#span_product_price_text'
 
-wuzustudio.com:
-  name: 'div.infoArea > div.xans-element-.xans-product.xans-product-detaildesign > table > tbody > tr:nth-child(1) > td > span'
-  brandKor: meta[property="og:title"]
-  originalPrice: '#span_product_price_text'
-  salePrice: '#span_product_price_sale'
-  imageUrl: 'head'
-
-oddoneout.co.kr:
-  <<: *base
-  name: '#prdInfo > tbody > tr:nth-child(1) > td > span'
-  salePrice: '#span_product_price_text'
-
-ojos.kr:
-  <<: *base
-  originalPrice: '#shopProductPrice > span.productPriceWithDiscountSpan'
-  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
-
 ballute.co.kr:
   <<: *base
   name: 'title'
-
-hyoji.co.kr:
-  name: 'title'
-  originalPrice: 'div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
-  salePrice: 'div.table-opt > table > tbody > tr:nth-child(2) > td > div'
-  imageUrl: '#productDetail > div.page-body > div.thumb-info > div > div > img'
+  isSoldout: 'div.xans-product-action div.btnArea span'
+  images: 'div#prdDetail div.cont img'
 
 denmade.co.kr:
   <<: *base
   originalPrice: '#span_product_price_custom > strike'
+  isSoldout: '#contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > div.xans-element-.xans-product.xans-product-action > div:nth-child(3)'
+  images: 'div#prdDetail img'
 
 smartstore.naver.com/juan_homme:
   <<: *base
@@ -1073,13 +1024,10 @@ smartstore.naver.com/juan_homme:
   salePrice: '#wrap > div > div.prd_detail_basic > div.info > form > fieldset > div._copyable > dl > dd > div.area_cost > strong > span.thm'
   images: 'div.se-main-container > div > div > div > div > a > img'
 
-easestore.co.kr:
-  <<: *base
-  images: '#prdDetail > div > center > p:nth-child(2) > img'
-
 luoespac.co.kr:
   <<: *base
-  images: '#prdDetail > div > center > p:nth-child(7) > img'
+  images: '#prdDetail > div > center img'
+  isSoldout: 'div.xans-product-action div.btnArea span'
 
 esfai.co.kr:
   <<: *base
@@ -1093,16 +1041,275 @@ ourscope.co.kr:
   <<: *base
   images: '#mun_productDetail'
 
-mimthewardrobe.com:
-  <<: *base
-  images: '#contents > div > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.xans-element-.xans-product.xans-product-image'
-
 dgre.co.kr:
   <<: *base
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
   originalPrice: '#shopProductPrice'
   images: '#productDescriptionDetailPage > p > img'
 
-fanacult.com:
+addoff.co.kr:
   <<: *base
-  isSoldout: '#contents > div.detail_wrap_outer > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.detail_right_wrap > div > div > div.xans-element-.xans-product.xans-product-action.ec-base-button.gColumn > a:nth-child(4)'
+  isSoldout: 'div.xans-product-action div.btnArea span'
+  images: 'div.detailArea div.swiper-slide img'
+
+ames-worldwide.com:
+  <<: *base
+  isSoldout: 'div.ec-base-button span'
+  images: 'div#prdDetail div.cont img'
+
+aqostudio.com:
+  <<: *base
+  isSoldout: '#sub_contents > div.xans-element-.xans-product.xans-product-detail > div > div.detailArea > div.infoArea > div.xans-element-.xans-product.xans-product-action > div.btnArea > a:nth-child(3)'
+  images: 'div#prdDetail div.cont img'
+
+aspivot.com:
+  <<: *base
+  isSoldout: 'div.xans-product-action div.btnArea span'
+  images: 'div#prdDetail div.cont img'
+
+#kutletshop.com:
+#  <<: *base
+#  isSoldout: 'div.xans-product-action div.btnArea span'
+#  images: 'div#prdDetail div.cont img'
+
+#easestore.co.kr:
+#  <<: *base
+#  images: '#prdDetail > div > center > p:nth-child(2) > img'
+#  isSoldout: '#sub_contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > div.xans-element-.xans-product.xans-product-action > div.btnArea > span'
+
+#fanacult.com:
+#  <<: *base
+#  isSoldout: 'xans-element- a.btnsubmit'
+#  images: 'div#prdDetail div.cont img'
+
+# 솔드아웃 반대임
+#flareup.co.kr:
+#  <<: *custom_price
+#  isSoldout: 'div.xans-product-action span'
+#  images: 'div#prdDetail div.cont img'
+
+#hyoji.co.kr:
+#  name: 'title'
+#  originalPrice: 'div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
+#  salePrice: 'div.table-opt > table > tbody > tr:nth-child(2) > td > div'
+#  imageUrl: '#productDetail > div.page-body > div.thumb-info > div > div > img'
+#  isSoldout: 'div.xans-product div.product-soldout'
+#  images: 'div.product-images img.ThumbImage'
+
+#inrows.co.kr:
+#  <<: *base
+#  name: 'title'
+#  imageUrl: '#lens_img'
+#  originalPrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
+#  salePrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div'
+#  images: '#productDetail > div > div.prd-detail > img'
+
+#josepht.co.kr:
+#  <<: *base
+#  originalPrice: 'dl.item_price > dd > strong > strong'
+
+#왜 안돼냐;
+#millioncor.com:
+#  <<: *base
+#  isSoldout: 'div.btnArea > a'
+#  images: 'div#prdDetail div.cont img'
+
+#왜 안돼냐; 2
+#mimthewardrobe.com:
+#  <<: *base
+#  images: '#contents > div > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.xans-element-.xans-product.xans-product-image'
+#  isSoldout: 'div.xans-product a.btnSubmit'
+
+#노 메뉴얼;
+#nomanual-official.com:
+#  <<: *base
+#  originalPrice: '#shopProductPrice > span'
+#  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
+#  isSoldout: 'div#mun_paymentButton span'
+#  images: 'div#mun_productDetail img'
+
+#oddoneout.co.kr:
+#  <<: *base
+#  name: '#prdInfo > tbody > tr:nth-child(1) > td > span'
+#  salePrice: '#span_product_price_text'
+#  isSoldout: 'div.buttonArea button'
+#  images: 'div.xans-product span img'
+
+# soldout 버튼이 없음 대응 안됌/
+#ojos.kr:
+#  <<: *base
+#  originalPrice: '#shopProductPrice > span.productPriceWithDiscountSpan'
+#  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
+#  isSoldout: 'div.xans-product-action div.btnArea span'
+#  images: 'div#productDescriptionDetailPage img'
+
+#작동을 안함.
+#phos333.com:
+#  <<: *base
+#  originalPrice: 'form > table > tbody'
+#  salePrice: '#it_price'
+#  isSoldout: 'div#mun_paymentButton span'
+#  images: 'div.xans-product ul img'
+
+# soldout 안됌
+# https://piece-worker.com/product/plant-manager2/375/category/1/display/108/
+# https://piece-worker.com/product/silver-black/668/category/59/display/1/
+#piece-worker.com:
+#  <<: *base
+#  isSoldout: 'div.gColumn span'
+#  images: 'div.add_img img'
+
+# 대응이 안됌..
+# http://suare.co.kr/product/detail.html?product_no=901&cate_no=56&display_group=1
+# http://suare.co.kr/product/detail.html?product_no=427&cate_no=56&display_group=1
+#suare.co.kr:
+#  <<: *base
+#  isSoldout: 'div.mun_paymentButton span'
+#  images: 'div#mun_productDetail img'
+
+#둘다 true가 나옴
+# http://roccirocci.com/product/detail.html?product_no=164&cate_no=42&display_group=1
+# http://roccirocci.com/product/detail.html?product_no=163&cate_no=42&display_group=1
+#roccirocci.com:
+#  <<: *base
+#  isSoldout: 'div.mun_paymentButton span'
+#  images: 'div#mun_productDetail img'
+
+# error {"message":"Cannot read property 'trim' of undefined"}
+# http://k-ing.kr/product/detail.html?product_no=607&cate_no=62&display_group=1
+# http://localhost:3000/api/crawl?url=http://k-ing.kr/product/detail.html?product_no=366&cate_no=62&display_group=1
+#k-ing.kr:
+#  <<: *base
+#  isSoldout: 'div.xans-product-action div.btnArea span'
+#  images: 'div.cont img'
+
+
+# 둘다 False
+# https://theknitcompany.com/product/dave-towers-%EC%97%90%EC%96%B4%ED%8C%9F-%EC%BC%80%EC%9D%B4%EC%8A%A4-%ED%94%84%EB%A1%9C/1656/category/311/display/1/
+# https://theknitcompany.com/product/%EA%B9%80%EC%B6%A9%EC%9E%AC-%EC%B0%A9%EC%9A%A9-20ss-%EC%BF%A8%EB%A7%A5%EC%8A%A4-%ED%85%8C%EC%9D%B4%ED%8D%BC%EB%93%9C-%ED%8C%AC%EC%B8%A0/1578/category/380/display/1/
+#theknitcompany.com:
+#  <<: *custom_price
+#  isSoldout: 'div.xans-product-action a'
+#  images: 'div.detail_left > img'
+
+# 안됌 ㅠ
+# http://waze8690s.cafe24.com/product/detail.html?product_no=251&cate_no=61&display_group=1
+# http://waze8690s.cafe24.com/product/detail.html?product_no=250&cate_no=61&display_group=1
+#waze8690s.cafe24.com:
+#  <<: *base
+#  isSoldout: 'div.btnArea a'
+#  images: 'div#prddetailimg img'
+
+# 모르겠음...
+# http://wuzustudio.com/product/detail.html?product_no=597&cate_no=45&display_group=1
+# http://wuzustudio.com/product/detail.html?product_no=338&cate_no=45&display_group=1
+#wuzustudio.com:
+#  name: 'div.infoArea > div.xans-element-.xans-product.xans-product-detaildesign > table > tbody > tr:nth-child(1) > td > span'
+#  brandKor: meta[property="og:title"]
+#  originalPrice: '#span_product_price_text'
+#  salePrice: '#span_product_price_sale'
+#  imageUrl: 'head'
+#  isSoldout: 'div.xans-product-action div.btnArea span'
+#  images: '#prdDetail > div > center img'
+
+
+romanticmove.com:
+  <<: *base
+  originalPrice: '#detail_inner > div.xans-element-.xans-product.xans-product-detail.top_inner > div.detailArea > div.infoArea.soldout_displaynone > div.de_price > div.de_custom > span'
+  images: 'div#prdDetail .cont img'
+
+belier.co.kr:
+  <<: *base
+  isSoldout: '#contents > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.xans-element-.xans-product.xans-product-additional.detail_right > div > div > div > div.xans-element-.xans-product.xans-product-action.detail_button > span'
+  images: 'div.detail_center img'
+
+bibyseob.kr:
+  <<: *base
+  isSoldout: 'div.xans-product-action div.btnArea span'
+  images: 'div#prdDetail div.cont img'
+
+#리스트에서 품절 여부
+#charms.kr:
+#  <<: *base
+#  isSoldout: 'div.xans-product-action div.btnArea span'
+#  images: 'div#prdDetail div.cont img'
+
+#리스트에서 품절 여부
+#oohahh.co.kr:
+#  <<: *base
+#  name: 'h1[itemprop="name"]'
+#  imageUrl: 'div.images > a[itemprop="image"] > img'
+#  originalPrice: 'div[itemprop="offers"] > p.price > del > span.amount'
+#  salePrice: 'div[itemprop="offers"] > p.price > ins > span.amount'
+
+#리스트에서 품절 여부
+#13month.com:
+#  <<: *base
+#  isSoldout: 'div.xans-product-action div.btnArea span'
+#  images: 'div#detail_right img'
+
+
+enou.co.kr:
+  <<: *base
+  isSoldout: 'div.xans-product-action div.btnArea span'
+  images: 'div#prdDetail div.cont img'
+
+fatalism.co.kr:
+  <<: *base
+  isSoldout: 'div.xans-product-action span'
+  images: 'div#prdDetail div.cont img'
+
+haleineshop.com:
+  <<: *base
+  isSoldout: 'div.xans-element-.xans-product div.ec-base-button > span'
+  images: 'div.detailArea img'
+
+hance.kr:
+  <<: *base
+  isSoldout: 'div.xans-product div.product-soldout'
+  images: 'div.product-images img.ThumbImage'
+
+bylegacy.co.kr:
+  <<: *base
+  isSoldout: 'span.sold'
+  images: 'div.cont img'
+
+letterfrommoon.com:
+  <<: *base
+  isSoldout: 'span.custom_btn_soldout.displaynone'
+  images: 'div.cont img'
+
+lohnt.co.kr:
+  <<: *base
+  isSoldout: 'div.btnArea span'
+  images: 'div#prdDetail img'
+
+maison-mined.com:
+  <<: *base
+  isSoldout: 'div.xans-element-.xans-product > span'
+  images: 'div.detail_center img'
+
+modnine.com:
+  <<: *base
+  isSoldout: 'div#mun_paymentButton span'
+  images: 'div#mun_productDetail img'
+
+nordstudio.co.kr:
+  <<: *base
+  isSoldout: 'div.btnArea span'
+  images: 'div.cont img'
+
+pavement.co.kr:
+  <<: *base
+  isSoldout: 'div#mun_paymentButton span'
+  images: 'div#mun_productDetail img'
+
+rdvz.kr:
+  <<: *base
+  isSoldout: 'div.xans-product-action div.btnArea span'
+  images: 'div.detailArea div.swiper-slide img'
+
+xeroxero.co.kr:
+  <<: *base
+  isSoldout: 'div.xans-product-action div.ec-base-button span'
+  images: 'div#prdDetail div.cont img'
