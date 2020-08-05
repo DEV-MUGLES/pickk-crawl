@@ -49,6 +49,7 @@ For host without images selector (not partner)
   "originalPrice": 59000,
   "salePrice": 44200,
   "images": [],
+  "isSoldout": false,
   "url": "https://store.musinsa.com/app/product/detail/324275/0"
 }
 ```
@@ -69,6 +70,7 @@ For host with images selector (partner)
     "https://image.examples.com",
     "https://image.examples.com"
   ],
+  "isSoldout": false,
   "url": "https://store.musinsa.com/app/product/detail/324275/0"
 }
 ```
