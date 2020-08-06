@@ -1154,10 +1154,10 @@ aspivot.com:
 # soldout 안됌
 # https://piece-worker.com/product/plant-manager2/375/category/1/display/108/
 # https://piece-worker.com/product/silver-black/668/category/59/display/1/
-#piece-worker.com:
-#  <<: *base
-#  isSoldout: 'div.gColumn span'
-#  images: 'div.add_img img'
+piece-worker.com:
+  <<: *base
+  isSoldout: 'div.gColumn > span'
+  images: 'div.add_img img'
 
 # 대응이 안됌..
 # http://suare.co.kr/product/detail.html?product_no=901&cate_no=56&display_group=1
