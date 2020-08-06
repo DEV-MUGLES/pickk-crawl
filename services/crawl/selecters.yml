@@ -1228,26 +1228,20 @@ bibyseob.kr:
   isSoldout: 'div.xans-product-action div.btnArea span'
   images: 'div#prdDetail div.cont img'
 
-#리스트에서 품절 여부
-#charms.kr:
-#  <<: *base
-#  isSoldout: 'div.xans-product-action div.btnArea span'
-#  images: 'div#prdDetail div.cont img'
+charms.kr:
+  <<: *base
+  images: 'div#prdDetail div.cont img'
 
-#리스트에서 품절 여부
-#oohahh.co.kr:
-#  <<: *base
-#  name: 'h1[itemprop="name"]'
-#  imageUrl: 'div.images > a[itemprop="image"] > img'
-#  originalPrice: 'div[itemprop="offers"] > p.price > del > span.amount'
-#  salePrice: 'div[itemprop="offers"] > p.price > ins > span.amount'
+oohahh.co.kr:
+  <<: *base
+  name: 'h1[itemprop="name"]'
+  imageUrl: 'div.images > a[itemprop="image"] > img'
+  originalPrice: 'div[itemprop="offers"] > p.price > del > span.amount'
+  salePrice: 'div[itemprop="offers"] > p.price > ins > span.amount'
 
-#리스트에서 품절 여부
-#13month.com:
-#  <<: *base
-#  isSoldout: 'div.xans-product-action div.btnArea span'
-#  images: 'div#detail_right img'
-
+13month.com:
+  <<: *base
+  images: 'div#detail_right img'
 
 enou.co.kr:
   <<: *base
