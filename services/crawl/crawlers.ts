@@ -2141,3 +2141,35 @@ export const _flareupcokr = ($: CheerioStatic, selecter: ISelecter): CrawlResult
     isSoldout,
   });
 };
+
+
+export const _ojoskr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const isSoldout = (
+     !$(selecter.isSoldout)
+        .hasClass('hide')
+  );
+  return correct({
+    ...result,
+   isSoldout,
+  });
+};
+
+// export const _ojoskr = (
+//   $: CheerioStatic,
+//   selecter: ISelecter
+// ): CrawlResult => {
+//   const result = selectAll($, selecter);
+//   let isSoldout = (
+//     $(selecter.isSoldout)
+//       .text()
+//       .search('품절') > -1
+//   );
+//   return correct({
+//     ...result,
+//    isSoldout,
+//   });
+// };

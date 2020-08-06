@@ -1085,7 +1085,6 @@ flareup.co.kr:
 #  isSoldout: 'div.xans-product-action div.btnArea span'
 #  images: 'div#prdDetail div.cont img'
 
-
 # soldout이 없음
 # http://www.hyoji.co.kr/shop/shopdetail.html?branduid=833576&xcode=011&mcode=000&scode=&type=P&sort=order&cur_code=011&GfDT=aGh3UQ%3D%3D
 # http://www.hyoji.co.kr/shop/shopdetail.html?branduid=833439&xcode=011&mcode=000&scode=&type=P&sort=order&cur_code=011&GfDT=Zmt3UA%3D%3D
@@ -1097,13 +1096,12 @@ flareup.co.kr:
 #  isSoldout: 'div.xans-product div.product-soldout'
 #  images: 'div.product-images img.ThumbImage'
 
-# soldout 버튼이 없음 대응 안됌
-#ojos.kr:
-#  <<: *base
-#  originalPrice: '#shopProductPrice > span.productPriceWithDiscountSpan'
-#  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
-#  isSoldout: 'div.xans-product-action div.btnArea span'
-#  images: 'div#productDescriptionDetailPage img'
+ojos.kr:
+  <<: *base
+  originalPrice: '#shopProductPrice > span.productPriceWithDiscountSpan'
+  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
+  isSoldout: 'div.content > div#shopProductCartErrorDiv'
+  images: 'div#productDescriptionDetailPage img'
 
 # sold out이 없음. images에서는 사이트마다 구조가 달라서 문제임..
 # http://www.inrows.co.kr/shop/shopdetail.html?branduid=3536420&xcode=002&mcode=002&scode=&type=Y&sort=order&cur_code=002&GfDT=Z2V8
