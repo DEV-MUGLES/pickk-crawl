@@ -1212,29 +1212,29 @@ export const _hfashionmallcom = (
 
   return correct({ ...result, brandKor });
 };
-
-export const _phos333com = (
-  $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-
-  const salePrice = Number($(selecter.salePrice).attr("value"));
-  const originalPriceStr = $(selecter.originalPrice).html();
-  const ORIGINAL_SEARCH_TEXT = "&#xC2DC;&#xC911;&#xAC00;&#xACA9;";
-  const ORIGINAL_SEARCH_TEXT_END = "won</td></tr>";
-  const originalPrice = Number(
-    originalPriceStr
-      .slice(
-        originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT) +
-          ORIGINAL_SEARCH_TEXT.length,
-        originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT_END)
-      )
-      .replace(/[^0-9]/g, "")
-  );
-
-  return correct({ ...result, salePrice, originalPrice });
-};
+//
+// export const _phos333com = (
+//   $: CheerioStatic,
+//   selecter: ISelecter
+// ): CrawlResult => {
+//   const result = selectAll($, selecter);
+//
+//   const salePrice = Number($(selecter.salePrice).attr("value"));
+//   const originalPriceStr = $(selecter.originalPrice).html();
+//   const ORIGINAL_SEARCH_TEXT = "&#xC2DC;&#xC911;&#xAC00;&#xACA9;";
+//   const ORIGINAL_SEARCH_TEXT_END = "won</td></tr>";
+//   const originalPrice = Number(
+//     originalPriceStr
+//       .slice(
+//         originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT) +
+//           ORIGINAL_SEARCH_TEXT.length,
+//         originalPriceStr.indexOf(ORIGINAL_SEARCH_TEXT_END)
+//       )
+//       .replace(/[^0-9]/g, "")
+//   );
+//
+//   return correct({ ...result, salePrice, originalPrice });
+// };
 
 export const _guglobalcom = (
   $: CheerioStatic,
@@ -1975,10 +1975,15 @@ export const _hyojicokr = (
 
 export const _kingkr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
   const result = selectAll($, selecter);
+  const isSoldout = (
+    $(selecter.isSoldout)
+        .hasClass('displaynone')
+  );
 
   return correct({
     ...result,
-    name: result.name.split("/")[1].trim(),
+    name: (result.name.split("/")[1] || result.name).trim(),
+    isSoldout
   });
 };
 
@@ -2107,5 +2112,32 @@ export const _esfaicokr = (
     ...result,
     name: result.name.split("]")[1].trim(),
     images: images.map((image) => correctImageUrl(image, "esfai.co.kr")),
+  });
+};
+
+
+export const _easestorecokr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
+  const result = selectAll($, selecter);
+  const isSoldout = (
+    $(selecter.isSoldout)
+        .hasClass('displaynone')
+  );
+
+  return correct({
+    ...result,
+    isSoldout,
+  });
+};
+
+export const _flareupcokr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
+  const result = selectAll($, selecter);
+  const isSoldout = (
+    $(selecter.isSoldout)
+        .hasClass('displaynone')
+  );
+
+  return correct({
+    ...result,
+    isSoldout,
   });
 };

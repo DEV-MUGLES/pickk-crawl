@@ -1067,6 +1067,15 @@ aspivot.com:
   isSoldout: 'div.xans-product-action div.btnArea span'
   images: 'div#prdDetail div.cont img'
 
+easestore.co.kr:
+  <<: *base
+  isSoldout: 'div.xans-element- > div.btnArea > a:nth-child(1)'
+  images: '#prdDetail > div > center > p:nth-child(2) > img'
+
+flareup.co.kr:
+  <<: *custom_price
+  isSoldout: 'div.xans-product-action div.btnArea a:nth-child(1)'
+  images: 'div#prdDetail div.cont img'
 
 # displaynone이 없음
 # https://kutletshop.com/product/untitled-205-206-207
@@ -1076,19 +1085,6 @@ aspivot.com:
 #  isSoldout: 'div.xans-product-action div.btnArea span'
 #  images: 'div#prdDetail div.cont img'
 
-#SOLD OUT에 displaynone은 그대로임. ( 사라지지 않음 ) 대신 다른 버튼이 사라짐
-# http://easestore.co.kr/product/detail.html?product_no=40&cate_no=25&display_group=1
-# http://easestore.co.kr/product/detail.html?product_no=12&cate_no=25&display_group=1
-#easestore.co.kr:
-#  <<: *base
-#  isSoldout: 'div.xans-element- > div.btnArea > span'
-#  images: '#prdDetail > div > center > p:nth-child(2) > img'
-
-# SOLD OUT에 displaynone은 그대로임. ( 사라지지 않음 ) 대신 다른 버튼이 사라짐
-#flareup.co.kr:
-#  <<: *custom_price
-#  isSoldout: 'div.xans-product-action span'
-#  images: 'div#prdDetail div.cont img'
 
 # soldout이 없음
 # http://www.hyoji.co.kr/shop/shopdetail.html?branduid=833576&xcode=011&mcode=000&scode=&type=P&sort=order&cur_code=011&GfDT=aGh3UQ%3D%3D
@@ -1137,21 +1133,15 @@ aspivot.com:
 #  isSoldout: 'div#mun_paymentButton span'
 #  images: 'div#mun_productDetail img'
 
-#작동을 안함.
-#phos333.com:
-#  <<: *base
-#  originalPrice: 'form > table > tbody'
-#  salePrice: '#it_price'
-#  isSoldout: 'div.xans-element div.ec-base-button span.btn'
-#  images: 'div.xans-product ul li img'
+phos333.com:
+  <<: *base
+  isSoldout: 'div.xans-element div.ec-base-button span.btn'
+  images: 'div.xans-product ul li img'
 
-# error {"message":"Cannot read property 'trim' of undefined"}
-# http://k-ing.kr/product/detail.html?product_no=607&cate_no=62&display_group=1
-# http://localhost:3000/api/crawl?url=http://k-ing.kr/product/detail.html?product_no=366&cate_no=62&display_group=1
-#k-ing.kr:
-#  <<: *base
-#  isSoldout: 'tr.simple_desc pre span'
-#  images: 'div.cont img'
+k-ing.kr:
+  <<: *base
+  isSoldout: 'div.xans-element- div.btnArea ul a:nth-child(1)'
+  images: 'div.cont img'
 
 millioncor.com:
   <<: *base
