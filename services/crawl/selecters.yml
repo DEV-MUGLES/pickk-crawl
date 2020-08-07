@@ -88,10 +88,11 @@ m.store.musinsa.com:
 
 wconcept.co.kr:
   <<: *base
-  name: meta[property="rb:itemName"]
+  name: meta[property="eg:itemName"]
   brandKor: 'body > script:nth-child(33)'
-  originalPrice: meta[property="rb:originalPrice"]
-  salePrice: meta[property="rb:salePrice"]
+  originalPrice: meta[property="eg:originalPrice"]
+  salePrice: meta[property="eg:salePrice"]
+  images: '#detailArea img'
 
 coor.kr:
   <<: *base
