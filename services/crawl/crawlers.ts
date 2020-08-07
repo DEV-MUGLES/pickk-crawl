@@ -2158,18 +2158,65 @@ export const _ojoskr = (
   });
 };
 
-// export const _ojoskr = (
-//   $: CheerioStatic,
-//   selecter: ISelecter
-// ): CrawlResult => {
-//   const result = selectAll($, selecter);
-//   let isSoldout = (
-//     $(selecter.isSoldout)
-//       .text()
-//       .search('품절') > -1
-//   );
-//   return correct({
-//     ...result,
-//    isSoldout,
-//   });
-// };
+export const _kutletshopcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const isSoldout = (
+     !$(selecter.isSoldout)
+        .hasClass('hide')
+  );
+  return correct({
+    ...result,
+   isSoldout,
+  });
+};
+
+export const _hyojicokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  let isSoldout = (
+    $(selecter.isSoldout)
+      .text()
+      .search('품절') > -1
+  );
+  return correct({
+    ...result,
+   isSoldout,
+  });
+};
+
+export const _nomanualofficialcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const isSoldout = (
+     !$(selecter.isSoldout)
+        .hasClass('hide')
+  );
+  return correct({
+    ...result,
+   isSoldout,
+  });
+};
+
+export const _inrowscokr = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  let isSoldout = (
+    $(selecter.isSoldout)
+      .text()
+      .search('품절') > -1
+  );
+  return correct({
+    ...result,
+   isSoldout,
+  });
+};
+

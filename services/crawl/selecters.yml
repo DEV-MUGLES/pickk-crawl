@@ -1077,24 +1077,18 @@ flareup.co.kr:
   isSoldout: 'div.xans-product-action div.btnArea a:nth-child(1)'
   images: 'div#prdDetail div.cont img'
 
-# displaynone이 없음
-# https://kutletshop.com/product/untitled-205-206-207
-# https://kutletshop.com/product/untitled-185-186-187-188-201
-#kutletshop.com:
-#  <<: *base
-#  isSoldout: 'div.xans-product-action div.btnArea span'
-#  images: 'div#prdDetail div.cont img'
+kutletshop.com:
+  <<: *base
+  isSoldout: 'div#shopProductContentInfo > div#shopProductCartErrorDiv'
+  images: 'div#productDetail div#productDescriptionDetailPage img'
 
-# soldout이 없음
-# http://www.hyoji.co.kr/shop/shopdetail.html?branduid=833576&xcode=011&mcode=000&scode=&type=P&sort=order&cur_code=011&GfDT=aGh3UQ%3D%3D
-# http://www.hyoji.co.kr/shop/shopdetail.html?branduid=833439&xcode=011&mcode=000&scode=&type=P&sort=order&cur_code=011&GfDT=Zmt3UA%3D%3D
-#hyoji.co.kr:
-#  name: 'title'
-#  originalPrice: 'div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
-#  salePrice: 'div.table-opt > table > tbody > tr:nth-child(2) > td > div'
-#  imageUrl: '#productDetail > div.page-body > div.thumb-info > div > div > img'
-#  isSoldout: 'div.xans-product div.product-soldout'
-#  images: 'div.product-images img.ThumbImage'
+hyoji.co.kr:
+  name: 'title'
+  originalPrice: 'div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
+  salePrice: 'div.table-opt > table > tbody > tr:nth-child(2) > td > div'
+  imageUrl: '#productDetail > div.page-body > div.thumb-info > div > div > img'
+  isSoldout: 'div.table-opt tbody tr p.soldout'
+  images: 'div.ddimg center img'
 
 ojos.kr:
   <<: *base
@@ -1103,33 +1097,26 @@ ojos.kr:
   isSoldout: 'div.content > div#shopProductCartErrorDiv'
   images: 'div#productDescriptionDetailPage img'
 
-# sold out이 없음. images에서는 사이트마다 구조가 달라서 문제임..
-# http://www.inrows.co.kr/shop/shopdetail.html?branduid=3536420&xcode=002&mcode=002&scode=&type=Y&sort=order&cur_code=002&GfDT=Z2V8
-# http://www.inrows.co.kr/shop/shopdetail.html?branduid=3457021&xcode=002&mcode=002&scode=&type=Y&sort=order&cur_code=002&GfDT=Zmp3Uw%3D%3D
-#inrows.co.kr:
-#  <<: *base
-#  name: 'title'
-#  imageUrl: '#lens_img'
-#  originalPrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
-#  salePrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div'
-#  isSoldout: 'div.btnArea > a'
-#  images: 'div.prd-detail > p img'
+inrows.co.kr:
+  <<: *base
+  name: 'title'
+  imageUrl: '#lens_img'
+  originalPrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
+  salePrice: '#form1 > div > div.table-opt > table > tbody > tr:nth-child(1) > td > div'
+  isSoldout: 'div.prd-btns div'
+  images: 'div.page-body div.prd-detail img'
 
-#josepht.co.kr:
-# http://www.josepht.co.kr/goods/goods_list.php?cateCd=001
-#  <<: *base
-#  originalPrice: 'dl.item_price > dd > strong > strong'
-#  isSoldout: 'div.btnArea > a'
-#  images: 'div.txt-manual img'
+josepht.co.kr:
+  <<: *base
+  originalPrice: 'dl.item_price > dd > strong > strong'
+  images: 'div.txt-manual img'
 
-# https://nomanual-official.com/product/NM72TS13M1BK
-# https://nomanual-official.com/product/NM73PT04M1BK
-#nomanual-official.com:
-#  <<: *base
-#  originalPrice: '#shopProductPrice > span'
-#  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
-#  isSoldout: 'div#mun_paymentButton span'
-#  images: 'div#mun_productDetail img'
+nomanual-official.com:
+  <<: *base
+  originalPrice: '#shopProductPrice > span'
+  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
+  isSoldout: 'div#shopProductContentInfo div#shopProductCartErrorDiv'
+  images: 'div#productDescriptionDetailPage img'
 
 phos333.com:
   <<: *base
