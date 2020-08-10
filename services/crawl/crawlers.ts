@@ -1983,9 +1983,15 @@ export const _smartstorenavercomjuanhomme = (
   selecter: ISelecter
 ): CrawlResult => {
   const result = selectAll($, selecter);
+  let isSoldout = (
+    $(selecter.isSoldout)
+      .text()
+      .search('구매하실 수 없는') > -1
+  );
 
   return correct({
     ...result,
+    isSoldout,
     name: result.name.replace(" : JUAN HOMME", ""),
   });
 };
@@ -2052,6 +2058,10 @@ export const _dgrecokr = (
 ): CrawlResult => {
   const result = selectAll($, selecter);
   let originalPrice = 0;
+  const isSoldout = (
+    !$(selecter.isSoldout)
+        .hasClass('hide')
+  );
 
   $(selecter.originalPrice)
     .find("span.productPriceWithDiscountSpan")
@@ -2069,6 +2079,7 @@ export const _dgrecokr = (
 
   return correct({
     ...result,
+    isSoldout,
     originalPrice,
   });
 };
@@ -2078,16 +2089,19 @@ export const _esfaicokr = (
   selecter: ISelecter
 ): CrawlResult => {
   const result = selectAll($, selecter);
-  const images = [];
+  const images = []
+  let name
   $(selecter.images)
     .find("img")
     .each((_, ele) => {
       images.push(ele.attribs["src"] || ele.attribs["ec-data-src"]);
     });
 
+  if (result.name.search(']') > -1) { name = result.name.split(']')[1].trim() }
+    else {name = result.name}
   return correct({
     ...result,
-    name: result.name.split("]")[1].trim(),
+    name,
     images: images.map((image) => correctImageUrl(image, "esfai.co.kr")),
   });
 };
