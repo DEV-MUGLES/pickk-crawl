@@ -1023,29 +1023,34 @@ smartstore.naver.com/juan_homme:
   <<: *base
   originalPrice: '#wrap > div > div.prd_detail_basic > div.info > form > fieldset > div._copyable > dl > dd > div.area_cost > strong > span.original > span.thm'
   salePrice: '#wrap > div > div.prd_detail_basic > div.info > form > fieldset > div._copyable > dl > dd > div.area_cost > strong > span.thm'
-  images: 'div.se-main-container > div > div > div > div > a > img'
+  isSoldout: 'div.prd_type3 > div.not_goods'
+  images: 'div.detail_view'
 
 luoespac.co.kr:
   <<: *base
-  images: '#prdDetail > div > center img'
   isSoldout: 'div.xans-product-action div.btnArea span'
+  images: '#prdDetail > div > center img'
 
 esfai.co.kr:
   <<: *base
+  isSoldout: 'div#mun_paymentButton span.soldout'
   images: '#mun_productDetail'
 
 nodearchive.com:
   <<: *base
+  isSoldout: 'div.ec-base-button > a.soldout'
   images: '#prdDetail > div'
 
 ourscope.co.kr:
   <<: *base
+  isSoldout: 'div#mun_paymentButton span.soldout'
   images: '#mun_productDetail'
 
 dgre.co.kr:
   <<: *base
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
   originalPrice: '#shopProductPrice'
+  isSoldout: 'div#shopProductContentInfo > div#shopProductCartErrorDiv'
   images: '#productDescriptionDetailPage > p > img'
 
 addoff.co.kr:
@@ -1136,6 +1141,7 @@ millioncor.com:
 
 mimthewardrobe.com:
   <<: *base
+  originalPrice: meta[property="og:description"]
   isSoldout: 'div.xans-product a.btnSubmit:nth-child(4)'
   images: '#contents > div > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.xans-element-.xans-product.xans-product-image'
 
@@ -1278,4 +1284,9 @@ rdvz.kr:
 xeroxero.co.kr:
   <<: *base
   isSoldout: 'div.xans-product-action div.ec-base-button span'
+  images: 'div#prdDetail div.cont img'
+
+fuza.world:
+  <<: *base
+  isSoldout: 'div.ec-base-button > span.btnEm'
   images: 'div#prdDetail div.cont img'

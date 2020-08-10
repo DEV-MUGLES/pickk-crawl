@@ -85,6 +85,7 @@ export const parseValue = (
   selecter: string
 ): string | number | string[] | boolean => {
   if (key === 'images') {
+    console.log($(selecter).html());
     return selectImages($, selecter);
   }
   if (key === 'isSoldout') {
