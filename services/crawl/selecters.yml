@@ -1188,7 +1188,7 @@ wuzustudio.com:
   originalPrice: '#span_product_price_text'
   salePrice: '#span_product_price_sale'
   imageUrl: 'head'
-  isSoldout: 'div.xans-product-action div.btnArea span'
+  isSoldout: 'div.btnArea > a.buy_btn'
   images: '#prdDetail > div.cont img'
 
 romanticmove.com:

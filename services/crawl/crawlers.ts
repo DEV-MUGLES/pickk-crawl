@@ -1931,8 +1931,15 @@ export const _wuzustudiocom = (
       .trim()
       .replace(/[^0-9]/g, "")
   );
+
+  const isSoldout = (
+    $(selecter.isSoldout)
+        .hasClass('displaynone')
+  );
+
   return correct({
     ...result,
+    isSoldout,
     salePrice,
     imageUrl,
   });
