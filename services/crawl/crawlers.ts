@@ -2185,3 +2185,17 @@ export const _inrowscokr = (
     isSoldout,
   });
 };
+
+export const _13mothcom = (
+  $: CheerioStatic,
+  selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const originalPrice = Number(parseValue($,'originalPrice','strong#span_product_price_text'));
+
+  return correct({
+    ...result,
+    originalPrice: result.originalPrice || originalPrice,
+    salePrice: result.salePrice || originalPrice,
+  });
+};
