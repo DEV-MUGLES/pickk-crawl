@@ -1260,6 +1260,7 @@ lohnt.co.kr:
 
 maison-mined.com:
   <<: *base
+  name: '#contents > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.detail_left > div > div > div > p'
   isSoldout: 'div.xans-element-.xans-product > span'
   images: 'div.detail_center img'
 
