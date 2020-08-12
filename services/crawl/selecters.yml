@@ -1009,7 +1009,6 @@ madgoat-official.com:
 
 ballute.co.kr:
   <<: *base
-  name: 'title'
   isSoldout: 'div.xans-product-action div.btnArea span'
   images: 'div#prdDetail div.cont img'
 
