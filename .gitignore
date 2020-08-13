@@ -5,7 +5,4 @@ jspm_packages
 # environment variables
 .env*
 .now
-
-*.js
-.now
 .vercel

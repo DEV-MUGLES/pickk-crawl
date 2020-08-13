@@ -71,9 +71,7 @@ export const selectImages = ($: CheerioStatic, selecter: string): string[] => {
   const images = [];
   $(selecter).each((_i, ele) => {
     images.push(
-      ele.attribs['src'] ||
-        ele.attribs['ec-data-src'] ||
-        ele.attribs['data-src']
+      ele.attribs.src || ele.attribs['ec-data-src'] || ele.attribs['data-src']
     );
   });
   return images;
