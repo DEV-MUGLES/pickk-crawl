@@ -28,10 +28,14 @@ sperone.co.kr:
 
 massnoun.com:
   <<: *custom_price
+  isSoldout: 'span.btnRight > a'
+  images: 'div#prdDetail img'
 
 toffee.co.kr:
   <<: *base
   originalPrice: '#span_product_price_custom'
+  isSoldout: 'div.ec-base-button > a.first:nth-child(3)'
+  images: 'div#prdDetail div.cont img'
 
 crump.co.kr:
   <<: *base
@@ -246,6 +250,8 @@ stussy.co.kr:
 
 esnocturne.com:
   <<: *custom_price
+  isSoldout: 'span.soldout'
+  images: 'div#mun_productDetail center img'
 
 barrels.co.kr:
   name: '#itemTitle'
@@ -684,6 +690,8 @@ grooverhyme.co.kr:
 compagno.co.kr:
   <<: *base
   originalPrice: '#span_product_price_custom'
+  isSoldout: 'div.xans-element- div.btnArea span'
+  images: 'div#prdDetail div.cont img'
 
 lomort.co.kr:
   <<: *custom_price
@@ -897,6 +905,8 @@ gentlemonster.com:
 
 camelwork.co.kr:
   <<: *custom_price
+  isSoldout: 'div.ec-base-button li:nth-child(3)'
+  images: 'div#prdDetail div.cont img'
 
 mainbooth.co.kr:
   <<: *custom_price
@@ -969,8 +979,10 @@ byc.co.kr:
 
 thesortie.com:
   <<: *base
-  name: '#prod_goods_form > header > div.view_tit.no-margin-top'
+  name: meta[property="og:title"]
   originalPrice: 'span.real_price'
+  isSoldout: 'div.sold_out'
+  images: 'div#pc_tab_offset'
 
 kr.moscot.com:
   <<: *base
@@ -1292,3 +1304,43 @@ fuza.world:
   <<: *base
   isSoldout: 'div.ec-base-button > span.btnEm'
   images: 'div#prdDetail div.cont img'
+
+chindown.kr:
+  <<: *base
+  isSoldout: 'ul.btn_2 > a.first'
+  images: 'div#prdDetail center img'
+
+paulcore.co.kr:
+  <<: *base
+  isSoldout: 'div.infoArea div.xans-product a.btnSubmit'
+  images: 'ul.detail_left_big_nav img'
+  salePrice: 'span#span_product_coupon_dc_price'
+  originalPrice: 'span > strong#span_product_price_text'
+
+beyondcloset.com:
+  <<: *base
+  isSoldout: 'div.xans-element- div.btnArea span'
+  images: 'div#prdDetail div.cont img'
+
+burningstudios.co.kr:
+  <<: *base
+  isSoldout: 'div.xans-element- div.btnArea a:nth-child(3)'
+  images: 'div#prdDetail div.cont img'
+
+chancechance.co.kr:
+  <<: *base
+  isSoldout: 'div.xans-element- div.btnArea span'
+  images: 'div#prdDetail div.cont img'
+  originalPrice: 'span#span_product_price_custom > strike'
+  salePrice: 'strong#span_product_price_text'
+
+ovcworks.com:
+  <<: *base
+  isSoldout: 'div.xans-element- div.prd-action-2  a:nth-child(3)'
+  images: 'div.detailArea img'
+
+mainxcx.com:
+  <<: *base
+  isSoldout: 'div.xans-element- div.btnArea span'
+  images: 'div#prdDetail div.cont img'
+  originalPrice: 'span#span_product_price_custom'
