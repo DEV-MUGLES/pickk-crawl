@@ -300,7 +300,7 @@ shop.vans.co.kr:
 
 drmartens.co.kr:
   <<: *base
-  originalPrice: 'main.AppMain.toNone'
+  originalPrice: '#vue-body > div > div.ProductDetailContainer__form.layout__wrapper > div:nth-child(2) > div > div > div.ProductDetail__center > div.ProductDetail__set > div.ProductDetail__price-container > strong'
 
 levi.co.kr:
   <<: *base
