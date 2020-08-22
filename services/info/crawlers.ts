@@ -2224,3 +2224,20 @@ export const _paulcorecokr = (
     salePrice,
   });
 };
+
+export const _maisonminedcom = (
+    $: CheerioStatic,
+    selecter: ISelecter
+): CrawlResult => {
+  const result = selectAll($, selecter);
+  const originalPrice = Number(
+      parseValue($, 'originalPrice', 'span#span_product_price_custom')
+  );
+  const salePrice = Number(parseValue($, 'originalPrice', 'strong#span_product_price_text'));
+
+  return correct({
+    ...result,
+    originalPrice: originalPrice || salePrice,
+    salePrice: salePrice || result.salePrice,
+  });
+};
