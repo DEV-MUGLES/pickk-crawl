@@ -11,7 +11,7 @@ url, host, selector를 설정합니다.
 
 - url : query parameter로 받은 값을 encode해서 저장한다.
 - host : 입력된 url의 hostname에서 'www.'을 제거해서 저장한다. 특별한 case는 getHostName 함수 내부에서 관리한다.
-- selector : selecters.yml에 해당 host에 대한 값이 존재할 경우 그 값을, 없으면 base 값을 저장한다.
+- selector : selectors.yml에 해당 host에 대한 값이 존재할 경우 그 값을, 없으면 base 값을 저장한다.
 
 **2. crawl**
 

@@ -1,25 +1,24 @@
-import { ISelecter } from 'interfaces/ISelecter';
 import { parseValue, selectAll, correct, strToNumber } from '../../lib';
-import { CrawlResult } from '../../types/Crawl';
+import { InfoResult, InfoSelectors } from '../../types';
 import { correctImageUrl } from '.';
 import * as cheerio from 'cheerio';
 
 export const _storemusinsacom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const name = $(selecter.name).last().attr().content;
-  const brandKor = $(selecter.brandKor).last().text();
-  const imageUrl = $(selecter.imageUrl).last().attr().content;
+  selector: InfoSelectors
+): InfoResult => {
+  const name = $(selector.name).last().attr().content;
+  const brandKor = $(selector.brandKor).last().text();
+  const imageUrl = $(selector.imageUrl).last().attr().content;
   const originalPrice = Number(
-    $(selecter.originalPrice)
+    $(selector.originalPrice)
       .last()
       .text()
       .replace(/[^0-9]/g, '')
   );
-  const salePrice = $(selecter.salePrice).html()
+  const salePrice = $(selector.salePrice).html()
     ? Number(
-        $(selecter.salePrice)
+        $(selector.salePrice)
           .last()
           .text()
           .replace(/[^0-9]/g, '')
@@ -39,9 +38,9 @@ export const _mstoremusinsacom = _storemusinsacom;
 
 export const _espionagecokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return {
     ...result,
     originalPrice:
@@ -51,9 +50,9 @@ export const _espionagecokr = (
 
 export const _noirlarmescokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const myPrice = Number(parseValue($, 'originalPrice', 'p.price > span'));
 
   return {
@@ -65,9 +64,9 @@ export const _noirlarmescokr = (
 
 export const _conversecokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const myPrice = Number(
     parseValue($, 'originalPrice', 'p.product-price > span')
   );
@@ -81,9 +80,9 @@ export const _conversecokr = (
 
 export const _zavanascom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const myPrice = Number(
     parseValue(
       $,
@@ -103,9 +102,9 @@ export const _zavanascom = (
 
 export const _placofficialcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return {
     ...result,
@@ -115,9 +114,9 @@ export const _placofficialcom = (
 
 export const _giordanocokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -127,9 +126,9 @@ export const _giordanocokr = (
 
 export const _spaoelandmallcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -141,9 +140,9 @@ export const _spaoelandmallcom = (
 
 export const _shoopenelandmallcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -155,11 +154,11 @@ export const _shoopenelandmallcom = (
 
 export const _wconceptcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const scriptHtml = $(selecter.brandKor).html();
+  const scriptHtml = $(selector.brandKor).html();
 
   const SEARCH_TEXT = '$brandnamekr = "';
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
@@ -174,9 +173,9 @@ export const _wconceptcokr = (
 
 export const _lfmallcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -186,11 +185,11 @@ export const _lfmallcokr = (
 
 export const _www2hmcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const scriptHtml = $(selecter.originalPrice).html();
+  const scriptHtml = $(selector.originalPrice).html();
 
   const SEARCH_TEXT = 'product_original_price : [';
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
@@ -205,9 +204,9 @@ export const _www2hmcom = (
 
 export const _romanticpiratescom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return {
     ...result,
@@ -217,9 +216,9 @@ export const _romanticpiratescom = (
 
 export const _jemutshopcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return {
     ...result,
@@ -229,9 +228,9 @@ export const _jemutshopcom = (
 
 export const _beslowcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const myPrice = Number(
     parseValue($, 'originalPrice', 'div.detail-price >  span:nth-child(1)')
   );
@@ -256,7 +255,7 @@ export const _beslowcokr = (
 
   return correct({
     ...result,
-    imageUrl: $(selecter.imageUrl).attr()['data-src'],
+    imageUrl: $(selector.imageUrl).attr()['data-src'],
     originalPrice: result.originalPrice || myPrice,
     brandKor,
   });
@@ -264,21 +263,21 @@ export const _beslowcokr = (
 
 export const _stussycokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
-    imageUrl: $(selecter.imageUrl).attr()['data-lazy'],
+    imageUrl: $(selector.imageUrl).attr()['data-lazy'],
   });
 };
 
 export const _barrelscokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const name = result.name.slice(result.name.indexOf(']') + 2);
   const brandKor = result.brandKor.slice(1, result.name.indexOf(']'));
@@ -293,9 +292,9 @@ export const _barrelscokr = (
 
 export const _underarmourcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const name = result.name.slice(0, result.name.length - 10);
 
@@ -307,9 +306,9 @@ export const _underarmourcokr = (
 
 export const _thenorthfacekoreacokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const name = result.name.slice(0, result.name.length - 8);
   const imageUrl = result.imageUrl.replace('?thumbnail', '');
@@ -323,11 +322,11 @@ export const _thenorthfacekoreacokr = (
 
 export const _shopadidascokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const scriptHtml = $(selecter.originalPrice).html();
+  const scriptHtml = $(selector.originalPrice).html();
 
   const ORIGINAL_SEARCH_TEXT = 'jQuery("#sn_price").html("';
   const originalStart =
@@ -352,12 +351,12 @@ export const _shopadidascokr = (
 
 export const _zaracom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   let scriptHtml;
-  $(selecter.originalPrice).each((i, e) => {
+  $(selector.originalPrice).each((i, e) => {
     if (e?.children[0]?.data !== undefined) {
       if (e.children[0].data.indexOf('price') > -1) {
         scriptHtml = e.children[0].data;
@@ -390,9 +389,9 @@ export const _zaracom = (
 
 export const _drmartenscokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const scriptHtml = $('body').html();
 
@@ -415,14 +414,14 @@ export const _drmartenscokr = (
 
 export const _discoveryexpeditioncom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   let salePrice = result.salePrice;
 
   if (result.originalPrice !== 0) {
-    const salePriceStr = $(selecter.salePrice).html();
+    const salePriceStr = $(selector.salePrice).html();
     salePrice = Number(
       salePriceStr
         .slice(salePriceStr.indexOf('</del>'), salePriceStr.length - 8)
@@ -438,9 +437,9 @@ export const _discoveryexpeditioncom = (
 
 export const _naturestorecokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const name = result.name.slice(20);
 
@@ -452,9 +451,9 @@ export const _naturestorecokr = (
 
 export const _eduardocokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const name = result.name.slice(result.name.lastIndexOf(']') + 1);
 
@@ -466,9 +465,9 @@ export const _eduardocokr = (
 
 export const _personalpackcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -478,11 +477,11 @@ export const _personalpackcom = (
 
 export const _mngucokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   let originalPrice = Number(
-    $(selecter.originalPrice)
+    $(selector.originalPrice)
       .last()
       .text()
       .slice(12)
@@ -508,9 +507,9 @@ export const _mngucokr = (
 
 export const _leirecokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -520,9 +519,9 @@ export const _leirecokr = (
 
 export const _tbhshopcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   let { brandKor } = result;
   if (brandKor === 'Mind Bridge') brandKor = '마인드브릿지';
   if (brandKor === 'JUCY JUDY') brandKor = '쥬씨주디';
@@ -536,9 +535,9 @@ export const _tbhshopcokr = (
 
 export const _lludcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -548,9 +547,9 @@ export const _lludcokr = (
 
 export const _ativekr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -560,11 +559,11 @@ export const _ativekr = (
 
 export const _lab101com = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const salePriceStr = $(selecter.salePrice).html();
+  const salePriceStr = $(selector.salePrice).html();
   const salePrice = Number(
     salePriceStr
       .slice(salePriceStr.indexOf('</span>') + 1)
@@ -579,9 +578,9 @@ export const _lab101com = (
 
 export const goodnationcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -591,9 +590,9 @@ export const goodnationcokr = (
 
 export const _lambydcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -603,10 +602,10 @@ export const _lambydcom = (
 
 export const _monsterrepubliccokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const scriptHtml = $(selecter.imageUrl).html();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const scriptHtml = $(selector.imageUrl).html();
 
   const SEARCH_TEXT = '.jpg\' : "..';
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
@@ -622,9 +621,9 @@ export const _monsterrepubliccokr = (
 
 export const _ziosongziocom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -634,9 +633,9 @@ export const _ziosongziocom = (
 
 export const _topten10mallcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   let { brandKor } = result;
   if (brandKor === 'TOPTEN10') brandKor = '탑텐';
@@ -646,7 +645,7 @@ export const _topten10mallcom = (
 
   const goodsNo = result.imageUrl.slice(result.imageUrl.indexOf(' / ') + 4);
 
-  const salePriceStr = $(selecter.salePrice).html();
+  const salePriceStr = $(selector.salePrice).html();
   const salePrice = Number(
     salePriceStr.slice(0, salePriceStr.indexOf(' &#x')).replace(/[^0-9]/g, '')
   );
@@ -661,9 +660,9 @@ export const _topten10mallcom = (
 
 export const _kolonmallcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   let { brandKor } = result;
   if (brandKor === 'CUSTOMELLOW') brandKor = '커스텀멜로우';
@@ -679,10 +678,10 @@ export const _kolonmallcom = (
   });
 };
 
-export const _ssgcom = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
-  const result = selectAll($, selecter);
+export const _ssgcom = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+  const result = selectAll($, selector);
 
-  let brandKor = unescape($(selecter.brandKor).last().text().trim()).replace(
+  let brandKor = unescape($(selector.brandKor).last().text().trim()).replace(
     '#',
     ''
   );
@@ -698,11 +697,11 @@ export const _ssgcom = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
 
 export const _goodsellottecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const brandKor = unescape($(selecter.brandKor).last().text().trim());
+  const brandKor = unescape($(selector.brandKor).last().text().trim());
 
   return correct({
     ...result,
@@ -712,9 +711,9 @@ export const _goodsellottecom = (
 
 export const _hyundaihmallcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -724,9 +723,9 @@ export const _hyundaihmallcom = (
 
 export const _akmallcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const brandKor = result.brandKor.slice(0, result.brandKor.indexOf('브'));
 
@@ -738,14 +737,14 @@ export const _akmallcom = (
 
 export const _thehyundaicom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const brandKorStr = $(selecter.brandKor).html();
-  let brandKor = unescape($(selecter.brandKor).last().text().trim());
+  const brandKorStr = $(selector.brandKor).html();
+  let brandKor = unescape($(selector.brandKor).last().text().trim());
   if (brandKorStr.includes('img')) {
-    brandKor = $(selecter.brandKor + '> img')
+    brandKor = $(selector.brandKor + '> img')
       .last()
       .attr().alt;
   }
@@ -758,9 +757,9 @@ export const _thehyundaicom = (
 
 export const _mariomallcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const brandKor = result.brandKor.slice(0, result.brandKor.indexOf('브') - 1);
 
@@ -772,11 +771,11 @@ export const _mariomallcokr = (
 
 export const _departmentssgcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  let brandKor = unescape($(selecter.brandKor).last().text().trim()).replace(
+  let brandKor = unescape($(selector.brandKor).last().text().trim()).replace(
     '#',
     ''
   );
@@ -792,11 +791,11 @@ export const _departmentssgcom = (
 
 export const _fashionpluscokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const salePriceStr = $(selecter.salePrice).html();
+  const salePriceStr = $(selector.salePrice).html();
   const salePrice = Number(
     salePriceStr.slice(0, salePriceStr.indexOf('<span>')).replace(/[^0-9]/g, '')
   );
@@ -809,11 +808,11 @@ export const _fashionpluscokr = (
 
 export const _coupangcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const brandKor = unescape($(selecter.brandKor).last().text().trim());
+  const brandKor = unescape($(selector.brandKor).last().text().trim());
 
   return correct({
     ...result,
@@ -823,11 +822,11 @@ export const _coupangcom = (
 
 export const _shoppinginterparkcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const originalPriceStr = $(selecter.originalPrice).html();
+  const originalPriceStr = $(selector.originalPrice).html();
   const ORIGINAL_SEARCH_TEXT = '"sale_price":';
   const SALE_SEARCH_TEXT = '"item_price":';
   const SALE_SEARCH_TEXT_END = 'var egsLogManager';
@@ -856,8 +855,8 @@ export const _shoppinginterparkcom = (
   });
 };
 
-export const _g9cokr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
-  const result = selectAll($, selecter);
+export const _g9cokr = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+  const result = selectAll($, selector);
 
   const name = result.name.slice(0, result.name.indexOf('|'));
 
@@ -869,9 +868,9 @@ export const _g9cokr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
 
 export const _4xrcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const hasBrandName = result.name.includes(':');
 
   const brandKor = hasBrandName
@@ -894,9 +893,9 @@ export const _4xrcokr = (
 
 export const _gvgcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const brandKor = result.brandKor.slice(0, result.brandKor.indexOf('('));
 
@@ -908,9 +907,9 @@ export const _gvgcokr = (
 
 export const _farfetchcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   let { brandKor } = result;
   if (brandKor === 'Balenciaga') brandKor = '발렌시아가';
@@ -959,9 +958,9 @@ export const _farfetchcom = (
 
 export const _abokinet = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -971,9 +970,9 @@ export const _abokinet = (
 
 export const _jogunshopcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const name = result.name.slice(0, result.name.indexOf('<br>'));
 
@@ -985,9 +984,9 @@ export const _jogunshopcom = (
 
 export const _timemeccacokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const isContainBrand = result.name.indexOf('[') === 0;
   const brandKor = isContainBrand
     ? result.name.slice(1, result.name.indexOf(']')).replace(/[A-Za-z]/g, '')
@@ -1001,23 +1000,23 @@ export const _timemeccacokr = (
 
 export const _snuvcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const originalPriceStr = $(selecter.originalPrice).html();
+  const originalPriceStr = $(selector.originalPrice).html();
   const hasSalePrice = originalPriceStr.includes('strike');
-  const originalPriceSelecter = hasSalePrice
-    ? selecter.originalPrice + ' > strike'
-    : selecter.originalPrice + ' > div';
+  const originalPriceselector = hasSalePrice
+    ? selector.originalPrice + ' > strike'
+    : selector.originalPrice + ' > div';
   const originalPrice = strToNumber(
-    unescape($(originalPriceSelecter).last().text().trim())
+    unescape($(originalPriceselector).last().text().trim())
   );
 
-  const brandKorSelecter = hasSalePrice
-    ? selecter.brandKor + ' > tr:nth-child(5) > td > div'
-    : selecter.brandKor + ' > tr:nth-child(4) > td > div';
-  const brandKor = unescape($(brandKorSelecter).last().text().trim());
+  const brandKorselector = hasSalePrice
+    ? selector.brandKor + ' > tr:nth-child(5) > td > div'
+    : selector.brandKor + ' > tr:nth-child(4) > td > div';
+  const brandKor = unescape($(brandKorselector).last().text().trim());
 
   return correct({
     ...result,
@@ -1029,9 +1028,9 @@ export const _snuvcokr = (
 
 export const _labelarchivecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const name = result.name.slice(
     0,
@@ -1046,9 +1045,9 @@ export const _labelarchivecom = (
 
 export const _flukecompanycom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -1058,9 +1057,9 @@ export const _flukecompanycom = (
 
 export const _wvprojectcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -1070,11 +1069,11 @@ export const _wvprojectcokr = (
 
 export const _samsonitemallcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const isSale = $(selecter.salePrice).html().includes('strong');
+  const isSale = $(selector.salePrice).html().includes('strong');
   const salePrice = isSale
     ? result.salePrice.toString().replace(result.originalPrice.toString(), '')
     : result.salePrice;
@@ -1087,9 +1086,9 @@ export const _samsonitemallcokr = (
 
 export const _heightsstorecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   let brandKor = result.brandKor.replace('See all brand product', '');
   if (brandKor === 'have a good time') brandKor = '해브어굿타임';
@@ -1105,11 +1104,11 @@ export const _heightsstorecom = (
 
 export const _urbanstoffcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const salePriceStr = $(selecter.salePrice).html();
+  const salePriceStr = $(selector.salePrice).html();
   const saleAmount = Number(
     salePriceStr.replace('&#xC6D0;', '').replace(/[^0-9-]/g, '')
   );
@@ -1118,7 +1117,7 @@ export const _urbanstoffcom = (
     saleAmount < 0 ? result.originalPrice + saleAmount : result.originalPrice;
   const imageUrl =
     'https://www.urbanstoff.com/shop' +
-    $(selecter.imageUrl).last().attr().src.slice(2);
+    $(selector.imageUrl).last().attr().src.slice(2);
 
   return correct({
     ...result,
@@ -1129,9 +1128,9 @@ export const _urbanstoffcom = (
 
 export const _gncostylecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   let { brandKor } = result;
   if (brandKor === 'T.I FOR MEN') brandKor = '티아이포맨';
@@ -1146,9 +1145,9 @@ export const _gncostylecom = (
 
 export const _yanthirteencom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const SALE_SEARCH_TEXT = 'product_price';
   const SALE_SEARCH_TEXT_END = 'option_type';
@@ -1168,9 +1167,9 @@ export const _yanthirteencom = (
 
 export const _hfashionmallcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const html = $('html').html();
   const BRAND_SERACH_TEXT = 'recopick:author" content="';
@@ -1189,20 +1188,20 @@ export const _hfashionmallcom = (
 
 export const _guglobalcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const originalPrice = Number($(selecter.originalPrice).attr('value'));
+  const originalPrice = Number($(selector.originalPrice).attr('value'));
 
   return correct({ ...result, originalPrice });
 };
 
 export const _shinwonmallcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   let { brandKor } = result;
   if (brandKor === 'FAHRENHEIT') brandKor = '지이크 파렌하이트';
   if (brandKor === 'SIEG') brandKor = '지이크';
@@ -1218,9 +1217,9 @@ export const _shinwonmallcom = (
 
 export const _shopreebokcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   const head = $('head').html();
   const ORIGINAL_SEARCH_TEXT =
@@ -1254,11 +1253,11 @@ export const _shopreebokcokr = (
 
 export const _toptentopten10mallcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const salePriceStr = $(selecter.salePrice).html();
+  const salePriceStr = $(selector.salePrice).html();
   const salePrice = Number(
     salePriceStr
       .slice(0, salePriceStr.indexOf('&#xC6D0'))
@@ -1270,23 +1269,23 @@ export const _toptentopten10mallcom = (
 
 export const _skonoshopcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const imageUrlStr = $(selecter.imageUrl).html();
+  const imageUrlStr = $(selector.imageUrl).html();
   const imageUrl = imageUrlStr.includes('<ul>')
     ? $('#lens_img').attr('src')
-    : $(selecter.imageUrl + ' > li > img').attr('src');
+    : $(selector.imageUrl + ' > li > img').attr('src');
 
   return correct({ ...result, imageUrl: 'https://skonoshop.com' + imageUrl });
 };
 
 export const _guesskoreacom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -1296,9 +1295,9 @@ export const _guesskoreacom = (
 
 export const _wooyoungmicom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -1308,10 +1307,10 @@ export const _wooyoungmicom = (
 
 export const _shopmangocom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const scriptHtml = $(selecter.salePrice).html();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const scriptHtml = $(selector.salePrice).html();
   let search_text, start, end;
 
   search_text = '"originalPrice":';
@@ -1334,9 +1333,9 @@ export const _shopmangocom = (
 
 export const _stylenandacom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -1346,11 +1345,11 @@ export const _stylenandacom = (
 
 export const _stylelqcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   let originalPrice = Number(
-    $(selecter.originalPrice)
+    $(selector.originalPrice)
       .last()
       .text()
       .replace(/[^0-9]/g, '')
@@ -1374,9 +1373,9 @@ export const _stylelqcom = (
 
 export const _bottegavenetacom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -1386,9 +1385,9 @@ export const _bottegavenetacom = (
 
 export const _etcseoulcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const [brandKor, name] = result.name.split(']');
   return correct({
     ...result,
@@ -1399,9 +1398,9 @@ export const _etcseoulcom = (
 
 export const _montblanccom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.split('|')[0].trim(),
@@ -1410,9 +1409,9 @@ export const _montblanccom = (
 
 export const _thombrownecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const [name, brandKor] = result.name.split('|');
   return correct({
     ...result,
@@ -1423,10 +1422,10 @@ export const _thombrownecom = (
 
 export const _givenchycom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const scriptHtml = $(selecter.salePrice).html();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const scriptHtml = $(selector.salePrice).html();
   let search_text, start, end;
   search_text = 'itemprop="image" src="';
   start = scriptHtml.indexOf(search_text) + search_text.length;
@@ -1448,9 +1447,9 @@ export const _givenchycom = (
 
 export const _monclercom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.split('|')[0].trim(),
@@ -1459,9 +1458,9 @@ export const _monclercom = (
 
 export const _acnestudioscom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.trim(),
@@ -1470,9 +1469,9 @@ export const _acnestudioscom = (
 
 export const _stoneislandcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.split('Stone Island')[0].trim(),
@@ -1481,9 +1480,9 @@ export const _stoneislandcom = (
 
 export const _alexandermcqueencom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.split('|')[0].trim(),
@@ -1492,10 +1491,10 @@ export const _alexandermcqueencom = (
 
 export const _diorcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const scriptHtml = $(selecter.originalPrice).html();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const scriptHtml = $(selector.originalPrice).html();
   const SEARCH_TEXT = '"price":';
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
   const end = scriptHtml.indexOf(',', start);
@@ -1510,9 +1509,9 @@ export const _diorcom = (
 
 export const _shoptimberlandcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.replace(' - Timberland', ''),
@@ -1521,9 +1520,9 @@ export const _shoptimberlandcokr = (
 
 export const _acha1com = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name
@@ -1538,10 +1537,10 @@ export const _acha1com = (
 
 export const _coucoustorecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const scriptHtml = $(selecter.salePrice).html();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const scriptHtml = $(selector.salePrice).html();
   const SEARCH_TEXT = '-&gt;';
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
   const end = scriptHtml.indexOf('&#xC6D0;', start);
@@ -1555,10 +1554,10 @@ export const _coucoustorecom = (
 
 export const _unalloyedkr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const scriptHtml = $(selecter.name).html();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const scriptHtml = $(selector.name).html();
   const SEARCH_TEXT = '<span';
   const name = scriptHtml.includes(SEARCH_TEXT)
     ? scriptHtml.slice(0, scriptHtml.indexOf(SEARCH_TEXT))
@@ -1572,9 +1571,9 @@ export const _unalloyedkr = (
 
 export const _iamshoponlinecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   let brandKor = result.name.slice(0, result.name.indexOf(':') - 1);
   if (brandKor === 'N.HOOLYWOOD') brandKor = '엔 헐리우드';
@@ -1617,9 +1616,9 @@ export const _iamshoponlinecom = (
 
 export const _derobekr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.replace('- 드로브 derobe 공식 온라인 스토어', ''),
@@ -1628,10 +1627,10 @@ export const _derobekr = (
 
 export const _glothescokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const scriptHtml = $(selecter.salePrice).html();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const scriptHtml = $(selector.salePrice).html();
   const SEARCH_TEXT = '&#xC6D0;';
   const salePrice = Number(
     (scriptHtml.includes(SEARCH_TEXT)
@@ -1648,9 +1647,9 @@ export const _glothescokr = (
 
 export const _ssolantcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.slice(result.name.indexOf(']') + 1),
@@ -1659,9 +1658,9 @@ export const _ssolantcom = (
 
 export const _shoemarkercokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   let brandKor = result.brandKor;
   if (brandKor === 'ADIDAS') brandKor = '아디다스';
@@ -1697,9 +1696,9 @@ export const _shoemarkercokr = (
 
 export const _filsonkoreacokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     imageUrl: 'http://www.filsonkorea.co.kr/shop/' + result.imageUrl.slice(3),
@@ -1708,9 +1707,9 @@ export const _filsonkoreacokr = (
 
 export const _savagecokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.replace('(세비지)', ''),
@@ -1719,9 +1718,9 @@ export const _savagecokr = (
 
 export const _hotsunglasscokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     brandKor: result.brandKor.replace(' - 핫선글라스', ''),
@@ -1730,9 +1729,9 @@ export const _hotsunglasscokr = (
 
 export const _istyle24com = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     brandKor: $(
@@ -1745,9 +1744,9 @@ export const _istyle24com = (
 
 export const _patagoniacokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     imageUrl: 'http://www.patagonia.co.kr' + result.imageUrl,
@@ -1756,9 +1755,9 @@ export const _patagoniacokr = (
 
 export const _varzarcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     name: result.name.replace('[바잘] ', ''),
@@ -1767,9 +1766,9 @@ export const _varzarcom = (
 
 export const _layerstorekr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   let brandKor = result.name.split(' ')[0];
   if (brandKor === 'LIFUL') brandKor = '라이풀';
   if (brandKor === 'KANCO') brandKor = '칸코';
@@ -1783,9 +1782,9 @@ export const _layerstorekr = (
 
 export const _byccokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const txtCut = $('div.goods_tit > p.txtcut').text();
 
   return correct({
@@ -1796,10 +1795,10 @@ export const _byccokr = (
 
 export const _thesortiecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const isSoldout = $(selecter.isSoldout).text().search('SOLDOUT') > -1;
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).text().search('SOLDOUT') > -1;
   return correct({
     ...result,
     isSoldout,
@@ -1809,11 +1808,11 @@ export const _thesortiecom = (
 
 export const _deadendkrcafe24com = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const origianlPriceText = $(selecter.originalPrice).text();
+  const origianlPriceText = $(selector.originalPrice).text();
   const originalPrice = Number(
     origianlPriceText
       .slice(0, origianlPriceText.indexOf('--->') + 1)
@@ -1829,9 +1828,9 @@ export const _deadendkrcafe24com = (
 
 export const _shopamoebaculturecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   return correct({
     ...result,
     imageUrl: 'http://shop.amoebaculture.com' + result.imageUrl,
@@ -1840,9 +1839,9 @@ export const _shopamoebaculturecom = (
 
 export const _fillikecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
   return correct({
     ...result,
@@ -1850,9 +1849,9 @@ export const _fillikecom = (
   });
 };
 
-export const _hagokr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
-  const result = selectAll($, selecter);
-  const brandKor = $(selecter.brandKor).text();
+export const _hagokr = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+  const result = selectAll($, selector);
+  const brandKor = $(selector.brandKor).text();
   const originalPrice =
     result.originalPrice ||
     Number(
@@ -1872,10 +1871,10 @@ export const _hagokr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
 
 export const _madgoatofficialcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const scriptHtml = $(selecter.originalPrice).html();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const scriptHtml = $(selector.originalPrice).html();
 
   const SEARCH_TEXT = 'name="price" value="';
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
@@ -1891,23 +1890,23 @@ export const _madgoatofficialcom = (
 
 export const _wuzustudiocom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const scriptHtml = $(selecter.imageUrl).html();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const scriptHtml = $(selector.imageUrl).html();
   const SEARCH_TEXT = '<meta property="og:image" content="';
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
   const end = scriptHtml.indexOf('" />', start);
   const imageUrl = scriptHtml.slice(start, end);
   const salePrice = Number(
-    $(selecter.salePrice)
+    $(selector.salePrice)
       .text()
       .split('(')[0]
       .trim()
       .replace(/[^0-9]/g, '')
   );
 
-  const isSoldout = $(selecter.isSoldout).hasClass('displaynone');
+  const isSoldout = $(selector.isSoldout).hasClass('displaynone');
 
   return correct({
     ...result,
@@ -1917,9 +1916,9 @@ export const _wuzustudiocom = (
   });
 };
 
-export const _kingkr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
-  const result = selectAll($, selecter);
-  const isSoldout = $(selecter.isSoldout).hasClass('displaynone');
+export const _kingkr = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).hasClass('displaynone');
 
   return correct({
     ...result,
@@ -1930,9 +1929,9 @@ export const _kingkr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
 
 export const _costumeoclockcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const [brandKor, name] = result.name.split('[')[1].split(']');
 
   return correct({
@@ -1944,11 +1943,11 @@ export const _costumeoclockcom = (
 
 export const _smartstorenavercomjuanhomme = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const isSoldout =
-    $(selecter.isSoldout).text().search('구매하실 수 없는') > -1;
+    $(selector.isSoldout).text().search('구매하실 수 없는') > -1;
 
   const images = [];
   const scriptHtml = $('body').html();
@@ -1975,11 +1974,11 @@ export const _smartstorenavercomjuanhomme = (
 
 export const _nodearchivecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const images = [];
-  $(selecter.images)
+  $(selector.images)
     .find('img')
     .each((_, ele) => {
       images.push(ele.attribs.src || ele.attribs['ec-data-src']);
@@ -1994,11 +1993,11 @@ export const _nodearchivecom = (
 
 export const _ourscopecokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const images = [];
-  $(selecter.images)
+  $(selector.images)
     .find('img')
     .each((_, ele) => {
       images.push(ele.attribs.src || ele.attribs['ec-data-src']);
@@ -2012,11 +2011,11 @@ export const _ourscopecokr = (
 
 export const _mimthewardrobecom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const images = [];
-  $(selecter.images)
+  $(selector.images)
     .first()
     .find('img')
     .each((_, ele) => {
@@ -2031,20 +2030,20 @@ export const _mimthewardrobecom = (
 
 export const _dgrecokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   let originalPrice = 0;
-  const isSoldout = !$(selecter.isSoldout).hasClass('hide');
+  const isSoldout = !$(selector.isSoldout).hasClass('hide');
 
-  $(selecter.originalPrice)
+  $(selector.originalPrice)
     .find('span.productPriceWithDiscountSpan')
     ?.each(
       (_, ele) =>
         (originalPrice = Number(ele.children[0].data.replace(/[^0-9]/g, '')))
     );
 
-  $(selecter.originalPrice)
+  $(selector.originalPrice)
     .find('span.productPriceSpan')
     ?.each(
       (_, ele) =>
@@ -2060,12 +2059,12 @@ export const _dgrecokr = (
 
 export const _esfaicokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const images = [];
   let name;
-  $(selecter.images)
+  $(selector.images)
     .find('img')
     .each((_, ele) => {
       images.push(ele.attribs.src || ele.attribs['ec-data-src']);
@@ -2085,10 +2084,10 @@ export const _esfaicokr = (
 
 export const _easestorecokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const isSoldout = $(selecter.isSoldout).hasClass('displaynone');
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).hasClass('displaynone');
 
   return correct({
     ...result,
@@ -2098,10 +2097,10 @@ export const _easestorecokr = (
 
 export const _flareupcokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const isSoldout = $(selecter.isSoldout).hasClass('displaynone');
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).hasClass('displaynone');
 
   return correct({
     ...result,
@@ -2109,9 +2108,9 @@ export const _flareupcokr = (
   });
 };
 
-export const _ojoskr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
-  const result = selectAll($, selecter);
-  const isSoldout = !$(selecter.isSoldout).hasClass('hide');
+export const _ojoskr = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = !$(selector.isSoldout).hasClass('hide');
   return correct({
     ...result,
     isSoldout,
@@ -2120,10 +2119,10 @@ export const _ojoskr = ($: CheerioStatic, selecter: ISelecter): CrawlResult => {
 
 export const _kutletshopcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const isSoldout = !$(selecter.isSoldout).hasClass('hide');
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = !$(selector.isSoldout).hasClass('hide');
   return correct({
     ...result,
     isSoldout,
@@ -2132,10 +2131,10 @@ export const _kutletshopcom = (
 
 export const _hyojicokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const isSoldout = $(selecter.isSoldout).text().search('품절') > -1;
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).text().search('품절') > -1;
   return correct({
     ...result,
     isSoldout,
@@ -2145,10 +2144,10 @@ export const _hyojicokr = (
 
 export const _nomanualofficialcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const isSoldout = !$(selecter.isSoldout).hasClass('hide');
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = !$(selector.isSoldout).hasClass('hide');
   return correct({
     ...result,
     isSoldout,
@@ -2157,11 +2156,11 @@ export const _nomanualofficialcom = (
 
 export const _inrowscokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
 
-  const salePriceStr = $(selecter.salePrice).html();
+  const salePriceStr = $(selector.salePrice).html();
   const salePrice = Number(
     salePriceStr
       .slice(
@@ -2170,7 +2169,7 @@ export const _inrowscokr = (
       )
       .replace(/[^0-9]/g, '')
   );
-  const isSoldout = $(selecter.isSoldout).text().search('품절') > -1;
+  const isSoldout = $(selector.isSoldout).text().search('품절') > -1;
 
   return correct({
     ...result,
@@ -2182,9 +2181,9 @@ export const _inrowscokr = (
 
 export const _13mothcom = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const originalPrice = Number(
     parseValue($, 'originalPrice', 'strong#span_product_price_text')
   );
@@ -2198,10 +2197,10 @@ export const _13mothcom = (
 
 export const _chindownkr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const isSoldout = $(selecter.isSoldout).hasClass('displaynone');
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).hasClass('displaynone');
 
   return correct({
     ...result,
@@ -2211,10 +2210,10 @@ export const _chindownkr = (
 
 export const _paulcorecokr = (
   $: CheerioStatic,
-  selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
-  const salePriceText = $(selecter.salePrice).text();
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const salePriceText = $(selector.salePrice).text();
   const salePrice = Number(
     salePriceText
       .slice(0, salePriceText.indexOf('원') + 1)

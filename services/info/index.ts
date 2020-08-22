@@ -7,33 +7,32 @@ import * as path from 'path';
 import * as crawlers from './crawlers';
 import phanties from './phanties';
 
-import { ISelecter } from '../../interfaces/ISelecter';
 import { requestHtml, correct, selectAll, getHostName } from '../../lib';
-import { CrawlResult } from '../../types/Crawl';
+import { InfoResult, InfoSelectors } from '../../types';
 import { brandNames } from './brand-names';
 
-export default class CrawlService {
+export default class InfoCrawlService {
   private url: string;
   private host: string;
-  private selecter: ISelecter;
+  private selectors: InfoSelectors;
 
   constructor(url: string) {
     this.url = encodeURI(url);
     this.host = this.getHost(this.url);
-    this.selecter = this.getSelecter(this.host);
+    this.selectors = this.getSelectors(this.host);
   }
 
   private getHost = (url: string): string => getHostName(url);
 
-  private getSelecter = (host: string): ISelecter => {
-    const selecters = yaml.safeLoad(
-      fs.readFileSync(path.resolve(__dirname, './selecters.yml'), 'utf8')
+  private getSelectors = (host: string): InfoSelectors => {
+    const selectors = yaml.safeLoad(
+      fs.readFileSync(path.resolve(__dirname, './selectors.yml'), 'utf8')
     );
 
-    return selecters[host] || selecters.base;
+    return selectors[host] || selectors.base;
   };
 
-  public crawl = async (): Promise<CrawlResult> => {
+  public crawl = async (): Promise<InfoResult> => {
     if (phanties.includes(this.host)) {
       return axios
         .get(`https://pickk-crawl.tk/info/?url=${this.url}`)
@@ -46,7 +45,7 @@ export default class CrawlService {
     const crawlerName = '_' + this.host.replace(/\.|-|_|\//g, '');
 
     const result = correct(
-      (crawlers[crawlerName] || selectAll)($, this.selecter)
+      (crawlers[crawlerName] || selectAll)($, this.selectors)
     );
 
     const brandHost =
