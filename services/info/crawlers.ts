@@ -2227,9 +2227,9 @@ export const _paulcorecokr = (
 
 export const _maisonminedcom = (
     $: CheerioStatic,
-    selecter: ISelecter
-): CrawlResult => {
-  const result = selectAll($, selecter);
+    selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
   const originalPrice = Number(
       parseValue($, 'originalPrice', 'span#span_product_price_custom')
   );
