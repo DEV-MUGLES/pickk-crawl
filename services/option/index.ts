@@ -13,6 +13,6 @@ export default class OptionCrawlService {
 
   crawl = async (): Promise<any> => {
     const html = await requestHtml(this.url);
-    return crawlers[this.crawlerName](this.url, html);
+    return (crawlers[this.crawlerName] || crawlers.cafe24)(this.url, html);
   };
 }
