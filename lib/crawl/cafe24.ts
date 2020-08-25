@@ -5,14 +5,14 @@ export const getCafe24OptionNames = (html: string): string[] => {
   const SEARCH_TEXT = "var option_name_mapper = '";
   const start = html.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
   const end = html.indexOf("';", start);
-  return html.slice(start, end).split('#$%');
+  return html.slice(start, end).split(/#$%|-/);
 };
 
 export const getCafe24Data = (html: string) => {
   try {
     const stockData = getStockData(html);
 
-    if (Object.values(stockData)[0]['use_stock']) {
+    if (Object.values(stockData)[0]['option_value_orginal']) {
       return stockData;
     }
     return getOptionDefaultData(html);
@@ -24,7 +24,7 @@ export const getCafe24Data = (html: string) => {
 const getStockData = (html: string) => {
   const SEARCH_TEXT = "option_stock_data = '";
   const start = html.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
-  const end = html.indexOf("';var", start);
+  const end = html.indexOf("';", start);
   const optionDataStr = html
     .slice(start, end)
     .replace(/\\\"/gi, '"')
