@@ -1,7 +1,9 @@
 import { OptionResult, MakeshopStockData } from '../../types';
 
 // optionPriceVariant는 cover하지 못 한다.
-export const getMakeshopOptionData = (html: string): OptionResult => {
+export const getMakeshopOptionData = (
+  html: string
+): { optionNames: string[]; result: OptionResult } => {
   const values = {};
   const isSoldOut = [];
   const productPriceVariants = [];
@@ -13,12 +15,17 @@ export const getMakeshopOptionData = (html: string): OptionResult => {
   });
 
   stockData.forEach((stockRecord, index) => {
-    values[optionNames[0]].push(stockRecord.opt_values);
+    values[optionNames[0]].push(
+      stockRecord.opt_values || stockRecord.opt_value
+    );
 
     if (Number(stockRecord.sto_real_stock) === 0) {
       isSoldOut.push([index]);
     }
-    if (Number(stockRecord.sto_price) !== 0) {
+    if (
+      Number(stockRecord.sto_price) !== 0 &&
+      stockRecord.sto_price !== undefined
+    ) {
       productPriceVariants.push({
         option: [index],
         price: Number(stockRecord.sto_price),
@@ -27,10 +34,13 @@ export const getMakeshopOptionData = (html: string): OptionResult => {
   });
 
   return {
-    values,
-    isSoldOut,
-    optionPriceVariants: [],
-    productPriceVariants,
+    optionNames,
+    result: {
+      values,
+      isSoldOut,
+      optionPriceVariants: [],
+      productPriceVariants,
+    },
   };
 };
 

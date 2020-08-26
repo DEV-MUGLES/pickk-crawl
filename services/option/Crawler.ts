@@ -50,7 +50,10 @@ export default class OptionCralwer {
   };
 
   makeshop = (): OptionCralwer => {
-    this.result = { ...this.result, ...getMakeshopOptionData(this.html) };
+    const { optionNames, result } = getMakeshopOptionData(this.html);
+    this.optionNames = optionNames;
+    this.result = { ...this.result, ...result };
+
     return this;
   };
 

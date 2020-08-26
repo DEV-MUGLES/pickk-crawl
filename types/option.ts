@@ -45,8 +45,9 @@ export type SmartstoreStockData = SmartstoreStockRecord[];
 export type MakeshopStockRecord = {
   opt_name: string;
   opt_values: string;
+  opt_value: string;
   sto_price: number;
-  sto_real_stock: number;
+  sto_real_stock?: number;
 };
 
 export type MakeshopStockData = MakeshopStockRecord[];
