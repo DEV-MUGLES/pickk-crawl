@@ -2298,3 +2298,15 @@ export const _waze8690scafe24com = (
     isSoldout,
   });
 };
+
+export const _oohahhcokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).attr('href').includes('OutOfStock');
+  return correct({
+    ...result,
+    isSoldout,
+  });
+};
