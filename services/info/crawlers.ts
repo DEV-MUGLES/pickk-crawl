@@ -2365,3 +2365,14 @@ export const _charmskr = (
     isSoldout,
   });
 };
+
+export const _mmglstorecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  return correct({
+    ...result,
+    images: result.images.slice(1),
+  });
+};
