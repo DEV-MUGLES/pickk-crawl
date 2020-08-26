@@ -1,3 +1,3 @@
 export * from './crawl';
-export * from './utils/Parser';
-export * from './request'
+export * from './utils';
+export * from './request';

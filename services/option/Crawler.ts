@@ -4,6 +4,7 @@ import {
   getCafe24Data,
   formatCafe24Data,
   getCafe24OptionNames,
+  getAllCombination,
   cleanUpString,
 } from '../../lib';
 import { OptionResult } from '../../types/option';
@@ -12,11 +13,13 @@ export default class OptionCralwer {
   private url: string;
   private html: string;
   private optionNames: string[];
+  private $: CheerioStatic;
   result: OptionResult;
 
   constructor(url: string, html: string) {
     this.url = url;
     this.html = html;
+    this.$ = cheerio.load(html);
     this.optionNames = [];
     this.result = {
       values: {},
@@ -45,8 +48,7 @@ export default class OptionCralwer {
   ): OptionCralwer => {
     this.result.values = {};
 
-    const $ = cheerio.load(this.html);
-    $(selector).each((index, ele) => {
+    this.$(selector).each((index, ele) => {
       if (index < startIndex) {
         return;
       }
@@ -65,8 +67,7 @@ export default class OptionCralwer {
     containerStartIndex: number = 0,
     valueStartIndex: number = 0
   ): OptionCralwer => {
-    const $ = cheerio.load(this.html);
-    $(containerSelector).each((i, container) => {
+    this.$(containerSelector).each((i, container) => {
       if (i < containerStartIndex) {
         return;
       }
@@ -83,6 +84,28 @@ export default class OptionCralwer {
         }
       });
     });
+    return this;
+  };
+
+  // 옵션 단위 품절 check가 불가능하고, 아이템 단위 품절 check만 가능할 때 사용합니다. 아이템이 품절인 경우 모든 옵션을 품절로 처리합니다.
+  checkItemIsSoldout = (
+    selector: string,
+    checkIsSoldout?: (ins: Cheerio) => boolean
+  ): OptionCralwer => {
+    const cheerioInstance = this.$(selector);
+    const isSoldout = checkIsSoldout
+      ? checkIsSoldout(cheerioInstance)
+      : !cheerioInstance.hasClass('displaynone');
+
+    if (!isSoldout) {
+      return this;
+    }
+
+    const sizes = this.optionNames.map(
+      (optionName) => this.result.values[optionName].length
+    );
+    getAllCombination([], sizes, this.result.isSoldOut);
+
     return this;
   };
 }
