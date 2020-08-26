@@ -5,5 +5,5 @@ export const strToNumber = (str: string): number => {
 };
 
 export const cleanUpString = (str: string): string => {
-  return str.replace(/\n/gi, '').trim();
+  return str.replace(/\n|\[품절\]|\(품절\)/gi, '').trim();
 };

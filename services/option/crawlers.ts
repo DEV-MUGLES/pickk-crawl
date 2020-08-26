@@ -16,3 +16,20 @@ export const _josephtcokr = (url: string, html: string): OptionResult => {
       1
     ).result;
 };
+
+export const _nomanualofficialcom = (
+  url: string,
+  html: string
+): OptionResult => {
+  return new OptionCralwer(url, html)
+    .crawlOptionNames(
+      'div.shopProductOptionListDiv > div > span.custom-select-option-name'
+    )
+    .crawlValues(
+      'div.shopProductOptionListDiv > div.productOption > div.customSelectDiv',
+      'div.custom-select-option-info',
+      (ele) => ele.children[0].data.includes('품절'),
+      1,
+      1
+    ).result;
+};

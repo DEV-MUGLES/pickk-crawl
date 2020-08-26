@@ -19,6 +19,7 @@ export default class OptionCralwer {
     this.html = html;
     this.optionNames = [];
     this.result = {
+      values: {},
       isSoldOut: [],
       optionPriceVariants: [],
       productPriceVariants: [],
