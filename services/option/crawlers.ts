@@ -61,3 +61,21 @@ export const _ojoskr = (url: string, html: string): OptionResult => {
       1
     ).result;
 };
+
+export const _hyojicokr = (url: string, html: string): OptionResult => {
+  return new OptionCralwer(url, html)
+    .crawlOptionNames(
+      'div.info > div.table-opt > table > tbody > tr > td > div.opt-wrap > dl:nth-child(1) > dt'
+    )
+    .crawlValues(
+      'div.info > div.table-opt > table > tbody > tr > td > div.opt-wrap > dl:nth-child(1) > dd',
+      'option',
+      null,
+      0,
+      1
+    )
+    .checkItemIsSoldout(
+      'div.table-opt tbody tr p.soldout',
+      (ins) => ins.text().search('품절') > -1
+    ).result;
+};
