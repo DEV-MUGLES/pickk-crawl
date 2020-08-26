@@ -1901,26 +1901,36 @@ export const _wuzustudiocom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+
+  const headHtml = $('head').html();
+  const ORIGINAL_SEARCH_TEXT =
+    '<meta property="product:price:amount" content="';
+  const originalStart =
+    headHtml.indexOf(ORIGINAL_SEARCH_TEXT) + ORIGINAL_SEARCH_TEXT.length;
+  const originalEnd = headHtml.indexOf('" />', originalStart);
+  const originalPrice = Number(headHtml.slice(originalStart, originalEnd));
+
+  const SALE_SEARCH_TEXT =
+    '<meta property="product:sale_price:amount" content="';
+  const saleStart =
+    headHtml.indexOf(SALE_SEARCH_TEXT) + SALE_SEARCH_TEXT.length;
+  const saleEnd = headHtml.indexOf('" />', saleStart);
+  const salePrice = Number(headHtml.slice(saleStart, saleEnd));
+
   const scriptHtml = $(selector.imageUrl).html();
   const SEARCH_TEXT = '<meta property="og:image" content="';
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
   const end = scriptHtml.indexOf('" />', start);
   const imageUrl = scriptHtml.slice(start, end);
-  const salePrice = Number(
-    $(selector.salePrice)
-      .text()
-      .split('(')[0]
-      .trim()
-      .replace(/[^0-9]/g, '')
-  );
 
   const isSoldout = $(selector.isSoldout).hasClass('displaynone');
 
   return correct({
     ...result,
-    isSoldout,
+    originalPrice,
     salePrice,
     imageUrl,
+    isSoldout,
   });
 };
 
