@@ -1,4 +1,5 @@
 export * from './cafe24';
+export * from './smartstore';
 
 export const getProductNum = (url: string): number => {
   const sumin = Number(

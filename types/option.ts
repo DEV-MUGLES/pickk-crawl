@@ -17,6 +17,21 @@ export type stockData = {
   };
 };
 
+export type SmartstoreStockRecord = {
+  id: number;
+  price: number;
+  stockQuantity: number;
+  regOrder: number;
+  optionName1: string;
+  optionName2: string;
+  optionName3: string;
+  optionName4: string;
+  optionName5: string;
+  todayDispatch: boolean;
+};
+
+export type SmartstoreStockData = SmartstoreStockRecord[];
+
 export type optionDefaultData = {
   [name: string]: string;
 };
