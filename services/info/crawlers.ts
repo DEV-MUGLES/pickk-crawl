@@ -2310,3 +2310,15 @@ export const _oohahhcokr = (
     isSoldout,
   });
 };
+
+export const _charmskr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).hasClass('displaynone');
+  return correct({
+    ...result,
+    isSoldout,
+  });
+};
