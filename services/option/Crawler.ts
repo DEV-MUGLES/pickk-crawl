@@ -50,7 +50,7 @@ export default class OptionCralwer {
       if (index < startIndex) {
         return;
       }
-      const optionName = ele.children[0].data.toString();
+      const optionName = ele.children[0].data?.toString();
       this.optionNames.push(optionName);
       this.result.values[optionName] = [];
     });

@@ -33,3 +33,17 @@ export const _nomanualofficialcom = (
       1
     ).result;
 };
+
+export const _oohahhcokr = (url: string, html: string): OptionResult => {
+  return new OptionCralwer(url, html)
+    .crawlOptionNames(
+      'form.variations_form.cart > table > tbody > tr > td.label > label'
+    )
+    .crawlValues(
+      'form.variations_form.cart > table > tbody > tr > td.value > select',
+      'option',
+      () => false, // 옵션 개별 품절 여부는 보류중
+      0,
+      1
+    ).result;
+};
