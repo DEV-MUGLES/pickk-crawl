@@ -678,7 +678,10 @@ export const _kolonmallcom = (
   });
 };
 
-export const _ssgcom = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+export const _ssgcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
   const result = selectAll($, selector);
 
   let brandKor = unescape($(selector.brandKor).last().text().trim()).replace(
@@ -855,7 +858,10 @@ export const _shoppinginterparkcom = (
   });
 };
 
-export const _g9cokr = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+export const _g9cokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
   const result = selectAll($, selector);
 
   const name = result.name.slice(0, result.name.indexOf('|'));
@@ -1849,7 +1855,10 @@ export const _fillikecom = (
   });
 };
 
-export const _hagokr = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+export const _hagokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
   const result = selectAll($, selector);
   const brandKor = $(selector.brandKor).text();
   const originalPrice =
@@ -1916,7 +1925,10 @@ export const _wuzustudiocom = (
   });
 };
 
-export const _kingkr = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+export const _kingkr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
   const result = selectAll($, selector);
   const isSoldout = $(selector.isSoldout).hasClass('displaynone');
 
@@ -2108,7 +2120,10 @@ export const _flareupcokr = (
   });
 };
 
-export const _ojoskr = ($: CheerioStatic, selector: InfoSelectors): InfoResult => {
+export const _ojoskr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
   const result = selectAll($, selector);
   const isSoldout = !$(selector.isSoldout).hasClass('hide');
   return correct({
@@ -2226,18 +2241,32 @@ export const _paulcorecokr = (
 };
 
 export const _maisonminedcom = (
-    $: CheerioStatic,
-    selector: InfoSelectors
+  $: CheerioStatic,
+  selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
   const originalPrice = Number(
-      parseValue($, 'originalPrice', 'span#span_product_price_custom')
+    parseValue($, 'originalPrice', 'span#span_product_price_custom')
   );
-  const salePrice = Number(parseValue($, 'originalPrice', 'strong#span_product_price_text'));
+  const salePrice = Number(
+    parseValue($, 'originalPrice', 'strong#span_product_price_text')
+  );
 
   return correct({
     ...result,
     originalPrice: originalPrice || salePrice,
     salePrice: salePrice || result.salePrice,
+  });
+};
+
+export const _waze8690scafe24com = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = !$(selector.isSoldout).hasClass('displaynone');
+  return correct({
+    ...result,
+    isSoldout,
   });
 };
