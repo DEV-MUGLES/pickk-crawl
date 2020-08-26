@@ -1349,3 +1349,4 @@ chrischristy.com:
   <<: *base
   images: 'div#prdDetail div.cont img'
   isSoldout: '#m_contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > div.xans-element-.xans-product.xans-product-action > div.ec-base-button.btnArea > span'
+  originalPrice: 'span#span_product_price_custom'
