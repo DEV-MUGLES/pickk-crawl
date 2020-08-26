@@ -3,6 +3,10 @@ import * as cheerio from 'cheerio';
 
 export const getCafe24OptionNames = (html: string): string[] => {
   const SEARCH_TEXT = "var option_name_mapper = '";
+  if (html.indexOf(SEARCH_TEXT) < 0) {
+    throw new Error();
+  }
+
   const start = html.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
   const end = html.indexOf("';", start);
   return html.slice(start, end).split(/#\$%|-/);

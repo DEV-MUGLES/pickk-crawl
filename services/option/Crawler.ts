@@ -14,15 +14,19 @@ export default class OptionCralwer {
   constructor(url: string, html: string) {
     this.url = url;
     this.html = html;
-    this.result = {} as OptionResult;
+    this.optionNames = [];
   }
 
   cafe24 = (): OptionCralwer => {
-    this.optionNames = getCafe24OptionNames(this.html);
-    const data = getCafe24Data(this.html);
-    const option = formatCafe24Data(data, this.optionNames);
+    try {
+      this.optionNames = getCafe24OptionNames(this.html);
+      const data = getCafe24Data(this.html);
+      const option = formatCafe24Data(data, this.optionNames);
 
-    this.result = { ...this.result, ...option };
-    return this;
+      this.result = { ...this.result, ...option };
+      return this;
+    } catch {
+      return this;
+    }
   };
 }
