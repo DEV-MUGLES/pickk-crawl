@@ -251,7 +251,6 @@ export const _beslowcokr = (
   if (brandKor === 'MONOFLOW') brandKor = '모노플로우';
   if (brandKor === 'node archive') brandKor = '노드 아카이브';
   if (brandKor === 'MOAA') brandKor = '모아';
-  if (brandKor === 'MOAA') brandKor = '모아';
 
   return correct({
     ...result,
@@ -2256,6 +2255,35 @@ export const _maisonminedcom = (
     ...result,
     originalPrice: originalPrice || salePrice,
     salePrice: salePrice || result.salePrice,
+  });
+};
+
+export const _namerclothingcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const brandKor = result.name.includes('S.H.V.')
+    ? '슬리퍼히트비디오'
+    : '네이머클로딩';
+
+  return correct({
+    ...result,
+    brandKor,
+    name: result.name.replace('S.H.V. ', ''),
+  });
+};
+
+export const _ohkooscokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const brandKor = result.brandKor === 'Big Union' ? '빅유니온' : '엠니';
+
+  return correct({
+    ...result,
+    brandKor,
   });
 };
 
