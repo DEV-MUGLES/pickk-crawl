@@ -220,4 +220,5 @@ export const brandNames = {
   'nodearchive.com': '노드아카이브',
   'dgre.co.kr': '디그레',
   'waze8690s.cafe24.com': '웨이즈',
+  'chindown.kr': '친다운',
 };
