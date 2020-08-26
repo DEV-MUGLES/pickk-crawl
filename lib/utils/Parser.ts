@@ -3,3 +3,7 @@ export const strToNumber = (str: string): number => {
     str.slice(0, str.indexOf('.') + 1 || str.length).replace(/[^0-9]/g, '')
   );
 };
+
+export const cleanUpString = (str: string): string => {
+  return str.replace(/\n/gi, '').trim();
+};
