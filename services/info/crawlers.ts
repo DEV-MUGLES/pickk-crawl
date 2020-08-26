@@ -1,4 +1,10 @@
-import { parseValue, selectAll, correct, strToNumber } from '../../lib';
+import {
+  parseValue,
+  selectAll,
+  correct,
+  strToNumber,
+  selectImages,
+} from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { correctImageUrl } from '.';
 import * as cheerio from 'cheerio';
@@ -1803,10 +1809,37 @@ export const _thesortiecom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+
+  const bodyHtml = $('body').html();
+  const ORIGINAL_SEARCH_TEXT = '"prod_org_price":';
+  const originalStart =
+    bodyHtml.indexOf(ORIGINAL_SEARCH_TEXT) + ORIGINAL_SEARCH_TEXT.length;
+  const originalEnd = bodyHtml.indexOf(',', originalStart);
+  const originalPrice = Number(bodyHtml.slice(originalStart, originalEnd));
+
+  const SALE_SEARCH_TEXT = '"prod_price":';
+  const saleStart =
+    bodyHtml.indexOf(SALE_SEARCH_TEXT) + SALE_SEARCH_TEXT.length;
+  const saleEnd = bodyHtml.indexOf(',', saleStart);
+  const salePrice = Number(bodyHtml.slice(saleStart, saleEnd));
+
+  const SNS_BODY_SEARCH_TEXT = ',"_body":"<';
+  const snsBodyStart =
+    bodyHtml.indexOf(SNS_BODY_SEARCH_TEXT) + SNS_BODY_SEARCH_TEXT.length - 1;
+  const snsBodyEnd = bodyHtml.indexOf(',', snsBodyStart);
+  const snsBodyHtml = bodyHtml
+    .slice(snsBodyStart, snsBodyEnd)
+    .replace(/\\/gi, '');
+
+  const images = selectImages(cheerio.load(snsBodyHtml), 'img');
+
   const isSoldout = $(selector.isSoldout).text().search('SOLDOUT') > -1;
   return correct({
     ...result,
     isSoldout,
+    originalPrice,
+    salePrice,
+    images,
     name: result.name.replace('솔티  - ', '').split(':')[0],
   });
 };
