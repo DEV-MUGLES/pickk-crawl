@@ -8,6 +8,9 @@ const smartstore = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html).smartstore();
 };
 
+const makeshop = (url: string, html: string): OptionCralwer => {
+  return new OptionCralwer(url, html).makeshop();
+};
 
 export const _josephtcokr = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html)
@@ -75,3 +78,5 @@ export const _hyojicokr = (url: string, html: string): OptionCralwer => {
 };
 
 export const _smartstorenavercomjuanhomme = smartstore;
+
+export const _inrowscokr = makeshop;
