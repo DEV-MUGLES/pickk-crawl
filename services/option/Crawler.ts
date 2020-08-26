@@ -5,6 +5,7 @@ import {
   formatCafe24Data,
   getCafe24OptionNames,
   getSmartstoreOptionData,
+  getMakeshopOptionData,
   getAllCombination,
   cleanUpString,
 } from '../../lib';
@@ -45,6 +46,11 @@ export default class OptionCralwer {
 
   smartstore = (): OptionCralwer => {
     this.result = { ...this.result, ...getSmartstoreOptionData(this.html) };
+    return this;
+  };
+
+  makeshop = (): OptionCralwer => {
+    this.result = { ...this.result, ...getMakeshopOptionData(this.html) };
     return this;
   };
 

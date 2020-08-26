@@ -1,9 +1,19 @@
-export type evaluateResponse = {
-  type: evaluateData;
-  data: stockData | optionDefaultData | boolean;
+export type OptionResult = {
+  values: { [name: string]: string[] };
+  isSoldOut: number[][];
+  itemIsSoldOut?: boolean;
+  optionPriceVariants: priceVariant[];
+  productPriceVariants: priceVariant[];
 };
 
-export type evaluateData = 'stock' | 'optionDefault';
+export type optionDefaultData = {
+  [name: string]: string;
+};
+
+export type priceVariant = {
+  option: number[];
+  price: number;
+};
 
 export type stockData = {
   [name: string]: {
@@ -32,19 +42,11 @@ export type SmartstoreStockRecord = {
 
 export type SmartstoreStockData = SmartstoreStockRecord[];
 
-export type optionDefaultData = {
-  [name: string]: string;
+export type MakeshopStockRecord = {
+  opt_name: string;
+  opt_values: string;
+  sto_price: number;
+  sto_real_stock: number;
 };
 
-export type OptionResult = {
-  values: { [name: string]: string[] };
-  isSoldOut: number[][];
-  itemIsSoldOut?: boolean;
-  optionPriceVariants: priceVariant[];
-  productPriceVariants: priceVariant[];
-};
-
-export type priceVariant = {
-  option: number[];
-  price: number;
-};
+export type MakeshopStockData = MakeshopStockRecord[];
