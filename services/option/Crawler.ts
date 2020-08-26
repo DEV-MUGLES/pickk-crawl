@@ -18,7 +18,11 @@ export default class OptionCralwer {
     this.url = url;
     this.html = html;
     this.optionNames = [];
-    this.result = { isSoldOut: [] } as OptionResult;
+    this.result = {
+      isSoldOut: [],
+      optionPriceVariants: [],
+      productPriceVariants: [],
+    } as OptionResult;
   }
 
   cafe24 = (): OptionCralwer => {
