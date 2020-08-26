@@ -5,6 +5,10 @@ export const cafe24 = (url: string, html: string): OptionResult => {
   return new OptionCralwer(url, html).cafe24().result;
 };
 
+const smartstore = (url: string, html: string): OptionResult => {
+  return new OptionCralwer(url, html).smartstore().result;
+};
+
 export const _josephtcokr = (url: string, html: string): OptionResult => {
   return new OptionCralwer(url, html)
     .crawlOptionNames('div.item_add_option_box > dl > dt')
@@ -69,3 +73,5 @@ export const _hyojicokr = (url: string, html: string): OptionResult => {
       (ins) => ins.text().search('품절') > -1
     ).result;
 };
+
+export const _smartstorenavercomjuanhomme = smartstore;
