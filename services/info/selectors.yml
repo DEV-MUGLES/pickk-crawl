@@ -349,6 +349,8 @@ amonmovement.com:
 leire.co.kr:
   <<: *base
   name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
+  images: '#mun_productDetail img'
+  isSoldout: '#mun_paymentButton > span.soldout'
 
 ordinarypeople.co.kr:
   <<: *custom_price

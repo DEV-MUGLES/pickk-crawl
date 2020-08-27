@@ -515,10 +515,12 @@ export const _leirecokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+  const imageUrl = $(selector.imageUrl).first().attr().content;
 
   return correct({
     ...result,
-    imageUrl: '',
+    imageUrl,
+    images: result.images.filter((image) => !image.includes('staff')),
   });
 };
 
