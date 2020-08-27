@@ -933,7 +933,9 @@ oofos.co.kr:
 glothes.co.kr:
   <<: *base
   name: 'title'
-  salePrice: '#span_product_coupon_dc_price'
+  salePrice: '#span_product_price_sale'
+  isSoldout: 'div.detailArea > div > div > div.xans-element-.xans-product.xans-product-action > div.ec-base-button > span'
+  images: '#prdDetail img'
 
 sonamustore.com:
   <<: *base
