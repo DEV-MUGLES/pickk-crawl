@@ -28,8 +28,8 @@ sperone.co.kr:
 
 massnoun.com:
   <<: *custom_price
-  isSoldout: 'span.btnRight > a'
-  images: 'div#prdDetail img'
+  isSoldout: 'div.detail_right_wrap > div > div > div.xans-element-.xans-product.xans-product-action.ec-base-button.gFull > a.btnSubmit'
+  images: 'ul.detail_left_big img'
 
 toffee.co.kr:
   <<: *base
