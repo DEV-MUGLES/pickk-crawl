@@ -7,7 +7,7 @@ export default async (req: NowRequest, res: NowResponse) => {
   try {
     const optionCrawlService = new OptionCrawlService(url.toString());
     const data = await optionCrawlService.crawl();
-    res.json({ option: data, url });
+    res.json({ ...data, url });
   } catch (err) {
     console.log(err);
     res.status(500).send({
