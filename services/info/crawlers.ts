@@ -164,16 +164,16 @@ export const _wconceptcokr = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const scriptHtml = $(selector.brandKor).html();
+  const brandEng = $("#frmproduct > div.h_group > h2 > a").text();
 
-  const SEARCH_TEXT = '$brandnamekr = "';
-  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
-  const end = scriptHtml.indexOf('"', start);
-  const brandKor = scriptHtml.slice(start, end);
+  const brandKor = result.brandKor
+    .slice(result.brandKor.indexOf("[") + 1, result.brandKor.indexOf("]"))
+    .replace(brandEng, "")
+    .trim();
 
   return correct({
     ...result,
-    brandKor,
+    brandKor: brandKor,
   });
 };
 

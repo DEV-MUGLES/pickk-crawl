@@ -96,7 +96,7 @@ mss.kr:
 wconcept.co.kr:
   <<: *base
   name: meta[property="eg:itemName"]
-  brandKor: "body > script:nth-child(33)"
+  brandKor: meta[property="og:description"]
   originalPrice: meta[property="eg:originalPrice"]
   salePrice: meta[property="eg:salePrice"]
   images: "#detailArea img"
