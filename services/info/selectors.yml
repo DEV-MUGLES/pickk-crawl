@@ -90,10 +90,13 @@ store.musinsa.com: &musinsa
 m.store.musinsa.com:
   <<: *musinsa
 
+mss.kr:
+  <<: *musinsa
+
 wconcept.co.kr:
   <<: *base
   name: meta[property="eg:itemName"]
-  brandKor: 'body > script:nth-child(33)'
+  brandKor: meta[property="og:description"]
   originalPrice: meta[property="eg:originalPrice"]
   salePrice: meta[property="eg:salePrice"]
   images: '#detailArea img'
@@ -1244,7 +1247,7 @@ oohahh.co.kr:
 enou.co.kr:
   <<: *base
   isSoldout: 'div.xans-product-action div.btnArea span'
-  images: 'div#prdDetail div.cont img'
+  images: '#detailArea img'
 
 fatalism.co.kr:
   <<: *base
@@ -1380,3 +1383,29 @@ mmglstore.com:
 voiebit.com:
   <<: *base
   images: 'div#prdDetail img'
+  isSoldout: 'div.xans-element-.xans-product.xans-product-action > div.ec-base-button > span.displaynone'
+
+edenmade.co.kr:
+  <<: *base
+  originalPrice: '#detail > form > div > div.info > div.price > del'
+  salePrice: '#detail > form > div > div.info > div.price > span > strong'
+  images: '#detail > div > div.tabcnt_detail.tabcnt_detail0 > div img'
+  isSoldout: '#detail > form > div > div.info > div.btn > span.box_btn.large.gray.buy > a'
+
+oryany.co.kr:
+  <<: *base
+  originalPrice: '#form1 > div.shopdetailInfoValue > p:nth-child(1) > span.shopdetailInfoCont > strike'
+  salePrice: '#form1 > div.shopdetailInfoValue > p:nth-child(1) > span.shopdetailInfoCont > em > strong'
+
+joesnewbalanceoutlet.com:
+  <<: *base
+  name: '#DetailsHeading > h1'
+  originalPrice: '#Price > div.floatLeft.productPriceInfo > span.origPrice > span'
+  salePrice: '#Price > span > span:nth-child(2)'
+
+adlielos.com:
+  <<: *base
+  name: 'div.xans-element-.xans-product.xans-product-detail.detail_info_wrap > div > table > tbody > tr:nth-child(1) > td > span'
+  originalPrice: '#span_product_price_text'
+  images: '#contents > div.small_thumb_wrap > div.xans-element-.xans-product.xans-product-detail.small_thumb img'
+  isSoldout: '#contents > div.detail_footer_wrap > div > div.xans-element-.xans-product.xans-product-detail.detail_footer_right > div.xans-element-.xans-product.xans-product-action.ec-base-button.gFull > a.btnSubmit.displaynone'
