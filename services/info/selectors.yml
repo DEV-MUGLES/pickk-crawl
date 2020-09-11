@@ -1039,6 +1039,7 @@ denmade.co.kr:
 
 smartstore.naver.com/juan_homme:
   <<: *base
+  name: 'dt.prd_name strong'
   originalPrice: '#wrap > div > div.prd_detail_basic > div.info > form > fieldset > div._copyable > dl > dd > div.area_cost > strong > span.original > span.thm'
   salePrice: '#wrap > div > div.prd_detail_basic > div.info > form > fieldset > div._copyable > dl > dd > div.area_cost > strong > span.thm'
   isSoldout: 'div.prd_type3 > div.not_goods'
