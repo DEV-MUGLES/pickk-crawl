@@ -63,7 +63,7 @@ alphaindustrieskorea.com:
 garment-lable.com:
   <<: *base
   images: '#prdDetail > div.cont > img'
-  isSoldout: '#viewbox_c > div > div > div.xans-element-.xans-product.xans-product-action > div.ec-base-button1 > span.displaynone'
+  isSoldout: '#viewbox_c > div > div > div.xans-element-.xans-product.xans-product-action > div.ec-base-button1 > span'
 
 notnnot.com:
   <<: *custom_price
@@ -1145,7 +1145,7 @@ nomanual-official.com:
 
 phos333.com:
   <<: *base
-  isSoldout: 'div.xans-element div.ec-base-button span.btn'
+  isSoldout: 'div.xans-product-action div.ec-base-button span.btn'
   images: 'div.xans-product ul li img'
 
 k-ing.kr:
@@ -1283,7 +1283,7 @@ lohnt.co.kr:
 maison-mined.com:
   <<: *base
   name: '#contents > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.detail_left > div > div > div > p'
-  isSoldout: 'div.xans-element-.xans-product > span'
+  isSoldout: 'div.xans-product-action > span'
   images: 'div.detail_center img'
 
 modnine.com:
@@ -1384,7 +1384,7 @@ mmglstore.com:
 voiebit.com:
   <<: *base
   images: 'div#prdDetail img'
-  isSoldout: 'div.xans-element-.xans-product.xans-product-action > div.ec-base-button > span.displaynone'
+  isSoldout: 'div.xans-element-.xans-product.xans-product-action > div.ec-base-button > span'
 
 edenmade.co.kr:
   <<: *base
@@ -1414,4 +1414,4 @@ adlielos.com:
 litstore.kr:
   <<: *base
   images: 'div.cont img'
-  isSoldout: 'div.btnArea div.ga09bt2.displaynone'
+  isSoldout: 'div.btnArea div.ga09bt2'
