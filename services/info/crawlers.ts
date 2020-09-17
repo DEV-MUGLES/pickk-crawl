@@ -2470,7 +2470,8 @@ export const _thehandsomecom = (
   const brandKor =
     {
       'TIME HOMME': '타임옴므',
-    }[result.brandKor] || '더한섬닷컴';
+      'SYSTEM HOMME': '시스템옴므',
+    }[result.brandKor] || result.brandKor;
 
   return correct({
     ...result,
