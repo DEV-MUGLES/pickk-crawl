@@ -2448,3 +2448,15 @@ export const _brumancokr = (
     isSoldout: $(selector.isSoldout).hasClass('displaynone'),
   });
 };
+
+export const _solidhommecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.replace(' - 솔리드옴므 공식 온라인 스토어', ''),
+  });
+};
