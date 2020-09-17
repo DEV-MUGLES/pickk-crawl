@@ -2460,3 +2460,20 @@ export const _solidhommecom = (
     name: result.name.replace(' - 솔리드옴므 공식 온라인 스토어', ''),
   });
 };
+
+export const _thehandsomecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const brandKor =
+    {
+      'TIME HOMME': '타임옴므',
+    }[result.brandKor] || '더한섬닷컴';
+
+  return correct({
+    ...result,
+    brandKor,
+  });
+};
