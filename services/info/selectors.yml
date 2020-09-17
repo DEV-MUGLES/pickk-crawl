@@ -1425,3 +1425,7 @@ areuban.com:
   <<: *base
   images: 'div#prdDetail div.cont img'
   isSoldout: '#bsStickPrdDetail > div > div.detailArea > div > div.xans-element-.xans-product.xans-product-action > div:nth-child(1) > span'
+
+amfeast.co.kr:
+  <<: *base
+  images: 'div#product_detail_view img'
