@@ -1415,3 +1415,8 @@ litstore.kr:
   <<: *base
   images: 'div.cont img'
   isSoldout: 'div.btnArea div.ga09bt2'
+
+bruman.co.kr:
+  <<: *base
+  images: 'div#prdDetail div.cont img'
+  isSoldout: '#rightbar > div > div > div.detailArea0.float-fade > div > div.xans-element-.xans-product.xans-product-action > div.ec-base-button_main > a.first'

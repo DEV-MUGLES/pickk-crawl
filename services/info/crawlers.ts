@@ -2436,3 +2436,15 @@ export const _adlieloscom = (
     isSoldout: $(selector.isSoldout).text() !== 'SOLD OUT',
   });
 };
+
+export const _brumancokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    isSoldout: $(selector.isSoldout).hasClass('displaynone'),
+  });
+};
