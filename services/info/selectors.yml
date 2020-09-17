@@ -1420,3 +1420,8 @@ bruman.co.kr:
   <<: *base
   images: 'div#prdDetail div.cont img'
   isSoldout: '#rightbar > div > div > div.detailArea0.float-fade > div > div.xans-element-.xans-product.xans-product-action > div.ec-base-button_main > a.first'
+
+areuban.com:
+  <<: *base
+  images: 'div#prdDetail div.cont img'
+  isSoldout: '#bsStickPrdDetail > div > div.detailArea > div > div.xans-element-.xans-product.xans-product-action > div:nth-child(1) > span'
