@@ -1104,6 +1104,8 @@ flareup.co.kr:
 
 kutletshop.com:
   <<: *base
+  originalPrice: '#shopProductPrice > span'
+  salePrice: 'span.productDiscountPriceSpan'
   isSoldout: 'div#shopProductContentInfo > div#shopProductCartErrorDiv'
   images: 'div#productDetail div#productDescriptionDetailPage img'
 
