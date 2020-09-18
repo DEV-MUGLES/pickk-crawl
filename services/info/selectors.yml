@@ -254,7 +254,7 @@ stussy.co.kr:
 esnocturne.com:
   <<: *custom_price
   isSoldout: 'span.soldout'
-  images: 'div#mun_productDetail center img'
+  images: 'div#mun_productDetail img'
 
 barrels.co.kr:
   name: '#itemTitle'
