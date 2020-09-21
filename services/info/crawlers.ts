@@ -13,30 +13,19 @@ export const _storemusinsacom = (
   $: CheerioStatic,
   selector: InfoSelectors
 ): InfoResult => {
-  const name = $(selector.name).last().attr().content;
-  const brandKor = $(selector.brandKor).last().text();
-  const imageUrl = $(selector.imageUrl).last().attr().content;
-  const originalPrice = Number(
-    $(selector.originalPrice)
-      .last()
-      .text()
-      .replace(/[^0-9]/g, '')
-  );
+  const result = selectAll($, selector);
+
+  const { name, brandKor, originalPrice } = result;
   const salePrice = $(selector.salePrice).html()
-    ? Number(
-        $(selector.salePrice)
-          .last()
-          .text()
-          .replace(/[^0-9]/g, '')
-      )
+    ? result.salePrice
     : originalPrice;
 
   return {
+    ...result,
     name: name.slice(name.indexOf(') ') + 2, name.indexOf(' - ')),
     brandKor: brandKor.slice(0, brandKor.indexOf('(')),
-    imageUrl,
-    originalPrice,
     salePrice,
+    isSoldout: $(selector.isSoldout).text() === '품절',
   };
 };
 
