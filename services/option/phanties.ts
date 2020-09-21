@@ -1,1 +1,1 @@
-export default ['thesortie.com'];
+export default ['thesortie.com', 'store.musinsa.com'];
