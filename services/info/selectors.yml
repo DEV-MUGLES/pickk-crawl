@@ -1104,6 +1104,8 @@ flareup.co.kr:
 
 kutletshop.com:
   <<: *base
+  originalPrice: '#shopProductPrice > span'
+  salePrice: 'span.productDiscountPriceSpan'
   isSoldout: 'div#shopProductContentInfo > div#shopProductCartErrorDiv'
   images: 'div#productDetail div#productDescriptionDetailPage img'
 
@@ -1304,7 +1306,7 @@ pavement.co.kr:
 rdvz.kr:
   <<: *base
   isSoldout: 'div.xans-product-action div.btnArea span'
-  images: 'div.detailArea div.swiper-slide img'
+  images: 'div#prdDetail div.cont img'
 
 xeroxero.co.kr:
   <<: *base
