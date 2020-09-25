@@ -226,4 +226,5 @@ export const brandNames = {
   "joesnewbalanceoutlet.com": "뉴발란스",
   "enou.co.kr": "에노우",
   "adlielos.com": "에드리엘로스",
+  "biflapper.com": "바이플래퍼",
 };
