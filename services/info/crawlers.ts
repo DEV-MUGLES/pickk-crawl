@@ -2352,6 +2352,9 @@ export const _oohahhcokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+  let { brandKor } = result;
+  if (brandKor === 'Big Union') brandKor = '빅유니온';
+  if (brandKor.includes('M.Nii')) brandKor = '엠니';
   const isSoldout = $(selector.isSoldout).attr('href').includes('OutOfStock');
   return correct({
     ...result,
