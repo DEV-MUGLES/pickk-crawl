@@ -243,7 +243,7 @@ jemutshop.com:
 beslow.co.kr:
   name: 'div.detail-product-name > div:nth-child(2) > span'
   brandKor: 'div.detail-brand-name > a > span'
-  imageUrl: 'div.detail-img > ul.detail-img-list > li:nth-child(1)'
+  imageUrl: 'div.detail-slide > ul.product-img-list > li:nth-child(1)'
   originalPrice: 'div.detail-sale > div:nth-child(1) > span:nth-child(3)'
   salePrice: 'div.detail-sale > div:nth-child(1) > span:nth-child(1)'
 

@@ -234,6 +234,7 @@ export const _beslowcokr = (
   if (brandKor === 'MONOFLOW') brandKor = '모노플로우';
   if (brandKor === 'node archive') brandKor = '노드 아카이브';
   if (brandKor === 'MOAA') brandKor = '모아';
+  if (brandKor === 'BESLOW SLOWBOY') brandKor = '비슬로우 슬로우보이';
 
   return correct({
     ...result,
