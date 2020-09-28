@@ -256,7 +256,7 @@ stussy.co.kr:
 esnocturne.com:
   <<: *custom_price
   isSoldout: 'span.soldout'
-  images: 'div#mun_productDetail center img'
+  images: 'div#mun_productDetail img'
 
 barrels.co.kr:
   name: '#itemTitle'
@@ -1433,3 +1433,8 @@ areuban.com:
 amfeast.co.kr:
   <<: *base
   images: 'div#product_detail_view img'
+
+biflapper.com:
+  <<: *base
+  isSoldout: 'div.xans-product-action > div.ec-base-button.btnArea > span'
+  images: 'div#prdDetail div.cont img'
