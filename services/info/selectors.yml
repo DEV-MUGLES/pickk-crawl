@@ -182,9 +182,9 @@ cosstores.com:
 
 plac-official.com:
   <<: *base
-  imageUrl: 'div.goods-thumb > ul >  li > a > img'
-  originalPrice: 'div.goods-info > table > tbody > tr:nth-child(1) > td > span'
-  salePrice: 'div.goods-info > table > tbody > tr:nth-child(2) > td > b'
+  originalPrice: 'li.prd_custom'
+  salePrice: 'li.prd_price'
+  images: '#prdDetail > div.cont img'
 
 giordano.co.kr: &giordano
   name: 'h3.name'

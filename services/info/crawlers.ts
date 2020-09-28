@@ -95,18 +95,6 @@ export const _zavanascom = (
   };
 };
 
-export const _placofficialcom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  return {
-    ...result,
-    imageUrl: 'https://plac-official.com/' + result.imageUrl,
-  };
-};
-
 export const _giordanocokr = (
   $: CheerioStatic,
   selector: InfoSelectors
