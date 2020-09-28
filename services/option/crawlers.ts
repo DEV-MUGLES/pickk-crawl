@@ -64,7 +64,7 @@ export const _smartstorenavercomjuanhomme = smartstore;
 export const _inrowscokr = makeshop;
 
 export const _hyojicokr = (url: string, html: string): OptionCralwer =>
-  makeshop(url, html).checkItemIsSoldout(
+  makeshop(url, html).checkitemIsSoldout(
     'div.table-opt tbody tr p.soldout',
     (ins) => ins.text().search('품절') > -1
   );

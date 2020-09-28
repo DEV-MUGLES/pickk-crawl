@@ -7,7 +7,7 @@ import {
 // optionPriceVariant는 cover하지 못 한다.
 export const getSmartstoreOptionData = (html: string): OptionResult => {
   const values = {};
-  const isSoldOut = [];
+  const isSoldout = [];
   const productPriceVariants = [];
 
   const optionNames = getOptionNames(html);
@@ -26,7 +26,7 @@ export const getSmartstoreOptionData = (html: string): OptionResult => {
     const coordinate = getOptionCoordinate(optionNames, stockRecord, values);
 
     if (stockRecord.stockQuantity === 0) {
-      isSoldOut.push(coordinate);
+      isSoldout.push(coordinate);
     }
     if (stockRecord.price !== 0) {
       productPriceVariants.push({
@@ -38,7 +38,7 @@ export const getSmartstoreOptionData = (html: string): OptionResult => {
 
   return {
     values,
-    isSoldOut,
+    isSoldout,
     optionPriceVariants: [],
     productPriceVariants,
   };

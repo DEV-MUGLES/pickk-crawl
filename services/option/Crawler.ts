@@ -25,7 +25,7 @@ export default class OptionCralwer {
     this.optionNames = [];
     this.result = {
       values: {},
-      isSoldOut: [],
+      isSoldout: [],
       optionPriceVariants: [],
       productPriceVariants: [],
     } as OptionResult;
@@ -95,7 +95,7 @@ export default class OptionCralwer {
           cleanUpString(ele.children[0].data.toString())
         );
         if (checkIsSoldout?.(ele)) {
-          this.result.isSoldOut.push([j - valueStartIndex]);
+          this.result.isSoldout.push([j - valueStartIndex]);
         }
       });
     });
@@ -103,7 +103,7 @@ export default class OptionCralwer {
   };
 
   // 옵션 단위 품절 check가 불가능하고, 아이템 단위 품절 check만 가능할 때 사용합니다. 아이템이 품절인 경우 모든 옵션을 품절로 처리합니다.
-  checkItemIsSoldout = (
+  checkitemIsSoldout = (
     selector: string,
     checkIsSoldout?: (ins: Cheerio) => boolean
   ): OptionCralwer => {
@@ -119,7 +119,7 @@ export default class OptionCralwer {
     const sizes = this.optionNames.map(
       (optionName) => this.result.values[optionName].length
     );
-    getAllCombination([], sizes, this.result.isSoldOut);
+    getAllCombination([], sizes, this.result.isSoldout);
 
     return this;
   };

@@ -1,7 +1,7 @@
 export type OptionResult = {
   values: { [name: string]: string[] };
-  isSoldOut: number[][];
-  itemIsSoldOut?: boolean;
+  isSoldout: number[][];
+  itemIsSoldout?: boolean;
   optionPriceVariants: priceVariant[];
   productPriceVariants: priceVariant[];
 };

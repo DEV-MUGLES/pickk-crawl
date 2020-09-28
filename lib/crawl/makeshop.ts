@@ -5,7 +5,7 @@ export const getMakeshopOptionData = (
   html: string
 ): { optionNames: string[]; result: OptionResult } => {
   const values = {};
-  const isSoldOut = [];
+  const isSoldout = [];
   const productPriceVariants = [];
 
   const stockData = getStockData(html);
@@ -20,7 +20,7 @@ export const getMakeshopOptionData = (
     );
 
     if (Number(stockRecord.sto_real_stock) === 0) {
-      isSoldOut.push([index]);
+      isSoldout.push([index]);
     }
     if (
       Number(stockRecord.sto_price) !== 0 &&
@@ -37,7 +37,7 @@ export const getMakeshopOptionData = (
     optionNames,
     result: {
       values,
-      isSoldOut,
+      isSoldout,
       optionPriceVariants: [],
       productPriceVariants,
     },

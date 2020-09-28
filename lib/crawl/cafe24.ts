@@ -69,7 +69,7 @@ const formatOptionDefaultData = (
 ) => {
   const option: OptionResult = {
     values: {},
-    isSoldOut: [],
+    isSoldout: [],
     optionPriceVariants: [],
     productPriceVariants: [],
   };
@@ -130,7 +130,7 @@ const formatOptionDefaultData = (
 const formatStockData = (data: stockData | boolean, optionNames: string[]) => {
   const option: OptionResult = {
     values: {},
-    isSoldOut: [],
+    isSoldout: [],
     optionPriceVariants: [],
     productPriceVariants: [],
   };
@@ -147,7 +147,7 @@ const formatStockData = (data: stockData | boolean, optionNames: string[]) => {
         item.is_selling === 'F' ||
         (item.is_auto_soldout === 'T' && item.stock_number === 0)
       ) {
-        option.isSoldOut.push(
+        option.isSoldout.push(
           values.map((value, index) =>
             option.values[optionNames[index]].indexOf(value)
           )
@@ -186,7 +186,7 @@ const formatStockData = (data: stockData | boolean, optionNames: string[]) => {
           });
       });
     });
-  } else option['itemIsSoldOut'] = !!data;
+  } else option['itemIsSoldout'] = !!data;
 
   return option;
 };
