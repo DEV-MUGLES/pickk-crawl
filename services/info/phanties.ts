@@ -6,4 +6,5 @@ export default [
   'g9.co.kr',
   'hiphoper.com',
   'kolonmall.com',
+  'nike.com',
 ];
