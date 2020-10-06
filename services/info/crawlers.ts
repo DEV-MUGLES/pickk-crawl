@@ -1621,8 +1621,7 @@ export const _glothescokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const scriptHtml = $(selector.salePrice).html();
-  console.log(selector, scriptHtml);
+  const scriptHtml = $(selector.salePrice).html() || $(selector.originalPrice).html();
   const SEARCH_TEXT = '&#xC6D0;';
   const salePrice = Number(
     (scriptHtml.includes(SEARCH_TEXT)
