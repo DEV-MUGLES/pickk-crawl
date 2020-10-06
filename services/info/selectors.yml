@@ -375,12 +375,6 @@ tbhshop.co.kr:
   originalPrice: '#sell_prc_str'
   salePrice: '#coupon_prc'
 
-smartstore.naver.com:
-  <<: *base
-  name: 'dt.prd_name > strong'
-  originalPrice: 'div.area_cost > strong > span.original > span.thm'
-  salePrice: 'div.area_cost > strong > span.thm'
-
 bants.co.kr:
   <<: *base
   originalPrice: 'p.product-price > span.custom-price'
@@ -1039,11 +1033,11 @@ denmade.co.kr:
   isSoldout: '#contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > div.xans-element-.xans-product.xans-product-action > div:nth-child(3)'
   images: 'div#prdDetail img'
 
-smartstore.naver.com/juan_homme:
+smartstore.naver.com:
   <<: *base
-  name: 'dt.prd_name strong'
-  originalPrice: '#wrap > div > div.prd_detail_basic > div.info > form > fieldset > div._copyable > dl > dd > div.area_cost > strong > span.original > span.thm'
-  salePrice: '#wrap > div > div.prd_detail_basic > div.info > form > fieldset > div._copyable > dl > dd > div.area_cost > strong > span.thm'
+  name: 'title'
+  originalPrice: '#content > div > div._2-I30XS1lA > div._2QCa6wHHPy > fieldset > div._1ziwSSdAv8 > div > div > del > span._1LY7DqCnwR'
+  salePrice: '#content > div > div._2-I30XS1lA > div._2QCa6wHHPy > fieldset > div._1ziwSSdAv8 > div > div > strong > span._1LY7DqCnwR'
   isSoldout: 'div.prd_type3 > div.not_goods'
   images: 'div.detail_view'
 

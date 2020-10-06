@@ -1978,37 +1978,6 @@ export const _costumeoclockcom = (
   });
 };
 
-export const _smartstorenavercomjuanhomme = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-  const isSoldout =
-    $(selector.isSoldout).text().search('구매하실 수 없는') > -1;
-
-  const images = [];
-  const scriptHtml = $('body').html();
-  const SEARCH_TEXT = `nmp.registerModule(nmp.front.sellershop.product.show.detail_info, {\n\t\tsAuthenticationType : \"NORMAL\",\n\t\tbSeOne : true,\n\t\tpcHtml : \"`;
-  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
-  const end = scriptHtml.indexOf(`"\n    });`, start);
-  const detail = cheerio.load(scriptHtml.slice(start, end), {
-    decodeEntities: true,
-  });
-  detail('img').each((_, ele) => {
-    const detailImageUrl = (
-      ele.attribs.src || ele.attribs['ec-data-src']
-    ).replace(/\"|\\/gi, '');
-    images.push(detailImageUrl);
-  });
-
-  return correct({
-    ...result,
-    isSoldout,
-    name: result.name.replace(' : JUAN HOMME', ''),
-    images,
-  });
-};
-
 export const _nodearchivecom = (
   $: CheerioStatic,
   selector: InfoSelectors
@@ -2457,5 +2426,44 @@ export const _thehandsomecom = (
   return correct({
     ...result,
     brandKor,
+  });
+};
+
+export const _smartstorenavercom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  let [name, brandKor] = result.name.split(' : ');
+
+  brandKor =
+    {
+      'JUAN HOMME': '주앙옴므',
+    }[brandKor] || brandKor;
+
+  const isSoldout =
+    $(selector.isSoldout).text().search('구매하실 수 없는') > -1;
+
+  const images = [];
+  const scriptHtml = $('body').html();
+  const SEARCH_TEXT = `nmp.registerModule(nmp.front.sellershop.product.show.detail_info, {\n\t\tsAuthenticationType : \"NORMAL\",\n\t\tbSeOne : true,\n\t\tpcHtml : \"`;
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf(`"\n    });`, start);
+  const detail = cheerio.load(scriptHtml.slice(start, end), {
+    decodeEntities: true,
+  });
+  detail('img').each((_, ele) => {
+    const detailImageUrl = (
+      ele.attribs.src || ele.attribs['ec-data-src']
+    ).replace(/\"|\\/gi, '');
+    images.push(detailImageUrl);
+  });
+
+  return correct({
+    ...result,
+    isSoldout,
+    name,
+    brandKor,
+    images,
   });
 };
