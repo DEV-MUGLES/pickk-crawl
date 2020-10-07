@@ -4,6 +4,7 @@ base: &base
   imageUrl: meta[property="og:image"]
   originalPrice: meta[property="product:price:amount"]
   salePrice: meta[property="product:sale_price:amount"]
+  images: 'div#prdDetail div.cont img'
 
 rb: &rb
   name: meta[property="rb:itemName"]
@@ -1432,3 +1433,7 @@ biflapper.com:
   <<: *base
   isSoldout: 'div.xans-product-action > div.ec-base-button.btnArea > span'
   images: 'div#prdDetail div.cont img'
+
+attention-row.com:
+  <<: *base
+  isSoldout: 'div.xans-product-action > div > span.soldout'
