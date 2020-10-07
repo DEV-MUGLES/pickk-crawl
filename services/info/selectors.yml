@@ -1437,3 +1437,8 @@ biflapper.com:
 attention-row.com:
   <<: *base
   isSoldout: 'div.xans-product-action > div > span.soldout'
+
+brans.kr:
+  <<: *base
+  isSoldout: 'span[title="품절"]'
+  images: '#detail1 div.cont img'
