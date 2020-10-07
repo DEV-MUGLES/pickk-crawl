@@ -1442,3 +1442,7 @@ brans.kr:
   <<: *base
   isSoldout: 'span[title="품절"]'
   images: '#detail1 div.cont img'
+
+slowsteadyclub.com:
+  <<: *base
+  brandKor: 'div.detailArea > div.infoArea > div > table > tbody > tr:nth-child(2) > td > span'

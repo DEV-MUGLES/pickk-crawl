@@ -2467,3 +2467,30 @@ export const _smartstorenavercom = (
     images,
   });
 };
+
+export const _slowsteadyclubcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const brandKor =
+    {
+      NEITHERS: '네이더스',
+      AURALEE: '오라리',
+      GRAPHPAPER: '그라프페이퍼',
+      'SLOW STEADY CLUB': '슬로우 스테디 클럽',
+      'NEW BALANCE': '뉴발란스',
+      HOTEL990: '호텔990',
+      MFPEN: '엠에프펜',
+      ASICS: '아식스',
+      NANAMICA: '나나미카',
+      'STUDIO NICHOLSON': '스튜디오 니콜슨',
+      BLANKOF: '블랭코브',
+    }[result.brandKor] || result.brandKor;
+
+  return correct({
+    ...result,
+    brandKor,
+  });
+};
