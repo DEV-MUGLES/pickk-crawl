@@ -1447,7 +1447,10 @@ slowsteadyclub.com:
   <<: *base
   brandKor: 'div.detailArea > div.infoArea > div > table > tbody > tr:nth-child(2) > td > span'
 
-supplyroute.co.kr:
+supplyroute.co.kr: &supplyroute
   <<: *base
   name: '#contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > h2'
   brandKor: '#contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > table:nth-child(7) > tbody > tr:nth-child(1) > td'
+
+magforce001.cafe24.com:
+  <<: *supplyroute
