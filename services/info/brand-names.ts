@@ -229,4 +229,5 @@ export const brandNames = {
   'biflapper.com': '바이플래퍼',
   'attention-row.com': '어텐션로우',
   'brans.kr': '브랜즈',
+  'roughside.co.kr': '러프사이드',
 };

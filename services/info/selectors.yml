@@ -1454,3 +1454,7 @@ supplyroute.co.kr: &supplyroute
 
 magforce001.cafe24.com:
   <<: *supplyroute
+
+rough.side.co.kr:
+  <<: *base
+  name: 'title'
