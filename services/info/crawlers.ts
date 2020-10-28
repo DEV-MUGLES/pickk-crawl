@@ -2494,3 +2494,29 @@ export const _slowsteadyclubcom = (
     brandKor,
   });
 };
+
+export const _editeditioncom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const brandKor =
+    {
+      "UNIFORM BRIDGE": '유니폼브릿지',
+      "DON JUAN": '돈후안',
+      "MAGAZINE B": '매거진비',
+      "MALIBU SANDALS": '말리부샌들',
+      "GONESH": "고네쉬",
+      "PUEBCO": "푸에브코",
+      "REDWING":"레드윙",
+      "REPRODUCTION OF FOUND": "리프로덕션오브파운드",
+      "TECHNICA": "테크니카"
+
+    }[result.brandKor] || result.brandKor;
+
+  return correct({
+    ...result,
+    brandKor,
+  });
+};

@@ -1458,3 +1458,7 @@ magforce001.cafe24.com:
 rough.side.co.kr:
   <<: *base
   name: 'title'
+
+edit-edition.com:
+  <<: *base
+  brandKor: 'div.xans-element-.xans-product.xans-product-detaildesign.detail-left > table > tbody > tr.brand.xans-record- > td > span'
