@@ -1462,3 +1462,7 @@ rough.side.co.kr:
 edit-edition.com:
   <<: *base
   brandKor: 'div.xans-element-.xans-product.xans-product-detaildesign.detail-left > table > tbody > tr.brand.xans-record- > td > span'
+
+ptry.co.kr:
+  <<: *base
+  name: 'ul.prdDetailTitle > li:nth-child(1) > span'

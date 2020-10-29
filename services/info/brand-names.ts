@@ -230,4 +230,5 @@ export const brandNames = {
   'attention-row.com': '어텐션로우',
   'brans.kr': '브랜즈',
   'roughside.co.kr': '러프사이드',
+  'ptry.co.kr': '포터리',
 };
