@@ -232,4 +232,5 @@ export const brandNames = {
   'roughside.co.kr': '러프사이드',
   'ptry.co.kr': '포터리',
   'routeoneshoes.co.kr': '루트원슈즈',
+  'lotuff.co.kr': '로터프',
 };

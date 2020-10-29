@@ -1466,3 +1466,7 @@ edit-edition.com:
 ptry.co.kr:
   <<: *base
   name: 'ul.prdDetailTitle > li:nth-child(1) > span'
+
+lotuff.co.kr:
+  <<: *base
+  name: 'h2.detail_title'
