@@ -404,12 +404,6 @@ aroundthecorner.com:
 tngt.co.kr:
   <<: *rb
 
-lab-101.com:
-  name: '#form1 > div > div.row.product-header > div.col.col50.floatleft > p'
-  imageUrl: 'div.row.product-images > ul > li:nth-child(2) > img'
-  originalPrice: 'p.product-price > span.product-custom'
-  salePrice: 'p.product-price'
-
 goodnation.co.kr:
   <<: *base
   originalPrice: '#span_product_price_custom'
