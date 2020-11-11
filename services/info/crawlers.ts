@@ -376,9 +376,7 @@ export const _drmartenscokr = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const scriptHtml = $('body').html();
-
-  console.log(scriptHtml);
+  const scriptHtml = $('head').html();
 
   const ORIGINAL_SEARCH_TEXT = '"price": "';
   const originalStart =
@@ -394,6 +392,8 @@ export const _drmartenscokr = (
     salePrice: originalPrice,
   });
 };
+
+export const _mdrmartenscokr = _drmartenscokr;
 
 export const _discoveryexpeditioncom = (
   $: CheerioStatic,
