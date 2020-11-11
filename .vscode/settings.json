@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
         "info",
-        "option"
+        "option",
+        "yarn"
     ]
 }
