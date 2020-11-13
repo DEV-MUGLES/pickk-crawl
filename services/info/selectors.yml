@@ -304,9 +304,12 @@ shop.vans.co.kr:
   name: 'h1.title-wrap > a > span.tit'
   originalPrice: 'div.price-wrap > span.price > strong'
 
-drmartens.co.kr:
+drmartens.co.kr: &drmartens
   <<: *base
   originalPrice: '#vue-body > div > div.ProductDetailContainer__form.layout__wrapper > div:nth-child(2) > div > div > div.ProductDetail__center > div.ProductDetail__set > div.ProductDetail__price-container > strong'
+
+m.drmartens.co.kr:
+  <<: *drmartens
 
 levi.co.kr:
   <<: *base
