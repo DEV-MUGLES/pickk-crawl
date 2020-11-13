@@ -2500,3 +2500,19 @@ export const _editeditioncom = (
     brandKor,
   });
 };
+
+export const _sculptorpagecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const isSoldout = !$('div.xans-element-.xans-product.xans-product-action')
+    .last()
+    .hasClass('displaynone');
+
+  return correct({
+    ...result,
+    isSoldout,
+  });
+};

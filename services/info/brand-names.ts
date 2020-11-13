@@ -233,4 +233,5 @@ export const brandNames = {
   'ptry.co.kr': '포터리',
   'routeoneshoes.co.kr': '루트원슈즈',
   'lotuff.co.kr': '로터프',
+  'sculptorpage.com': '스컬프터',
 };

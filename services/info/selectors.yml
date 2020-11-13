@@ -1464,3 +1464,8 @@ ptry.co.kr:
 lotuff.co.kr:
   <<: *base
   name: 'h2.detail_title'
+
+sculptorpage.com:
+  <<: *base
+  images: '#Page_wrap .xans-product-additional img'
+  isSoldout: '#mCSB_1_container div.xans-element-.xans-product.xans-product-action'
