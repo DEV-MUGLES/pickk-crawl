@@ -22,8 +22,8 @@
   "devDependencies": {
     "@now/node": "^1.5.0",
     "@types/charset": "^1.0.1",
-    "@types/cheerio": "^0.22.16",
     "@types/js-yaml": "^3.12.3",
+    "@types/cheerio": "0.22.16",
     "@types/node": "^13.7.4",
     "@types/request": "^2.48.4",
     "@typescript-eslint/eslint-plugin": "^3.9.0",

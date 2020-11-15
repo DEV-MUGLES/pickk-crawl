@@ -29,7 +29,7 @@ export default class InfoCrawlService {
       fs.readFileSync(path.resolve(__dirname, './selectors.yml'), 'utf8')
     );
 
-    return selectors[host] || selectors.base;
+    return selectors[host] || selectors['base'];
   };
 
   public crawl = async (): Promise<InfoResult> => {
