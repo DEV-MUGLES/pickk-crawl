@@ -234,4 +234,5 @@ export const brandNames = {
   'routeoneshoes.co.kr': '루트원슈즈',
   'lotuff.co.kr': '로터프',
   'sculptorpage.com': '스컬프터',
+  'polyteru-store.com': '폴리테루',
 };

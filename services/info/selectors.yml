@@ -1472,3 +1472,10 @@ sculptorpage.com:
   <<: *base
   images: '#Page_wrap .xans-product-additional img'
   isSoldout: '#mCSB_1_container div.xans-element-.xans-product.xans-product-action'
+
+polyteru-store.com:
+  <<: *base
+  originalPrice: '#shopProductPrice'
+  salePrice: '#shopProductPrice'
+  images: '#shopProductImgsMainDiv > div > img:nth-child(2n)'
+  isSoldout: '#shopProductContentInfo .shopProductCartErrorDiv row designSettingElement text-body'

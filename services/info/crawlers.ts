@@ -2226,7 +2226,6 @@ export const _maisonminedcom = (
   const salePrice = Number(
     parseValue($, 'originalPrice', 'strong#span_product_price_text')
   );
-
   return correct({
     ...result,
     originalPrice: originalPrice || salePrice,
@@ -2506,11 +2505,22 @@ export const _sculptorpagecom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-
   const isSoldout = !$('div.xans-element-.xans-product.xans-product-action')
     .last()
     .hasClass('displaynone');
 
+  return correct({
+    ...result,
+    isSoldout,
+  });
+};
+
+export const _polyterustorecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = !$('#shopProductCartErrorDiv').hasClass('hide');
   return correct({
     ...result,
     isSoldout,
