@@ -1,6 +1,8 @@
 import InfoCrawlService from '../../services/info';
 import testCases from '../test-cases.json';
 
+jest.setTimeout(30000);
+
 let datas;
 beforeAll(async () => {
   datas = await Promise.all(
