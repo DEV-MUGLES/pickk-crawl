@@ -1,7 +1,7 @@
 import InfoCrawlService from '../../services/info';
 import testCases from '../test-cases.json';
 
-jest.setTimeout(30000);
+jest.setTimeout(100000);
 
 let datas;
 beforeAll(async () => {
