@@ -80,7 +80,13 @@ currentstore.co.kr:
   <<: *custom_price
   name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
   isSoldout: 'div#mun_paymentButton span'
-  images: 'div#mun_productDetail img'
+  images: '#mun_productDetail img'
+
+m.currentstore.co.kr:
+  <<: *custom_price
+  name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
+  isSoldout: 'div#mun_paymentButton span'
+  images: '#mun_productDetail img'
 
 store.musinsa.com: &musinsa
   <<: *base
@@ -1165,7 +1171,7 @@ oddoneout.co.kr:
   name: '#prdInfo > tbody > tr:nth-child(1) > td > span'
   salePrice: '#span_product_price_text'
   isSoldout: 'div.buttonArea button.gloBtn-blk'
-  images: 'div.xans-product.xans-product-additional p > img'
+  images: '#main > div:nth-child(2) > div > img'
 
 fanacult.com:
   <<: *base
@@ -1214,7 +1220,7 @@ romanticmove.com:
 belier.co.kr:
   <<: *base
   isSoldout: '#contents > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.xans-element-.xans-product.xans-product-additional.detail_right > div > div > div > div.xans-element-.xans-product.xans-product-action.detail_button > span'
-  images: 'div.detail_center img'
+  images: '#prdDetailContent img'
 
 bibyseob.kr:
   <<: *base
@@ -1223,21 +1229,21 @@ bibyseob.kr:
 
 charms.kr:
   <<: *base
-  images: 'div#detailArea img'
+  images: '#fullpage img'
   isSoldout: 'div.infoArea > div.xans-element-.xans-product.xans-product-action > div.btnArea > ul > a'
 
 oohahh.co.kr:
   <<: *base
   name: 'h1[itemprop="name"]'
   imageUrl: 'div.images > a[itemprop="image"] > img'
-  originalPrice: 'div[itemprop="offers"] > p.price > del > span.amount'
-  salePrice: 'div[itemprop="offers"] > p.price > ins > span.amount'
+  originalPrice: 'p.price > span.amount'
+  salePrice: 'p.price > span.amount'
   isSoldout: 'link[itemprop="availability"]'
   images: '#tab-description > div > div > div > img'
 
 13month.com:
   <<: *base
-  images: 'div#detail_right img'
+  images: '#prdDetail > div > div > img'
   originalPrice: 'span#span_product_price_custom strike'
   salePrice: 'strong#span_product_price_text'
 
@@ -1280,7 +1286,11 @@ maison-mined.com:
   <<: *base
   name: '#contents > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.detail_left > div > div > div > p'
   isSoldout: 'div.xans-product-action > span'
-  images: 'div.detail_center img'
+  images: '.detail_center img'
+
+m.maison-mined.com:
+  <<: *base
+  images: '.s_img  img'
 
 modnine.com:
   <<: *base
@@ -1364,11 +1374,11 @@ namerclothing.com:
   isSoldout: '#sssold_btn'
   images: '#prdDetail > div.cont img'
 
-ohkoos.co.kr:
+ohkoos.com:
   <<: *base
   brandKor: 'div.xans-element-.xans-product.xans-product-detaildesign > table > tbody > tr:nth-child(1) > td > span'
   originalPrice: '#span_product_price_custom'
-  images: 'div.xans-element-.xans-product.xans-product-addimage.listImg > ul > li > img'
+  images: '.xans-record- .ThumbImage'
   isSoldout: 'div.xans-element-.xans-product.xans-product-action > div.ec-base-button > span'
 
 mmglstore.com:

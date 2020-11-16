@@ -235,4 +235,8 @@ export const brandNames = {
   'lotuff.co.kr': '로터프',
   'sculptorpage.com': '스컬프터',
   'polyteru-store.com': '폴리테루',
+  'kutletshop.com': '비얼디드키드',
+  'wuzustudio.com': '우주스튜디오',
+  'amfeast.co.kr': '암피스트',
+  'ohkoos.com': '빅유니온',
 };
