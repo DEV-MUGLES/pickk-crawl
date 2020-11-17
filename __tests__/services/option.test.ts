@@ -15,9 +15,14 @@ beforeAll(async () => {
     partnerBrands.map(
       ({ url }) =>
         new Promise(async (resolve) => {
-          const optionCrawlService = new OptionCrawlService(url);
-          const data = await optionCrawlService.crawl();
-          resolve(data);
+          try {
+            const optionCrawlService = new OptionCrawlService(url);
+            const data = await optionCrawlService.crawl();
+            resolve(data);
+          } catch (e) {
+            console.log(e);
+            resolve(null);
+          }
         })
     )
   );

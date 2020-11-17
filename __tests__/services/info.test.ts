@@ -13,9 +13,14 @@ beforeAll(async () => {
     testCases.map(
       ({ url }) =>
         new Promise(async (resolve) => {
-          const infoCrawlService = new InfoCrawlService(url);
-          const data = await infoCrawlService.crawl();
-          resolve(data);
+          try {
+            const infoCrawlService = new InfoCrawlService(url);
+            const data = await infoCrawlService.crawl();
+            resolve(data);
+          } catch (e) {
+            console.log(e);
+            resolve(null);
+          }
         })
     )
   );
