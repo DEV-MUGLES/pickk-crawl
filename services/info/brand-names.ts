@@ -72,7 +72,7 @@ export const brandNames = {
   'istkunst.co.kr': '이스트쿤스트',
   'thet-shirtmuseum.com': '더티셔츠뮤지엄',
   'milletclassic.com': '밀레클래식',
-  'crump.co.kr': '프',
+  'crump.co.kr': '크럼프',
   'morelab.cafe24.com': '오베르',
   'xeroxero.co.kr': '제로',
   'frizm.co.kr': '프리즘웍스',

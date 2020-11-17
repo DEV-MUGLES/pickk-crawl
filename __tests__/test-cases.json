@@ -465,7 +465,7 @@
   },
   {
     "name": "디스커버리 익스페디션",
-    "url": "https://www.discovery-expedition.com/special/2132"
+    "url": "https://www.discovery-expedition.com/goods/%EB%82%A8%EC%84%B1/%EB%8B%A4%EC%9A%B4%EB%B2%A0%EC%8A%A4%ED%8A%B8/DMDV7A061-CR"
   },
   {
     "name": "내셔널지오그래픽 어패럴",
@@ -556,7 +556,27 @@
     "url": "https://frizm.co.kr/product/detail.html?product_no=2272&cate_no=33&display_group=1"
   },
   {
-    "name": "tngt",
-    "url": "https://m.tngt.co.kr/product.do?cmd=getProductDetail&PROD_CD=TGTR0C162N3"
+    "name": "토피",
+    "url": "http://www.toffee.co.kr/product/detail.html?product_no=642&cate_no=1&display_group=3"
+  },
+  {
+    "name": "로스트가든",
+    "url": "http://lostgarden.co.kr/product/detail.html?product_no=1322&cate_no=142&display_group=1"
+  },
+  {
+    "name": "오디너리피플",
+    "url": "https://m.ordinarypeople.co.kr/product/detail.html?product_no=1891&cate_no=123&display_group=1"
+  },
+  {
+    "name": "티비에이치샵",
+    "url": "https://m.tbhshop.co.kr/goods/event_sale.php?sno=674"
+  },
+  {
+    "name": "세븐셀라",
+    "url": "http://hosanna83.cafe24.com/product/07%EC%8A%A4%EC%9B%A8%ED%8A%B8%EC%A1%B0%EA%B1%B0-khaki-brown/898/category/116/display/1/"
+  },
+  {
+    "name": "반츠",
+    "url": "http://bants.co.kr/board/log/read.html?no=216&board_no=12"
   }
 ]
