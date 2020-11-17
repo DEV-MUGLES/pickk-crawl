@@ -17,7 +17,7 @@ beforeAll(async () => {
   );
 });
 
-describe('Test brands', () => {
+describe('Test info-crawl (for all)', () => {
   for (let i = 0; i < testCases.length; ++i) {
     const { name, isPartner } = testCases[i];
     it(name, (done) => {
