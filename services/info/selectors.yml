@@ -338,7 +338,7 @@ neikidnis.com:
 
 dunststudio.com: &dunststudio
   <<: *base
-  originalPrice: 'div.price_box > div:nth-child(1)'
+  originalPrice: '#span_product_price_text'
   salePrice: 'div.price_box > div:nth-child(2)'
 
 m.dunststudio.com:
