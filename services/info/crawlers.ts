@@ -376,7 +376,7 @@ export const _drmartenscokr = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const scriptHtml = $('head').html();
+  const scriptHtml = $('body').html();
 
   const ORIGINAL_SEARCH_TEXT = '"price": "';
   const originalStart =
@@ -394,29 +394,6 @@ export const _drmartenscokr = (
 };
 
 export const _mdrmartenscokr = _drmartenscokr;
-
-export const _discoveryexpeditioncom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  let salePrice = result.salePrice;
-
-  if (result.originalPrice !== 0) {
-    const salePriceStr = $(selector.salePrice).html();
-    salePrice = Number(
-      salePriceStr
-        .slice(salePriceStr.indexOf('</del>'), salePriceStr.length - 8)
-        .replace(/[^0-9]/g, '')
-    );
-  }
-
-  return correct({
-    ...result,
-    salePrice,
-  });
-};
 
 export const _naturestorecokr = (
   $: CheerioStatic,
