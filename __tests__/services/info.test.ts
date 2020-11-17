@@ -1,3 +1,7 @@
+/**
+ * @jest-environment node
+ */
+
 import InfoCrawlService from '../../services/info';
 import testCases from '../test-cases.json';
 
