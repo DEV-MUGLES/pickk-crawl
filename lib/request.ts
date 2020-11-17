@@ -21,13 +21,18 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
           const iResult = decode(body, enc || 'utf-8'); // 획득한 charset값으로 body를 디코딩
           resolve(iResult);
         } else {
-          const { data } = await axios.get(sourceUrl, {
-            headers: {
-              'User-Agent':
-                'Mozilla/5.0 (compatible; Yeti/1.1; +http://naver.me/spd)',
-            },
-          });
-          resolve(data);
+          try {
+            const { data } = await axios.get(sourceUrl, {
+              headers: {
+                'User-Agent':
+                  'Mozilla/5.0 (compatible; Yeti/1.1; +http://naver.me/spd)',
+              },
+            });
+            resolve(data);
+          } catch (e) {
+            console.log(sourceUrl, e);
+            throw e;
+          }
         }
       }
     );

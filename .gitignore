@@ -6,3 +6,6 @@ jspm_packages
 .env*
 .now
 .vercel
+
+# test htmls
+__tests__/data/test-htmls.json
