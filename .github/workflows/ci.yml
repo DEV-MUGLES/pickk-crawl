@@ -57,6 +57,9 @@ jobs:
       - name: TS Test
         run: yarn tsc
 
+      - name: Fetch htmls
+        run: yarn fetch
+
       - name: Info Crawl Test
         run: |
           yarn jest-info
