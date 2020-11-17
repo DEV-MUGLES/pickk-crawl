@@ -16,7 +16,6 @@ export default class OptionCrawlService {
 
   crawl = async (): Promise<any> => {
     if (phanties.includes(getHostName(this.url))) {
-      console.log(this.url);
       return axios
         .get(`https://pickk-crawl.tk/option/?url=${this.url}`)
         .then((res) => res.data);
