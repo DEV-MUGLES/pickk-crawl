@@ -40,7 +40,7 @@ toffee.co.kr:
 
 crump.co.kr:
   <<: *base
-  name: 'div.infoArea > h3'
+  name: 'div.xans-element-.xans-product.xans-product-detaildesign > table > tbody > tr:nth-child(1) > td > span'
 
 milletclassic.com:
   <<: *custom_price
