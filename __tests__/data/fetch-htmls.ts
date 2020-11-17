@@ -17,10 +17,10 @@ const bar = new Progress('fetching htmls... [:bar] :percent :etas', {
 
 const log = {
   fail: (message: any) => {
-    console.log(red.inverse(' FAIL ') + message);
+    console.log(red.inverse(' FAIL ') + ' ' + message);
   },
   success: (message: any) => {
-    console.log(green.inverse.bold(' SUCCESS ') + message);
+    console.log(green.inverse.bold(' SUCCESS ') + ' ' + message);
   },
 };
 
@@ -40,12 +40,10 @@ const fetchHtmls = async (fileName: string) => {
           })
       )
     );
-    process.stdout.clearLine(0);
-    process.stdout.cursorTo(0);
-    log.success(` fetch complete!`);
+    log.success(`fetch complete!`);
     const path = `${__dirname}/${fileName}.json`;
     fs.writeFileSync(path, JSON.stringify(htmls, undefined, 2), 'utf-8');
-    log.success(` ${fileName}.json generated ✨`);
+    log.success(`${fileName}.json generated ✨`);
   } catch (e) {
     console.log(red.inverse(' Error occured!! '));
     console.log(red(e));
