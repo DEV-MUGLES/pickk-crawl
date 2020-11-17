@@ -3,21 +3,25 @@
  */
 
 import OptionCrawlService from '../../services/option';
-import testCases from '../test-cases.json';
+
+import testCases from '../data/test-cases.json';
+import testHtmls from '../data/test-htmls.json';
 
 jest.setTimeout(100000);
 
-const partnerBrands = testCases.filter((testCase) => testCase.isPartner);
+const partnerBrands = testCases
+  .map((testCase, index) => ({ ...testCase, html: testHtmls[index] }))
+  .filter((testCase) => testCase.isPartner);
 
 let datas;
 beforeAll(async () => {
   datas = await Promise.all(
     partnerBrands.map(
-      ({ url }) =>
+      ({ url, html }) =>
         new Promise(async (resolve) => {
           try {
             const optionCrawlService = new OptionCrawlService(url);
-            const data = await optionCrawlService.crawl();
+            const data = await optionCrawlService.crawl(html);
             resolve(data);
           } catch (e) {
             console.log(e);
@@ -27,7 +31,6 @@ beforeAll(async () => {
     )
   );
 });
-
 describe('Test option-crawl (for partners)', () => {
   for (let i = 0; i < partnerBrands.length; ++i) {
     const { name } = partnerBrands[i];

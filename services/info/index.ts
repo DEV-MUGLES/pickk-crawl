@@ -32,14 +32,14 @@ export default class InfoCrawlService {
     return selectors[host] || selectors['base'];
   };
 
-  public crawl = async (): Promise<InfoResult> => {
+  public crawl = async (html?: string): Promise<InfoResult> => {
     if (phanties.includes(this.host)) {
       return axios
         .get(`https://pickk-crawl.tk/info/?url=${this.url}`)
         .then((res) => correct(res.data));
     }
 
-    const body = await requestHtml(this.url);
+    const body = html || (await requestHtml(this.url));
     const $ = cheerio.load(body);
 
     const crawlerName = '_' + this.host.replace(/\.|-|_|\//g, '');

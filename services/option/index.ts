@@ -14,14 +14,14 @@ export default class OptionCrawlService {
     this.crawlerName = '_' + getHostName(this.url).replace(/\.|-|_|\//g, '');
   }
 
-  crawl = async (): Promise<any> => {
+  crawl = async (inputHtml?: string): Promise<any> => {
     if (phanties.includes(getHostName(this.url))) {
       return axios
         .get(`https://pickk-crawl.tk/option/?url=${this.url}`)
         .then((res) => res.data);
     }
 
-    const html = await requestHtml(this.url);
+    const html = inputHtml || (await requestHtml(this.url));
     return (crawlers[this.crawlerName] || crawlers.cafe24)(this.url, html)
       .result;
   };

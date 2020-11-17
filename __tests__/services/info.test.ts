@@ -3,19 +3,26 @@
  */
 
 import InfoCrawlService from '../../services/info';
-import testCases from '../test-cases.json';
+
+import testCases from '../data/test-cases.json';
+import testHtmls from '../data/test-htmls.json';
 
 jest.setTimeout(100000);
+
+const brands = testCases.map((testCase, index) => ({
+  ...testCase,
+  html: testHtmls[index],
+}));
 
 let datas;
 beforeAll(async () => {
   datas = await Promise.all(
-    testCases.map(
-      ({ url }) =>
+    brands.map(
+      ({ url, html }) =>
         new Promise(async (resolve) => {
           try {
             const infoCrawlService = new InfoCrawlService(url);
-            const data = await infoCrawlService.crawl();
+            const data = await infoCrawlService.crawl(html);
             resolve(data);
           } catch (e) {
             console.log(e);
@@ -28,7 +35,7 @@ beforeAll(async () => {
 
 describe('Test info-crawl (for all)', () => {
   for (let i = 0; i < testCases.length; ++i) {
-    const { name, isPartner } = testCases[i];
+    const { name, isPartner } = brands[i];
     it(name, (done) => {
       const data = datas[i];
       expect(data).toBeTruthy();
