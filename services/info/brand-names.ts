@@ -239,4 +239,5 @@ export const brandNames = {
   'wuzustudio.com': '우주스튜디오',
   'amfeast.co.kr': '암피스트',
   'ohkoos.com': '빅유니온',
+  'overr.co.kr': '오베르',
 };
