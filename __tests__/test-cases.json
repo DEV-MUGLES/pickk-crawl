@@ -568,15 +568,19 @@
     "url": "https://m.ordinarypeople.co.kr/product/detail.html?product_no=1891&cate_no=123&display_group=1"
   },
   {
-    "name": "티비에이치샵",
-    "url": "https://m.tbhshop.co.kr/goods/event_sale.php?sno=674"
-  },
-  {
     "name": "세븐셀라",
     "url": "http://hosanna83.cafe24.com/product/07%EC%8A%A4%EC%9B%A8%ED%8A%B8%EC%A1%B0%EA%B1%B0-khaki-brown/898/category/116/display/1/"
   },
   {
-    "name": "반츠",
-    "url": "http://bants.co.kr/board/log/read.html?no=216&board_no=12"
+    "name": "mlb",
+    "url": "https://www.mlb-korea.com/goods/%EB%89%B4%EC%9A%95-%EC%96%91%ED%82%A4%EC%8A%A4/%EB%A7%A8%ED%88%AC%EB%A7%A8/31MTM1041-50L"
+  },
+  {
+    "name": "LLUD",
+    "url": "https://llud.co.kr/product/detail.html?product_no=44127&cate_no=1&display_group=1&brand_name=LLUD"
+  },
+  {
+    "name": "어라운드더코너",
+    "url": "https://www.aroundthecorner.com/shop/view.php?index_no=259889"
   }
 ]
