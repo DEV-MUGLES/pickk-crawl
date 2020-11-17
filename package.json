@@ -7,7 +7,9 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "tsc": "tsc",
     "jest": "jest",
-    "test": "yarn lint && yarn tsc && yarn jest"
+    "jest-info": "yarn jest ./__tests__/services/info.test.ts ",
+    "jest-option": "yarn jest ./__tests__/services/option.test.ts ",
+    "test": "yarn lint && yarn tsc && yarn jest-info && yarn jest-option"
   },
   "author": "thinking-muggles",
   "license": "ISC",

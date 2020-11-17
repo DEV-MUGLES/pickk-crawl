@@ -57,26 +57,10 @@ jobs:
       - name: TS Test
         run: yarn tsc
 
-      - name: Jest Test
+      - name: Info Crawl Test
         run: |
-          mkdir -p coverage
-          yarn jest --coverage --max-workers=2 --silent
-        env:
-          JEST_JUNIT_OUTPUT: test-results/jest/junit.xml
+          yarn jest-info
 
-      - name: Codecov Upload
-        if: matrix.node-version == '12.x'
-        uses: codecov/codecov-action@v1
-        with:
-          token: 44593aba-e97d-4807-9789-96900bb789ea # not required for public repos
-          file: ./coverage/lcov.info
-          # flags: unittests # optional
-          # name: codecov-umbrella # optional
-          # fail_ci_if_error: true # optional (default = false)
-
-      - name: Artifact Upload
-        uses: actions/upload-artifact@v2
-        if: matrix.node-version == '12.x'
-        with:
-          name: my-artifact
-          path: coverage
+      - name: Option Crawl Test
+        run: |
+          yarn jest-option
