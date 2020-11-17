@@ -324,8 +324,8 @@ levi.co.kr:
 
 discovery-expedition.com:
   <<: *base
-  originalPrice: 'dd.payment-price > em > del'
-  salePrice: 'dd.payment-price > em'
+  originalPrice: '.payment-price em'
+  salePrice: '#frmView > div > div > div.item_detail_list > dl.item_price > dd > strong > strong'
 
 naturestore.co.kr:
   <<: *base
