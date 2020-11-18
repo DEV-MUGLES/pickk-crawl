@@ -582,5 +582,53 @@
   {
     "name": "어라운드더코너",
     "url": "https://www.aroundthecorner.com/shop/view.php?index_no=259889"
+  },
+  {
+    "name": "SSG.COM",
+    "url": "http://department.ssg.com/item/itemView.ssg?itemId=1000052245019&siteNo=6009&salestrNo=1004"
+  },
+  {
+    "name": "GS SHOP",
+    "url": "http://www.gsshop.com/prd/prd.gs?prdid=61072600&lsectid=1378788&rank=2&lseq=403259"
+  },
+  {
+    "name": "AK MALL",
+    "url": "https://www.akmall.com/goods/GoodsDetail.do?goods_id=91156639&location=7@0@1006095&urlpath=M170_15954@0"
+  },
+  {
+    "name": "마리오아울렛",
+    "url": "http://www.mariomall.co.kr/Detail?PCode=P000708642&pid=1504"
+  },
+  {
+    "name": "패션플러스",
+    "url": "http://www.fashionplus.co.kr/mall/goods/goods.asp?goods_id=92611656&isVipOnly=0"
+  },
+  {
+    "name": "쿠팡",
+    "url": "https://www.coupang.com/vp/products/2280873867?itemId=3917153995&vendorItemId=71901695319&sourceType=CATEGORY&categoryId=186996&isAddedCart="
+  },
+  {
+    "name": "옥션",
+    "url": "http://itempage3.auction.co.kr/DetailView.aspx?itemno=A554946871"
+  },
+  {
+    "name": "이랜드몰",
+    "url": "http://www.elandmall.com/goods/initGoodsDetail.action?goods_no=1811096977&vir_vend_no=VV16001887&sale_shop_divi_cd=13&disp_ctg_no=&sale_area_no=D1606000568&tr_yn=N&conts_dist_no=1811096977&conts_divi_cd=20&rel_no=1811096977&rel_divi_cd=10&brand_nm=%EC%8A%A4%ED%8C%8C%EC%98%A4&goods_nm=%EC%88%8F%ED%8C%A8%EB%94%A9%EC%A0%90%ED%8D%BC_EXCLUSIVE_SPJP84TC98&cust_sale_price=21000&ga_ctg_nm=365%EC%95%84%EC%9A%B8%EB%A0%9B&isComingSoonYn=N&isReservComingSoonYn=N&reserve_start_dtime=&dlp_list=&dlp_category=MEN%2F%EC%95%84%EC%9A%B0%ED%84%B0%2Fx&flag_img_path=&p_cart_grp_cd="
+  },
+  {
+    "name": "머스트잇",
+    "url": "https://mustit.co.kr/product/product_detail/13594379?click=mainPremium"
+  },
+  {
+    "name": "구찌",
+    "url": "https://www.gucci.com/kr/ko/pr/men/mens-ready-to-wear/mens-sweaters-cardigans/mens-v-necks/double-g-jacquard-wool-v-neck-sweater-p-645292XKBPF8011"
+  },
+  {
+    "name": "크루비",
+    "url": "http://itempage3.auction.co.kr/DetailView.aspx?itemno=A554946871"
+  },
+  {
+    "name": "플레이어",
+    "url": "http://itempage3.auction.co.kr/DetailView.aspx?itemno=A554946871"
   }
 ]
