@@ -35,7 +35,7 @@ export default class InfoCrawlService {
   public crawl = async (html?: string): Promise<InfoResult> => {
     if (phanties.includes(this.host)) {
       return axios
-        .get(`https://pickk-crawl.tk/info/?url=${this.url}`)
+        .get(`https://pickk-crawl.tk/info/?url=${this.url}`, { timeout: 5000 })
         .then((res) => correct(res.data));
     }
 
