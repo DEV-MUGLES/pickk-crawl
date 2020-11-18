@@ -1,6 +1,7 @@
 /**
  * @jest-environment node
  */
+import chalk from 'chalk';
 
 import InfoCrawlService from '../../services/info';
 import { allSettled } from '../../lib';
@@ -39,7 +40,11 @@ describe('Test info-crawl (for all)', () => {
     const { name, isPartner } = brands[i];
     it(name, (done) => {
       const data = datas[i];
-      expect(data).toBeTruthy();
+      if (!data) {
+        console.log(chalk.red(name + 'fetch 실패!'));
+        done();
+        return;
+      }
       expect(data.brandKor.length).toBeGreaterThan(0);
       expect(data.name.length).toBeGreaterThan(0);
       expect(data.imageUrl.length).toBeGreaterThan(0);

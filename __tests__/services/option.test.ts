@@ -1,6 +1,7 @@
 /**
  * @jest-environment node
  */
+import chalk from 'chalk';
 
 import OptionCrawlService from '../../services/option';
 import { allSettled } from '../../lib';
@@ -42,7 +43,10 @@ describe('Test option-crawl (for partners)', () => {
     const { name } = partnerBrands[i];
     it(name, (done) => {
       const data = datas[i];
-      expect(data).toBeTruthy();
+      if (!data) {
+        console.log(chalk.red('fetch 실패!'));
+        done();
+      }
       expect(data.values).toBeTruthy();
       Object.values(data.values).forEach((optionValues) => {
         expect((optionValues as String[]).length).toBeGreaterThan(0);
