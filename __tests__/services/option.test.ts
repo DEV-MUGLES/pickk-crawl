@@ -8,7 +8,7 @@ import { allSettled } from '../../lib';
 import testCases from '../data/test-cases.json';
 import testHtmls from '../data/test-htmls.json';
 
-jest.setTimeout(100000);
+jest.setTimeout(6500);
 
 const partnerBrands = testCases
   .map((testCase) => ({
