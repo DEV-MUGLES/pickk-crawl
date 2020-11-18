@@ -2,7 +2,7 @@ import fs from 'fs';
 import chalk from 'chalk';
 import Progress from 'progress';
 
-import { requestHtml } from '../../lib';
+import { allSettled, requestHtml } from '../../lib';
 
 import testCases from './test-cases.json';
 
@@ -26,27 +26,55 @@ const log = {
 
 const fetchHtmls = async (fileName: string) => {
   try {
-    const htmls = await Promise.all(
+    const htmlDatas = await allSettled(
       testCases.map(
         ({ name, url }) =>
           new Promise(async (resolve) => {
             try {
               const html = await requestHtml(encodeURI(url));
-              bar.tick();
-              resolve(html);
+              resolve({ name, html });
             } catch (e) {
-              log.fail(name + grey(e.message));
+              resolve({
+                name,
+                html: null,
+                message: e.toString(),
+              });
+            } finally {
+              bar.tick();
             }
           })
       )
     );
-    log.success(`fetch complete!`);
+    const failedHtmlDatas = htmlDatas.filter(
+      (htmlData) => !htmlData['value']['html']
+    );
+    failedHtmlDatas.forEach((htmlData) => {
+      log.fail(
+        `${htmlData['value']['name']}` + grey(htmlData['value']['message'])
+      );
+    });
+    if (failedHtmlDatas.length) {
+      console.log('❗실패한 브랜드는 jest 실행시 다시 fetch합니다❗');
+    }
+
+    log.success(
+      `fetch complete! (${testCases.length - failedHtmlDatas.length}/${
+        testCases.length
+      })`
+    );
+
+    const testHtmls = {};
+    htmlDatas.forEach((htmlData) => {
+      if (htmlData['value']['html']) {
+        testHtmls[htmlData['value']['name']] = htmlData['value']['html'];
+      }
+    });
+
     const path = `${__dirname}/${fileName}.json`;
-    fs.writeFileSync(path, JSON.stringify(htmls, undefined, 2), 'utf-8');
+    fs.writeFileSync(path, JSON.stringify(testHtmls, undefined, 2), 'utf-8');
     log.success(`${fileName}.json generated ✨`);
   } catch (e) {
     console.log(red.inverse(' Error occured!! '));
-    console.log(red(e));
   }
 };
 

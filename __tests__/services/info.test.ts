@@ -3,20 +3,21 @@
  */
 
 import InfoCrawlService from '../../services/info';
+import { allSettled } from '../../lib';
 
 import testCases from '../data/test-cases.json';
 import testHtmls from '../data/test-htmls.json';
 
 jest.setTimeout(100000);
 
-const brands = testCases.map((testCase, index) => ({
+const brands = testCases.map((testCase) => ({
   ...testCase,
-  html: testHtmls[index],
+  html: testHtmls[testCase.name],
 }));
 
 let datas;
 beforeAll(async () => {
-  datas = await Promise.all(
+  const results = await allSettled(
     brands.map(
       ({ url, html }) =>
         new Promise(async (resolve) => {
@@ -25,12 +26,12 @@ beforeAll(async () => {
             const data = await infoCrawlService.crawl(html);
             resolve(data);
           } catch (e) {
-            console.log(e);
             resolve(null);
           }
         })
     )
   );
+  datas = results.map((result) => result['value']);
 });
 
 describe('Test info-crawl (for all)', () => {
