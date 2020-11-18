@@ -1,6 +1,6 @@
 ## Item Info Crawler
 
-> Vercel, Cheerio
+> Vercel Serverless, Cheerio, jest
 
 ### Getting Started
 
@@ -11,21 +11,28 @@ npm i -g vercel
 ```
 
 ```shell script
-# test locally
+# run locally
 $ vercel dev
 # deploy
 $ vercel
 ```
 
+### How to test
+
+```shell script
+# fetch test-cases html
+$ yarn fetch
+# run test
+$ yarn jest
+```
+
 ### API Reference
 
-this service has only one api end point
-
-#### Show Current User
+#### Info Crawl
 
 Get simple info of item crawled by given url
 
-**URL** : `/api/crawl/?url=[url]`
+**URL** : `/api/info/?url=[url]`
 
 **Method** : `GET`
 
@@ -75,9 +82,55 @@ For host with images selector (partner)
 }
 ```
 
+#### Option Crawl
+
+Get option/products of item crawled by given url
+
+**URL** : `/api/option/?url=[url]`
+
+**Method** : `GET`
+
+**Auth required** : None
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+```json
+{
+  "values": {
+    "색상": [
+      "블랙",
+      "아이보리",
+      "포레스트 그린",
+      "살몬",
+      "잉크블루",
+      "그린그로우",
+      "소프트베이지",
+      "페이디드민트",
+      "올리브카키"
+    ],
+    "사이즈": ["S", "M", "L", "XL"]
+  },
+  "isSoldout": [
+    [0, 0],
+    [0, 1],
+    ...,
+    [7, 3]
+  ],
+  "optionPriceVariants": [],
+  "productPriceVariants": [],
+  "url": "https://theknitcompany.com/product/20ss-베이직-울니트/1516/category/5/display/1/"
+}
+```
+
 ## Notes
 
-- For hosts included in the phanties, return results processed in option-crawler.
+- For hosts included in the phanties, return results processed in pickk-phantom.
 
 ### Deploy with Vercel
 
