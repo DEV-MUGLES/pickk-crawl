@@ -2504,3 +2504,15 @@ export const _polyterustorecom = (
     isSoldout,
   });
 };
+
+export const _showindowcokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    brandKor: result.brandKor.substring(1, result.brandKor.length),
+  });
+};

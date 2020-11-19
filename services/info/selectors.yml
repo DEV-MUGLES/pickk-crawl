@@ -1502,5 +1502,8 @@ runningnose.kr:
 
 showindow.co.kr:
   <<: *base
-  name: '#content > div:nth-child(15) > div > div.product_inner > div.product_inform > div.title > h2'
-  originalPrice: '#content > div:nth-child(15) > div > div.product_inner > div.product_inform > div.product_option > div > em'
+  name: 'div.product_inform > div.title > h2'
+  imageUrl: 'img.productImage'
+  brandKor: 'div.product_inform > div.pro_top > span'
+  originalPrice: 'div.product_option > div > p'
+  salePrice: 'div.product_inform > div.product_option > div > em'
