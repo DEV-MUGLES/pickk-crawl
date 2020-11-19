@@ -431,7 +431,6 @@ monsterrepublic.co.kr:
 eastpak.co.kr:
   <<: *custom_price
 
-runningnose.kr:
 ssg.com:
   <<: *base
   brandKor: 'div.cdtl_prd_info > span > a'
@@ -447,7 +446,7 @@ gsshop.com:
 goods.ellotte.com:
   name: '#container > div > section > div.info > h3'
   brandKor: '#brndNm > a'
-  originalPrice: '#defuelt_slprc'
+  originalPrice: '#stickyTopParent > div.productDetailTop > div:nth-child(2) > div > div.priceInfo > div > span'
   salePrice: '#benefit_slprc'
   imageUrl: '#detailsGallery_opener > img'
 
@@ -609,6 +608,7 @@ snuv.co.kr:
 hyperround.com:
   <<: *base
   name: '#sit_title'
+  brandKor: '.eyaeya4dan .on'
   originalPrice: '#sit_ov > div.sit_info > table > tbody > tr:nth-child(2) > td > strike'
   salePrice: '#sit_ov > div.sit_info > table > tbody > tr:nth-child(3) > td > strong'
 
@@ -676,7 +676,10 @@ urbanstoff.com:
 
 gncostyle.com:
   <<: *rb
-  brandKor: meta[property="rb:brandName"]
+  name: '.product span'
+  brandKor: '.box-info .brand'
+  imageUrl: '#gallery_01 > li:nth-child(1) > a > img'
+  originalPrice: 'p.mon_top .mon'
 
 countrypowder.com:
   <<: *base
@@ -703,7 +706,8 @@ lomort.co.kr:
 
 thetrillion.co.kr:
   <<: *base
-  originalPrice: '#consumer'
+  name: 'meta[property="og:title"]'
+  originalPrice: 'div.content-content.red'
   salePrice: '#price'
 
 freitag.ch:
@@ -778,8 +782,8 @@ neweracapkorea.com:
 nepamall.com:
   <<: *base
   name: meta[property="og:description"]
-  originalPrice: 'div.order-info.left > div.cost-wrap > span.normal-cost'
-  salePrice: 'div.order-info.left > div.cost-wrap > span.cost'
+  originalPrice: 'div.item_tit_wrap > div.price_wrap > del'
+  salePrice: '.price_wrap span'
 
 skonoshop.com:
   name: '#form1 > div > h3'
@@ -793,7 +797,7 @@ dynafit.co.kr:
 
 jansportkorea.co.kr:
   <<: *base
-  originalPrice: 'div.product-content-info-pric > ul > li:nth-child(1) > dd > span'
+  originalPrice: '#span_product_price_text'
   salePrice: 'div.product-content-info-pric > ul > li > dd > span.sale_price.number'
 
 blackyak.com:
@@ -1489,3 +1493,14 @@ polyteru-store.com:
   salePrice: '#shopProductPrice'
   images: '#shopProductImgsMainDiv > div > img:nth-child(2n)'
   isSoldout: '#shopProductContentInfo .shopProductCartErrorDiv row designSettingElement text-body'
+
+runningnose.kr:
+  <<: *base
+  brandKor: 'div.cdtl_prd_info > span > a'
+  originalPrice: '.productPriceWithDiscountSpan'
+  salePrice: '.productDiscountPriceSpan'
+
+showindow.co.kr:
+  <<: *base
+  name: '#content > div:nth-child(15) > div > div.product_inner > div.product_inform > div.title > h2'
+  originalPrice: '#content > div:nth-child(15) > div > div.product_inner > div.product_inform > div.product_option > div > em'

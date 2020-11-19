@@ -240,4 +240,6 @@ export const brandNames = {
   'amfeast.co.kr': '암피스트',
   'ohkoos.com': '빅유니온',
   'overr.co.kr': '오베르',
+  'auction.co.kr': '옥션',
+  'coupang.com': '쿠팡',
 };

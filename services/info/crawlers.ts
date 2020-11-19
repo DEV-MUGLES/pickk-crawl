@@ -1129,8 +1129,9 @@ export const _hfashionmallcom = (
   );
   let brandKor = brandKorStr.slice(0, brandKorStr.indexOf('">'));
 
-  if (brandKor === 'TOMMY HILFIGER') brandKor = '타미힐피거';
-  if (brandKor === 'CALVIN KLEIN') brandKor = '캘빈클라인';
+  if (brandKor === 'TOMMY HILFIGER MEN') brandKor = '타미힐피거';
+  if (brandKor === 'CALVIN KLEIN MEN') brandKor = '캘빈클라인';
+  if (brandKor === 'TOMMY JEANS') brandKor = '타미진스';
 
   return correct({ ...result, brandKor });
 };
