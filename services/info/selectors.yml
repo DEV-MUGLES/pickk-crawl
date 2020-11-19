@@ -1223,7 +1223,6 @@ romanticmove.com:
 
 belier.co.kr:
   <<: *base
-  isSoldout: '#contents > div.xans-element-.xans-product.xans-product-detail.detail_wrap > div.xans-element-.xans-product.xans-product-additional.detail_right > div > div > div > div.xans-element-.xans-product.xans-product-action.detail_button > span'
   images: '#prdDetailContent img'
 
 bibyseob.kr:

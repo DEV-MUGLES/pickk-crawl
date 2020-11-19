@@ -2516,3 +2516,17 @@ export const _showindowcokr = (
     brandKor: result.brandKor.substring(1, result.brandKor.length),
   });
 };
+
+export const _beliercokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = !$(
+    'div.xans-element-.xans-product.xans-product-action > div:nth-child(2) > a.btnSubmit.mob-btn'
+  ).hasClass('displaynone');
+  return correct({
+    ...result,
+    isSoldout,
+  });
+};
