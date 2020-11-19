@@ -1224,6 +1224,7 @@ romanticmove.com:
 belier.co.kr:
   <<: *base
   images: '#prdDetailContent img'
+  isSoldout: 'div.xans-element-.xans-product.xans-product-action > div:nth-child(2) > a.btnSubmit.mob-btn'
 
 bibyseob.kr:
   <<: *base
