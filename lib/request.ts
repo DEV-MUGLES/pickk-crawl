@@ -28,7 +28,7 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
                 'User-Agent':
                   'Mozilla/5.0 (compatible; Yeti/1.1; +http://naver.me/spd)',
               },
-              timeout: 3000,
+              timeout: 4000,
             });
             resolve(data);
           } catch (e) {

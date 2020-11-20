@@ -135,7 +135,7 @@ afterpray.com:
 
 kolonmall.com:
   name: meta[property="rb:itemName"]
-  brandKor: meta[property="rb:brandName"]
+  brandKor: 'div.brand-name-wrap span.brand-name'
   imageUrl: meta[property="rb:itemImage"]
   originalPrice: meta[property="rb:originalPrice"]
   salePrice: meta[property="rb:salePrice"]
@@ -863,6 +863,9 @@ givenchy.com:
 
 ysl.com:
   <<: *base
+  name: 'div.c-productinfos.c-productinfos--crossell > div > h1'
+  imageUrl: '#slider-images-product > div > div.c-productcarousel > ul > li:nth-child(1) > button > span > img'
+  originalPrice: 'div.c-productinfos.c-productinfos--crossell > div > div.l-pdp__prices > div > p'
   salePrice: '#itemPrice > div > div > span.price > span.value'
 
 moncler.com:
@@ -886,7 +889,9 @@ stoneisland.com:
 
 alexandermcqueen.com:
   <<: *base
-  originalPrice: 'div.hidden > div.itemPrice > span.price > span.value'
+  name: 'div.c-product .c-product__name'
+  imageUrl: 'div.c-productcarousel > ul > li:nth-child(1) > button > img'
+  originalPrice: 'div.l-pdp__prices > div > p'
 
 mooseknuckleskorea.com:
   <<: *base
@@ -898,7 +903,7 @@ dior.com:
 
 haharchive.com:
   <<: *base
-  originalPrice: '#shopProductPrice > span.productPriceWithDiscountSpan'
+  originalPrice: '#shopProductPrice > span.productPriceSpan'
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
 
 shop.timberland.co.kr:
@@ -926,6 +931,7 @@ konusbrand.co.kr:
 coucou-store.com:
   <<: *base
   name: h3.tit-prd
+  imageUrl: '.thumb img'
   originalPrice: td.price > div.tb-left > strike
   salePrice: td.price.sell_price >  div.tb-left
 
@@ -956,9 +962,9 @@ shoemarker.co.kr:
 
 filsonkorea.co.kr:
   <<: *base
-  name: '#goods_spec > form > div > h3'
+  name: '.goods_title div.shortDescription'
   imageUrl: 'img#objImg'
-  originalPrice: '#consumer'
+  originalPrice: 'dl.item_price > dd > strong > strong'
   salePrice: '#price'
 
 ocokorea.com:
@@ -997,6 +1003,7 @@ thesortie.com:
 
 kr.moscot.com:
   <<: *base
+  originalPrice: 'div.product-main__price span'
 
 deadendkr.cafe24.com:
   <<: *base
@@ -1507,3 +1514,27 @@ showindow.co.kr:
   brandKor: 'div.product_inform > div.pro_top > span'
   originalPrice: 'div.product_option > div > p'
   salePrice: 'div.product_inform > div.product_option > div > em'
+
+idlookmall.com:
+  <<: *base
+  name: '#prodNm'
+  brandKor: '#brandNm'
+  originalPrice: 'div.cont span.c999'
+  salePrice: '.fr > .price'
+
+arcteryx.co.kr:
+  <<: *base
+  originalPrice: 'p.org_price > span > s > span'
+  salePrice: 'p.sale_price > span.num'
+
+atmos-seoul.com:
+  <<: *base
+  name: '.tit-prd'
+  brandKor: '#brandNm'
+  originalPrice: 'div.cont span.c999'
+  salePrice: '.fr > .price'
+
+sw925.com:
+  <<: *base
+  imageUrl: 'meta[property="og:image"]'
+  originalPrice: '#span_product_price_text'

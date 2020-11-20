@@ -606,7 +606,6 @@ export const _kolonmallcom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-
   let { brandKor } = result;
   if (brandKor === 'CUSTOMELLOW') brandKor = '커스텀멜로우';
   if (brandKor === 'SERIES') brandKor = '시리즈';
@@ -1271,7 +1270,7 @@ export const _shopmangocom = (
   search_text = '"salePrice":"';
   start = scriptHtml.indexOf(search_text) + search_text.length;
   end = scriptHtml.indexOf('"', start);
-  const salePrice = Number(scriptHtml.slice(start, end));
+  const salePrice = originalPrice;
 
   return correct({
     ...result,
@@ -2515,4 +2514,31 @@ export const _showindowcokr = (
     ...result,
     brandKor: result.brandKor.substring(1, result.brandKor.length),
   });
+};
+
+export const _idlookmallcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  let { brandKor } = result;
+  if (brandKor === 'RENEEVON') brandKor = '레니본';
+  if (brandKor === 'KEITH') brandKor = '키이스';
+  if (brandKor === 'SANDRO HOMME') brandKor = '산드로 옴므';
+  if (brandKor === 'ESSENTIEL') brandKor = '에센셜';
+  if (brandKor === 'IL BISONTE') brandKor = '일 비종떼';
+  if (brandKor === 'CLAUDIE PIERLOT') brandKor = '끌로디 피에로';
+  if (brandKor === 'ELEVENTY MEN') brandKor = '엘레벤티 맨';
+  if (brandKor === 'GIVY') brandKor = '기비';
+  if (brandKor === 'BERENICE') brandKor = '베르니스';
+  if (brandKor === 'ELEVENTY WOMEN') brandKor = '엘레벤티 우먼';
+  if (brandKor === 'MAJE') brandKor = '마쥬';
+  if (brandKor === 'A.P.C. WOMEN') brandKor = '아페쎄 우먼';
+  if (brandKor === 'CHLOE STORA') brandKor = '끌로에 스토라';
+  if (brandKor === 'SANDRO') brandKor = '산드로';
+  if (brandKor === 'A.P.C. MEN') brandKor = '아페쎄 맨';
+  if (brandKor === 'MARIMEKKO') brandKor = '마리에꼬';
+
+  return correct({ ...result, brandKor });
 };
