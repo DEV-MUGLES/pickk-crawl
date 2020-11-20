@@ -1384,7 +1384,7 @@ export const _givenchycom = (
   start = scriptHtml.indexOf(search_text) + search_text.length;
   end = scriptHtml.indexOf('.', start);
   const originalPrice = Number(scriptHtml.slice(start, end));
-  const salePrice = originalPrice;
+  const salePrice = Number(scriptHtml.slice(start, end)) || originalPrice;
   return correct({
     ...result,
     name: result.name.split('|')[0].trim(),
