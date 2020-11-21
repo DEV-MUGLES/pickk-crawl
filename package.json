@@ -10,7 +10,7 @@
     "jest": "jest",
     "jest-info": "yarn jest ./__tests__/services/info.test.ts ",
     "jest-option": "yarn jest ./__tests__/services/option.test.ts ",
-    "test": "yarn fetch && yarn lint && yarn tsc && yarn jest"
+    "test": "yarn fetch && yarn lint && yarn jest"
   },
   "author": "thinking-muggles",
   "license": "ISC",
