@@ -59,7 +59,8 @@ export default class OptionCralwer {
 
   crawlOptionNames = (
     selector: string,
-    startIndex: number = 0
+    startIndex: number = 0,
+    attributeName?: string
   ): OptionCralwer => {
     this.result.values = {};
 
@@ -67,7 +68,10 @@ export default class OptionCralwer {
       if (index < startIndex) {
         return;
       }
-      const optionName = ele.children[0].data?.toString();
+      const optionName = (attributeName
+        ? ele.attribs[attributeName]
+        : ele.children[0].data
+      )?.toString();
       this.optionNames.push(optionName);
       this.result.values[optionName] = [];
     });
