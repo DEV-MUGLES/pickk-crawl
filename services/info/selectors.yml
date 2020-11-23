@@ -157,6 +157,11 @@ nbkorea.com:
   originalPrice: 'div.price > span.won'
   salePrice: 'div.price > span.sale'
 
+m.nbkorea.com:
+  <<: *base
+  originalPrice: 'meta[property="eg:originalPrice"]'
+  salePrice: 'meta[property="eg:salePrice"]'
+
 converse.co.kr:
   name: 'h1.product-name'
   imageUrl: 'div.product-image-container.col-12.col-md-7.col-lg-8 > div.pdp-images.pdp-gallery-main > div.pdp-primary-image.display-small-up > img'
