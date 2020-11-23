@@ -51,11 +51,11 @@ export const _oohahhcokr = (url: string, html: string): OptionCralwer => {
       'form.variations_form.cart > table > tbody > tr > td.label > label'
     )
     .crawlValues(
-      'form.variations_form.cart > table > tbody > tr > td.value > select#optionlist_0',
+      'form.variations_form.cart > table > tbody > tr > td.value > select',
       'option',
       () => false, // 옵션 개별 품절 여부는 보류중
-      1,
-      0
+      0,
+      1
     );
 };
 
