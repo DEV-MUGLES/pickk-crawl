@@ -119,8 +119,8 @@ coor.kr:
 espionage.co.kr:
   name: 'title'
   imageUrl: 'img#lens_img'
-  originalPrice: 'td.price > div.tb-left > strike'
-  salePrice: 'td.price > div.tb-left > span'
+  originalPrice: 'div.price .price_consumer'
+  salePrice: 'div.price .font_shopdetailD'
 
 noirlarmes.co.kr:
   <<: *base
