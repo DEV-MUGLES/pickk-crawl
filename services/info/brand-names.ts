@@ -244,4 +244,5 @@ export const brandNames = {
   'alexandermcqueen.com': '알렉산더맥퀸',
   'mooseknucklescanada.kr': '무스너클',
   'waikei.co.kr': '와이케이',
+  'ffai.co.kr': '파이',
 };

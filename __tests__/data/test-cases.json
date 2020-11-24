@@ -1232,5 +1232,13 @@
   },{
     "name": "뉴발란스",
     "url": "https://m.nbkorea.com/product/productDetail.action?styleCode=NBPDAF773A&colCode=35&cIdx=1385"
+  },{
+    "name": "파이",
+    "url": "http://ffai.co.kr/product/ot21-big-logo-sweat-shirtsnavy/152/category/46/display/1/",
+    "isPartner": true
+  },{
+    "name": "블랙하인드",
+    "url": "https://blackhind.com/product/double-breast-long-coat-black/207/category/34/display/1/",
+    "isPartner": true
   }
 ]
