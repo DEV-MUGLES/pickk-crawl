@@ -1544,6 +1544,10 @@ sw925.com:
   imageUrl: 'meta[property="og:image"]'
   originalPrice: '#span_product_price_text'
 
+ffai.co.kr:
+  <<: *base
+  images: '#prdDetail  img'
+
 blackhind.com:
   <<: *base
   isSoldout: 'div.xans-element-.xans-product.xans-product-action > div.ec-base-button.gColumn > span'
