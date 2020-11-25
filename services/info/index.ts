@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import * as crawlers from './crawlers';
-import phanties from './phanties';
+import puppeties from './puppeties';
 
 import { requestHtml, correct, selectAll, getHostName } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
@@ -33,9 +33,11 @@ export default class InfoCrawlService {
   };
 
   public crawl = async (html?: string): Promise<InfoResult> => {
-    if (phanties.includes(this.host)) {
+    if (puppeties.includes(this.host)) {
       return axios
-        .get(`https://pickk-crawl.tk/info/?url=${this.url}`, { timeout: 5000 })
+        .get(`https://pickk-crawl.tk/api/crawl/info/?url=${this.url}`, {
+          timeout: 5000,
+        })
         .then((res) => correct(res.data));
     }
 

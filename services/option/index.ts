@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import * as crawlers from './crawlers';
-import phanties from './phanties';
+import puppeties from './puppeties';
 
 import { requestHtml, getHostName } from '../../lib';
 
@@ -15,9 +15,9 @@ export default class OptionCrawlService {
   }
 
   crawl = async (inputHtml?: string): Promise<any> => {
-    if (phanties.includes(getHostName(this.url))) {
+    if (puppeties.includes(getHostName(this.url))) {
       return axios
-        .get(`https://pickk-crawl.tk/option/?url=${this.url}`)
+        .get(`https://pickk-crawl.tk/api/crawl/option/?url=${this.url}`)
         .then((res) => res.data);
     }
 
