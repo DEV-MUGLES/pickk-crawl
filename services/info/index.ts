@@ -36,7 +36,7 @@ export default class InfoCrawlService {
     if (puppeties.includes(this.host)) {
       return axios
         .get(`https://pickk-crawl.tk/api/crawl/info/?url=${this.url}`, {
-          timeout: 5000,
+          timeout: 10000,
         })
         .then((res) => correct(res.data));
     }
