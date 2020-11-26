@@ -18,7 +18,7 @@ export default class OptionCrawlService {
     if (puppeties.includes(getHostName(this.url))) {
       return axios
         .get(`https://pickk-crawl.tk/api/crawl/option/?url=${this.url}`, {
-          timeout: 10000,
+          timeout: 30000,
         })
         .then((res) => res.data);
     }
