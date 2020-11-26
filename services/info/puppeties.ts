@@ -7,4 +7,5 @@ export default [
   'hiphoper.com',
   'kolonmall.com',
   'nike.com',
+  'www2.hm.com',
 ];
