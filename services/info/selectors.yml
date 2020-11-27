@@ -98,6 +98,7 @@ store.musinsa.com: &musinsa
 
 m.store.musinsa.com:
   <<: *musinsa
+  brandKor: meta[property="og:title"]
 
 mss.kr:
   <<: *musinsa
