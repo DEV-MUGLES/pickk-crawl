@@ -163,6 +163,13 @@ m.nbkorea.com:
   originalPrice: 'meta[property="eg:originalPrice"]'
   salePrice: 'meta[property="eg:salePrice"]'
 
+newbalance.com:
+  <<: *base
+  name: 'div.product-name > div > h1'
+  imageUrl: '#pdpCarousel > div:nth-child(2) > div.carousel-item.zoom-image-js.active > picture > img'
+  originalPrice: 'div.row.pdp-price.mt-2.p-0 > div > div > div > span > del > span > span'
+  salePrice: 'div.row.pdp-price.mt-2.p-0 > div > div > div > span > span'
+
 converse.co.kr:
   name: 'h1.product-name'
   imageUrl: 'div.product-image-container.col-12.col-md-7.col-lg-8 > div.pdp-images.pdp-gallery-main > div.pdp-primary-image.display-small-up > img'

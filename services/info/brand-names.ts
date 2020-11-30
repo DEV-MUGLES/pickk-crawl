@@ -17,6 +17,7 @@ export const brandNames = {
   'afterpray.com': '애프터프레이',
   'carhartt-wip.co.kr': '칼하트',
   'nbkorea.com': '뉴발란스',
+  'newbalance.com': '뉴발란스',
   'converse.co.kr': '컨버스',
   'asics.com': '아식스',
   'personal-pack.com': '퍼스널팩',

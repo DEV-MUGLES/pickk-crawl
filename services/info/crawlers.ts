@@ -2542,3 +2542,15 @@ export const _idlookmallcom = (
 
   return correct({ ...result, brandKor });
 };
+
+
+export const _newbalancecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  return correct({
+    ...result,
+    imageUrl: $(selector.imageUrl).attr()['data-src']
+  });
+};
