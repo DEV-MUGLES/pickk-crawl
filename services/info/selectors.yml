@@ -165,10 +165,10 @@ m.nbkorea.com:
 
 newbalance.com:
   <<: *base
-  name: 'div.product-name > div > h1'
-  imageUrl: '#pdpCarousel > div:nth-child(2) > div.carousel-item.zoom-image-js.active > picture > img'
-  originalPrice: 'div.row.pdp-price.mt-2.p-0 > div > div > div > span > del > span > span'
-  salePrice: 'div.row.pdp-price.mt-2.p-0 > div > div > div > span > span'
+  name: 'div.product-name h1'
+  imageUrl: '#pdpCarousel div.carousel-item.zoom-image-js.active img'
+  originalPrice: 'div.row.pdp-price.mt-2.p-0 span.value'
+  salePrice: '#productDetails div.pdp-price span.price-value > span.sales'
 
 converse.co.kr:
   name: 'h1.product-name'
