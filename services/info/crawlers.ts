@@ -2543,7 +2543,6 @@ export const _idlookmallcom = (
   return correct({ ...result, brandKor });
 };
 
-
 export const _newbalancecom = (
   $: CheerioStatic,
   selector: InfoSelectors
@@ -2551,6 +2550,21 @@ export const _newbalancecom = (
   const result = selectAll($, selector);
   return correct({
     ...result,
-    imageUrl: $(selector.imageUrl).attr()['data-src']
+    imageUrl: $(selector.imageUrl).attr()['data-src'],
+  });
+};
+
+export const _aecawhitecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const isSoldout = !$(selector.isSoldout).html();
+
+  return correct({
+    ...result,
+    isSoldout,
+    imageUrl: 'http://www.aecawhite.com/shop' + result.imageUrl.slice(2),
   });
 };

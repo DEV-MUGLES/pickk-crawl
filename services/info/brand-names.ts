@@ -246,4 +246,5 @@ export const brandNames = {
   'mooseknucklescanada.kr': '무스너클',
   'waikei.co.kr': '와이케이',
   'ffai.co.kr': '파이',
+  'aecawhite.com': '에이카화이트',
 };

@@ -1559,3 +1559,12 @@ ffai.co.kr:
 blackhind.com:
   <<: *base
   isSoldout: 'div.xans-element-.xans-product.xans-product-action > div.ec-base-button.gColumn > span'
+
+aecawhite.com:
+  <<: *base
+  name: 'div.product-name > dt'
+  originalPrice: 'div.product-name > dt2'
+  salePrice: 'div.product-meta > ul > li:nth-child(1) dd'
+  imageUrl: '#zoomOut1 img'
+  images: 'div.product-accordion img'
+  isSoldout: 'div.product-button a.buy'
