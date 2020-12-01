@@ -12,7 +12,7 @@ export const selectAll = ($: CheerioStatic, selectors: InfoSelectors) => {
 
 export const select = ($: CheerioStatic, selector: string): string => {
   try {
-    if (selector.includes('meta')) {
+    if (selector.includes('meta[')) {
       return $(selector).last().attr().content;
     }
     if (selector.includes('input')) {
