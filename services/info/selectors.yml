@@ -117,16 +117,14 @@ coor.kr:
   originalPrice: 'input#price'
   salePrice: 'input#disprice'
 
-espionage.co.kr: 
+espionage.co.kr: &espionage
   name: 'title'
   imageUrl: 'img#lens_img'
   originalPrice: 'div.tb-left strike'
   salePrice: 'div.tb-left span'
 
 espionage.co.kr/m:
-  <<: *base
-  name: 'title'
-  imageUrl: 'img#lens_img'
+  <<: *espionage
   originalPrice: 'div.price span.price_consumer'
   salePrice: 'div.price .font_shopdetailD'
 
