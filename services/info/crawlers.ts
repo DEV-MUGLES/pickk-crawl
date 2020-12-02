@@ -2583,3 +2583,23 @@ export const _krburberrycom = (
     name: name.slice(0, nameLastIndex > 0 ? nameLastIndex : name.length),
   });
 };
+
+export const _applecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const scriptHtml = $('head').html();
+  const SEARCH_TEXT = `,"price":`;
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf(`,`, start);
+  const priceStr = scriptHtml.slice(start, end);
+  const originalPrice = Number(priceStr.slice(0, priceStr.lastIndexOf('.')));
+
+  return correct({
+    ...result,
+    name: result.name.replace('구입하기', ''),
+    originalPrice,
+  });
+};

@@ -1573,3 +1573,7 @@ aecawhite.com:
   imageUrl: '#zoomOut1 img'
   images: 'div.product-accordion img'
   isSoldout: 'div.product-button a.buy'
+
+apple.com:
+  <<: *base
+  originalPrice: 'span.as-price-currentprice'

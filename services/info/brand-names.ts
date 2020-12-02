@@ -248,4 +248,5 @@ export const brandNames = {
   'ffai.co.kr': '파이',
   'espionage.co.kr/m': '에스피오나지',
   'aecawhite.com': '에이카화이트',
+  'apple.com': '애플',
 };
