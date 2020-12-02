@@ -97,7 +97,7 @@ export default class OptionCralwer {
           return;
         }
         this.result.values[this.optionNames[i - containerStartIndex]].push(
-          formatValue(cleanUpString(ele.children[0].data.toString()))
+          formatValue(cleanUpString(ele.children[0].data.toString())).trim()
         );
         if (checkIsSoldout?.(ele)) {
           this.result.isSoldout.push([j - valueStartIndex]);
