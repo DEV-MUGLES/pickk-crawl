@@ -898,7 +898,7 @@ apc-korea.com:
 
 kr.burberry.com:
   <<: *base
-  name: '#product-transactional-panel > div.product-transactional-panel-container.js-master-favourites-container > div > div > div > h1'
+  name: 'head > title'
   originalPrice: meta[property="og:price:amount"]
 
 stoneisland.com:

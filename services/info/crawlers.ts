@@ -2568,3 +2568,18 @@ export const _aecawhitecom = (
     imageUrl: 'http://www.aecawhite.com/shop' + result.imageUrl.slice(2),
   });
 };
+
+export const _krburberrycom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const { name } = result;
+  const nameLastIndex = Math.min(name.lastIndexOf('-'), name.lastIndexOf('|'));
+
+  return correct({
+    ...result,
+    name: name.slice(0, nameLastIndex > 0 ? nameLastIndex : name.length),
+  });
+};
