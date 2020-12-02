@@ -104,3 +104,19 @@ export const _personalpackcom = (url: string, html: string): OptionCralwer => {
       (ins) => ins.text().search('품절') > -1
     );
 };
+
+export const _aecawhitecom = (url: string, html: string): OptionCralwer => {
+  return new OptionCralwer(url, html)
+    .crawlOptionNames('dd.size h2')
+    .crawlValues(
+      'select',
+      'option',
+      (ele) => ele.children[0].data.includes('SOLD OUT'),
+      0,
+      1
+    )
+    .checkitemIsSoldout(
+      '#soldout_out',
+      (ins) => ins.text().search('SOLD OUT') > -1
+    );
+};
