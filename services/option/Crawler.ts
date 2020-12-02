@@ -84,7 +84,8 @@ export default class OptionCralwer {
     valueSelector: string,
     checkIsSoldout: (ele: CheerioElement) => boolean,
     containerStartIndex: number = 0,
-    valueStartIndex: number = 0
+    valueStartIndex: number = 0,
+    formatValue: (str: string) => string = (str) => str
   ): OptionCralwer => {
     this.$(containerSelector).each((i, container) => {
       if (i < containerStartIndex) {
@@ -96,7 +97,7 @@ export default class OptionCralwer {
           return;
         }
         this.result.values[this.optionNames[i - containerStartIndex]].push(
-          cleanUpString(ele.children[0].data.split('[')[0].toString())
+          formatValue(cleanUpString(ele.children[0].data.toString()))
         );
         if (checkIsSoldout?.(ele)) {
           this.result.isSoldout.push([j - valueStartIndex]);

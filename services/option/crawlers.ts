@@ -113,7 +113,8 @@ export const _aecawhitecom = (url: string, html: string): OptionCralwer => {
       'option',
       (ele) => ele.children[0].data.includes('SOLD OUT'),
       0,
-      1
+      1,
+      (value) => value.split('[')[0]
     )
     .checkitemIsSoldout(
       '#soldout_out',
