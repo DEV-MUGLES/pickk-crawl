@@ -876,6 +876,7 @@ montblanc.com:
   originalPrice: 'span.mb-pdp-price'
 
 givenchy.com:
+  <<: *base
   name: 'head > title'
   salePrice: 'body'
 
