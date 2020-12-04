@@ -1578,3 +1578,10 @@ aecawhite.com:
 apple.com:
   <<: *base
   originalPrice: 'span.as-price-currentprice'
+
+beams.co.jp:
+  <<: *base
+  name: 'div.item-detail-information div.item-title'
+  brandKor: 'div.item-detail-information div.item-label'
+  originalPrice: 'div.before-price'
+  salePrice: 'span.sale-price'

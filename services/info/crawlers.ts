@@ -2603,3 +2603,16 @@ export const _applecom = (
     originalPrice,
   });
 };
+
+export const _beamscojp = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    originalPrice:
+      result.originalPrice || strToNumber($('div.item-price').text()),
+  });
+};
