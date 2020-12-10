@@ -1266,8 +1266,8 @@ oohahh.co.kr:
   <<: *base
   name: 'h1[itemprop="name"]'
   imageUrl: 'div.images > a[itemprop="image"] > img'
-  originalPrice: 'p.price > span.amount'
-  salePrice: 'p.price > span.amount'
+  originalPrice: 'p.price > del > span.amount'
+  salePrice: 'p.price span.amount'
   isSoldout: 'link[itemprop="availability"]'
   images: '#tab-description > div > div > div > img'
 
