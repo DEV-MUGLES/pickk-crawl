@@ -1502,7 +1502,7 @@ edit-edition.com:
 
 ptry.co.kr:
   <<: *base
-  name: 'ul.prdDetailTitle > li:nth-child(1) > span'
+  name: 'title'
 
 lotuff.co.kr:
   <<: *base
