@@ -1502,7 +1502,7 @@ edit-edition.com:
 
 ptry.co.kr:
   <<: *base
-  name: 'title'
+  name: 'div.infoArea > div.xans-product table > tbody > tr:nth-child(1) > td > span'
 
 lotuff.co.kr:
   <<: *base
