@@ -1592,3 +1592,8 @@ haharchive.net:
   salePrice: 'span.productDiscountPriceSpan'
   images: '#productDescriptionDetailPage img'
   isSoldout: '#shopProductCartErrorDiv'
+
+agingccc.com:
+  <<: *base
+  isSoldout: '#mun_paymentButton .soldout'
+  images: '#mun_productDetail img'

@@ -2628,3 +2628,24 @@ export const _haharchivenet = (
     isSoldout: !$(selector.isSoldout).hasClass('hide'),
   });
 };
+
+export const _agingccccom = (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const cateNo = new URLSearchParams('?' + url.split('?')[1]).get('cate_no');
+  const brandKor =
+    {
+      208: '포이어',
+      215: '야세',
+      214: '에이징CCC',
+    }[cateNo] || '에이징CCC';
+
+  return correct({
+    ...result,
+    brandKor,
+  });
+};

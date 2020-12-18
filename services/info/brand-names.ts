@@ -38,7 +38,6 @@ export const brandNames = {
   'romanticpirates.com': '로맨틱파이어리츠',
   'shop2.ubridge001.cafe24.com': '유니폼브릿지',
   'yupwear.co.kr': '여피',
-  'agingccc.com': '에이징CCC',
   '6ft.co.kr': '식스핏',
   'shoopen.elandmall.com': '슈펜',
   'jemutshop.com': '제멋',
