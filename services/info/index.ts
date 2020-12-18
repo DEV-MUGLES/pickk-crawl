@@ -47,7 +47,7 @@ export default class InfoCrawlService {
     const crawlerName = '_' + this.host.replace(/\.|-|_|\//g, '');
 
     const result = correct(
-      (crawlers[crawlerName] || selectAll)($, this.selectors)
+      (crawlers[crawlerName] || selectAll)($, this.selectors, this.url)
     );
 
     const brandHost =
