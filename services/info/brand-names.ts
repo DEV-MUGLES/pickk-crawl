@@ -249,4 +249,5 @@ export const brandNames = {
   'espionage.co.kr/m': '에스피오나지',
   'aecawhite.com': '에이카화이트',
   'apple.com': '애플',
+  'haharchive.net': '하 아카이브',
 };

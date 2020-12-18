@@ -1585,3 +1585,10 @@ beams.co.jp:
   brandKor: 'div.item-detail-information div.item-label'
   originalPrice: 'div.before-price'
   salePrice: 'span.sale-price'
+
+haharchive.net:
+  <<: *base
+  originalPrice: '#shopProductPrice > span'
+  salePrice: 'span.productDiscountPriceSpan'
+  images: '#productDescriptionDetailPage img'
+  isSoldout: '#shopProductCartErrorDiv'

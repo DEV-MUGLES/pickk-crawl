@@ -2616,3 +2616,15 @@ export const _beamscojp = (
       result.originalPrice || strToNumber($('div.item-price').text()),
   });
 };
+
+export const _haharchivenet = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    isSoldout: !$(selector.isSoldout).hasClass('hide'),
+  });
+};
