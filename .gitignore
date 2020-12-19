@@ -7,5 +7,5 @@ jspm_packages
 .now
 .vercel
 
-# test htmls
-__tests__/data/test-htmls.json
+# log files
+*.log
