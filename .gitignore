@@ -1,0 +1,11 @@
+# package directories
+node_modules
+jspm_packages
+
+# environment variables
+.env*
+.now
+.vercel
+
+# test htmls
+__tests__/data/test-htmls.json
