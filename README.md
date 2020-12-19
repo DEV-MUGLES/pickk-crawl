@@ -1,6 +1,6 @@
 ## Pickk Delivery Tracker
 
-> Vercel Serverless, Cheerio, jest
+> Vercel Serverless, Cheerio, jest, Sentry
 
 ### Getting Started
 
@@ -19,7 +19,7 @@ $ vercel
 
 ### Available Carriers
 
-- [ ] CJ대한통운 - kr.cjlogistics
+- [x] CJ대한통운 - kr.cjlogistics
 - [ ] 롯데택배
 - [ ] 한진택배
 - [ ] 우체국택배
