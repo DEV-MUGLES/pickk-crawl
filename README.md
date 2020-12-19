@@ -115,7 +115,7 @@ Track delivery by given carrierId, trackingCode
       "location": {
         "name": "동안"
       },
-      "description": "고객님의 상품이 배송지에 도착하였습니다.(배송예정:유재필 010-9280-0233)"
+      "description": "고객님의 상품이 배송지에 도착하였습니다.(배송예정:XXX NNN-NNNN-NNNN)"
     },
     {
       "time": "2020-12-18T15:24:36+09:00",
@@ -126,7 +126,7 @@ Track delivery by given carrierId, trackingCode
       "location": {
         "name": "경기안양비산"
       },
-      "description": "고객님의 상품을 배송할 예정입니다.(18∼20시)(배송담당:유재필 010-9280-0233)"
+      "description": "고객님의 상품을 배송할 예정입니다.(18∼20시)(배송담당:XXX NNN-NNNN-NNNN)"
     },
     {
       "time": "2020-12-18T18:18:25+09:00",
@@ -137,7 +137,7 @@ Track delivery by given carrierId, trackingCode
       "location": {
         "name": "경기안양비산"
       },
-      "description": "고객님의 상품이 배송완료 되었습니다.(담당사원:유재필 010-9280-0233)"
+      "description": "고객님의 상품이 배송완료 되었습니다.(담당사원:XXX NNN-NNNN-NNNN)"
     }
   ]
 }
