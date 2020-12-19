@@ -249,4 +249,5 @@ export const brandNames = {
   'aecawhite.com': '에이카화이트',
   'apple.com': '애플',
   'haharchive.net': '하 아카이브',
+  'uniongarments.co.kr': '유니온가먼츠',
 };

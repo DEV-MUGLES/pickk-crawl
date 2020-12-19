@@ -2649,3 +2649,15 @@ export const _agingccccom = (
     brandKor,
   });
 };
+
+export const _uniongarmentscokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    isSoldout: !result.isSoldout,
+  });
+};

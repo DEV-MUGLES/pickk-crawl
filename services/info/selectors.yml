@@ -1597,3 +1597,7 @@ agingccc.com:
   <<: *base
   isSoldout: '#mun_paymentButton .soldout'
   images: '#mun_productDetail img'
+
+uniongarments.co.kr:
+  <<: *base
+  isSoldout: 'div.infoArea > div > div.btnArea > ul > a.btn1:last-child'
