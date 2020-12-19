@@ -5,6 +5,7 @@ base: &base
   originalPrice: meta[property="product:price:amount"]
   salePrice: meta[property="product:sale_price:amount"]
   images: 'div#prdDetail div.cont img'
+  isSoldout: 'div.infoArea > div.xans-product-action a:last-child > span'
 
 rb: &rb
   name: meta[property="rb:itemName"]
