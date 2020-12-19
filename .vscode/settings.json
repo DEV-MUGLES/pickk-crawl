@@ -1,6 +1,3 @@
 {
-    "conventionalCommits.scopes": [
-        "carrier",
-        "yarn"
-    ]
+  "conventionalCommits.scopes": ["yarn", "crawler"]
 }

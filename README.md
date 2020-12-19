@@ -48,6 +48,11 @@ Track delivery by given carrierId, trackingCode
 
 ```json
 {
+  "carrier": {
+    "id": "kr.cjlogistics",
+    "name": "CJ대한통운",
+    "tel": "+8215881255"
+  },
   "from": {
     "name": "한*",
     "time": "2020-12-15T19:48:50+09:00"
@@ -134,12 +139,7 @@ Track delivery by given carrierId, trackingCode
       },
       "description": "고객님의 상품이 배송완료 되었습니다.(담당사원:유재필 010-9280-0233)"
     }
-  ],
-  "carrier": {
-    "id": "kr.cjlogistics",
-    "name": "CJ대한통운",
-    "tel": "+8215881255"
-  }
+  ]
 }
 ```
 

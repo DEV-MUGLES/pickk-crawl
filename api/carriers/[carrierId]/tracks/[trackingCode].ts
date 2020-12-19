@@ -16,10 +16,16 @@ export default async (req: NowRequest, res: NowResponse) => {
   try {
     const crawlerInstance = new crawler(trackingCode.toString());
     const result = await crawlerInstance.crawl();
-    res.json(result);
+    res.json({
+      carrier: {
+        id: carrierId,
+        ...crawlerInstance.info,
+      },
+      ...result,
+    });
   } catch (err) {
-    res.status(500).send({
-      message: err ? err.message : '',
+    res.status(err.code || 500).send({
+      message: err?.message || '',
     });
   }
 };
