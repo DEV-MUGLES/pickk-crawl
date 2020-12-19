@@ -1,6 +1,9 @@
+import * as Sentry from '@sentry/node';
 import { NowRequest, NowResponse } from '@now/node';
 
 import { getCrawler } from '../../../../src/lib';
+
+Sentry.init({ dsn: process.env.NEXT_PUBLIC_SENTRY_DSN });
 
 export default async (req: NowRequest, res: NowResponse) => {
   const { carrierId, trackingCode } = req.query;
@@ -24,7 +27,13 @@ export default async (req: NowRequest, res: NowResponse) => {
       ...result,
     });
   } catch (err) {
-    res.status(err.code || 500).send({
+    const code = err.code || 500;
+
+    if (code === 500) {
+      Sentry.captureException(err);
+    }
+
+    res.status(code).send({
       message: err?.message || '',
     });
   }
