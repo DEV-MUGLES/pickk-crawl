@@ -1,6 +1,5 @@
 import { NowRequest, NowResponse } from '@now/node';
 
-import TrackService from '../../../../src/services/track';
 import { getCrawler } from '../../../../src/lib';
 
 export default async (req: NowRequest, res: NowResponse) => {
@@ -15,11 +14,9 @@ export default async (req: NowRequest, res: NowResponse) => {
   }
 
   try {
-    const trackServiceInstance = new TrackService(
-      carrierId.toString(),
-      trackingCode.toString()
-    );
-    res.json({ carrierId, trackingCode });
+    const crawlerInstance = new crawler(trackingCode.toString());
+    const result = await crawlerInstance.crawl();
+    res.json(result);
   } catch (err) {
     res.status(500).send({
       message: err ? err.message : '',
