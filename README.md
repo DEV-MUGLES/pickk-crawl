@@ -21,7 +21,7 @@ $ vercel
 
 - [x] CJ대한통운 - kr.cjlogistics
 - [x] 롯데택배 - kr.lotte
-- [ ] 한진택배
+- [x] 한진택배 - kr.hanjin
 - [ ] 우체국택배
 - [ ] 로젠택배
 - [ ] CU편의점택배
