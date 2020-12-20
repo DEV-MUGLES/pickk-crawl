@@ -20,7 +20,7 @@ $ vercel
 ### Available Carriers
 
 - [x] CJ대한통운 - kr.cjlogistics
-- [ ] 롯데택배
+- [x] 롯데택배 - kr.lotte
 - [ ] 한진택배
 - [ ] 우체국택배
 - [ ] 로젠택배
