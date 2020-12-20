@@ -4,3 +4,4 @@ export * from './kr.hanjin';
 export * from './kr.epost';
 export * from './kr.logen';
 export * from './kr.cupost';
+export * from './kr.cvsnet';
