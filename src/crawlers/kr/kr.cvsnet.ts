@@ -17,6 +17,8 @@ const STR_TO_STATUS = {
   배달완료: 4,
 };
 
+const cleanString = (s: string) => s.replace(/\n|\t/gi, '').trim();
+
 export class KRCvsnetCrawler extends BaseCrawler {
   public static carrierId = 'kr.cvsnet';
   public static info = {
@@ -57,11 +59,11 @@ export class KRCvsnetCrawler extends BaseCrawler {
 
       const shippingInformation = {
         from: {
-          name: fromName.innerHTML,
+          name: cleanString(fromName.innerHTML),
           time: `${fromDate.innerHTML}T${fromTime.innerHTML.trim()}:00+09:00`,
         },
         to: {
-          name: toName.innerHTML,
+          name: cleanString(toName.innerHTML),
           time: null,
         },
         state: STATUS_MAP[state.lastIndexOf(currentState)],
