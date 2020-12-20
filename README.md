@@ -1,8 +1,8 @@
-## Pickk Delivery Tracker
+# Pickk Delivery Tracker
 
 > Vercel Serverless, Cheerio, jest, Sentry
 
-### Getting Started
+## Getting Started
 
 Need vercel 19.2.0 (Latest) to deploy
 
@@ -17,7 +17,7 @@ $ vercel dev
 $ vercel
 ```
 
-### Available Carriers
+## Available Carriers
 
 - [x] CJ대한통운 - kr.cjlogistics
 - [x] 롯데택배 - kr.lotte
@@ -32,17 +32,47 @@ $ vercel
 - [ ] 건영택배
 - [ ] 천일택배
 
-### API Reference
+## API Reference
 
-#### Track delivery
+### Carrier List
 
-Track delivery by given carrierId, trackingCode
-
-**URL** : `/api/carriers/[carrierId]/tracks/[trackingCode]`
+**URL** : `/api/carriers/`
 
 **Method** : `GET`
 
-## Success Response
+**Reponse Schema**
+
+```typescript
+Array<{
+  id: string;
+  name: string;
+  tel: string;
+}>
+```
+
+### Carrier Detail
+
+**URL** : `/api/carriers/[carrierId]/`
+
+**Method** : `GET`
+
+**Reponse Schema**
+
+```typescript
+{
+  id: string;
+  name: string;
+  tel: string;
+}
+```
+
+### Track delivery
+
+Track delivery by given carrierId, trackingCode
+
+**URL** : `/api/carriers/[carrierId]/tracks/[trackingCode]/`
+
+**Method** : `GET`
 
 **Code** : `200 OK`
 
@@ -145,6 +175,6 @@ Track delivery by given carrierId, trackingCode
 }
 ```
 
-### Deploy with Vercel
+## Deploy with Vercel
 
 [![Deploy with Vercel](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/gywlsp/item-info-crawl)
