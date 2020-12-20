@@ -23,7 +23,7 @@ $ vercel
 - [x] 롯데택배 - kr.lotte
 - [x] 한진택배 - kr.hanjin
 - [x] 우체국택배
-- [ ] 로젠택배
+- [x] 로젠택배
 - [ ] CU편의점택배
 - [ ] GSPostbox택배
 - [ ] 경동택배
