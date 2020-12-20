@@ -1,10 +1,10 @@
 export default class BaseCrawler {
   public static carrierId: string;
-  crawl: any;
-  public info: {
+  public static info: {
     name: string;
     tel: string;
   };
+  crawl: any;
 
   constructor(protected trackingCode: string) {}
 }

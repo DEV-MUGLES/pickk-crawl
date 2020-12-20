@@ -22,7 +22,7 @@ export default async (req: NowRequest, res: NowResponse) => {
     res.json({
       carrier: {
         id: carrierId,
-        ...crawlerInstance.info,
+        ...crawler.info,
       },
       ...result,
     });

@@ -21,7 +21,7 @@ const parseTime = (s: string) => {
 
 export class KRCjlogicsticsCrawler extends BaseCrawler {
   public static carrierId = 'kr.cjlogicstics';
-  public info = {
+  public static info = {
     name: 'CJ대한통운',
     tel: '+8215881255',
   };
