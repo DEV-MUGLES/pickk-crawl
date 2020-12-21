@@ -49,7 +49,7 @@ export class KRCvsnetCrawler extends BaseCrawler {
       const currentState = document.querySelector('.deliveryInfo li.on');
 
       if (information.length === 0) {
-        reject({
+        return reject({
           code: 404,
           message: document.querySelector('.noData p').textContent,
         });

@@ -63,14 +63,14 @@ export class KREpostCrawler extends BaseCrawler {
           // const to = informations[1].innerHTML.split('<br>')
 
           if ($informations.length === 0) {
-            reject({
+            return reject({
               code: 404,
               message: '해당 운송장이 존재하지 않습니다.',
             });
           }
 
           if ($informationTable.find('tr').length === 3) {
-            reject({
+            return reject({
               code: 404,
               message: parseTime(
                 $informationTable.find('tr:nth-child(2)').eq(0).text()

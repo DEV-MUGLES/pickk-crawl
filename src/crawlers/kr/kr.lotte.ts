@@ -40,11 +40,10 @@ export class KRLotteCrawler extends BaseCrawler {
 
       const information = informationTable.querySelectorAll('tbody > tr > td');
       if (information.length === 1) {
-        reject({
+        return reject({
           code: 404,
           message: information[0].innerHTML,
         });
-        return;
       }
 
       const shippingInformation = {
@@ -73,11 +72,10 @@ export class KRLotteCrawler extends BaseCrawler {
 
       if (shippingInformation.progresses.length < 1) {
         const errorTd = progressTable.querySelector('tbody > tr > td');
-        reject({
+        return reject({
           code: 404,
-          message: errorTd ? errorTd.textContent : '화물추적 내역이 없습니다.',
+          message: errorTd?.textContent || '화물추적 내역이 없습니다.',
         });
-        return;
       } else {
         shippingInformation.state =
           shippingInformation.progresses[
