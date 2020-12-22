@@ -13,6 +13,7 @@ const STATUS_MAP = {
   44: { id: 'in_transit', text: '상품이동중' },
   82: { id: 'out_for_delivery', text: '배송출발' },
   91: { id: 'delivered', text: '배달완료' },
+  RMN: { id: 'in_transit', text: '상품이동중' },
 };
 
 const parseTime = (s: string) => {
@@ -96,7 +97,7 @@ export class KRCjlogicsticsCrawler extends BaseCrawler {
         shippingInformation.to = {
           name: rcvrNm,
           time:
-            shippingInformation.state.id === 'delivered'
+            shippingInformation.state?.id === 'delivered'
               ? shippingInformation.progresses[
                   shippingInformation.progresses.length - 1
                 ].time
