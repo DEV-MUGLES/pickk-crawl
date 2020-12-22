@@ -24,77 +24,84 @@ export class KRLotteCrawler extends BaseCrawler {
 
   crawl = () => {
     return new Promise(async (resolve, reject) => {
-      const { data } = await axios.post(
-        'https://www.lotteglogis.com/home/reservation/tracking/linkView',
-        qs.stringify({
-          InvNo: this.trackingCode,
-        })
-      );
+      try {
+        const { data } = await axios.post(
+          'https://www.lotteglogis.com/home/reservation/tracking/linkView',
+          qs.stringify({
+            InvNo: this.trackingCode,
+          })
+        );
 
-      const dom = new JSDOM(data);
-      const { document } = dom.window;
+        const dom = new JSDOM(data);
+        const { document } = dom.window;
 
-      const [informationTable, progressTable] = Array.from(
-        document.querySelectorAll('.tblH')
-      );
+        const [informationTable, progressTable] = Array.from(
+          document.querySelectorAll('.tblH')
+        );
 
-      const information = informationTable.querySelectorAll('tbody > tr > td');
-      if (information.length === 1) {
-        return reject({
-          code: 404,
-          message: information[0].innerHTML,
-        });
-      }
-
-      const shippingInformation = {
-        from: { time: null, name: information[1].textContent },
-        to: { time: null, name: information[2].textContent },
-        state: {},
-        progresses: ((table) => {
-          const result = [];
-          table.querySelectorAll('tbody > tr').forEach((element) => {
-            const tds = element.querySelectorAll('td');
-            if (tds.length < 4) return;
-            if (tds[1].textContent.indexOf('--:--') !== -1) return;
-
-            result.push({
-              status: parseStatus(tds[0].textContent),
-              time: `${tds[1].textContent.replace(/\s+/g, 'T')}:00+09:00`,
-              location: {
-                name: parseLocationName(tds[2].textContent),
-              },
-              description: tds[3].textContent,
-            });
+        const information = informationTable.querySelectorAll(
+          'tbody > tr > td'
+        );
+        if (information.length === 1) {
+          return reject({
+            code: 404,
+            message: information[0].innerHTML,
           });
-          return result;
-        })(progressTable),
-      };
+        }
 
-      if (shippingInformation.progresses.length < 1) {
-        const errorTd = progressTable.querySelector('tbody > tr > td');
-        return reject({
-          code: 404,
-          message: errorTd?.textContent || '화물추적 내역이 없습니다.',
-        });
-      } else {
-        shippingInformation.state =
-          shippingInformation.progresses[
-            shippingInformation.progresses.length - 1
-          ].status;
-        shippingInformation.from.time = shippingInformation.progresses[0].time;
+        const shippingInformation = {
+          from: { time: null, name: information[1].textContent },
+          to: { time: null, name: information[2].textContent },
+          state: {},
+          progresses: ((table) => {
+            const result = [];
+            table.querySelectorAll('tbody > tr').forEach((element) => {
+              const tds = element.querySelectorAll('td');
+              if (tds.length < 4) return;
+              if (tds[1].textContent.indexOf('--:--') !== -1) return;
 
-        if (
-          shippingInformation.progresses[
-            shippingInformation.progresses.length - 1
-          ].status.id === 'delivered'
-        )
-          shippingInformation.to.time =
+              result.push({
+                status: parseStatus(tds[0].textContent),
+                time: `${tds[1].textContent.replace(/\s+/g, 'T')}:00+09:00`,
+                location: {
+                  name: parseLocationName(tds[2].textContent),
+                },
+                description: tds[3].textContent,
+              });
+            });
+            return result;
+          })(progressTable),
+        };
+
+        if (shippingInformation.progresses.length < 1) {
+          const errorTd = progressTable.querySelector('tbody > tr > td');
+          return reject({
+            code: 404,
+            message: errorTd?.textContent || '화물추적 내역이 없습니다.',
+          });
+        } else {
+          shippingInformation.state =
             shippingInformation.progresses[
               shippingInformation.progresses.length - 1
-            ].time;
-      }
+            ].status;
+          shippingInformation.from.time =
+            shippingInformation.progresses[0].time;
 
-      resolve(shippingInformation);
+          if (
+            shippingInformation.progresses[
+              shippingInformation.progresses.length - 1
+            ].status.id === 'delivered'
+          )
+            shippingInformation.to.time =
+              shippingInformation.progresses[
+                shippingInformation.progresses.length - 1
+              ].time;
+        }
+
+        resolve(shippingInformation);
+      } catch (err) {
+        reject(err);
+      }
     });
   };
 }

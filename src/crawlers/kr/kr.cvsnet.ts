@@ -28,79 +28,83 @@ export class KRCvsnetCrawler extends BaseCrawler {
 
   crawl = () => {
     return new Promise(async (resolve, reject) => {
-      const { data } = await axios.get(
-        'https://www.cvsnet.co.kr/reservation-inquiry/delivery/index.do',
-        {
-          params: {
-            dlvry_type: 'domestic',
-            invoice_no: this.trackingCode,
-            srch_type: '01',
-          },
-        }
-      );
-      const dom = new JSDOM(data);
-      const { document } = dom.window;
-
-      const information = Array.from(
-        document.querySelectorAll('.deliveryInfo3 table td')
-      );
-      const progresses = document.querySelectorAll('.deliveryInfo2 ul li');
-      const state = Array.from(document.querySelectorAll('.deliveryInfo li'));
-      const currentState = document.querySelector('.deliveryInfo li.on');
-
-      if (information.length === 0) {
-        return reject({
-          code: 404,
-          message: document.querySelector('.noData p').textContent,
-        });
-      }
-
-      const [, , fromDate, fromTime, fromName, toName] = information;
-
-      const shippingInformation = {
-        from: {
-          name: cleanString(fromName.innerHTML),
-          time: `${fromDate.innerHTML}T${fromTime.innerHTML.trim()}:00+09:00`,
-        },
-        to: {
-          name: cleanString(toName.innerHTML),
-          time: null,
-        },
-        state: STATUS_MAP[state.lastIndexOf(currentState)],
-        progresses: [],
-      };
-
-      progresses.forEach((element) => {
-        const time = (function convertTime(t) {
-          return `${t.replace('&nbsp;', 'T')}+09:00`;
-        })(element.querySelector('p.date').innerHTML);
-
-        let status = STATUS_MAP[2];
-        const description = element.querySelector('p.txt').innerHTML;
-        // eslint-disable-next-line no-restricted-syntax
-        for (const key in STR_TO_STATUS) {
-          if (description.includes(key)) {
-            status = STATUS_MAP[STR_TO_STATUS[key]];
-            break;
+      try {
+        const { data } = await axios.get(
+          'https://www.cvsnet.co.kr/reservation-inquiry/delivery/index.do',
+          {
+            params: {
+              dlvry_type: 'domestic',
+              invoice_no: this.trackingCode,
+              srch_type: '01',
+            },
           }
+        );
+        const dom = new JSDOM(data);
+        const { document } = dom.window;
+
+        const information = Array.from(
+          document.querySelectorAll('.deliveryInfo3 table td')
+        );
+        const progresses = document.querySelectorAll('.deliveryInfo2 ul li');
+        const state = Array.from(document.querySelectorAll('.deliveryInfo li'));
+        const currentState = document.querySelector('.deliveryInfo li.on');
+
+        if (information.length === 0) {
+          return reject({
+            code: 404,
+            message: document.querySelector('.noData p').textContent,
+          });
         }
 
-        if (status.id === 'delivered') {
-          shippingInformation.to = {
-            ...shippingInformation.to,
+        const [, , fromDate, fromTime, fromName, toName] = information;
+
+        const shippingInformation = {
+          from: {
+            name: cleanString(fromName.innerHTML),
+            time: `${fromDate.innerHTML}T${fromTime.innerHTML.trim()}:00+09:00`,
+          },
+          to: {
+            name: cleanString(toName.innerHTML),
+            time: null,
+          },
+          state: STATUS_MAP[state.lastIndexOf(currentState)],
+          progresses: [],
+        };
+
+        progresses.forEach((element) => {
+          const time = (function convertTime(t) {
+            return `${t.replace('&nbsp;', 'T')}+09:00`;
+          })(element.querySelector('p.date').innerHTML);
+
+          let status = STATUS_MAP[2];
+          const description = element.querySelector('p.txt').innerHTML;
+          // eslint-disable-next-line no-restricted-syntax
+          for (const key in STR_TO_STATUS) {
+            if (description.includes(key)) {
+              status = STATUS_MAP[STR_TO_STATUS[key]];
+              break;
+            }
+          }
+
+          if (status.id === 'delivered') {
+            shippingInformation.to = {
+              ...shippingInformation.to,
+              time,
+            };
+          }
+
+          shippingInformation.progresses.unshift({
             time,
-          };
-        }
-
-        shippingInformation.progresses.unshift({
-          time,
-          location: { name: element.querySelector('p.location').innerHTML },
-          status,
-          description: element.querySelector('p.txt').innerHTML,
+            location: { name: element.querySelector('p.location').innerHTML },
+            status,
+            description: element.querySelector('p.txt').innerHTML,
+          });
         });
-      });
 
-      resolve(shippingInformation);
+        resolve(shippingInformation);
+      } catch (err) {
+        reject(err);
+      }
     });
   };
 }

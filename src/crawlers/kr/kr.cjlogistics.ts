@@ -29,83 +29,87 @@ export class KRCjlogicsticsCrawler extends BaseCrawler {
 
   crawl = () => {
     return new Promise(async (resolve, reject) => {
-      if (!/^(\d{10}(\d{2})?)?$/.test(this.trackingCode)) {
-        return reject({
-          code: 400,
-          message: '운송장 번호는 10자리 혹은 12자리입니다.',
-        });
-      }
-
-      const { cookie, _csrf } = await this.getCsrf();
-
-      const { data: parcelData } = await axios.post(
-        'https://www.cjlogistics.com/ko/tool/parcel/tracking-detail',
-        qs.stringify({
-          paramInvcNo: this.trackingCode,
-          _csrf,
-        }),
-        {
-          headers: {
-            Cookie: cookie,
-          },
+      try {
+        if (!/^(\d{10}(\d{2})?)?$/.test(this.trackingCode)) {
+          return reject({
+            code: 400,
+            message: '운송장 번호는 10자리 혹은 12자리입니다.',
+          });
         }
-      );
 
-      const informationTable = parcelData.parcelResultMap.resultList;
-      const progressTable = parcelData.parcelDetailResultMap.resultList;
+        const { cookie, _csrf } = await this.getCsrf();
 
-      if (informationTable.length === 0 && progressTable.length === 0) {
-        return reject({
-          code: 404,
-          message: '해당 운송장이 존재하지 않습니다.',
-        });
-      }
-
-      const shippingInformation = {
-        from: { name: null, time: null },
-        to: { name: null, time: null },
-        state: { id: 'information_received', text: '상품준비중' },
-        progresses: ((rows) =>
-          rows.map((row) => ({
-            time: parseTime(row.dTime),
-            status: STATUS_MAP[row.crgSt],
-            location: {
-              name: row.regBranNm,
+        const { data: parcelData } = await axios.post(
+          'https://www.cjlogistics.com/ko/tool/parcel/tracking-detail',
+          qs.stringify({
+            paramInvcNo: this.trackingCode,
+            _csrf,
+          }),
+          {
+            headers: {
+              Cookie: cookie,
             },
-            description: row.crgNm,
-          })))(progressTable),
-      };
+          }
+        );
 
-      if (shippingInformation.progresses.length > 0) {
-        shippingInformation.state =
-          shippingInformation.progresses[
-            shippingInformation.progresses.length - 1
-          ].status;
-      }
+        const informationTable = parcelData.parcelResultMap.resultList;
+        const progressTable = parcelData.parcelDetailResultMap.resultList;
 
-      if (informationTable.length !== 0) {
-        const { sendrNm, rcvrNm } = informationTable[0];
+        if (informationTable.length === 0 && progressTable.length === 0) {
+          return reject({
+            code: 404,
+            message: '해당 운송장이 존재하지 않습니다.',
+          });
+        }
 
-        shippingInformation.from = {
-          name: sendrNm,
-          time:
-            progressTable.length !== 0
-              ? parseTime(progressTable[0].dTime)
-              : null,
+        const shippingInformation = {
+          from: { name: null, time: null },
+          to: { name: null, time: null },
+          state: { id: 'information_received', text: '상품준비중' },
+          progresses: ((rows) =>
+            rows.map((row) => ({
+              time: parseTime(row.dTime),
+              status: STATUS_MAP[row.crgSt],
+              location: {
+                name: row.regBranNm,
+              },
+              description: row.crgNm,
+            })))(progressTable),
         };
 
-        shippingInformation.to = {
-          name: rcvrNm,
-          time:
-            shippingInformation.state?.id === 'delivered'
-              ? shippingInformation.progresses[
-                  shippingInformation.progresses.length - 1
-                ].time
-              : null,
-        };
-      }
+        if (shippingInformation.progresses.length > 0) {
+          shippingInformation.state =
+            shippingInformation.progresses[
+              shippingInformation.progresses.length - 1
+            ].status;
+        }
 
-      resolve(shippingInformation);
+        if (informationTable.length !== 0) {
+          const { sendrNm, rcvrNm } = informationTable[0];
+
+          shippingInformation.from = {
+            name: sendrNm,
+            time:
+              progressTable.length !== 0
+                ? parseTime(progressTable[0].dTime)
+                : null,
+          };
+
+          shippingInformation.to = {
+            name: rcvrNm,
+            time:
+              shippingInformation.state?.id === 'delivered'
+                ? shippingInformation.progresses[
+                    shippingInformation.progresses.length - 1
+                  ].time
+                : null,
+          };
+        }
+
+        resolve(shippingInformation);
+      } catch (err) {
+        reject(err);
+      }
     });
   };
 
