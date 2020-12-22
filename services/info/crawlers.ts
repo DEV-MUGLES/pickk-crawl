@@ -1867,6 +1867,10 @@ export const _madgoatofficialcom = (
   return correct({
     ...result,
     originalPrice,
+    imageUrl:
+      'http://www.madgoat-official.com/shopimages/zzang6047/' +
+      result.imageUrl +
+      '3.jpg',
   });
 };
 
