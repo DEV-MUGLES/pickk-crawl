@@ -10,6 +10,12 @@ export default async (req: NowRequest, res: NowResponse) => {
 
   const crawler = getCrawler(carrierId.toString());
   if (!crawler) {
+    Sentry.captureException({
+      code: 404,
+      carrierId,
+      trackingCode,
+      message: `${carrierId} is not supported carrier`,
+    });
     res.status(404).send({
       message: 'not supported carrier',
     });
