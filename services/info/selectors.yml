@@ -104,13 +104,16 @@ m.store.musinsa.com:
 mss.kr:
   <<: *musinsa
 
-wconcept.co.kr:
+wconcept.co.kr: &wconcept
   <<: *base
   name: meta[property="eg:itemName"]
   brandKor: meta[property="og:description"]
   originalPrice: meta[property="eg:originalPrice"]
   salePrice: meta[property="eg:salePrice"]
   images: '#detailArea img'
+
+m.wconcept.co.kr:
+  <<: *wconcept
 
 coor.kr:
   <<: *base

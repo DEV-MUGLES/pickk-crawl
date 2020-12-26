@@ -154,6 +154,8 @@ export const _wconceptcokr = (
   });
 };
 
+export const _mwconceptcokr = _wconceptcokr;
+
 export const _lfmallcokr = (
   $: CheerioStatic,
   selector: InfoSelectors
