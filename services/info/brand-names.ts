@@ -34,7 +34,7 @@ export const brandNames = {
   'store-kr.uniqlo.com': '유니클로',
   'spao.elandmall.com': '스파오',
   'www2.hm.com': 'H&M',
-  'm.u-ping.co.kr': '유핑',
+  'u-ping.co.kr': '유핑',
   'romanticpirates.com': '로맨틱파이어리츠',
   'shop2.ubridge001.cafe24.com': '유니폼브릿지',
   'yupwear.co.kr': '여피',
@@ -250,4 +250,5 @@ export const brandNames = {
   'apple.com': '애플',
   'haharchive.net': '하 아카이브',
   'uniongarments.co.kr': '유니온가먼츠',
+  'perenn.co.kr': '퍼렌',
 };
