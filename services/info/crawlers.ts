@@ -2667,3 +2667,18 @@ export const _uniongarmentscokr = (
     isSoldout: !result.isSoldout,
   });
 };
+
+export const _lotuffcokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).attr('alt') === "품절";
+
+  return correct({
+    ...result,
+    name: result.name.split('|')[0],
+    images: result.images.filter((image) => !image.includes('about')),
+    isSoldout
+  });
+};

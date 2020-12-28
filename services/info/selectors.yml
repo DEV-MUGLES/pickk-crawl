@@ -1512,7 +1512,7 @@ ptry.co.kr:
 
 lotuff.co.kr:
   <<: *base
-  name: 'h2.detail_title'
+  isSoldout: 'img[alt="품절"]'
 
 sculptorpage.com:
   <<: *base
