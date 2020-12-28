@@ -1607,3 +1607,9 @@ agingccc.com:
 uniongarments.co.kr:
   <<: *base
   isSoldout: 'div.infoArea > div > div.btnArea > ul > a.btn1:last-child'
+
+blond9.com:
+  <<: *base
+  name: meta[name="keywords"]
+  originalPrice: '#span_product_price_custom'
+  isSoldout: 'div.infoArea_in > div:first-child > table span:last-child'

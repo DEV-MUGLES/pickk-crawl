@@ -2678,7 +2678,17 @@ export const _lotuffcokr = (
   return correct({
     ...result,
     name: result.name.split('|')[0],
-    images: result.images.filter((image) => !image.includes('about')),
     isSoldout
   });
 };
+
+export const _blond9com = ($: CheerioStatic, selector: InfoSelectors):InfoResult=>{
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).text().search('품절') > -1;
+
+  return correct({
+    ...result,
+    name: result.name.split(',')[0].trim(),
+    isSoldout
+  })
+}

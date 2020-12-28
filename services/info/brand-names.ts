@@ -251,4 +251,5 @@ export const brandNames = {
   'haharchive.net': '하 아카이브',
   'uniongarments.co.kr': '유니온가먼츠',
   'perenn.co.kr': '퍼렌',
+  'blond9.com': '블론드나인'
 };
