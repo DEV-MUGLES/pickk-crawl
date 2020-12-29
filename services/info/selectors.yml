@@ -1619,3 +1619,11 @@ ourlegacy.se:
   originalPrice: 'span.old-price'
   salePrice: 'span.price'
   isSoldout: '#purchase-butt button.buy[type="submit"]'
+
+yoox.com:
+  <<: *base
+  name: 'a[itemprop="name"]'
+  originalPrice: meta[name="twitter:data1"]
+  salePrice: 'span[itemprop="price"]'
+  brandKor: 'a[itemprop="brand"]'
+  isSoldout: 'span.itemSoldOutMessageText'

@@ -2715,3 +2715,47 @@ export const _ourlegacyse = (
         : result.salePrice,
   });
 };
+
+export const _yooxcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const brandKorAlias = {
+    'ACNE STUDIOS': '아크네스튜디오',
+    BALENCIAGA: '발렌시아가',
+    BOGLIOLI: '볼리올리',
+    'BOTTEGA VENETA': '보테가베네타',
+    'BRUNELLO CUCINELLI': '브루넬로쿠치넬리',
+    BURBERRY: '버버리',
+    'DOLCE & GABBANA': '돌체앤가비나',
+    "DOUCAL'S": '도우칼스',
+    'DRIES VAN NOTEN': '드리스 반 노튼',
+    DRUMOHR: '드루모어',
+    DSQUARED2: '디스퀘어드2',
+    ELEVENTY: '일레븐티',
+    ETRO: '에트로',
+    GIVENCHY: '지방시',
+    'GOLDEN GOOSE DELUXE BRAND': '골든구스 디럭스 브랜드',
+    'JIL SANDER': '질 샌더',
+    LOEWE: '로에베',
+    'MAISON MARGIELA': '메종 마르지엘라',
+    MARNI: '마르니',
+    MSGM: '엠에스지엠',
+    PRADA: '프라다',
+    'RICK OWENS': '릭 오웬스',
+    SANTONI: '산토니',
+    'STONE ISLAND': '스톤 아일랜드',
+    'THOM BROWNE': '톰 브라운',
+    "TOD'S": '토즈',
+    VALENTINO: '발렌티노',
+  };
+  const brandKor = brandKorAlias[result.brandKor] || result.brandKor;
+  const isSoldout = $(selector.isSoldout).length > 0;
+
+  return correct({
+    ...result,
+    brandKor,
+    isSoldout,
+  });
+};
