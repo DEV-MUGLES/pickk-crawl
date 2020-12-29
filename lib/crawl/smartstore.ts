@@ -1,21 +1,19 @@
-import {
-  OptionResult,
-  SmartstoreStockData,
-  SmartstoreStockRecord,
-} from '../../types';
+import { OptionResult, SmartstoreStockRecord } from '../../types';
 
 // optionPriceVariant는 cover하지 못 한다.
 export const getSmartstoreOptionData = (html: string): OptionResult => {
+  const productData = getProductData(html);
+
   const values = {};
   const isSoldout = [];
   const productPriceVariants = [];
 
-  const optionNames = getOptionNames(html);
+  const optionNames = productData.options.map((option) => option.groupName);
   optionNames.forEach((optionName) => {
     values[optionName] = [];
   });
 
-  const stockData = getStockData(html);
+  const stockData = productData.optionCombinations;
   stockData.forEach((stockRecord) => {
     optionNames.forEach((_, i) => {
       const option = stockRecord['optionName' + (i + 1)];
@@ -44,26 +42,15 @@ export const getSmartstoreOptionData = (html: string): OptionResult => {
   };
 };
 
-const getOptionNames = (html: string): string[] => {
-  const SEARCH_TEXT = '"aCombinationGroupName" : ';
+const getProductData = (html: string) => {
+  const SEARCH_TEXT = '<script>window.__PRELOADED_STATE__=';
   if (html.indexOf(SEARCH_TEXT) < 0) {
     throw new Error();
   }
 
   const start = html.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
-  const end = html.indexOf(']', start) + 1;
-  return JSON.parse(html.slice(start, end));
-};
-
-const getStockData = (html: string): SmartstoreStockData => {
-  const SEARCH_TEXT = '"aCombinationOption" : ';
-  if (html.indexOf(SEARCH_TEXT) < 0) {
-    throw new Error();
-  }
-
-  const start = html.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
-  const end = html.indexOf('],', start) + 1;
-  return JSON.parse(html.slice(start, end));
+  const end = html.indexOf('</script>', start);
+  return JSON.parse(html.slice(start, end)).product.A;
 };
 
 const getOptionCoordinate = (

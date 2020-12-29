@@ -4,7 +4,10 @@ export const cafe24 = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html).cafe24();
 };
 
-const smartstore = (url: string, html: string): OptionCralwer => {
+export const _smartstorenavercom = (
+  url: string,
+  html: string
+): OptionCralwer => {
   return new OptionCralwer(url, html).smartstore();
 };
 
@@ -58,8 +61,6 @@ export const _oohahhcokr = (url: string, html: string): OptionCralwer => {
       1
     );
 };
-
-export const _smartstorenavercomjuanhomme = smartstore;
 
 export const _inrowscokr = makeshop;
 
