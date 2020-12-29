@@ -1613,3 +1613,9 @@ blond9.com:
   name: meta[name="keywords"]
   originalPrice: '#span_product_price_custom'
   isSoldout: 'div.infoArea_in > div:first-child > table span:last-child'
+
+ourlegacy.se:
+  <<: *base
+  originalPrice: 'span.old-price'
+  salePrice: 'span.price'
+  isSoldout: '#purchase-butt button.buy[type="submit"]'

@@ -2673,22 +2673,45 @@ export const _lotuffcokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const isSoldout = $(selector.isSoldout).attr('alt') === "품절";
+  const isSoldout = $(selector.isSoldout).attr('alt') === '품절';
 
   return correct({
     ...result,
     name: result.name.split('|')[0],
-    isSoldout
+    isSoldout,
   });
 };
 
-export const _blond9com = ($: CheerioStatic, selector: InfoSelectors):InfoResult=>{
+export const _blond9com = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
   const result = selectAll($, selector);
   const isSoldout = $(selector.isSoldout).text().search('품절') > -1;
 
   return correct({
     ...result,
     name: result.name.split(',')[0].trim(),
-    isSoldout
-  })
-}
+    isSoldout,
+  });
+};
+
+export const _ourlegacyse = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const isSoldout = $(selector.isSoldout).attr('disabled') === 'disabled';
+  const oldPrice = $(selector.originalPrice);
+
+  return correct({
+    ...result,
+    isSoldout,
+    originalPrice:
+      oldPrice.length > 0 ? strToNumber(oldPrice.text()) : result.originalPrice,
+    salePrice:
+      oldPrice.length > 0
+        ? strToNumber($('span.price').text().split('EUR')[1])
+        : result.salePrice,
+  });
+};
