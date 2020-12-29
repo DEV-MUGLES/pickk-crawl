@@ -37,14 +37,15 @@ beforeAll(async () => {
 
 describe('Test info-crawl (for all)', () => {
   for (let i = 0; i < testCases.length; ++i) {
-    const { name, isPartner } = brands[i];
+    const { name, html, isPartner } = brands[i];
     it(name, (done) => {
       const data = datas[i];
-      if (!data) {
+      if (html && !data) {
         console.log(chalk.red(name + 'fetch 실패!'));
         done();
         return;
       }
+      expect(data).toBeTruthy();
       expect(data.brandKor.length).toBeGreaterThan(0);
       expect(data.name.length).toBeGreaterThan(0);
       expect(data.imageUrl.length).toBeGreaterThan(0);

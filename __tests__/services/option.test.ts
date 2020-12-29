@@ -40,13 +40,15 @@ beforeAll(async () => {
 
 describe('Test option-crawl (for partners)', () => {
   for (let i = 0; i < partnerBrands.length; ++i) {
-    const { name } = partnerBrands[i];
+    const { name, html } = partnerBrands[i];
     it(name, (done) => {
       const data = datas[i];
-      if (!data) {
-        console.log(chalk.red('fetch 실패!'));
+      if (html && !data) {
+        console.log(chalk.red(name + 'fetch 실패!'));
         done();
+        return;
       }
+      expect(data).toBeTruthy();
       expect(data.values).toBeTruthy();
       Object.values(data.values).forEach((optionValues) => {
         expect((optionValues as String[]).length).toBeGreaterThan(0);
