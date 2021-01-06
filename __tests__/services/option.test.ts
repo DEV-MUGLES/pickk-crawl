@@ -43,7 +43,7 @@ describe('Test option-crawl (for partners)', () => {
     const { name, html } = partnerBrands[i];
     it(name, (done) => {
       const data = datas[i];
-      if (html && !data) {
+      if (!html && !data) {
         console.log(chalk.red(name + 'fetch 실패!'));
         done();
         return;

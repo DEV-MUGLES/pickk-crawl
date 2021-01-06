@@ -40,7 +40,7 @@ describe('Test info-crawl (for all)', () => {
     const { name, html, isPartner } = brands[i];
     it(name, (done) => {
       const data = datas[i];
-      if (html && !data) {
+      if (!html && !data) {
         console.log(chalk.red(name + 'fetch 실패!'));
         done();
         return;
