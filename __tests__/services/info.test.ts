@@ -4,7 +4,8 @@
 import chalk from 'chalk';
 
 import InfoCrawlService from '../../services/info';
-import { allSettled } from '../../lib';
+import { allSettled, getHostName } from '../../lib';
+import infoPuppeties from '../../services/info/puppeties';
 
 import testCases from '../data/test-cases.json';
 import testHtmls from '../data/test-htmls.json';
@@ -37,10 +38,12 @@ beforeAll(async () => {
 
 describe('Test info-crawl (for all)', () => {
   for (let i = 0; i < testCases.length; ++i) {
-    const { name, html, isPartner } = brands[i];
+    const { name, html, isPartner, url } = brands[i];
     it(name, (done) => {
+      const hostName = getHostName(url);
+
       const data = datas[i];
-      if (!html && !data) {
+      if ((!html && !data) || (!data && infoPuppeties.includes(hostName))) {
         console.log(chalk.red(name + 'fetch 실패!'));
         done();
         return;

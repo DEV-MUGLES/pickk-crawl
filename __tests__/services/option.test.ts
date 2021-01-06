@@ -4,7 +4,8 @@
 import chalk from 'chalk';
 
 import OptionCrawlService from '../../services/option';
-import { allSettled } from '../../lib';
+import { allSettled, getHostName } from '../../lib';
+import optionPuppeties from '../../services/option/puppeties';
 
 import testCases from '../data/test-cases.json';
 import testHtmls from '../data/test-htmls.json';
@@ -40,10 +41,12 @@ beforeAll(async () => {
 
 describe('Test option-crawl (for partners)', () => {
   for (let i = 0; i < partnerBrands.length; ++i) {
-    const { name, html } = partnerBrands[i];
+    const { name, html, url } = partnerBrands[i];
     it(name, (done) => {
+      const hostName = getHostName(url);
+
       const data = datas[i];
-      if (!html && !data) {
+      if ((!html && !data) || (!data && optionPuppeties.includes(hostName))) {
         console.log(chalk.red(name + 'fetch 실패!'));
         done();
         return;
