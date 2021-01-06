@@ -993,18 +993,6 @@ export const _labelarchivecom = (
   });
 };
 
-export const _flukecompanycom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  return correct({
-    ...result,
-    imageUrl: 'https://www.flukecompany.com' + result.imageUrl,
-  });
-};
-
 export const _wvprojectcokr = (
   $: CheerioStatic,
   selector: InfoSelectors
@@ -1269,10 +1257,10 @@ export const _shopmangocom = (
   end = scriptHtml.indexOf(',', start);
   const originalPrice = Number(scriptHtml.slice(start, end));
 
-  search_text = '"salePrice":"';
+  search_text = '"salePrice":';
   start = scriptHtml.indexOf(search_text) + search_text.length;
-  end = scriptHtml.indexOf('"', start);
-  const salePrice = originalPrice;
+  end = scriptHtml.indexOf(',', start);
+  const salePrice = Number(scriptHtml.slice(start, end));
 
   return correct({
     ...result,

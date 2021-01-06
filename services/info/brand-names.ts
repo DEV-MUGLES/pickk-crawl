@@ -98,7 +98,6 @@ export const brandNames = {
   'label-archive.com': '라벨아카이브',
   'the-nohant.com': '노앙',
   'chrischristy.com': '크리스크리스티',
-  'flukecompany.com': '플루크',
   'nomanual-official.com': '노매뉴얼',
   'wvproject.co.kr': '더블유브이프로젝트',
   'fennec.co.kr': '페넥',

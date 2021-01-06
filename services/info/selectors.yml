@@ -644,12 +644,6 @@ label-archive.com:
   <<: *base
   salePrice: 'div.pay_detail.full-width > div.holder > div.text-brand.pay_number'
 
-flukecompany.com:
-  name: 'h3.tit-prd'
-  imageUrl: 'img.detail_image'
-  originalPrice: 'td.price > div > strike'
-  salePrice: 'td.price.sell_price > div'
-
 ziosongzio.com:
   <<: *base
   name: '#form1 > div > div.info > h3'
