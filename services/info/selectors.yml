@@ -1627,3 +1627,7 @@ yoox.com:
   salePrice: 'span[itemprop="price"]'
   brandKor: 'a[itemprop="brand"]'
   isSoldout: 'span.itemSoldOutMessageText'
+
+longvaca.kr:
+  <<: *base
+  originalPrice: 'span.productPriceSpan'

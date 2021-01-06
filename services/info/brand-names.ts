@@ -253,4 +253,5 @@ export const brandNames = {
   'perenn.co.kr': '퍼렌',
   'blond9.com': '블론드나인',
   'ourlegacy.se': '아워레가시',
+  'longvaca.kr': '롱바케',
 };
