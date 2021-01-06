@@ -143,13 +143,6 @@ afterpray.com:
   originalPrice: '#shopProductPrice > span'
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
 
-kolonmall.com:
-  name: meta[property="rb:itemName"]
-  brandKor: 'div.brand-name-wrap span.brand-name'
-  imageUrl: meta[property="rb:itemImage"]
-  originalPrice: meta[property="rb:originalPrice"]
-  salePrice: meta[property="rb:salePrice"]
-
 carhartt-wip.co.kr:
   <<: *base
   name: '#goodsForm > div > div.product_detail_tit > div.txt02'
@@ -502,12 +495,6 @@ fashionplus.co.kr:
   brandKor: '#frmGoods > a > span'
   originalPrice: '#frmGoods > div.priceframe > div.productprice > p'
   salePrice: '#frmGoods > div.priceframe > div.productprice > div.pricelow'
-
-coupang.com:
-  <<: *base
-  brandKor: 'a.prod-brand-name'
-  originalPrice: 'div.prod-origin-price > span.origin-price'
-  salePrice: 'div.prod-sale-price.prod-major-price > span.total-price > strong'
 
 itempage3.auction.co.kr:
   <<: *base

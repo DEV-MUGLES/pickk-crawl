@@ -239,7 +239,6 @@ export const brandNames = {
   'ohkoos.com': '빅유니온',
   'overr.co.kr': '오베르',
   'auction.co.kr': '옥션',
-  'coupang.com': '쿠팡',
   'alexandermcqueen.com': '알렉산더맥퀸',
   'mooseknucklescanada.kr': '무스너클',
   'waikei.co.kr': '와이케이',

@@ -603,25 +603,6 @@ export const _topten10mallcom = (
   });
 };
 
-export const _kolonmallcom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-  let { brandKor } = result;
-  if (brandKor === 'CUSTOMELLOW') brandKor = '커스텀멜로우';
-  if (brandKor === 'SERIES') brandKor = '시리즈';
-  if (brandKor === 'COURONNE') brandKor = '쿠론';
-  if (brandKor === 'KOLON SPORT') brandKor = '코오롱스포츠';
-  if (brandKor === 'HEAD') brandKor = '헤드';
-  if (brandKor === 'SUECOMMA BONNIE') brandKor = '슈콤마보니';
-
-  return correct({
-    ...result,
-    brandKor,
-  });
-};
-
 export const _ssgcom = (
   $: CheerioStatic,
   selector: InfoSelectors
@@ -750,20 +731,6 @@ export const _fashionpluscokr = (
   return correct({
     ...result,
     salePrice,
-  });
-};
-
-export const _coupangcom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  const brandKor = unescape($(selector.brandKor).last().text().trim());
-
-  return correct({
-    ...result,
-    brandKor,
   });
 };
 
