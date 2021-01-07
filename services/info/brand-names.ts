@@ -252,4 +252,5 @@ export const brandNames = {
   'blond9.com': '블론드나인',
   'ourlegacy.se': '아워레가시',
   'longvaca.kr': '롱바케',
+  'ovcworks.com': '오버캐스트',
 };
