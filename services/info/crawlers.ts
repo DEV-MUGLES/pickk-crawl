@@ -2714,3 +2714,16 @@ export const _yooxcom = (
     isSoldout,
   });
 };
+
+export const _itempage3auctioncokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.replace(' - 옥션', ''),
+    brandKor: result.brandKor || '옥션',
+  });
+};

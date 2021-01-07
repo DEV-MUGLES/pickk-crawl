@@ -499,7 +499,7 @@ itempage3.auction.co.kr:
   <<: *base
   originalPrice: '#ucItemPrice_hdivPrice'
   salePrice: '#frmMain > div.price_wrap > div.price > div > span > strong'
-  brandKor: '#frmMain > h1 > span.text__emphasis-item-title'
+  brandKor: 'span.text__brand > span.text'
 
 shopping.interpark.com:
   <<: *base
