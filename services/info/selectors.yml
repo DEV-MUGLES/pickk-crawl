@@ -1284,7 +1284,7 @@ hance.kr:
   images: 'div.product-images img.ThumbImage'
 
 bylegacy.co.kr:
-  <<: *base
+  <<: *custom_price
   isSoldout: 'span.sold'
   images: 'div.cont img'
 
