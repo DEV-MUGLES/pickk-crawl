@@ -1271,7 +1271,7 @@ enou.co.kr:
 fatalism.co.kr:
   <<: *base
   isSoldout: 'div.xans-product-action span'
-  images: 'div#prdDetail div.cont img'
+  images: '#prd-detail-slide img'
 
 haleineshop.com:
   <<: *base
