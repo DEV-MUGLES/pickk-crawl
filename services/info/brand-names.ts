@@ -254,4 +254,5 @@ export const brandNames = {
   'longvaca.kr': '롱바케',
   'ovcworks.com': '오버캐스트',
   'intempomoode.com': '인템포무드',
+  'worthwhilemovement.com': '월스와일 무브먼트',
 };

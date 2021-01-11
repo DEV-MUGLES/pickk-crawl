@@ -1620,3 +1620,7 @@ endclothing.com:
 intempomood.com:
   <<: *base
   isSoldout: 'div.ec-base-button > span'
+
+worthwhilemovement.com:
+  <<: *base
+  isSoldout: '#shopProductCartErrorDiv'

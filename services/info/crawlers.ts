@@ -2805,12 +2805,20 @@ export const _endclothingcom = (
   });
 };
 
-export const _onthespotcokr = (
+export const _worthwhilemovementcom = (
   $: CheerioStatic,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+
+  const originalPrice = Number(ldJsonObject.offers.price);
+  const isSoldout = !$(selector.isSoldout).hasClass('hide');
+
   return correct({
     ...result,
+    originalPrice,
+    salePrice: originalPrice,
+    isSoldout,
   });
 };
