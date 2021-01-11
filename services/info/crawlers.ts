@@ -2727,3 +2727,47 @@ export const _itempage3auctioncokr = (
     brandKor: result.brandKor || '옥션',
   });
 };
+
+export const _kreamcokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const brands = {
+    Jordan: '조던',
+    Nike: '나이키',
+    Supreme: '슈프림',
+    adidas: '아디다스',
+    Converse: '컨버스',
+    'New Balance': '뉴발란스',
+    PALACE: '팔라스',
+    'IAB Studio': '아이앱 스튜디오',
+    Stussy: '스투시',
+    Vans: '반스',
+    'FOG ESSENTIALS': 'FOG 에센셜 후드',
+    'Anti Social Social Club': '안티소셜소셜클럽',
+    'Maison Margiela': '메종 마르지엘라',
+    'Common Project': '커먼 프로젝트',
+    Balenciaga: '발렌시아가',
+    Gucci: '구찌',
+    Dior: '디올',
+    Valentino: '발렌티노',
+    'Acne Studios': '아크네스튜디오',
+    'Mihara Yasuhiro': '미하라야스히로',
+  };
+  const brandEng = result.name.split('|')[1].trim();
+  const salePrices = $('ul.select_list > li span.price')
+    .toArray()
+    .map((object) => strToNumber(object.children[0].data))
+    .filter((price) => price !== 0);
+  const salePrice = Math.min.apply(Math, salePrices);
+  const originalPrice = salePrice;
+
+  return correct({
+    ...result,
+    name: result.name.split('|')[0].trim(),
+    brandKor: brands[brandEng] || brandEng,
+    originalPrice,
+    salePrice,
+  });
+};

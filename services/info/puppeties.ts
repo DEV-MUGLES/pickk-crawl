@@ -20,5 +20,4 @@ export default [
   'kr.mcmworldwide.com',
   'player.co.kr',
   'coupang.com',
-  'hiphoper.com',
 ];
