@@ -8,6 +8,7 @@ import {
 } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { correctImageUrl } from '.';
+import { getBrandKor } from './brand-names';
 import * as cheerio from 'cheerio';
 
 export const _storemusinsacom = (
@@ -822,48 +823,10 @@ export const _farfetchcom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  let { brandKor } = result;
-  if (brandKor === 'Balenciaga') brandKor = '발렌시아가';
-  if (brandKor === 'Bottega Veneta') brandKor = '보테가 베네타';
-  if (brandKor === 'Burberry') brandKor = '버버리';
-  if (brandKor === 'Chloé') brandKor = '끌로에';
-  if (brandKor === 'Gucci') brandKor = '구찌';
-  if (brandKor === 'Jil Sander') brandKor = '질 샌더';
-  if (brandKor === 'Isabel Marant Étoile') brandKor = '이자벨마랑 에뚜왈';
-  if (brandKor === 'Maison Margiela') brandKor = '메종 마르지엘라';
-  if (brandKor === 'Marni') brandKor = '마르니';
-  if (brandKor === 'Prada') brandKor = '프라다';
-  if (brandKor === 'Saint Laurent') brandKor = '생로랑';
-  if (brandKor === 'Valentino') brandKor = '발렌티노';
-  if (brandKor === 'Versace') brandKor = '베르사체';
-  if (brandKor === 'Alexander McQueen') brandKor = '알랙산더 맥퀸';
-  if (brandKor === 'Golden Goose') brandKor = '골든구스';
-  if (brandKor === 'Isabel Marant') brandKor = '이자벨마랑';
-  if (brandKor === 'Jimmy Choo') brandKor = '지미 추';
-  if (brandKor === 'Manolo Blahnik') brandKor = '마놀로 블라닉';
-  if (brandKor === 'STUART WEITZMAN') brandKor = '스튜어트 와이츠먼';
-  if (brandKor === 'A.P.C.') brandKor = '아페쎄';
-  if (brandKor === 'Givenchy') brandKor = '지방시';
-  if (brandKor === 'Loewe') brandKor = '로에베';
-  if (brandKor === 'Salvatore Ferragamo') brandKor = '살바토레 페레가모';
-  if (brandKor === 'Stella Mccartney') brandKor = '스텔라 매카트니';
-  if (brandKor === 'Off-White') brandKor = '오프화이트';
-  if (brandKor === 'Stone Island') brandKor = '스톤아일랜드';
-  if (brandKor === 'Thom Browne') brandKor = '톰 브라운';
-  if (brandKor === "Church's") brandKor = '처치스';
-  if (brandKor === 'Marsèll') brandKor = '마르셀';
-  if (brandKor === 'Officine Creative') brandKor = '오피치네 크레아티베';
-  if (brandKor === 'Santoni') brandKor = '산토니';
-  if (brandKor === "Tod's") brandKor = '토즈';
-  if (brandKor === 'Adidas') brandKor = '아디다스';
-  if (brandKor === 'Common Projects') brandKor = '커먼 프로젝트';
-  if (brandKor === 'Nike') brandKor = '나이키';
-
-  const name = result.name.slice(0, result.name.indexOf('-') - 1);
   return correct({
     ...result,
-    brandKor,
-    name,
+    name: result.name.slice(0, result.name.indexOf('-') - 1),
+    brandKor: getBrandKor(result.brandKor),
   });
 };
 
@@ -1475,42 +1438,12 @@ export const _iamshoponlinecom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  let brandKor = result.name.slice(0, result.name.indexOf(':') - 1);
-  if (brandKor === 'N.HOOLYWOOD') brandKor = '엔 헐리우드';
-  if (brandKor === 'IVSI') brandKor = '아이비즈아이';
-  if (brandKor === 'Auralee') brandKor = '오라리';
-  if (brandKor === 'BIRTHDAYSUIT') brandKor = '벌스데이수트';
-  if (brandKor === 'Camiel Fortgens') brandKor = '카미엘 포트겐스';
-  if (brandKor === 'OUR LEGACY') brandKor = '아워레가시';
-  if (brandKor === 'SALOMON') brandKor = '살로몬';
-  if (brandKor === 'KIM CLOTHING') brandKor = '킴클로딩';
-  if (brandKor === 'NEEDLES') brandKor = '니들스';
-  if (brandKor === 'AECA WHITE') brandKor = '에이카화이트';
-  if (brandKor === 'AFTER PRAY') brandKor = '애프터프레이';
-  if (brandKor === 'ATELIER KHJ') brandKor = '아뜰리에 케이에이치제이';
-  if (brandKor === 'Ancient Greek Sandals') brandKor = '에인션트 그릭 샌들';
-  if (brandKor === 'ASICS') brandKor = '아식스';
-  if (brandKor === 'Bauhaus-Archiv') brandKor = '바우하우스';
-  if (brandKor === 'Baracuta') brandKor = '바라쿠타';
-  if (brandKor === 'BIRKENSTOCK') brandKor = '버켄스탁';
-  if (brandKor === 'Bonne Suit') brandKor = '보네 수트';
-  if (brandKor === 'BROWNYARD') brandKor = '브라운야드';
-  if (brandKor === 'CHAMPION') brandKor = '챔피온';
-  if (brandKor === 'CLAMP') brandKor = '클램프';
-  if (brandKor === 'CLASS') brandKor = '클래스';
-  if (brandKor === 'Common Projects') brandKor = '커먼프로젝트';
-  if (brandKor === 'de bonne facture') brandKor = '드 보네 팩터';
-  if (brandKor === 'Document') brandKor = '도큐먼트';
-  if (brandKor === 'Dr. Martens') brandKor = '닥터마틴';
-  if (brandKor === 'Eastlogue') brandKor = '이스트로그';
-  if (brandKor === 'Engineered Garments') brandKor = '엔지니어드가먼츠';
-  if (brandKor === 'E. Tautz') brandKor = '이타우즈';
-  if (brandKor === 'ERNEST W. BAKER') brandKor = '어니스트베이커';
+  const brandEng = result.name.slice(0, result.name.indexOf(':') - 1);
 
   return correct({
     ...result,
     name: result.name.slice(result.name.indexOf(':') + 1),
-    brandKor,
+    brandKor: getBrandKor(brandEng),
   });
 };
 
@@ -1565,35 +1498,9 @@ export const _shoemarkercokr = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  let brandKor = result.brandKor;
-  if (brandKor === 'ADIDAS') brandKor = '아디다스';
-  if (brandKor === 'NIKE') brandKor = '나이키';
-  if (brandKor === 'CROCS') brandKor = '크록스';
-  if (brandKor === 'CLAYONG') brandKor = '클레용';
-  if (brandKor === 'FILA') brandKor = '휠라';
-  if (brandKor === 'PUMA') brandKor = '푸마';
-  if (brandKor === 'CONVERSE') brandKor = '컨버스';
-  if (brandKor === 'REEBOK') brandKor = '리복';
-  if (brandKor === 'FREDPERRY') brandKor = '프레드페리';
-  if (brandKor === 'SUPERGA') brandKor = '수페르가';
-  if (brandKor === 'LACOSTE') brandKor = '라코스테';
-  if (brandKor === 'NEW BALANCE') brandKor = '뉴발란스';
-  if (brandKor === 'TEVA') brandKor = '테바';
-  if (brandKor === 'NERDY') brandKor = '널디';
-  if (brandKor === 'HEAD') brandKor = '헤드';
-  if (brandKor === '6FT') brandKor = '식스핏';
-  if (brandKor === 'DR. MARTENS') brandKor = '닥터마틴';
-  if (brandKor === 'MLB') brandKor = 'MLB';
-  if (brandKor === 'ROMANTIC MOVE') brandKor = '로맨틱무브';
-  if (brandKor === 'SKONO') brandKor = '스코노';
-  if (brandKor === 'MARVEL') brandKor = '마블';
-  if (brandKor === 'LEMINE') brandKor = '르마인';
-  if (brandKor === 'BSQT') brandKor = 'BSQT';
-  if (brandKor === 'SKECHERS') brandKor = '스케처스';
-
   return correct({
     ...result,
-    brandKor,
+    brandKor: getBrandKor(result.brandKor),
   });
 };
 
@@ -2348,11 +2255,6 @@ export const _smartstorenavercom = (
   const result = selectAll($, selector);
   let [name, brandKor] = result.name.split(' : ');
 
-  brandKor =
-    {
-      'JUAN HOMME': '주앙옴므',
-    }[brandKor] || brandKor;
-
   const isSoldout =
     $(selector.isSoldout).text().search('구매하실 수 없는') > -1;
 
@@ -2375,7 +2277,7 @@ export const _smartstorenavercom = (
     ...result,
     isSoldout,
     name,
-    brandKor,
+    brandKor: getBrandKor(brandKor),
     images,
   });
 };
@@ -2386,24 +2288,9 @@ export const _slowsteadyclubcom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const brandKor =
-    {
-      NEITHERS: '네이더스',
-      AURALEE: '오라리',
-      GRAPHPAPER: '그라프페이퍼',
-      'SLOW STEADY CLUB': '슬로우 스테디 클럽',
-      'NEW BALANCE': '뉴발란스',
-      HOTEL990: '호텔990',
-      MFPEN: '엠에프펜',
-      ASICS: '아식스',
-      NANAMICA: '나나미카',
-      'STUDIO NICHOLSON': '스튜디오 니콜슨',
-      BLANKOF: '블랭코브',
-    }[result.brandKor] || result.brandKor;
-
   return correct({
     ...result,
-    brandKor,
+    brandKor: getBrandKor(result.brandKor),
   });
 };
 
@@ -2413,22 +2300,9 @@ export const _editeditioncom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const brandKor =
-    {
-      'UNIFORM BRIDGE': '유니폼브릿지',
-      'DON JUAN': '돈후안',
-      'MAGAZINE B': '매거진비',
-      'MALIBU SANDALS': '말리부샌들',
-      GONESH: '고네쉬',
-      PUEBCO: '푸에브코',
-      REDWING: '레드윙',
-      'REPRODUCTION OF FOUND': '리프로덕션오브파운드',
-      TECHNICA: '테크니카',
-    }[result.brandKor] || result.brandKor;
-
   return correct({
     ...result,
-    brandKor,
+    brandKor: getBrandKor(result.brandKor),
   });
 };
 
@@ -2477,25 +2351,7 @@ export const _idlookmallcom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  let { brandKor } = result;
-  if (brandKor === 'RENEEVON') brandKor = '레니본';
-  if (brandKor === 'KEITH') brandKor = '키이스';
-  if (brandKor === 'SANDRO HOMME') brandKor = '산드로 옴므';
-  if (brandKor === 'ESSENTIEL') brandKor = '에센셜';
-  if (brandKor === 'IL BISONTE') brandKor = '일 비종떼';
-  if (brandKor === 'CLAUDIE PIERLOT') brandKor = '끌로디 피에로';
-  if (brandKor === 'ELEVENTY MEN') brandKor = '엘레벤티 맨';
-  if (brandKor === 'GIVY') brandKor = '기비';
-  if (brandKor === 'BERENICE') brandKor = '베르니스';
-  if (brandKor === 'ELEVENTY WOMEN') brandKor = '엘레벤티 우먼';
-  if (brandKor === 'MAJE') brandKor = '마쥬';
-  if (brandKor === 'A.P.C. WOMEN') brandKor = '아페쎄 우먼';
-  if (brandKor === 'CHLOE STORA') brandKor = '끌로에 스토라';
-  if (brandKor === 'SANDRO') brandKor = '산드로';
-  if (brandKor === 'A.P.C. MEN') brandKor = '아페쎄 맨';
-  if (brandKor === 'MARIMEKKO') brandKor = '마리에꼬';
-
-  return correct({ ...result, brandKor });
+  return correct({ ...result, brandKor: getBrandKor(result.brandKor) });
 };
 
 export const _newbalancecom = (
@@ -2670,41 +2526,12 @@ export const _yooxcom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const brandKorAlias = {
-    'ACNE STUDIOS': '아크네스튜디오',
-    BALENCIAGA: '발렌시아가',
-    BOGLIOLI: '볼리올리',
-    'BOTTEGA VENETA': '보테가베네타',
-    'BRUNELLO CUCINELLI': '브루넬로쿠치넬리',
-    BURBERRY: '버버리',
-    'DOLCE & GABBANA': '돌체앤가비나',
-    "DOUCAL'S": '도우칼스',
-    'DRIES VAN NOTEN': '드리스 반 노튼',
-    DRUMOHR: '드루모어',
-    DSQUARED2: '디스퀘어드2',
-    ELEVENTY: '일레븐티',
-    ETRO: '에트로',
-    GIVENCHY: '지방시',
-    'GOLDEN GOOSE DELUXE BRAND': '골든구스 디럭스 브랜드',
-    'JIL SANDER': '질 샌더',
-    LOEWE: '로에베',
-    'MAISON MARGIELA': '메종 마르지엘라',
-    MARNI: '마르니',
-    MSGM: '엠에스지엠',
-    PRADA: '프라다',
-    'RICK OWENS': '릭 오웬스',
-    SANTONI: '산토니',
-    'STONE ISLAND': '스톤 아일랜드',
-    'THOM BROWNE': '톰 브라운',
-    "TOD'S": '토즈',
-    VALENTINO: '발렌티노',
-  };
-  const brandKor = brandKorAlias[result.brandKor] || result.brandKor;
+
   const isSoldout = $(selector.isSoldout).length > 0;
 
   return correct({
     ...result,
-    brandKor,
+    brandKor: getBrandKor(result.brandKor),
     isSoldout,
   });
 };
@@ -2727,28 +2554,6 @@ export const _kreamcokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const brandKorAlias = {
-    Jordan: '조던',
-    Nike: '나이키',
-    Supreme: '슈프림',
-    adidas: '아디다스',
-    Converse: '컨버스',
-    'New Balance': '뉴발란스',
-    PALACE: '팔라스',
-    'IAB Studio': '아이앱 스튜디오',
-    Stussy: '스투시',
-    Vans: '반스',
-    'FOG ESSENTIALS': 'FOG 에센셜 후드',
-    'Anti Social Social Club': '안티소셜소셜클럽',
-    'Maison Margiela': '메종 마르지엘라',
-    'Common Project': '커먼 프로젝트',
-    Balenciaga: '발렌시아가',
-    Gucci: '구찌',
-    Dior: '디올',
-    Valentino: '발렌티노',
-    'Acne Studios': '아크네스튜디오',
-    'Mihara Yasuhiro': '미하라야스히로',
-  };
   const brandEng = result.name.split('|')[1].trim();
   const salePrices = $('ul.select_list > li span.price')
     .toArray()
@@ -2760,7 +2565,7 @@ export const _kreamcokr = (
   return correct({
     ...result,
     name: result.name.split('|')[0].trim(),
-    brandKor: brandKorAlias[brandEng] || brandEng,
+    brandKor: getBrandKor(brandEng),
     originalPrice,
     salePrice,
   });
@@ -2773,35 +2578,13 @@ export const _endclothingcom = (
   const result = selectAll($, selector);
   const ldJsonObject = getLdJsonObject($, 2);
 
-  const brandKorAlias = {
-    'A.P.C.': '아페쎄',
-    'Acne Studios': '아크네스튜디오',
-    adidas: '아디다스',
-    'Alexander McQueen': '알랙산더 맥퀸',
-    Balenciaga: '발렌시아가',
-    Burberry: '버버리',
-    'Carhartt WIP': '칼하트 WIP',
-    'Common Project': '커먼 프로젝트',
-    Givenchy: '지방시',
-    Kenzo: '겐조',
-    'MAISON MARGIELA': '메종 마르지엘라',
-    'New Balance': '뉴발란스',
-    Nike: '나이키',
-    Patagonia: '파타고니아',
-    'Rick Owens': '릭 오웬스',
-    'Saint Laurent': '생로랑',
-    Stussy: '스투시',
-    'The North Face': '노스페이스',
-    IDEA: '아이디어',
-  };
-
   const name = ldJsonObject.name;
   const brandEng = ldJsonObject.brand.name;
 
   return correct({
     ...result,
     name,
-    brandKor: brandKorAlias[brandEng] || brandEng,
+    brandKor: getBrandKor(brandEng),
   });
 };
 
