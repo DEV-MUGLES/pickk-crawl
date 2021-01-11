@@ -1611,3 +1611,8 @@ yoox.com:
 longvaca.kr:
   <<: *base
   originalPrice: 'span.productPriceSpan'
+
+endclothing.com:
+  <<: *base
+  name: meta[name="og:title"]
+  salePrice: '#pdp__details__final-price'

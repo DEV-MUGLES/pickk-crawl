@@ -10,7 +10,7 @@ import optionPuppeties from '../../services/option/puppeties';
 import testCases from '../data/test-cases.json';
 import testHtmls from '../data/test-htmls.json';
 
-jest.setTimeout(30000);
+jest.setTimeout(50000);
 
 const partnerBrands = testCases
   .map((testCase) => ({
