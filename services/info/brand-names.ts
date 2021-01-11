@@ -253,4 +253,5 @@ export const brandNames = {
   'ourlegacy.se': '아워레가시',
   'longvaca.kr': '롱바케',
   'ovcworks.com': '오버캐스트',
+  'intempomoode.com': '인템포무드',
 };

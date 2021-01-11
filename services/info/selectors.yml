@@ -1616,3 +1616,7 @@ endclothing.com:
   <<: *base
   name: meta[name="og:title"]
   salePrice: '#pdp__details__final-price'
+
+intempomood.com:
+  <<: *base
+  isSoldout: 'div.ec-base-button > span'
