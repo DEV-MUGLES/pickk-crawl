@@ -10,7 +10,7 @@ import infoPuppeties from '../../services/info/puppeties';
 import testCases from '../data/test-cases.json';
 import testHtmls from '../data/test-htmls.json';
 
-jest.setTimeout(30000);
+jest.setTimeout(50000);
 
 const brands = testCases.map((testCase) => ({
   ...testCase,
