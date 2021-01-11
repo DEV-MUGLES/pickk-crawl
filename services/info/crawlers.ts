@@ -4,6 +4,7 @@ import {
   correct,
   strToNumber,
   selectImages,
+  getLdJsonObject,
 } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { correctImageUrl } from '.';
@@ -377,16 +378,9 @@ export const _drmartenscokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
 
-  const scriptHtml = $('body').html();
-
-  const ORIGINAL_SEARCH_TEXT = '"price": "';
-  const originalStart =
-    scriptHtml.indexOf(ORIGINAL_SEARCH_TEXT) + ORIGINAL_SEARCH_TEXT.length;
-  const originalEnd = scriptHtml.indexOf('"', originalStart);
-  const originalPrice = strToNumber(
-    scriptHtml.slice(originalStart, originalEnd)
-  );
+  const originalPrice = Number(ldJsonObject.offers.price);
 
   return correct({
     ...result,
@@ -2777,6 +2771,7 @@ export const _endclothingcom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($, 2);
 
   const brandKorAlias = {
     'A.P.C.': '아페쎄',
@@ -2800,23 +2795,22 @@ export const _endclothingcom = (
     IDEA: '아이디어',
   };
 
-  const scriptHtml = $('head').html();
-
-  const BRAND_OBJECT_SEARCH_TEXT = '"brand":{';
-  const brandInfoStart =
-    scriptHtml.indexOf(BRAND_OBJECT_SEARCH_TEXT) +
-    BRAND_OBJECT_SEARCH_TEXT.length;
-  const BRAND_NAME_SEARCH_TEXT = '"name":"';
-  const start =
-    scriptHtml.indexOf(BRAND_NAME_SEARCH_TEXT, brandInfoStart) +
-    BRAND_NAME_SEARCH_TEXT.length;
-  const end = scriptHtml.indexOf('"', start);
-
-  const brandEng = scriptHtml.slice(start, end);
+  const name = ldJsonObject.name;
+  const brandEng = ldJsonObject.brand.name;
 
   return correct({
     ...result,
-    name: result.name.split('|')[0].trim(),
+    name,
     brandKor: brandKorAlias[brandEng] || brandEng,
+  });
+};
+
+export const _onthespotcokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  return correct({
+    ...result,
   });
 };

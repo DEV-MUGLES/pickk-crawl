@@ -62,6 +62,15 @@ export const parseValue = (
   return value;
 };
 
+export const getLdJsonObject = ($: CheerioStatic, index: number = 0): any => {
+  const scriptEles = $('script[type ="application/ld+json"]')?.toArray();
+  if (!scriptEles) {
+    return {};
+  }
+
+  return JSON.parse(scriptEles[index].firstChild.data);
+};
+
 export const correct = (result: InfoResult): InfoResult => {
   const { name: n, imageUrl: iu, originalPrice: op, salePrice: sp } = result;
 
