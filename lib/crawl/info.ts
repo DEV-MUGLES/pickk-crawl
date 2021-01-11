@@ -64,7 +64,7 @@ export const parseValue = (
 
 export const getLdJsonObject = ($: CheerioStatic, index: number = 0): any => {
   const scriptEles = $('script[type ="application/ld+json"]')?.toArray();
-  if (!scriptEles) {
+  if (!scriptEles?.length) {
     return {};
   }
 
