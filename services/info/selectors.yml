@@ -1624,3 +1624,8 @@ intempomood.com:
 worthwhilemovement.com:
   <<: *base
   isSoldout: '#shopProductCartErrorDiv'
+
+lab-101.com:
+  <<: *base
+  images: 'div.product-images img'
+  isSoldout: p.soldout
