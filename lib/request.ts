@@ -14,7 +14,7 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
           'User-Agent':
             'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', //            ''Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36',
         },
-        timeout: 5000,
+        timeout: 15000,
       },
       async (error, res, body) => {
         if (!error && res.statusCode === 200 && body.length > 1000) {
@@ -28,7 +28,7 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
                 'User-Agent':
                   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
               },
-              timeout: 5000,
+              timeout: 15000,
             });
             resolve(data);
           } catch (e) {
