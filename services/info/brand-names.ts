@@ -286,6 +286,8 @@ export const brandKorAlias = {
   brownyard: '브라운야드',
   brunellocucinelli: '브루넬로쿠치넬리',
   bsqt: 'bsqt',
+  buffalo: '버팔로',
+  buffalolondon: '버팔로 런던',
   burberry: '버버리',
   camielfortgens: '카미엘 포트겐스',
   carharttwip: '칼하트 wip',

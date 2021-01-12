@@ -1629,3 +1629,10 @@ lab-101.com:
   <<: *base
   images: 'div.product-images img'
   isSoldout: p.soldout
+
+buffalo-boots.com:
+  <<: *base
+  name: title
+  brandKor: a.b-pdp-brand
+  originalPrice: span.b-product-tile-price-item--line-through
+  salePrice: span.b-product-tile-price-item

@@ -2605,3 +2605,32 @@ export const _worthwhilemovementcom = (
     isSoldout,
   });
 };
+
+export const _buffalobootscom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const brandKor = getBrandKor(result.brandKor);
+  const originalPrice = Number(
+    $(selector.originalPrice)
+      .text()
+      .replace(/\,.+/, '')
+      .replace(/[^0-9]/gi, '')
+  );
+  const salePrice = Number(
+    $(selector.salePrice)
+      .last()
+      .text()
+      .replace(/\,.+/, '')
+      .replace(/[^0-9]/gi, '')
+  );
+
+  return correct({
+    ...result,
+    name: result.name.replace('Shop', '').split('|')[0],
+    brandKor,
+    originalPrice,
+    salePrice,
+  });
+};
