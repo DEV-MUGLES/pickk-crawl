@@ -843,7 +843,7 @@ kr.mcmworldwide.com:
 
 stylelq.com:
   <<: *base
-  originalPrice: 'div.col.col-1-1-lg.col-1-2-xl.caption > div > div:nth-child(1) > div.col.desc > span'
+  originalPrice: 'span.product-info__origin'
   salePrice: meta[property="product:price:amount"]
 
 seikoboutique.co.kr:
