@@ -862,7 +862,6 @@ montblanc.com:
 givenchy.com:
   <<: *base
   name: 'head > title'
-  salePrice: 'body'
 
 ysl.com:
   <<: *base

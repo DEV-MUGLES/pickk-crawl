@@ -1288,17 +1288,19 @@ export const _givenchycom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const scriptHtml = $(selector.salePrice).html();
+
+  const scriptHtml = $('div.product-add-to-cart').html();
   let search_text, start, end;
-  search_text = 'itemprop="image" src="';
+  search_text = '"img":"';
   start = scriptHtml.indexOf(search_text) + search_text.length;
   end = scriptHtml.indexOf('"', start);
   const imageUrl = scriptHtml.slice(start, end);
-  search_text = '<meta itemprop="price" content="';
+  search_text = '"price":"';
   start = scriptHtml.indexOf(search_text) + search_text.length;
-  end = scriptHtml.indexOf('.', start);
+  end = scriptHtml.indexOf('"', start);
   const originalPrice = Number(scriptHtml.slice(start, end));
   const salePrice = Number(scriptHtml.slice(start, end)) || originalPrice;
+
   return correct({
     ...result,
     name: result.name.split('|')[0].trim(),
