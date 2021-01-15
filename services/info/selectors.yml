@@ -1635,3 +1635,7 @@ buffalo-boots.com:
   brandKor: a.b-pdp-brand
   originalPrice: span.b-product-tile-price-item--line-through
   salePrice: span.b-product-tile-price-item
+
+riseandbelow.com:
+  <<: *base
+  isSoldout: '.xans-product-action > .ec-base-button > span'

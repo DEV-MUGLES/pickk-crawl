@@ -2636,3 +2636,15 @@ export const _buffalobootscom = (
     salePrice,
   });
 };
+
+export const _riseandbelowcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    images: [result.imageUrl],
+  });
+};
