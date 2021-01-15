@@ -916,8 +916,8 @@ shop.timberland.co.kr:
 
 gentlemonster.com:
   <<: *base
-  name: p.product_detail_name.font_title
-  originalPrice: p.product_detail_price.font_title
+  name: .product-name
+  originalPrice: .product-price
 
 camelwork.co.kr:
   <<: *custom_price
