@@ -256,6 +256,7 @@ export const brandNames = {
   'intempomoode.com': '인템포무드',
   'worthwhilemovement.com': '월스와일 무브먼트',
   'riseandbelow.com': '라이즈앤빌로우',
+  'niftydo.kr': '니프티두 서울',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

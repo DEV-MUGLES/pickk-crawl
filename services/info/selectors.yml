@@ -1639,3 +1639,7 @@ buffalo-boots.com:
 riseandbelow.com:
   <<: *base
   isSoldout: '.xans-product-action > .ec-base-button > span'
+
+niftydo.kr:
+  <<: *base
+  salePrice: '#span_product_coupon_dc_price'

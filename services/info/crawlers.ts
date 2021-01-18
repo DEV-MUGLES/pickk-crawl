@@ -2648,3 +2648,15 @@ export const _riseandbelowcom = (
     images: [result.imageUrl],
   });
 };
+
+export const _niftydokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    salePrice: strToNumber($(selector.salePrice).text().split('원')[0]),
+  });
+};
