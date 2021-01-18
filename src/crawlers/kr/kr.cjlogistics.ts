@@ -52,8 +52,16 @@ export class KRCjlogicsticsCrawler extends BaseCrawler {
           }
         );
 
-        const informationTable = parcelData.parcelResultMap.resultList;
-        const progressTable = parcelData.parcelDetailResultMap.resultList;
+        const { parcelResultMap, parcelDetailResultMap } = parcelData;
+        if (!parcelResultMap || !parcelDetailResultMap) {
+          return reject({
+            code: 404,
+            message: '해당 운송장이 존재하지 않습니다.',
+          });
+        }
+
+        const informationTable = parcelResultMap.resultList;
+        const progressTable = parcelDetailResultMap.resultList;
 
         if (informationTable.length === 0 && progressTable.length === 0) {
           return reject({
