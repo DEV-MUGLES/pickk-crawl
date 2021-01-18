@@ -2655,8 +2655,12 @@ export const _niftydokr = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
+  const [brandEng, name] = result.name.split(']');
+
   return correct({
     ...result,
+    name,
+    brandKor: getBrandKor(brandEng.replace(/\[|\]/gi, '')),
     salePrice: strToNumber($(selector.salePrice).text().split('원')[0]),
   });
 };

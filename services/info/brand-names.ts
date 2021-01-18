@@ -256,7 +256,6 @@ export const brandNames = {
   'intempomoode.com': '인템포무드',
   'worthwhilemovement.com': '월스와일 무브먼트',
   'riseandbelow.com': '라이즈앤빌로우',
-  'niftydo.kr': '니프티두 서울',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
@@ -291,6 +290,7 @@ export const brandKorAlias = {
   buffalo: '버팔로',
   buffalolondon: '버팔로 런던',
   burberry: '버버리',
+  catchball: '캐치볼',
   camielfortgens: '카미엘 포트겐스',
   carharttwip: '칼하트 wip',
   champion: '챔피온',
@@ -374,6 +374,7 @@ export const brandKorAlias = {
   nike: '나이키',
   officinecreative: '오피치네 크레아티베',
   offwhite: '오프화이트',
+  oofos: '우포스',
   ourlegacy: '아워레가시',
   palace: '팔라스',
   patagonia: '파타고니아',
@@ -394,6 +395,7 @@ export const brandKorAlias = {
   santoni: '산토니',
   skechers: '스케처스',
   skono: '스코노',
+  slickandeasy: '슬릭앤이지',
   slowsteadyclub: '슬로우 스테디 클럽',
   stellamccartney: '스텔라 매카트니',
   stoneisland: '스톤 아일랜드',
