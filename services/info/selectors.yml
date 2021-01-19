@@ -1643,3 +1643,7 @@ riseandbelow.com:
 niftydo.kr:
   <<: *base
   salePrice: '#span_product_coupon_dc_price'
+
+kaneitei.com:
+  <<: *base
+  originalPrice: 'span.productPriceSpan'
