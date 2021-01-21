@@ -1609,7 +1609,7 @@ yoox.com:
 
 longvaca.kr:
   <<: *base
-  originalPrice: 'span.productPriceSpan'
+  salePrice: 'span.productDiscountPriceSpan'
 
 endclothing.com:
   <<: *base

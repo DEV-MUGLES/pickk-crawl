@@ -2664,3 +2664,18 @@ export const _niftydokr = (
     salePrice: strToNumber($(selector.salePrice).text().split('원')[0]),
   });
 };
+
+export const _longvacakr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+
+  const originalPrice = Number(ldJsonObject.offers.price);
+
+  return correct({
+    ...result,
+    originalPrice,
+  });
+};
