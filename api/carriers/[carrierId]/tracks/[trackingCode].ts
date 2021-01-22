@@ -8,6 +8,13 @@ Sentry.init({ dsn: process.env.NEXT_PUBLIC_SENTRY_DSN });
 export default async (req: NowRequest, res: NowResponse) => {
   const { carrierId, trackingCode } = req.query;
 
+  if (!carrierId || !trackingCode) {
+    res.status(400).send({
+      message: 'Bad Request',
+    });
+    return;
+  }
+
   const crawler = getCrawler(carrierId.toString());
   if (!crawler) {
     Sentry.captureException({
