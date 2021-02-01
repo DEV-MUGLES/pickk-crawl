@@ -654,7 +654,7 @@ minimalcode.co.kr:
 
 samsonitemall.co.kr:
   <<: *base
-  brandKor: '#pdpMain > div.desktop-hidden.product-detail-top > div.product-brand-name'
+  brandKor: '#f1_brand'
   originalPrice: '#product-content > div.price-wrapper > div > div.price-standard > span.value'
   salePrice: '#product-content > div.price-wrapper > div > div.price-sales > span.value'
 

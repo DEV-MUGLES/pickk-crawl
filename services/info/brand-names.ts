@@ -414,6 +414,11 @@ export const brandKorAlias = {
   valentino: '발렌티노',
   vans: '반스',
   versace: '베르사체',
+  americantourister: '아메리칸투어리스터',
+  gregory: '그레고리',
+  highsierra: '하이시에라',
+  kamiliant: '카밀리안트',
+  lipault: '리뽀',
 };
 
 export const getBrandKor = (brandEng: string): string => {

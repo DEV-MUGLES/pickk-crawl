@@ -942,6 +942,7 @@ export const _samsonitemallcokr = (
 
   return correct({
     ...result,
+    brandKor: getBrandKor(result.brandKor),
     salePrice: Number(salePrice),
   });
 };
