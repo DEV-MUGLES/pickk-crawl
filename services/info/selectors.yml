@@ -1647,3 +1647,9 @@ niftydo.kr:
 kaneitei.com:
   <<: *base
   originalPrice: 'span.productPriceSpan'
+
+begin202.com:
+  <<: *base
+  imageUrl: '#mainImage > img'
+  originalPrice: 'div.item_detail_list > dl:first-child() > dd > del > span'
+  salePrice: 'dl.item_price dd > strong > strong'

@@ -2680,3 +2680,15 @@ export const _longvacakr = (
     originalPrice,
   });
 };
+
+export const _begin202com = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    imageUrl: 'https://begin202.com' + result.imageUrl,
+  });
+};
