@@ -1052,13 +1052,15 @@ denmade.co.kr:
   isSoldout: '#contents > div.xans-element-.xans-product.xans-product-detail > div.detailArea > div.infoArea > div.xans-element-.xans-product.xans-product-action > div:nth-child(3)'
   images: 'div#prdDetail img'
 
-smartstore.naver.com:
+smartstore.naver.com: &naver
   <<: *base
   name: 'title'
   originalPrice: '#content > div > div._2-I30XS1lA > div._2QCa6wHHPy > fieldset > div._1ziwSSdAv8 > div > div > del > span._1LY7DqCnwR'
-  salePrice: '#content > div > div._2-I30XS1lA > div._2QCa6wHHPy > fieldset > div._1ziwSSdAv8 > div > div > strong > span._1LY7DqCnwR'
   isSoldout: 'div.prd_type3 > div.not_goods'
-  images: 'div.detail_view'
+
+m.smartstore.naver.com:
+  <<: *naver
+  originalPrice: 'div._3my-5FC8OB > del> span._1LY7DqCnwR'
 
 luoespac.co.kr:
   <<: *base

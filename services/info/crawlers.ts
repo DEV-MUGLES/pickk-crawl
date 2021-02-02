@@ -2256,6 +2256,8 @@ export const _smartstorenavercom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+
   let [name, brandKor] = result.name.split(' : ');
 
   const isSoldout =
@@ -2282,8 +2284,11 @@ export const _smartstorenavercom = (
     name,
     brandKor: getBrandKor(brandKor),
     images,
+    salePrice: ldJsonObject.offers.price,
   });
 };
+
+export const _msmartstorenavercom = _smartstorenavercom;
 
 export const _slowsteadyclubcom = (
   $: CheerioStatic,
