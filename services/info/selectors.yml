@@ -740,10 +740,10 @@ hfashionmall.com:
   <<: *recopick
 
 lacoste.com:
-  name: 'div.js-pdp-desc.offset-2.cell-9.cell-wide-7.offset-mt-3.cell-mt-19.offset-m-0.cell-m-25.l-vspaced-row-1.l-vspaced-row-mt-0 > h1'
-  imageUrl: 'div.cell-12.l-relative.l-overflow-hidden.cell-mt-25.offset-mt-0 > div > div > div > div > picture > img'
-  originalPrice: ''
-  salePrice: 'div.l-vmargin--small.flex.flex--align-start.flex--space-between.padding-m-2 > div > p'
+  <<: *base
+  name: 'meta[name="og:title"]'
+  imageUrl: 'meta[name="og:image"]'
+  originalPrice: 'div.l-vmargin--small.flex.flex--align-start.flex--space-between.padding-m-2 > div > p'
 
 gu-global.com:
   name: 'div.gu_product_detail_order > div.gu_product_tl'

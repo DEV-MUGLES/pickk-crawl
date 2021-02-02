@@ -2697,3 +2697,16 @@ export const _begin202com = (
     imageUrl: 'https://begin202.com' + result.imageUrl,
   });
 };
+
+export const _lacostecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($, 1);
+
+  return correct({
+    ...result,
+    salePrice: ldJsonObject.offers[0].price,
+  });
+};
