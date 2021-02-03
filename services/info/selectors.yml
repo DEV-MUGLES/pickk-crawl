@@ -445,11 +445,14 @@ monsterrepublic.co.kr:
 eastpak.co.kr:
   <<: *custom_price
 
-ssg.com:
+ssg.com: &ssg
   <<: *base
   brandKor: 'div.cdtl_prd_info > span > a'
   originalPrice: 'div.cdtl_optprice_wrap > div > span.cdtl_old_price > em'
   salePrice: ' div.cdtl_optprice_wrap > div > span.cdtl_new_price.notranslate > em'
+
+m.ssg.com:
+  <<: *ssg
 
 gsshop.com:
   <<: *base

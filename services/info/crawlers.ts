@@ -618,6 +618,8 @@ export const _ssgcom = (
   });
 };
 
+export const _mssgcom = _ssgcom;
+
 export const _goodsellottecom = (
   $: CheerioStatic,
   selector: InfoSelectors
