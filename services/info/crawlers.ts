@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   parseValue,
   selectAll,
@@ -2711,4 +2712,29 @@ export const _lacostecom = (
     ...result,
     salePrice: ldJsonObject.offers[0].price,
   });
+};
+
+export const _29cmcokr = async (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const id = url.split('/').reverse()[0];
+  try {
+    const result = await axios
+      .get(`https://cache.29cm.co.kr/item/detail/${id}/`, {
+        timeout: 30000,
+      })
+      .then((res) => res.data);
+
+    return correct({
+      name: result.item_name,
+      brandKor: result.front_brand.brand_name_kor,
+      imageUrl: 'https://img.29cm.co.kr' + result.item_images[0].image_url,
+      originalPrice: result.sale_info[0].consumer_price,
+      salePrice: result.sale_info[0].total_sale_price,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
