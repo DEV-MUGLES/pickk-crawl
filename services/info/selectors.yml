@@ -1658,3 +1658,7 @@ begin202.com:
   imageUrl: '#mainImage > img'
   originalPrice: 'div.item_detail_list > dl:first-child() > dd > del > span'
   salePrice: 'dl.item_price dd > strong > strong'
+
+pemont.me:
+  <<: *base
+  originalPrice: '#span_product_price_custom'
