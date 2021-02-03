@@ -979,6 +979,12 @@ ocokorea.com:
   originalPrice: '#contents > div > div > div.basics.clear.mb80 > div.p__info.fr > div.p__text.coupon > span.text2.pr1'
   salePrice: '#contents > div > div > div.basics.clear.mb80 > div.p__info.fr > div.p__text.coupon > span.text7'
 
+ocokorea.com/shopMobile:
+  <<: *base
+  name: '#contents div.detail_infoBox > h3'
+  brandKor: '#contents div.detail_infoBox > h3 > a'
+  originalPrice: '#contents div.detail_infoBox > div.detail_priceWrap > p > span.con > span:first-child'
+
 hotsunglass.co.kr:
   <<: *base
   name: '#orgClone > div > div.infoWrap > h1'

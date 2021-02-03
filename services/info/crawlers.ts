@@ -2714,6 +2714,29 @@ export const _lacostecom = (
   });
 };
 
+export const _ocokoreacomshopMobile = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const price = $(selector.originalPrice)
+    .text()
+    .split('\n')
+    .filter((value) => value.trim())
+    .map((value) => parseInt(value.trim().replace(',', '')));
+  const originalPrice = price[0];
+  const salePrice = price[1] || price[0];
+
+  return correct({
+    ...result,
+    name: result.name.split('\n')[1]?.trim(),
+    brandKor: $(selector.brandKor).text(),
+    originalPrice,
+    salePrice,
+  });
+};
+
 export const _29cmcokr = async (
   $: CheerioStatic,
   selector: InfoSelectors,
