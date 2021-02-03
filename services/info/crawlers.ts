@@ -2761,3 +2761,35 @@ export const _29cmcokr = async (
     console.log(error);
   }
 };
+
+export const _hivercokr = async (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const AuthorizationToken = `3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272f076_1423639497`;
+  const productId = url.split('/').reverse()[0];
+  try {
+    const result = await axios
+      .get(
+        `https://capi.hiver.co.kr/v1/web/products/${productId}?service-type=hiver&res-type=section1`,
+        {
+          timeout: 30000,
+          headers: {
+            Authorization: AuthorizationToken,
+          },
+        }
+      )
+      .then((res) => res.data.data);
+
+    return correct({
+      name: result.name,
+      brandKor: result.seller.name,
+      imageUrl: result.image_thumbnail_url,
+      originalPrice: result.price,
+      salePrice: result.sale_price,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

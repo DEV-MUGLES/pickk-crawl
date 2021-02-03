@@ -1,5 +1,4 @@
 export default [
-  'hiver.co.kr',
   'ssfshop.com',
   'lookpin.co.kr',
   'g9.co.kr',
