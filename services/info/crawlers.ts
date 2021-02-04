@@ -2674,6 +2674,19 @@ export const _niftydokr = (
   });
 };
 
+export const _kaneiteicom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+
+  return correct({
+    ...result,
+    originalPrice: parseInt(ldJsonObject.offers.price),
+  });
+};
+
 export const _longvacakr = (
   $: CheerioStatic,
   selector: InfoSelectors

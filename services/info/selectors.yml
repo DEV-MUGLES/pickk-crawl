@@ -1657,7 +1657,7 @@ niftydo.kr:
 
 kaneitei.com:
   <<: *base
-  originalPrice: 'span.productPriceSpan'
+  salePrice: 'span.productDiscountPriceSpan'
 
 begin202.com:
   <<: *base
