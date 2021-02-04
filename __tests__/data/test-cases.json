@@ -673,7 +673,7 @@
   },
   {
     "name": "몬스터리퍼블릭",
-    "url": "https://www.monsterrepublic.co.kr/shop/goods/goods_view.php?goodsno=451&category="
+    "url": "https://www.monsterrepublic.co.kr/shop/goods/goods_view.php?goodsno=574&category=001007"
   },
   {
     "name": "이스트팩",
@@ -1327,5 +1327,9 @@
   {
     "name": "하이버",
     "url": "https://www.hiver.co.kr/products/24684941"
+  },
+  {
+    "name": "베이컨트",
+    "url": "http://vacant.kr/product/detail.html?product_no=84&cate_no=49&display_group=1"
   }
 ]

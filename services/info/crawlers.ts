@@ -2793,3 +2793,16 @@ export const _hivercokr = async (
     console.log(error);
   }
 };
+
+export const _vacantkr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: $(selector.name).first().attr().content,
+    imageUrl: $(selector.imageUrl).first().attr().content,
+  });
+};

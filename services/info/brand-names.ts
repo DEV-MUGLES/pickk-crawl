@@ -259,6 +259,7 @@ export const brandNames = {
   'kaneitei.com': '카네이테이',
   'begin202.com': '비긴 202',
   'pemont.me': '페몬트',
+  'vacant.kr': '베이컨트',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
