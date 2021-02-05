@@ -413,6 +413,7 @@ export const brandKorAlias = {
   thenorthface: '노스페이스',
   thombrowne: '톰 브라운',
   tods: '토즈',
+  unaffected: '언어펙티드',
   uniformbridge: '유니폼브릿지',
   valentino: '발렌티노',
   vans: '반스',
