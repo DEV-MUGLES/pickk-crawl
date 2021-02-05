@@ -18,4 +18,5 @@ export default [
   'kr.mcmworldwide.com',
   'player.co.kr',
   'coupang.com',
+  'musinsaapp.page.link',
 ];
