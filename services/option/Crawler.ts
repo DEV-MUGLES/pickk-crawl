@@ -100,7 +100,7 @@ export default class OptionCralwer {
           formatValue(cleanUpString(ele.children[0].data.toString())).trim()
         );
         if (checkIsSoldout?.(ele)) {
-          this.result.isSoldout.push([j - valueStartIndex]);
+          this.result.isSoldout?.push([j - valueStartIndex]);
         }
       });
     });

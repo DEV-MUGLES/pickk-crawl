@@ -108,13 +108,17 @@ export const _personalpackcom = (url: string, html: string): OptionCralwer => {
 
 export const _aecawhitecom = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html)
-    .crawlOptionNames('dd.size h2')
+    .crawlOptionNames(
+      'tbody.xans-product-option > tr > td > select',
+      0,
+      'option_title'
+    )
     .crawlValues(
       'select',
       'option',
       (ele) => ele.children[0].data.includes('SOLD OUT'),
       0,
-      1,
+      2,
       (value) => value.split('[')[0]
     )
     .checkitemIsSoldout(
