@@ -2835,3 +2835,16 @@ export const _mamagaricom = async (
     imageUrl: 'http://www.mamagari.com' + result.imageUrl,
   });
 };
+
+export const _hundredmakercom = async (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    brandKor: result.name.split(' ')[0],
+  });
+};

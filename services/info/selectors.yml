@@ -1676,3 +1676,6 @@ mamagari.com:
   originalPrice: '.price .item-consumer strike'
   salePrice: '.price .item-price'
   images: '.prd-detail img'
+
+hundredmaker.com:
+  <<: *custom_price
