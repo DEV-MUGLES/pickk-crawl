@@ -1564,12 +1564,12 @@ blackhind.com:
 
 aecawhite.com:
   <<: *base
-  name: 'div.product-name > dt'
-  originalPrice: 'div.product-name > dt2'
-  salePrice: 'div.product-meta > ul > li:nth-child(1) dd'
-  imageUrl: '#zoomOut1 img'
-  images: 'div.product-accordion img'
-  isSoldout: 'div.product-button a.buy'
+  name: 'h2.name'
+  originalPrice: 'input#product_price'
+  salePrice: 'span#span_product_price_sale'
+  imageUrl: 'p.prdImg img'
+  images: '#contents > div.xans-element-.xans-product.xans-product-detail.xans-product-detail-content.xans-product-detail-content-align-center.\*xans-product-detail-content-responsive img'
+  isSoldout: 'span.soldout'
 
 apple.com:
   <<: *base

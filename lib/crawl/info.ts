@@ -49,7 +49,6 @@ export const parseValue = (
     return selectImages($, selector);
   }
   if (key === 'isSoldout') {
-    // console.log($(selector).html());
     return !$(selector).hasClass('displaynone');
   }
   const value = select($, selector);

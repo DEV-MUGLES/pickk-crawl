@@ -2382,12 +2382,15 @@ export const _aecawhitecom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const isSoldout = !$(selector.isSoldout).html();
+  const salePrice = $(selector.salePrice)
+    .html()
+    .replace('&#x20A9;', '')
+    .split('<span')[0]
+    .trim();
 
   return correct({
     ...result,
-    isSoldout,
-    imageUrl: 'http://www.aecawhite.com/shop' + result.imageUrl.slice(2),
+    salePrice: strToNumber(salePrice),
   });
 };
 
