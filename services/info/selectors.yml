@@ -1668,3 +1668,11 @@ begin202.com:
 pemont.me:
   <<: *base
   originalPrice: '#span_product_price_custom'
+
+mamagari.com:
+  <<: *base
+  name: '.infoArea > .name'
+  imageUrl: '.thumb-info > .thumb-wrap img'
+  originalPrice: '.price .item-consumer strike'
+  salePrice: '.price .item-price'
+  images: '.prd-detail img'

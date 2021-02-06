@@ -2819,3 +2819,16 @@ export const _vacantkr = (
     imageUrl: $(selector.imageUrl).first().attr().content,
   });
 };
+
+export const _mamagaricom = async (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    imageUrl: 'http://www.mamagari.com' + result.imageUrl,
+  });
+};
