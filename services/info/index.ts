@@ -56,8 +56,9 @@ export default class InfoCrawlService {
     const images =
       result.images
         ?.filter((image) => image)
-        ?.map((image) => correctImageUrl(image, new URL(this.url).hostname)) ||
-      [];
+        ?.map((image) =>
+          decodeURI(correctImageUrl(image, new URL(this.url).hostname))
+        ) || [];
 
     return {
       ...result,
