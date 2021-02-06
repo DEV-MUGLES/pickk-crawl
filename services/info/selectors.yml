@@ -76,17 +76,14 @@ costumeoclock.com:
   isSoldout: 'div.btnArea span'
   images: 'div#prdDetail .cont img'
 
-currentstore.co.kr:
+currentstore.co.kr: &currentstore
   <<: *custom_price
-  name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
-  isSoldout: 'div#mun_paymentButton span'
-  images: '#mun_productDetail img'
+  name: '#prd-information > ul > li:nth-child(1) > div.prd-detail-desc > span'
+  isSoldout: 'span.soldout'
+  images: '#prd-productDetail img'
 
 m.currentstore.co.kr:
-  <<: *custom_price
-  name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
-  isSoldout: 'div#mun_paymentButton span'
-  images: '#mun_productDetail img'
+  <<: *currentstore
 
 store.musinsa.com: &musinsa
   <<: *base
