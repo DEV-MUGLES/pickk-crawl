@@ -932,24 +932,6 @@ export const _wvprojectcokr = (
   });
 };
 
-export const _samsonitemallcokr = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  const isSale = $(selector.salePrice).html().includes('strong');
-  const salePrice = isSale
-    ? result.salePrice.toString().replace(result.originalPrice.toString(), '')
-    : result.salePrice;
-
-  return correct({
-    ...result,
-    brandKor: getBrandKor(result.brandKor),
-    salePrice: Number(salePrice),
-  });
-};
-
 export const _heightsstorecom = (
   $: CheerioStatic,
   selector: InfoSelectors
@@ -2846,5 +2828,19 @@ export const _hundredmakercom = async (
   return correct({
     ...result,
     brandKor: result.name.split(' ')[0],
+  });
+};
+
+export const _samsonitecokr = async (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const result = selectAll($, selector);
+  const productName = $('.product-name').text();
+
+  return correct({
+    ...result,
+    name: [result.name, productName].join(' '),
   });
 };

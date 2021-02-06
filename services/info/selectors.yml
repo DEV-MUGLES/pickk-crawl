@@ -652,11 +652,13 @@ wvproject.co.kr:
 minimalcode.co.kr:
   <<: *custom_price
 
-samsonitemall.co.kr:
+samsonite.co.kr:
   <<: *base
-  brandKor: '#f1_brand'
-  originalPrice: '#product-content > div.price-wrapper > div > div.price-standard > span.value'
-  salePrice: '#product-content > div.price-wrapper > div > div.price-sales > span.value'
+  name: 'h1.product-collection'
+  brandKor: 'div.product-brand'
+  imageUrl: '#pdp-owl-carousel-ss-133619-1449 > div > div.owl-carousel-item.active > img'
+  originalPrice: 'span.price-inner > span.strike-through > span.value'
+  salePrice: 'span.price-inner > span.sales > span.value'
 
 fairplay142.com:
   name: 'div.dname > h3'
