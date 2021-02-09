@@ -1682,3 +1682,9 @@ hundredmaker.com:
 newcheapchic.store:
   <<: *base
   salePrice: 'span.productDiscountPriceSpan'
+
+freaksstore.com:
+  <<: *base
+  brandKor: 'p.product-brand'
+  originalPrice: 'span.product-price__normal'
+  salePrice: 'strong.price'
