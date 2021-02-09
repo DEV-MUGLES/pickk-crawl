@@ -1317,6 +1317,11 @@ m.maison-mined.com:
   <<: *base
   images: '.s_img  img'
 
+maisonmargiela.com:
+  <<: *base
+  name: '#itemModelTitle > span.modelName'
+  originalPrice: 'span.price > span.value'
+
 modnine.com:
   <<: *base
   isSoldout: 'div#mun_paymentButton span'

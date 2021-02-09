@@ -9,6 +9,7 @@ export const brandNames = {
   'notnnot.com': '낫앤낫',
   'hance.kr': '핸스',
   'maison-mined.com': '메종미네드',
+  'maisonmargiela.com': '메종 마르지엘라',
   'modnine.com': '모드나인',
   'pavement.co.kr': '페이브먼트',
   'flareup.co.kr': '플레어업',
