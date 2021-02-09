@@ -1678,3 +1678,7 @@ mamagari.com:
 
 hundredmaker.com:
   <<: *custom_price
+
+newcheapchic.store:
+  <<: *base
+  salePrice: 'span.productDiscountPriceSpan'

@@ -2844,3 +2844,16 @@ export const _samsonitecokr = async (
     name: [result.name, productName].join(' '),
   });
 };
+
+export const _newcheapchicstore = async (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): Promise<InfoResult> => {
+  const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+
+  return correct({
+    ...result,
+    originalPrice: parseInt(ldJsonObject.offers.price),
+  });
+};
