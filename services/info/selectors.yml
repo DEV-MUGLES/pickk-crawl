@@ -1688,3 +1688,7 @@ freaksstore.com:
   brandKor: 'p.product-brand'
   originalPrice: 'span.product-price__normal'
   salePrice: 'strong.price'
+
+thefabric.kr:
+  <<: *base
+  salePrice: 'span.productDiscountPriceSpan'

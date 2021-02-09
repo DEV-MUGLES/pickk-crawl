@@ -2805,11 +2805,11 @@ export const _vacantkr = (
   });
 };
 
-export const _mamagaricom = async (
+export const _mamagaricom = (
   $: CheerioStatic,
   selector: InfoSelectors,
   url: string
-): Promise<InfoResult> => {
+): InfoResult => {
   const result = selectAll($, selector);
 
   return correct({
@@ -2818,11 +2818,11 @@ export const _mamagaricom = async (
   });
 };
 
-export const _hundredmakercom = async (
+export const _hundredmakercom = (
   $: CheerioStatic,
   selector: InfoSelectors,
   url: string
-): Promise<InfoResult> => {
+): InfoResult => {
   const result = selectAll($, selector);
 
   return correct({
@@ -2831,11 +2831,11 @@ export const _hundredmakercom = async (
   });
 };
 
-export const _samsonitecokr = async (
+export const _samsonitecokr = (
   $: CheerioStatic,
   selector: InfoSelectors,
   url: string
-): Promise<InfoResult> => {
+): InfoResult => {
   const result = selectAll($, selector);
   const productName = $('.product-name').text();
 
@@ -2845,10 +2845,23 @@ export const _samsonitecokr = async (
   });
 };
 
-export const _newcheapchicstore = async (
+export const _newcheapchicstore = (
   $: CheerioStatic,
   selector: InfoSelectors
-): Promise<InfoResult> => {
+): InfoResult => {
+  const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+
+  return correct({
+    ...result,
+    originalPrice: parseInt(ldJsonObject.offers.price),
+  });
+};
+
+export const _thefabrickr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
   const result = selectAll($, selector);
   const ldJsonObject = getLdJsonObject($);
 
