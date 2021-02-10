@@ -2740,7 +2740,7 @@ export const _29cmcokr = async (
   selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
-  const id = url.split('/').reverse()[0];
+  const id = url.split('/').reverse()[0].split('?')[0];
   try {
     const result = await axios
       .get(`https://cache.29cm.co.kr/item/detail/${id}/`, {
