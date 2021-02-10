@@ -52,13 +52,21 @@ export default class InfoCrawlService {
 
     const brandHost =
       this.host.indexOf('m.') === 0 ? this.host.slice(2) : this.host;
+    console.log(result);
 
     const images =
       result.images
         ?.filter((image) => image)
-        ?.map((image) =>
-          decodeURI(correctImageUrl(image, new URL(this.url).hostname))
-        ) || [];
+        ?.map((image) => {
+          try {
+            return decodeURI(
+              correctImageUrl(image, new URL(this.url).hostname)
+            );
+          } catch {
+            return null;
+          }
+        })
+        ?.filter((image) => image) || [];
 
     return {
       ...result,
