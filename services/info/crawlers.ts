@@ -2766,7 +2766,7 @@ export const _hivercokr = async (
   url: string
 ): Promise<InfoResult> => {
   const AuthorizationToken = `3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272f076_1423639497`;
-  const productId = url.split('/').reverse()[0];
+  const productId = url.split('/').reverse()[0].split('?')[0];
   try {
     const result = await axios
       .get(
