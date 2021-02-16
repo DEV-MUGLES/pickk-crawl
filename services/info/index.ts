@@ -52,7 +52,6 @@ export default class InfoCrawlService {
 
     const brandHost =
       this.host.indexOf('m.') === 0 ? this.host.slice(2) : this.host;
-    console.log(result);
 
     const images =
       result.images

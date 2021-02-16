@@ -1360,7 +1360,7 @@ chindown.kr:
 paulcore.co.kr:
   <<: *base
   isSoldout: 'div.infoArea div.xans-product a.btnSubmit'
-  images: 'ul.detail_left_big_nav img'
+  images: '#prdDetail img'
   salePrice: 'span#span_product_coupon_dc_price'
   originalPrice: 'span > strong#span_product_price_text'
 
