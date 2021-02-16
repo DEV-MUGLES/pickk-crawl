@@ -65,10 +65,7 @@ export const _oohahhcokr = (url: string, html: string): OptionCralwer => {
 export const _inrowscokr = makeshop;
 
 export const _hyojicokr = (url: string, html: string): OptionCralwer =>
-  makeshop(url, html).checkitemIsSoldout(
-    'div.table-opt tbody tr p.soldout',
-    (ins) => ins.text().search('품절') > -1
-  );
+  makeshop(url, html);
 
 export const _coorkr = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html)

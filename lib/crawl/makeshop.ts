@@ -15,6 +15,14 @@ export const getMakeshopOptionData = (
   });
 
   stockData.forEach((stockRecord, index) => {
+    const optValues = stockRecord.opt_values || stockRecord.opt_value;
+    if (optValues.includes(',')) {
+      values[optionNames[0]] = values[optionNames[0]].concat(
+        optValues.split(',')
+      );
+      return;
+    }
+
     values[optionNames[0]].push(
       stockRecord.opt_values || stockRecord.opt_value
     );
