@@ -2870,3 +2870,18 @@ export const _thefabrickr = (
     originalPrice: parseInt(ldJsonObject.offers.price),
   });
 };
+
+export const _concepts1onecokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const aTagText = $(selector.name).find('a').text();
+  const name = $(selector.name).text().replace(aTagText, '');
+
+  return correct({
+    ...result,
+    name,
+  });
+};
