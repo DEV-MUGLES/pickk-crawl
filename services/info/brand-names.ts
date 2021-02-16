@@ -265,6 +265,7 @@ export const brandNames = {
   'samsonite.co.kr': '쌤소나이트',
   'newcheapchic.store': '뉴치프시크',
   'thefabric.kr': '더패브릭',
+  'concepts1one.co.kr': '컨셉원',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
