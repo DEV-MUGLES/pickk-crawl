@@ -70,6 +70,15 @@ export const getLdJsonObject = ($: CheerioStatic, index: number = 0): any => {
   return JSON.parse(scriptEles[index].firstChild.data);
 };
 
+export const getNextPageProps = ($: CheerioStatic, index: number = 0): any => {
+  const scriptEles = $('script#__NEXT_DATA__')?.toArray();
+  if (!scriptEles?.length) {
+    return {};
+  }
+
+  return JSON.parse(scriptEles[index].firstChild.data)?.props?.pageProps || {};
+};
+
 export const correct = (result: InfoResult): InfoResult => {
   const { name: n, imageUrl: iu, originalPrice: op, salePrice: sp } = result;
 
