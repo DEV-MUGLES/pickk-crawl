@@ -6,6 +6,7 @@ import {
   strToNumber,
   selectImages,
   getLdJsonObject,
+  getNextPageProps,
 } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { correctImageUrl } from '.';
@@ -2501,19 +2502,23 @@ export const _ourlegacyse = (
   $: CheerioStatic,
   selector: InfoSelectors
 ): InfoResult => {
-  const result = selectAll($, selector);
-  const isSoldout = $(selector.isSoldout).attr('disabled') === 'disabled';
-  const oldPrice = $(selector.originalPrice);
+  const nextPageProps = getNextPageProps($);
+
+  const { product } = nextPageProps.blocks[0].props;
+
+  const {
+    priceAsNumber: salePrice,
+    priceBeforeDiscountAsNumber: originalPrice,
+  } = Object.values(
+    (Object.values(product.markets)[0] as any).pricelists
+  )[0] as any;
 
   return correct({
-    ...result,
-    isSoldout,
-    originalPrice:
-      oldPrice.length > 0 ? strToNumber(oldPrice.text()) : result.originalPrice,
-    salePrice:
-      oldPrice.length > 0
-        ? strToNumber($('span.price').text().split('EUR')[1])
-        : result.salePrice,
+    name: product.metaTitle,
+    brandKor: '아워레가시',
+    imageUrl: product.media.full[0],
+    originalPrice,
+    salePrice,
   });
 };
 
