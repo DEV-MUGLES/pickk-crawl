@@ -3,12 +3,12 @@ import charset from 'charset'; // 해당 사이트의 charset값을 알 수 있�
 import { decode } from 'iconv-lite';
 import axios from 'axios';
 
-import { requestCookies } from './cookies';
+import { requestHeaderObjects } from './cookies';
 import { getHostName } from './crawl';
 
 // crawl using request
 export const requestHtml = async (sourceUrl: string): Promise<string> => {
-  const cookie = requestCookies[getHostName(sourceUrl)] || '';
+  const headerObject = requestHeaderObjects[getHostName(sourceUrl)] || {};
 
   return new Promise((resolve, reject) => {
     request(
@@ -18,7 +18,7 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
         headers: {
           'User-Agent':
             'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36', //            ''Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36',
-          cookie,
+          ...headerObject,
         },
         timeout: 15000,
       },
@@ -33,7 +33,7 @@ export const requestHtml = async (sourceUrl: string): Promise<string> => {
               headers: {
                 'User-Agent':
                   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
-                cookie,
+                ...headerObject,
               },
               timeout: 15000,
             });
