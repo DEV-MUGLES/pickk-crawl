@@ -1697,3 +1697,9 @@ freaksstore.com:
 thefabric.kr:
   <<: *base
   salePrice: 'span.productDiscountPriceSpan'
+
+maveworks.com:
+  <<: *base
+  name: title
+  originalPrice: table.sit_ov_tbl > tbody > tr:nth-child(3) > td
+  salePrice: input#it_price
