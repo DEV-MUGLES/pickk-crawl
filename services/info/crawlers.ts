@@ -2921,3 +2921,23 @@ export const _danswercom = (
     imageUrl,
   });
 };
+
+export const _senseofnycom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const ldJsonObject = getLdJsonObject($);
+
+  const brandKor = ldJsonObject.name.split(' ')[0];
+  const name = ldJsonObject.name.replace(brandKor, '').trim();
+  const originalPrice = ldJsonObject.offers.price;
+
+  return correct({
+    ...result,
+    name,
+    brandKor,
+    originalPrice,
+  });
+};

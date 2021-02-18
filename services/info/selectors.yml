@@ -1703,3 +1703,8 @@ d-answer.com:
   name: h2.product-name
   originalPrice: input#price
   salePrice: input#disprice
+
+senseofny.com:
+  <<: *base
+  name: title
+  salePrice: '#member-popover tbody > tr:last-child > td:nth-child(3)'
