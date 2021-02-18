@@ -2891,19 +2891,6 @@ export const _concepts1onecokr = (
   });
 };
 
-export const _maveworkscom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  return correct({
-    ...result,
-    name: result.name.split('|')[0].trim(),
-    imageUrl: $('#sit_pvi_big > a').first().find('img').attr().src,
-  });
-};
-
 export const _danswercom = (
   $: CheerioStatic,
   selector: InfoSelectors
