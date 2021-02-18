@@ -2903,3 +2903,21 @@ export const _maveworkscom = (
     imageUrl: $('#sit_pvi_big > a').first().find('img').attr().src,
   });
 };
+
+export const _danswercom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const scriptHtml = $('body').html();
+  const SEARCH_TEXT = `sh.setData("img",encodeURIComponent("`;
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf(`"));`, start);
+  const imageUrl = scriptHtml.slice(start, end);
+
+  return correct({
+    ...result,
+    imageUrl,
+  });
+};

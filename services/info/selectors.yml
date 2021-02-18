@@ -1697,3 +1697,9 @@ maveworks.com:
   name: title
   originalPrice: table.sit_ov_tbl > tbody > tr:nth-child(3) > td
   salePrice: input#it_price
+
+d-answer.com:
+  <<: *base
+  name: h2.product-name
+  originalPrice: input#price
+  salePrice: input#disprice
