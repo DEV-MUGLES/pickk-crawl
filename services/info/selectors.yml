@@ -1702,3 +1702,9 @@ senseofny.com:
   <<: *base
   name: title
   salePrice: '#member-popover tbody > tr:last-child > td:nth-child(3)'
+
+folderstyle.com:
+  <<: *base
+  brandKor: p.b_name
+  originalPrice: .dd_price > span.discount
+  salePrice: .dd_price > span#ProductPrice
