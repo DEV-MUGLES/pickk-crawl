@@ -2928,3 +2928,16 @@ export const _senseofnycom = (
     originalPrice,
   });
 };
+
+export const _bylegacycokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const images = result.images.filter((url) => !url.includes('washing'));
+
+  return correct({
+    ...result,
+    images,
+  });
+};
