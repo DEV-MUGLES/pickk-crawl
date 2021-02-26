@@ -176,7 +176,7 @@ converse.co.kr:
 
 asics.com:
   name: 'h1[itemprop="name"]'
-  imageUrl: 'ul.product-primary-image > li:nth-child(1) > a'
+  imageUrl: 'ul.product-primary-image > li:nth-child(1) > span.main-image > picture > img'
   originalPrice: 'div.product-price > span.price-standard'
   salePrice: 'div.product-price > span.price-sales'
 
