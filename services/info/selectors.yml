@@ -1713,3 +1713,8 @@ amekaji-moaa.com:
   <<: *base
   originalPrice: span.productPriceWithDiscountSpan
   salePrice: span.productDiscountPriceSpan
+
+googongfast.com:
+  <<: *base
+  originalPrice: div.pay_detail span.real_price
+  salePrice: div.pay_detail span.sale_price

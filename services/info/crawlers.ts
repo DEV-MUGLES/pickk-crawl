@@ -2941,3 +2941,15 @@ export const _bylegacycokr = (
     images,
   });
 };
+
+export const _googongfastcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.replace(': 구공페스트', '').trim(),
+  });
+};
