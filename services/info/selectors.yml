@@ -1708,3 +1708,8 @@ folderstyle.com:
   brandKor: p.b_name
   originalPrice: .dd_price > span.discount
   salePrice: .dd_price > span#ProductPrice
+
+amekaji-moaa.com:
+  <<: *base
+  originalPrice: span.productPriceWithDiscountSpan
+  salePrice: span.productDiscountPriceSpan
