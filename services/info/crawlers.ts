@@ -2953,3 +2953,28 @@ export const _googongfastcom = (
     name: result.name.replace(': 구공페스트', '').trim(),
   });
 };
+
+export const _krmoscotcom = async (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): Promise<InfoResult> => {
+  const result = selectAll($, selector);
+
+  const scriptHtml = $('head').html();
+  const SEARCH_TEXT = `,"variants":[{"id":`;
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf(`,"price":`, start);
+  const variantId = scriptHtml.slice(start, end);
+
+  const { data } = await axios.get(
+    `https://api.flow.io/moscot/shopify/localized/variants/experience/republic-of-korea/map?country=KOR&limit=100&currency=KRW&variant_id[0]=${variantId}`,
+    {
+      timeout: 30000,
+    }
+  );
+
+  return correct({
+    ...result,
+    originalPrice: data[variantId].prices.item.amount,
+  });
+};

@@ -1011,10 +1011,6 @@ thesortie.com:
   isSoldout: 'div.sold_out'
   images: 'div#pc_tab_offset'
 
-kr.moscot.com:
-  <<: *base
-  originalPrice: 'div.product-main__price span'
-
 deadendkr.cafe24.com:
   <<: *base
   name: '#contents > div.xans-element-.xans-product.xans-product-detail > div.headingArea > h2'
