@@ -729,8 +729,8 @@ halbkreis.co.kr:
 
 rolarola.com:
   <<: *base
-  originalPrice: '#sell_prc_str'
-  salePrice: '#detail > form > div > div > div.list_btn > div.box_price > div > strong'
+  originalPrice: 'div.price > span.sell > strong'
+  salePrice: 'div.price > span.discount > strong'
 
 zplish.com:
   <<: *custom_price
