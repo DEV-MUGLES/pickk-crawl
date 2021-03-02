@@ -270,6 +270,7 @@ export const brandNames = {
   'd-answer.com': '디앤써',
   'amekaji-moaa.com': '모아',
   'googongfast.com': '구공페스트',
+  'nsad-official.com': 'NSAD*',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

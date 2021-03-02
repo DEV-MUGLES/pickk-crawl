@@ -1714,3 +1714,8 @@ googongfast.com:
   <<: *base
   originalPrice: div.pay_detail span.real_price
   salePrice: div.pay_detail span.sale_price
+
+nsad-official.com:
+  <<: *base
+  originalPrice: dd.price_b-
+  salePrice: dd.price_a-
