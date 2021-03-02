@@ -1362,10 +1362,6 @@
     "url": "https://www.concepts1one.co.kr/shop/detail.php?pno=8E54D6B523B279543AC12A0F7333CD3C&rURL=https%3A%2F%2Fwww.concepts1one.co.kr%2Fshop%2Fbig_section.php%3Fcno1%3D1134&ctype=1&cno1=1134"
   },
   {
-    "name": "메이브",
-    "url": "http://www.maveworks.com/shop/1607563920"
-  },
-  {
     "name": "디앤써",
     "url": "http://www.d-answer.com/shop/shopdetail.html?branduid=1609711&xcode=021&mcode=003&scode=&type=Y&sort=manual&cur_code=021&GfDT=bml5W10%3D"
   },
@@ -1404,5 +1400,9 @@
   {
     "name": "쿠어",
     "url": "http://coor.kr/shop/shopdetail.html?branduid=2597519&xcode=009&mcode=002&scode=&type=X&sort=order&cur_code=009&GfDT=Z2d3UA%3D%3D"
+  },
+  {
+    "name": "컴뱃밀리터리샵",
+    "url": "https://www.combatcinema.co.kr/goods/goods_view.php?goodsNo=213&cateCd=001004001"
   }
 ]

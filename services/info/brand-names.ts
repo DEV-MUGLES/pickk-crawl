@@ -273,6 +273,7 @@ export const brandNames = {
   'nsad-official.com': 'NSAD*',
   'guilf.co.kr': '길프',
   'ourpas.com': '아워파스',
+  'combatcinema.co.kr': '컴뱃밀리터리샵',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

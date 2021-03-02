@@ -1730,3 +1730,9 @@ ourpas.com:
   <<: *base
   originalPrice: span.sale_price
   salePrice: span.real_price
+
+combatcinema.co.kr:
+  <<: *base
+  imageUrl: '#mainImage > img.middle'
+  originalPrice: 'li.price > div > del'
+  salePrice: 'li.price > div > strong'
