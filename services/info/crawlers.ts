@@ -2992,3 +2992,15 @@ export const _coorkr = (
       : $('meta[property="og:image"]').last().attr().content,
   });
 };
+
+export const _ourpascom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.replace(': OURPAS', '').trim(),
+  });
+};

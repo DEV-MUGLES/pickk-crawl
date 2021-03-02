@@ -1725,3 +1725,8 @@ guilf.co.kr:
   <<: *base
   originalPrice: span.sale_price
   salePrice: span.real_price
+
+ourpas.com:
+  <<: *base
+  originalPrice: span.sale_price
+  salePrice: span.real_price
