@@ -717,7 +717,8 @@ thetrillion.co.kr:
 
 freitag.ch:
   <<: *base
-  salePrice: 'div.panel-pane.pane-neo-products-model-title.panel-pane--layout-container > div > div > div.price'
+  name: title
+  salePrice: '#block-freitag-content div.mb-0 h2'
 
 thestori.com:
   <<: *base

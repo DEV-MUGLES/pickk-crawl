@@ -3016,3 +3016,22 @@ export const _combatcinemacokr = (
     imageUrl: 'https://combatcinema.co.kr' + result.imageUrl,
   });
 };
+
+export const _freitagch = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const scriptHtml = $('body').html();
+  const SEARCH_TEXT = `window.variations = `;
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf(`</script>`, start);
+  const { variations } = JSON.parse(scriptHtml.slice(start, end).trim());
+
+  return correct({
+    ...result,
+    name: result.name.replace('| FREITAG', '').trim(),
+    imageUrl: `https://freitag.rokka.io/freitag_944_944_focal_scale_crop/${variations[0].cover[0]}.jpg`,
+  });
+};
