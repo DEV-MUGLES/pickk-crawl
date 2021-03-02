@@ -41,8 +41,13 @@ beforeAll(async () => {
 
 describe('Test option-crawl (for partners)', () => {
   for (let i = 0; i < partnerBrands.length; ++i) {
-    const { name, html, url } = partnerBrands[i];
+    const { name, html, url, skip } = partnerBrands[i];
     it(name, (done) => {
+      if (skip) {
+        console.log(chalk.bgYellow(name + ' 스킵됨'));
+        done();
+        return;
+      }
       const hostName = getHostName(url);
 
       const data = datas[i];

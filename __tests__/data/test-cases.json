@@ -709,7 +709,8 @@
   },
   {
     "name": "네스티킥",
-    "url": "https://www.hyperround.com/shop/item.php?it_id=1600919859"
+    "url": "https://www.hyperround.com/shop/item.php?it_id=1600919859",
+    "skip": true
   },
   {
     "name": "저스트새러데이",
@@ -781,7 +782,7 @@
   },
   {
     "name": "GNCO style",
-    "url": "http://www.gncostyle.com/product/022006/32490"
+    "url": "http://www.gncostyle.com/product/0/31363"
   },
   {
     "name": "컨츄리파우더",

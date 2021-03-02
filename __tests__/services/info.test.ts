@@ -38,8 +38,14 @@ beforeAll(async () => {
 
 describe('Test info-crawl (for all)', () => {
   for (let i = 0; i < testCases.length; ++i) {
-    const { name, html, isPartner, url } = brands[i];
+    const { name, html, isPartner, url, skip } = brands[i];
     it(name, (done) => {
+      if (skip) {
+        console.log(chalk.bgYellow(name + ' 스킵됨'));
+        done();
+        return;
+      }
+
       const hostName = getHostName(url);
 
       const data = datas[i];
