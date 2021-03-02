@@ -1396,5 +1396,13 @@
   {
     "name": "NSAD*",
     "url": "https://www.nsad-official.com/goods/goods_view.php?goodsNo=1000000049"
+  },
+  {
+    "name": "쿠어 모바일",
+    "url": "http://www.coor.kr/m/product.html?branduid=2597396&xcode=009&mcode=001&scode=&type=X&sort=order&cur_code=009001&GfDT=bWV%2FUQ%3D%3D"
+  },
+  {
+    "name": "쿠어",
+    "url": "http://coor.kr/shop/shopdetail.html?branduid=2597519&xcode=009&mcode=002&scode=&type=X&sort=order&cur_code=009&GfDT=Z2d3UA%3D%3D"
   }
 ]

@@ -113,7 +113,8 @@ m.wconcept.co.kr:
 
 coor.kr:
   <<: *base
-  name: '#form1 > div > h3'
+  name: 'title'
+  imageUrl: 'div.shopdetailInfoTop > figure > img'
   originalPrice: 'input#price'
   salePrice: 'input#disprice'
 

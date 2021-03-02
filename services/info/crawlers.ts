@@ -2978,3 +2978,17 @@ export const _krmoscotcom = async (
     originalPrice: data[variantId].prices.item.amount,
   });
 };
+
+export const _coorkr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    imageUrl: result.imageUrl
+      ? 'http://coor.kr' + result.imageUrl
+      : $('meta[property="og:image"]').last().attr().content,
+  });
+};
