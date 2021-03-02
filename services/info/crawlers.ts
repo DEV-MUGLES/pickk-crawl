@@ -2367,13 +2367,13 @@ export const _aecawhitecom = (
 
   const salePrice = $(selector.salePrice)
     .html()
-    .replace('&#x20A9;', '')
+    ?.replace('&#x20A9;', '')
     .split('<span')[0]
     .trim();
 
   return correct({
     ...result,
-    salePrice: strToNumber(salePrice),
+    salePrice: strToNumber(salePrice) || result.originalPrice,
   });
 };
 
@@ -3002,5 +3002,17 @@ export const _ourpascom = (
   return correct({
     ...result,
     name: result.name.replace(': OURPAS', '').trim(),
+  });
+};
+
+export const _combatcinemacokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    imageUrl: 'https://combatcinema.co.kr' + result.imageUrl,
   });
 };
