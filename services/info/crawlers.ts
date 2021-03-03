@@ -3052,7 +3052,7 @@ export const _sivillagecom = (
     ...result,
     name,
     brandKor: getBrandKor(brandKor),
-    originalPrice: strToNumber(opHtml.slice(0, opHtml.indexOf('<em'))),
-    salePrice: strToNumber(spHtml.slice(0, spHtml.indexOf('<em'))),
+    originalPrice: strToNumber(opHtml?.slice(0, opHtml.indexOf('<em'))),
+    salePrice: strToNumber(spHtml?.slice(0, spHtml.indexOf('<em'))),
   });
 };

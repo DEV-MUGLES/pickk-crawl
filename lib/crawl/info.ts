@@ -84,8 +84,8 @@ export const correct = (result: InfoResult): InfoResult => {
 
   let name = n;
   let imageUrl = iu;
-  let originalPrice = op;
-  let salePrice = sp;
+  let originalPrice = op || 0;
+  let salePrice = sp || 0;
 
   if (op === 0 || sp === 0) {
     originalPrice = op + sp;
