@@ -295,6 +295,7 @@ export const brandKorAlias = {
   auralee: '오라리',
   balenciaga: '발렌시아가',
   baracuta: '바라쿠타',
+  barbour: '바버',
   bauhausarchiv: '바우하우스',
   berenice: '베르니스',
   birkenstock: '버켄스탁',

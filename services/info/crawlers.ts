@@ -957,21 +957,8 @@ export const _urbanstoffcom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const salePriceStr = $(selector.salePrice).html();
-  const saleAmount = Number(
-    salePriceStr.replace('&#xC6D0;', '').replace(/[^0-9-]/g, '')
-  );
-
-  const salePrice =
-    saleAmount < 0 ? result.originalPrice + saleAmount : result.originalPrice;
-  const imageUrl =
-    'https://www.urbanstoff.com/shop' +
-    $(selector.imageUrl).last().attr().src.slice(2);
-
   return correct({
     ...result,
-    imageUrl,
-    salePrice,
   });
 };
 

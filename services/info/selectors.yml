@@ -674,10 +674,8 @@ heights-store.com:
 
 urbanstoff.com:
   <<: *base
-  name: '#goods_spec > form > div > b'
-  imageUrl: '#objImg'
-  originalPrice: '#price'
-  salePrice: 'table.top > tbody > tr:nth-child(2) > td'
+  originalPrice: 'div.item_detail_list > dl > dd > del > span'
+  salePrice: 'dl.item_price > dd > strong > strong'
 
 gncostyle.com:
   <<: *rb
