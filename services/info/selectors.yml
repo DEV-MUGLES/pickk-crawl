@@ -1737,3 +1737,8 @@ combatcinema.co.kr:
   imageUrl: '#mainImage > img.middle'
   originalPrice: 'li.price > div > del'
   salePrice: 'li.price > div > strong'
+
+sivillage.com:
+  <<: *base
+  originalPrice: div.gd_prc > dl.g_org > dd
+  salePrice: div.gd_prc > dl.g_prc > dd

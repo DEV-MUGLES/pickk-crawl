@@ -3035,3 +3035,24 @@ export const _freitagch = (
     imageUrl: `https://freitag.rokka.io/freitag_944_944_focal_scale_crop/${variations[0].cover[0]}.jpg`,
   });
 };
+
+export const _sivillagecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const nameStr = result.name.replace(/\[|-/, '').trim();
+  const [brandKor, name] = nameStr.split(']');
+
+  const opHtml = $(selector.originalPrice).html();
+  const spHtml = $(selector.salePrice).html();
+
+  return correct({
+    ...result,
+    name,
+    brandKor: getBrandKor(brandKor),
+    originalPrice: strToNumber(opHtml.slice(0, opHtml.indexOf('<em'))),
+    salePrice: strToNumber(spHtml.slice(0, spHtml.indexOf('<em'))),
+  });
+};

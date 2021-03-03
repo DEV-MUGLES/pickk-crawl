@@ -316,6 +316,7 @@ export const brandKorAlias = {
   chloestora: '끌로에 스토라',
   churchs: '처치스',
   clamp: '클램프',
+  clarks: '클락스',
   class: '클래스',
   claudiepierlot: '끌로디 피에로',
   clayong: '클레용',
@@ -345,6 +346,8 @@ export const brandKorAlias = {
   fila: '휠라',
   fogessentials: 'fog 에센셜 후드',
   fredperry: '프레드페리',
+  giordano: '지오다노',
+  giorgioarmany: '조르지오 아르마니',
   givenchy: '지방시',
   givy: '기비',
   goldengoose: '골든구스',
@@ -353,6 +356,7 @@ export const brandKorAlias = {
   graphpaper: '그라프페이퍼',
   gucci: '구찌',
   head: '헤드',
+  herno: '에르노',
   hotel990: '호텔990',
   iabstudio: '아이앱 스튜디오',
   idea: '아이디어',
@@ -437,8 +441,15 @@ export const brandKorAlias = {
   highsierra: '하이시에라',
   kamiliant: '카밀리안트',
   lipault: '리뽀',
+  luisvuitton: '루이비통',
 };
 
+/**
+ * 등록된 brandKorAlias를 반환한다. 알파벳/숫자를 제외한 문자는 모두 없앤 후 탐색한다.
+ *
+ * @param {string} brandEng
+ * @returns {string}
+ */
 export const getBrandKor = (brandEng: string): string => {
   return (
     brandKorAlias[brandEng.toLowerCase().replace(/[^a-zA-z0-9]/, '')] ||
