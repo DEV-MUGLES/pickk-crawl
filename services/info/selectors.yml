@@ -1475,7 +1475,7 @@ attention-row.com:
 brans.kr:
   <<: *base
   isSoldout: 'span[title="품절"]'
-  images: '#detail1 div.cont img'
+  images: '#prddetailimg img'
 
 slowsteadyclub.com:
   <<: *base
