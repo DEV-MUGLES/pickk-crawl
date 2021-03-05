@@ -3009,17 +3009,26 @@ export const _freitagch = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+  const name = result.name.split('|')[0];
 
-  const scriptHtml = $('body').html();
-  const SEARCH_TEXT = `window.variations = `;
+  const scriptHtml = $(
+    '#block-freitag-content > article > section:nth-child(2)'
+  ).html();
+
+  const SEARCH_TEXT = 'cover":["';
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
-  const end = scriptHtml.indexOf(`</script>`, start);
-  const { variations } = JSON.parse(scriptHtml.slice(start, end).trim());
+  const end = scriptHtml.indexOf('"', start);
+  const coverId = scriptHtml.slice(start, end);
+
+  const imageUrl =
+    'https://freitag.rokka.io/freitag_944_944_focal_scale_crop/' +
+    coverId +
+    '.jpg';
 
   return correct({
     ...result,
-    name: result.name.replace('| FREITAG', '').trim(),
-    imageUrl: `https://freitag.rokka.io/freitag_944_944_focal_scale_crop/${variations[0].cover[0]}.jpg`,
+    name,
+    imageUrl,
   });
 };
 
