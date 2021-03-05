@@ -1741,3 +1741,7 @@ sivillage.com:
   <<: *base
   originalPrice: div.gd_prc > dl.g_org > dd
   salePrice: div.gd_prc > dl.g_prc > dd
+
+paraboot.com:
+  <<: *base
+  originalPrice: 'div.field--name-price'
