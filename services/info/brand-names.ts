@@ -126,7 +126,7 @@ export const brandNames = {
   'lacoste.com': '라코스테',
   'phos333.com': '포스333',
   'gu-global.com': 'GU',
-  'fredperrykorea.com': '프레디페리',
+  'fredperrykorea.com': '프레드페리',
   'shop.reebok.co.kr': '리복',
   'onitsukatiger.com': '오니츠카 타이거',
   'topten.topten10mall.com': '탑텐',
