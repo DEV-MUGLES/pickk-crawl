@@ -1475,7 +1475,7 @@ attention-row.com:
 brans.kr:
   <<: *base
   isSoldout: 'span[title="품절"]'
-  images: '#detail1 div.cont img'
+  images: '#prddetailimg img'
 
 slowsteadyclub.com:
   <<: *base
@@ -1638,7 +1638,8 @@ lab-101.com:
 buffalo-boots.com:
   <<: *base
   name: title
-  brandKor: a.b-pdp-brand
+  brandKor: '#buffalo_london_brand-mobile'
+  imageUrl: 'meta[name="og:image"]'
   originalPrice: span.b-product-tile-price-item--line-through
   salePrice: span.b-product-tile-price-item
 
@@ -1745,3 +1746,9 @@ sivillage.com:
 paraboot.com:
   <<: *base
   originalPrice: 'div.field--name-price'
+
+attopangea.com:
+  <<: *base
+  name: 'li.mainGoodsView-headTop-title'
+  originalPrice: 'div.top-info > p:first-child > span.info-right'
+  salePrice: 'div.top-info > p:nth-child(2) > span.info-right'
