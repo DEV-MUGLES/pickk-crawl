@@ -40,8 +40,10 @@ export const _espionagecokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+
   return {
     ...result,
+    imageUrl: 'http://www.espionage.co.kr' + result.imageUrl,
     originalPrice:
       result.originalPrice === 0 ? result.salePrice : result.originalPrice,
   };
@@ -2547,7 +2549,10 @@ export const _kreamcokr = (
     .toArray()
     .map((object) => strToNumber(object.children[0].data))
     .filter((price) => price !== 0);
-  const salePrice = Math.min.apply(Math, salePrices);
+  const salePrice =
+    salePrices?.length > 0
+      ? Math.min.apply(Math, salePrices)
+      : strToNumber($('div.price > div.amount > span.num').text());
   const originalPrice = salePrice;
 
   return correct({
@@ -3050,5 +3055,17 @@ export const _sivillagecom = (
     brandKor: getBrandKor(brandKor),
     originalPrice: strToNumber(opHtml?.slice(0, opHtml.indexOf('<em'))),
     salePrice: strToNumber(spHtml?.slice(0, spHtml.indexOf('<em'))),
+  });
+};
+
+export const _folderstylecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    brandKor: getBrandKor(result.brandKor),
   });
 };
