@@ -3069,3 +3069,15 @@ export const _folderstylecom = (
     brandKor: getBrandKor(result.brandKor),
   });
 };
+
+export const _obscurastorecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.replace('| 옵스큐라 스토어', '').trim(),
+  });
+};

@@ -277,6 +277,7 @@ export const brandNames = {
   'shirter.co.kr': '서터',
   'paraboot.com': '파라부트',
   'attopangea.com': '팀벅2',
+  'obscura-store.com': '옵스큐라',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
