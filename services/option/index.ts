@@ -17,7 +17,7 @@ export default class OptionCrawlService {
   crawl = async (inputHtml?: string): Promise<any> => {
     if (puppeties.includes(getHostName(this.url))) {
       return axios
-        .get(`https://pickk-crawl.tk/api/crawl/option/?url=${this.url}`, {
+        .get(`https://13.125.36.195/api/crawl/option/?url=${this.url}`, {
           timeout: 30000,
         })
         .then((res) => res.data);

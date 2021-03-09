@@ -9,6 +9,9 @@ export const getHostName = (url: string): string => {
   if (url.includes('espionage.co.kr/m')) {
     return 'espionage.co.kr/m';
   }
+  if (url.includes('mamagari.com/m')) {
+    return 'mamagari.com/m';
+  }
   if (url.includes('ocokorea.com/shopMobile')) {
     return 'ocokorea.com/shopMobile';
   }

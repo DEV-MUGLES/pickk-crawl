@@ -1673,6 +1673,14 @@ mamagari.com:
   salePrice: '.price .item-price'
   images: '.prd-detail img'
 
+mamagari.com/m:
+  <<: *base
+  name: title
+  imageUrl: '.shopdetailInfoTop > figure > img'
+  originalPrice: p.shopdetailInfoCont.dprice1 > del
+  salePrice: input#price
+  images: '.shopdetailImage img'
+
 hundredmaker.com:
   <<: *custom_price
 
@@ -1752,3 +1760,7 @@ attopangea.com:
   name: 'li.mainGoodsView-headTop-title'
   originalPrice: 'div.top-info > p:first-child > span.info-right'
   salePrice: 'div.top-info > p:nth-child(2) > span.info-right'
+
+obscura-store.com:
+  <<: *base
+  originalPrice: input#it_price
