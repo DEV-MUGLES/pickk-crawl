@@ -262,6 +262,7 @@ export const brandNames = {
   'pemont.me': '페몬트',
   'vacant.kr': '베이컨트',
   'mamagari.com': '마마가리',
+  'mamagari.com/m': '마마가리',
   'samsonite.co.kr': '쌤소나이트',
   'newcheapchic.store': '뉴치프시크',
   'thefabric.kr': '더패브릭',
