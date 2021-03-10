@@ -3093,3 +3093,20 @@ export const _mamagaricomm = (
     imageUrl: 'http://mamagari.com' + result.imageUrl,
   });
 };
+
+export const _dwstorecokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const originalPrice =
+    result.originalPrice > 0
+      ? result.originalPrice
+      : strToNumber($('#shopProductPrice > span.productPriceSpan').text());
+
+  return correct({
+    ...result,
+    originalPrice,
+  });
+};

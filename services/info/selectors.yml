@@ -1764,3 +1764,18 @@ attopangea.com:
 obscura-store.com:
   <<: *base
   originalPrice: input#it_price
+
+ordinauty.com: &ordinauty
+  <<: *base
+  originalPrice: 'div.item > ul > li:first-child > div span'
+  salePrice: 'li.price > div > strong'
+
+m.ordinauty.com:
+  <<: *ordinauty
+  originalPrice: 'div.fixedPrice'
+  salePrice: 'div.price'
+
+dw-store.co.kr:
+  <<: *base
+  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
+  originalPrice: '#shopProductPrice > span.productPriceWithDiscountSpan'
