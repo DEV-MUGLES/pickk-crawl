@@ -15,6 +15,20 @@ const makeshop = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html).makeshop();
 };
 
+const sixshop = (url: string, html: string): OptionCralwer => {
+  return new OptionCralwer(url, html)
+    .crawlOptionNames(
+      '#shopProductContentInfo > div.shopProductOptionListDiv > div.productOption > span.custom-select-option-name'
+    )
+    .crawlValues(
+      '#shopProductContentInfo > div.shopProductOptionListDiv > div.productOption > div.customSelectDiv > div.selectBox > div.custom-select-box-list-inner',
+      'div.custom-select-option > div.custom-select-option-info',
+      (ele) => ele.children[0].data.includes('품절'),
+      0,
+      1
+    );
+};
+
 export const _josephtcokr = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html)
     .crawlOptionNames('div.item_add_option_box > dl > dt')
@@ -123,3 +137,5 @@ export const _aecawhitecom = (url: string, html: string): OptionCralwer => {
       (ins) => ins.text().search('SOLD OUT') > -1
     );
 };
+
+export const _longvacakr = sixshop;

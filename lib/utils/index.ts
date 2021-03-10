@@ -1,6 +1,6 @@
 export * from './Parser';
 
-export const getAllCombination = (
+export const getAllPostCombination = (
   now: number[],
   remain: number[],
   result: number[][]
@@ -9,7 +9,21 @@ export const getAllCombination = (
     result.push(now);
   }
   for (let i = 0; i < remain[0]; ++i) {
-    getAllCombination([...now, i], remain.slice(1), result);
+    getAllPostCombination([...now, i], remain.slice(1), result);
+  }
+};
+
+export const getAllPreCombination = (
+  now: number[],
+  remain: number[],
+  result: number[][]
+): void => {
+  if (remain.length === 0) {
+    result.push(now);
+  }
+  const index = remain.length - 1;
+  for (let i = 0; i < remain[index]; ++i) {
+    getAllPostCombination([i, ...now], remain.slice(0, index), result);
   }
 };
 

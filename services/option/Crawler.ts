@@ -6,8 +6,9 @@ import {
   getCafe24OptionNames,
   getSmartstoreOptionData,
   getMakeshopOptionData,
-  getAllCombination,
+  getAllPostCombination,
   cleanUpString,
+  getAllPreCombination,
 } from '../../lib';
 import { OptionResult } from '../../types/option';
 
@@ -88,19 +89,28 @@ export default class OptionCralwer {
     formatValue: (str: string) => string = (str) => str
   ): OptionCralwer => {
     this.$(containerSelector).each((i, container) => {
-      if (i < containerStartIndex) {
+      const containerIndex = i - containerStartIndex;
+      if (containerIndex < 0) {
         return;
       }
       const inner$ = cheerio.load(container);
       inner$(valueSelector).each((j, ele) => {
-        if (j < valueStartIndex) {
+        const valueIndex = j - valueStartIndex;
+        if (valueIndex < 0) {
           return;
         }
-        this.result.values[this.optionNames[i - containerStartIndex]].push(
+        this.result.values[this.optionNames[containerIndex]].push(
           formatValue(cleanUpString(ele.children[0].data.toString())).trim()
         );
         if (checkIsSoldout?.(ele)) {
-          this.result.isSoldout?.push([j - valueStartIndex]);
+          const remain = this.optionNames
+            .slice(0, containerIndex)
+            .map((optionName) => this.result.values[optionName].length);
+          getAllPreCombination(
+            [valueStartIndex],
+            remain,
+            this.result.isSoldout
+          );
         }
       });
     });
@@ -124,7 +134,7 @@ export default class OptionCralwer {
     const sizes = this.optionNames.map(
       (optionName) => this.result.values[optionName].length
     );
-    getAllCombination([], sizes, this.result.isSoldout);
+    getAllPostCombination([], sizes, this.result.isSoldout);
 
     return this;
   };

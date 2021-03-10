@@ -1616,6 +1616,7 @@ yoox.com:
 longvaca.kr:
   <<: *base
   salePrice: 'span.productDiscountPriceSpan'
+  isSoldout: '#shopProductCartErrorDiv'
 
 endclothing.com:
   <<: *base

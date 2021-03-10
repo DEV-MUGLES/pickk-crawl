@@ -2681,6 +2681,7 @@ export const _longvacakr = (
   return correct({
     ...result,
     originalPrice,
+    isSoldout: !$(selector.isSoldout)?.hasClass('hide'),
   });
 };
 
