@@ -281,6 +281,7 @@ export const brandNames = {
   'obscura-store.com': '옵스큐라',
   'ordinauty.com': '오디너티',
   'dw-store.co.kr': '드림월드',
+  'graphpaper-store.com': '그라프페이퍼',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
