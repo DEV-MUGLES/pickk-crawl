@@ -1782,3 +1782,7 @@ dw-store.co.kr:
   <<: *base
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
   originalPrice: '#shopProductPrice > span.productPriceWithDiscountSpan'
+
+vdrstore.com:
+  <<: *base
+  isSoldout: 'tr.product_price_css > td > span'

@@ -1446,5 +1446,10 @@
   {
     "name": "드림월드",
     "url": "https://dw-store.co.kr/product/eco-leather_L-shirts_olive"
+  },
+  {
+    "name": "VDR",
+    "url": "http://vdrstore.com/product/detail.html?product_no=652&cate_no=30&display_group=1",
+    "isPartner": true
   }
 ]
