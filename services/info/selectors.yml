@@ -1765,6 +1765,9 @@ obscura-store.com:
   <<: *base
   originalPrice: input#it_price
 
+oxstudios.co.kr:
+  <<: *custom_price
+  isSoldout: '.xans-product-action > div.btnArea > span'
 ordinauty.com: &ordinauty
   <<: *base
   originalPrice: 'div.item > ul > li:first-child > div span'
@@ -1779,3 +1782,7 @@ dw-store.co.kr:
   <<: *base
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
   originalPrice: '#shopProductPrice > span.productPriceWithDiscountSpan'
+
+vdrstore.com:
+  <<: *base
+  isSoldout: 'tr.product_price_css > td > span'

@@ -3110,3 +3110,15 @@ export const _dwstorecokr = (
     originalPrice,
   });
 };
+
+export const _vdrstorecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    isSoldout: $(selector.isSoldout)?.text() === 'SOLD OUT',
+  });
+};
