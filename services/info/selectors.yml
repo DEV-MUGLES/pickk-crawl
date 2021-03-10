@@ -1764,3 +1764,7 @@ attopangea.com:
 obscura-store.com:
   <<: *base
   originalPrice: input#it_price
+
+oxstudios.co.kr:
+  <<: *custom_price
+  isSoldout: '.xans-product-action > div.btnArea > span'
