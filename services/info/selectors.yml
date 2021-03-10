@@ -1617,6 +1617,7 @@ longvaca.kr:
   <<: *base
   salePrice: 'span.productDiscountPriceSpan'
   isSoldout: '#shopProductCartErrorDiv'
+  images: '#shopProductImgsThumbDiv div.shopProductImgRatio'
 
 endclothing.com:
   <<: *base

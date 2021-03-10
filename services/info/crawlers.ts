@@ -2678,10 +2678,19 @@ export const _longvacakr = (
 
   const originalPrice = Number(ldJsonObject.offers.price);
 
+  const images = result.images.map(
+    (image) => 'https://contents.sixshop.com' + image
+  );
+
+  $('#productDescriptionDetailPage img').each((_i, ele) => {
+    images.push(ele.attribs['data-src']);
+  });
+
   return correct({
     ...result,
     originalPrice,
     isSoldout: !$(selector.isSoldout)?.hasClass('hide'),
+    images,
   });
 };
 
