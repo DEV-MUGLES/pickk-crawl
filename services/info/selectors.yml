@@ -1788,3 +1788,8 @@ dw-store.co.kr:
 vdrstore.com:
   <<: *base
   isSoldout: 'tr.product_price_css > td > span'
+
+uttut.co.kr:
+  <<: *base
+  originalPrice: 'div.pay_detail span.real_price'
+  salePrice: 'div.pay_detail span.sale_price'

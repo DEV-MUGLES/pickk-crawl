@@ -3132,3 +3132,15 @@ export const _vdrstorecom = (
     isSoldout: $(selector.isSoldout)?.text() === 'SOLD OUT',
   });
 };
+
+export const _uttutcokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.replace(': UTTUT 어텃', '').trim(),
+  });
+};
