@@ -3144,3 +3144,19 @@ export const _uttutcokr = (
     name: result.name.replace(': UTTUT 어텃', '').trim(),
   });
 };
+
+export const _insonlinestorecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const name = result.name.split('|')[0].split(']');
+  const brandKor = getBrandKor(name[0]);
+
+  return correct({
+    ...result,
+    name: name[1].trim(),
+    brandKor,
+  });
+};

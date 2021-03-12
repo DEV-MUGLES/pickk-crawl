@@ -1797,3 +1797,6 @@ uttut.co.kr:
 cayl.co.kr:
   <<: *base
   originalPrice: 'div.goodsprice > strong'
+
+ins-online-store.com:
+  <<: *base
