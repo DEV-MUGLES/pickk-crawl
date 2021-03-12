@@ -19,16 +19,12 @@ export const _storemusinsacom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const { name, brandKor, originalPrice } = result;
-  const salePrice = $(selector.salePrice).html()
-    ? result.salePrice
-    : originalPrice;
+  const { name, brandKor } = result;
 
   return {
     ...result,
     name: name.slice(name.indexOf(') ') + 2, name.indexOf(' - ')),
     brandKor: brandKor.slice(0, brandKor.indexOf('(')),
-    salePrice,
     isSoldout: $(selector.isSoldout).text() === '품절',
   };
 };

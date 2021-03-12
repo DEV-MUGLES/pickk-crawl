@@ -89,7 +89,7 @@ store.musinsa.com: &musinsa
   <<: *base
   brandKor: 'title'
   originalPrice: '#goods_price'
-  salePrice: '#sale_price'
+  salePrice: 'input[name="price"]'
   isSoldout: 'div.box-btn-buy.wrap-btn-buy > div.btn_buy > a.btn_grey'
   images: '#detail_view img'
 
