@@ -1793,3 +1793,7 @@ uttut.co.kr:
   <<: *base
   originalPrice: 'div.pay_detail span.real_price'
   salePrice: 'div.pay_detail span.sale_price'
+
+cayl.co.kr:
+  <<: *base
+  originalPrice: 'div.goodsprice > strong'
