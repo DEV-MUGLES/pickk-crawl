@@ -501,7 +501,7 @@ export const brandKorAlias = {
  */
 export const getBrandKor = (brandEng: string): string => {
   return (
-    brandKorAlias[brandEng.toLowerCase().replace(/[^a-zA-z0-9]/, '')] ||
+    brandKorAlias[brandEng.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '')] ||
     brandEng
   );
 };
