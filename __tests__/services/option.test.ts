@@ -58,6 +58,7 @@ describe('Test option-crawl (for partners)', () => {
       }
       expect(data).toBeTruthy();
       expect(data.values).toBeTruthy();
+      expect(Object.keys(data.values).length).toBeGreaterThan(0);
       Object.values(data.values).forEach((optionValues) => {
         expect((optionValues as String[]).length).toBeGreaterThan(0);
       });
