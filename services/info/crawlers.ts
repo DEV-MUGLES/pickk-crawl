@@ -3186,3 +3186,15 @@ export const _nocluecokr = (
     originalPrice,
   });
 };
+
+export const _soundslifekr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.split('|')[1].trim(),
+  });
+};

@@ -288,6 +288,7 @@ export const brandNames = {
   'cayl.co.kr': '케일',
   'iterpeople.com': '잇터',
   'noclue.co.kr': '노클루',
+  'soundslife.kr': '사운즈라이프',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
