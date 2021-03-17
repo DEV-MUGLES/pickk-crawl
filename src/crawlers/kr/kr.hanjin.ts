@@ -57,7 +57,11 @@ export class KRHanjinCrawler extends BaseCrawler {
           'https://www.hanjin.co.kr/kor/CMS/DeliveryMgr/WaybillResult.do',
           formData,
           {
-            headers: formData.getHeaders(),
+            headers: {
+              ...formData.getHeaders(),
+              'X-Client-IP': '61.36.218.68',
+              'X-Forwarded-For': '61.36.218.68',
+            },
           }
         );
         const dom = new JSDOM(data);
