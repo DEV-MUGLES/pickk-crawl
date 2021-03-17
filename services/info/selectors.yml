@@ -1804,3 +1804,7 @@ ins-online-store.com:
 iterpeople.com:
   <<: *base
   salePrice: 'span.productDiscountPriceSpan'
+
+noclue.co.kr:
+  <<: *base
+  salePrice: 'span.productDiscountPriceSpan'

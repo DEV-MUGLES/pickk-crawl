@@ -3171,3 +3171,18 @@ export const _iterpeoplecom = (
     originalPrice,
   });
 };
+
+export const _nocluecokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+
+  const originalPrice = strToNumber(ldJsonObject.offers.price);
+
+  return correct({
+    ...result,
+    originalPrice,
+  });
+};
