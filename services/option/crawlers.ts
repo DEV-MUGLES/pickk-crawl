@@ -132,23 +132,10 @@ export const _aecawhitecom = (url: string, html: string): OptionCralwer => {
       2,
       (value) => value.split('[')[0]
     )
-    .checkitemIsSoldout('#soldout_out');
+    .checkitemIsSoldout(
+      '#soldout_out',
+      (ins) => ins.text().search('SOLD OUT') > -1
+    );
 };
 
 export const _longvacakr = sixshop;
-
-export const _kutletshopcom = (url: string, html: string): OptionCralwer => {
-  return new OptionCralwer(url, html)
-    .crawlOptionNames('span.custom-select-option-name', 0)
-    .crawlValues(
-      'div.custom-select-box-list-inner',
-      'div.custom-select-option-info',
-      (ele) => ele.children[0].data.includes('품절'),
-      1,
-      1
-    )
-    .checkitemIsSoldout(
-      '#shopProductCartErrorDiv',
-      (ins) => !ins.hasClass('hide')
-    );
-};
