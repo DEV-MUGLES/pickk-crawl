@@ -1800,3 +1800,7 @@ cayl.co.kr:
 
 ins-online-store.com:
   <<: *base
+
+iterpeople.com:
+  <<: *base
+  salePrice: 'span.productDiscountPriceSpan'

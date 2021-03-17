@@ -3156,3 +3156,18 @@ export const _insonlinestorecom = (
     brandKor,
   });
 };
+
+export const _iterpeoplecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+
+  const originalPrice = strToNumber(ldJsonObject.offers.price);
+
+  return correct({
+    ...result,
+    originalPrice,
+  });
+};
