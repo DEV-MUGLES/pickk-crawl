@@ -67,12 +67,11 @@ export class KRHanjinCrawler extends BaseCrawler {
             name: '',
             time: null,
           },
-          state: {
-            id: parseStatus(kind),
-            text: kind,
-          },
+          state: parseStatus(kind),
           progresses: data.trackingDetails?.map((trackingDetail) => ({
-            time: trackingDetail.time,
+            time:
+              new Date(trackingDetail.time).toISOString().slice(0, -5) +
+              '+09:00',
             location: {
               name: trackingDetail.where,
             },
