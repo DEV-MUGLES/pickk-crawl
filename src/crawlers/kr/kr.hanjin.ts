@@ -48,13 +48,8 @@ export class KRHanjinCrawler extends BaseCrawler {
           });
         }
 
-        const { data } = await axios.post(
-          'https://m.hanex.hanjin.co.kr/inquiry/incoming/resultWaybill',
-          qs.stringify({
-            div: 'B',
-            show: 'true',
-            wblNum: this.trackingCode,
-          })
+        const { data } = await axios.get(
+          `https://www.hanjin.co.kr/kor/CMS/DeliveryMgr/WaybillResult.do?wblnum=${this.trackingCode}&schLang=KR&wblnumText=`
         );
         const dom = new JSDOM(data);
         const { document } = dom.window;
