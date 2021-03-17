@@ -3187,6 +3187,7 @@ export const _nocluecokr = (
   });
 };
 
+// price currency: SEK
 export const _soundslifekr = (
   $: CheerioStatic,
   selector: InfoSelectors

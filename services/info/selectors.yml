@@ -1808,3 +1808,7 @@ iterpeople.com:
 noclue.co.kr:
   <<: *base
   salePrice: 'span.productDiscountPriceSpan'
+
+eytys.com:
+  <<: *base
+  originalPrice: '#main-content > div:first-child > div:nth-child(2) > div > p:nth-child(2)'
