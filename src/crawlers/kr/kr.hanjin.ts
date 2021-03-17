@@ -3,6 +3,12 @@ import axios from 'axios';
 import BaseCrawler from '../base';
 
 const parseStatus = (s: string) => {
+  if (!s) {
+    return {
+      id: 'wating',
+      text: '접수대기',
+    };
+  }
   if (s.includes('집하')) return { id: 'at_pickup', text: '상품인수' };
   if (s.includes('배송출발'))
     return { id: 'out_for_delivery', text: '배송출발' };
@@ -50,7 +56,7 @@ export class KRHanjinCrawler extends BaseCrawler {
           `http://info.sweettracker.co.kr/api/v1/trackingInfo?t_key=Js4JWlYSWEuTPGYtugXaDw&t_code=05&t_invoice=${this.trackingCode}`
         );
 
-        const { kind } = data.lastDetail;
+        const kind = data.lastDetail?.kind;
 
         const shippingInformation = {
           from: {
@@ -65,7 +71,7 @@ export class KRHanjinCrawler extends BaseCrawler {
             id: parseStatus(kind),
             text: kind,
           },
-          progresses: data.trackingDetails.map((trackingDetail) => ({
+          progresses: data.trackingDetails?.map((trackingDetail) => ({
             time: trackingDetail.time,
             location: {
               name: trackingDetail.where,
