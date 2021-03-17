@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { JSDOM } from 'jsdom';
-import FormData from 'form-data';
 
 import BaseCrawler from '../base';
 
@@ -48,101 +46,37 @@ export class KRHanjinCrawler extends BaseCrawler {
           });
         }
 
-        const formData = new FormData();
-        formData.append('mCode', 'MN038');
-        formData.append('schLang', 'KR');
-        formData.append('wblnum', this.trackingCode);
-
-        const { data } = await axios.post(
-          'https://www.hanjin.co.kr/kor/CMS/DeliveryMgr/WaybillResult.do',
-          formData,
-          {
-            headers: {
-              ...formData.getHeaders(),
-              'X-Client-IP': '61.36.218.68',
-              'X-Forwarded-For': '61.36.218.68',
-            },
-          }
+        const { data } = await axios.get(
+          `http://info.sweettracker.co.kr/api/v1/trackingInfo?t_key=Js4JWlYSWEuTPGYtugXaDw&t_code=05&t_invoice=${this.trackingCode}`
         );
-        const dom = new JSDOM(data);
-        const { document } = dom.window;
 
-        const tables = Array.from(document.querySelectorAll('table'));
-        if (tables.length === 0) {
-          return reject({
-            code: 404,
-            message: document.querySelector('.noData').textContent,
-          });
-        }
-        const [informationTable, progressTable] = tables;
-
-        const [, fromTd, toTd] = Array.from(
-          informationTable.querySelectorAll('td')
-        );
+        const { kind } = data.lastDetail;
 
         const shippingInformation = {
           from: {
-            name: fromTd.textContent,
+            name: '',
             time: null,
           },
           to: {
-            name: toTd.textContent,
+            name: '',
             time: null,
           },
           state: {
-            id: 'delivered',
-            text: null,
+            id: parseStatus(kind),
+            text: kind,
           },
-          progresses: [],
-        };
-
-        progressTable.querySelectorAll('tr').forEach((element) => {
-          const [timeEle, nameEle, statusEle] = Array.from(
-            element.querySelectorAll('th, td')
-          );
-          // TODO : time 년도 처리 나중에 수정 해야 함 (현재 시간하고 마지막 시간하고 비교해서 마지막 시간이 미래면 작년으로 처리)
-          const curTime = new Date();
-          let time = `${curTime.getFullYear()}-${timeEle.innerHTML
-            .replace('<br>', 'T')
-            .replace(/<[^>]*>/gi, '')
-            .replace(/\./gi, '-')}:00+09:00`;
-
-          if (new Date(time) > curTime) {
-            time = `${curTime.getFullYear() - 1}${time.substring(4)}`;
-          }
-
-          shippingInformation.progresses.unshift({
-            time,
+          progresses: data.trackingDetails.map((trackingDetail) => ({
+            time: trackingDetail.time,
             location: {
-              name: nameEle.textContent,
+              name: trackingDetail.where,
             },
-            status: parseStatus(statusEle.textContent),
-            description: statusEle.textContent,
-          });
-        });
-
-        if (shippingInformation.progresses.length > 0) {
-          shippingInformation.state =
-            shippingInformation.progresses[
-              shippingInformation.progresses.length - 1
-            ].status;
-          shippingInformation.from.time =
-            shippingInformation.progresses[0].time;
-          if (
-            shippingInformation.progresses[
-              shippingInformation.progresses.length - 1
-            ].status.id === 'delivered'
-          )
-            shippingInformation.to.time =
-              shippingInformation.progresses[
-                shippingInformation.progresses.length - 1
-              ].time;
-        } else {
-          shippingInformation.state = {
-            id: 'information_received',
-            text: '방문예정',
-          };
-        }
+            status: {
+              id: parseStatus(trackingDetail.kind),
+              text: trackingDetail.kind,
+            },
+            description: '',
+          })),
+        };
 
         resolve(shippingInformation);
       } catch (err) {
