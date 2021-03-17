@@ -19,16 +19,12 @@ export const _storemusinsacom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const { name, brandKor, originalPrice } = result;
-  const salePrice = $(selector.salePrice).html()
-    ? result.salePrice
-    : originalPrice;
+  const { name, brandKor } = result;
 
   return {
     ...result,
     name: name.slice(name.indexOf(') ') + 2, name.indexOf(' - ')),
     brandKor: brandKor.slice(0, brandKor.indexOf('(')),
-    salePrice,
     isSoldout: $(selector.isSoldout).text() === '품절',
   };
 };
@@ -3142,5 +3138,21 @@ export const _uttutcokr = (
   return correct({
     ...result,
     name: result.name.replace(': UTTUT 어텃', '').trim(),
+  });
+};
+
+export const _insonlinestorecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const name = result.name.split('|')[0].split(']');
+  const brandKor = getBrandKor(name[0]);
+
+  return correct({
+    ...result,
+    name: name[1].trim(),
+    brandKor,
   });
 };

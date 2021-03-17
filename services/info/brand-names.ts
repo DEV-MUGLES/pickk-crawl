@@ -285,6 +285,7 @@ export const brandNames = {
   'graphpaper-store.com': '그라프페이퍼',
   'vdrstore.com': 'VDR',
   'uttut.co.kr': '어텃',
+  'cayl.co.kr': '케일',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
@@ -500,7 +501,7 @@ export const brandKorAlias = {
  */
 export const getBrandKor = (brandEng: string): string => {
   return (
-    brandKorAlias[brandEng.toLowerCase().replace(/[^a-zA-z0-9]/, '')] ||
+    brandKorAlias[brandEng.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '')] ||
     brandEng
   );
 };
