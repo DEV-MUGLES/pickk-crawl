@@ -418,9 +418,9 @@ ative.kr:
 
 aroundthecorner.com:
   <<: *base
-  brandKor: 'div.brand-info.clearfix > span.brand-name.pull-left'
-  originalPrice: 'div.product-price.clearfix > div.price.pull-left > p.selling-price'
-  salePrice: 'div.product-price.clearfix > div.price.pull-left > p.reduce-price > strong'
+  brandKor: 'div.bname'
+  originalPrice: 'div.gaccount > span.saccount'
+  salePrice: 'div.gaccount > span.account'
 
 tngt.co.kr:
   <<: *rb
