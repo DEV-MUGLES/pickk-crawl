@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { JSDOM } from 'jsdom';
-import qs from 'querystring';
+import FormData from 'form-data';
 
 import BaseCrawler from '../base';
 
@@ -48,8 +48,17 @@ export class KRHanjinCrawler extends BaseCrawler {
           });
         }
 
-        const { data } = await axios.get(
-          `https://www.hanjin.co.kr/kor/CMS/DeliveryMgr/WaybillResult.do?wblnum=${this.trackingCode}&schLang=KR&wblnumText=`
+        const formData = new FormData();
+        formData.append('mCode', 'MN038');
+        formData.append('schLang', 'KR');
+        formData.append('wblnum', this.trackingCode);
+
+        const { data } = await axios.post(
+          'https://www.hanjin.co.kr/kor/CMS/DeliveryMgr/WaybillResult.do',
+          formData,
+          {
+            headers: formData.getHeaders(),
+          }
         );
         const dom = new JSDOM(data);
         const { document } = dom.window;
