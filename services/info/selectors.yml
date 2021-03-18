@@ -1218,7 +1218,7 @@ roccirocci.com:
 theknitcompany.com:
   <<: *custom_price
   isSoldout: 'div.xans-product-action > a.btnSubmit'
-  images: 'div.detail_left > img'
+  images: 'div.detail_left img'
 
 waze8690s.cafe24.com:
   <<: *base
