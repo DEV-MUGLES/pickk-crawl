@@ -1812,3 +1812,10 @@ noclue.co.kr:
 eytys.com:
   <<: *base
   originalPrice: '#main-content > div:first-child > div:nth-child(2) > div > p:nth-child(2)'
+
+layerunion.net:
+  <<: *base
+  name: 'title'
+  imageUrl: '#zoom_image > img.detail_image'
+  originalPrice: 'input#price'
+  salePrice: 'input#disprice'

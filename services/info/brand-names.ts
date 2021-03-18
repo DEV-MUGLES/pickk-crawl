@@ -290,6 +290,7 @@ export const brandNames = {
   'noclue.co.kr': '노클루',
   'soundslife.kr': '사운즈라이프',
   'eytys.com': '이티스',
+  'layerunion.net': '레이어 유니온',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

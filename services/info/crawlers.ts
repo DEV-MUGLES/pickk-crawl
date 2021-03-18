@@ -3199,3 +3199,15 @@ export const _soundslifekr = (
     name: result.name.split('|')[1].trim(),
   });
 };
+
+export const _layerunionnet = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    imageUrl: 'http://www.layerunion.net' + result.imageUrl,
+  });
+};
