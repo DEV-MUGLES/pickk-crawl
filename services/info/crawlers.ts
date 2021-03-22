@@ -3211,3 +3211,24 @@ export const _layerunionnet = (
     imageUrl: 'http://www.layerunion.net' + result.imageUrl,
   });
 };
+
+export const _ladyvolumecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const brandKor = {
+    47: '레이디볼륨',
+    48: '브이투',
+  }[url.match(/(?<=category\/)(\d+)/)[0]];
+
+  return correct({
+    ...result,
+    brandKor,
+    images: result.images.filter(
+      (imageUrl) => !imageUrl.match(/\/(txt|btn|ico)/g)
+    ),
+  });
+};

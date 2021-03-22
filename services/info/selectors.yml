@@ -1828,3 +1828,8 @@ iey.co.kr:
 coqkorea.co.kr:
   <<: *base
   isSoldout: '#mun_paymentButton span'
+
+ladyvolume.com:
+  <<: *base
+  images: '.detailArea img'
+  isSoldout: 'div.xans-product-action div.btnArea span'
