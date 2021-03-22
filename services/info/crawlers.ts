@@ -3227,10 +3227,11 @@ export const _ladyvolumecom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const brandKor = {
-    47: '레이디볼륨',
-    48: '브이투',
-  }[url.match(/(?<=category\/)(\d+)/)[0]];
+  const ladyCategories = [24, 25, 26, 27, 57, 58, 59, 60, 62, 72, 73, 84];
+
+  const category = Number(url.match(/(?<=category\/)(\d+)/)[0]);
+
+  const brandKor = ladyCategories.includes(category) ? '레이디볼륨' : '브이투';
 
   return correct({
     ...result,
