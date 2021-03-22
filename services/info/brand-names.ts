@@ -203,14 +203,13 @@ export const brandNames = {
   'oddoneout.co.kr': '오드원아웃',
   'roccirocci.com': '로씨로씨',
   'ojos.kr': '오호스',
-  'ames-worldwide.com': '아메스월드와이드',
+  'ames-worldwide.com': '아메스 월드와이드',
   'ballute.co.kr': '발루트',
   'letterfrommoon.com': '레터프롬문',
   'hyoji.co.kr': '효지노리코',
   'fanacult.com': '파나컬트',
   'nordstudio.co.kr': '노드스튜디오',
   'k-ing.kr': '킹아카이브',
-  '13month.com': '써틴먼스',
   'aqostudio.com': '아코스튜디오스페이스',
   'fuza.world': '퓨자',
   'easestore.co.kr': '이즈',
@@ -293,6 +292,8 @@ export const brandNames = {
   'layerunion.net': '레이어 유니온',
   'iey.co.kr': '이에이',
   'coqkorea.co.kr': '씨오큐',
+  'suare.co.kr': '수아레',
+  'rdvz.kr': 'RDVZ',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

@@ -61,6 +61,7 @@ describe('Test info-crawl (for all)', () => {
       expect(data.originalPrice).toBeGreaterThan(0);
       expect(data.salePrice).toBeGreaterThan(0);
       if (isPartner) {
+        expect(data.brandKor).toEqual(name);
         expect(data.images.length).toBeGreaterThan(0);
       }
       done();

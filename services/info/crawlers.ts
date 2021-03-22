@@ -1984,15 +1984,23 @@ export const _inrowscokr = (
 
 export const _13mothcom = (
   $: CheerioStatic,
-  selector: InfoSelectors
+  selector: InfoSelectors,
+  url
 ): InfoResult => {
   const result = selectAll($, selector);
+
+  const brandKor =
+    {
+      233: '티엠오바이써틴먼스',
+    }[url.match(/(?<=category\/)(\d+)/)[0]] || '써틴먼스';
+
   const originalPrice = Number(
     parseValue($, 'originalPrice', 'strong#span_product_price_text')
   );
 
   return correct({
     ...result,
+    brandKor,
     originalPrice: result.originalPrice || originalPrice,
     salePrice: result.salePrice || originalPrice,
   });
