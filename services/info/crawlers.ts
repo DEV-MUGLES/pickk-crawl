@@ -3240,3 +3240,15 @@ export const _ladyvolumecom = (
     ),
   });
 };
+
+export const _ieycokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.replace('IEY 이에이', '').trim(),
+  });
+};
