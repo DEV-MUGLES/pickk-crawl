@@ -1824,3 +1824,7 @@ iey.co.kr:
   <<: *base
   images: '#mun_productDetail img'
   isSoldout: '#mun_paymentButton span.soldout'
+
+coqkorea.co.kr:
+  <<: *base
+  isSoldout: '#mun_paymentButton span'
