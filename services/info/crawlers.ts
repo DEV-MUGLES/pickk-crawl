@@ -1982,18 +1982,15 @@ export const _inrowscokr = (
   });
 };
 
-export const _13mothcom = (
+export const _13monthcom = (
   $: CheerioStatic,
-  selector: InfoSelectors,
-  url
+  selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const brandKor =
-    {
-      233: '티엠오바이써틴먼스',
-    }[url.match(/(?<=category\/)(\d+)/)[0]] || '써틴먼스';
-
+  const brandKor = result.images[0].includes('tmo')
+    ? '티엠오바이써틴먼스'
+    : '써틴먼스';
   const originalPrice = Number(
     parseValue($, 'originalPrice', 'strong#span_product_price_text')
   );
@@ -2070,7 +2067,7 @@ export const _namerclothingcom = (
   });
 };
 
-export const _ohkooscokr = (
+export const _ohkooscom = (
   $: CheerioStatic,
   selector: InfoSelectors
 ): InfoResult => {

@@ -381,6 +381,11 @@
     "isPartner": true
   },
   {
+    "name": "엠니",
+    "url": "http://ohkoos.com/product/detail.html?product_no=17680&cate_no=475&display_group=1",
+    "isPartner": true
+  },
+  {
     "name": "바이플래퍼",
     "url": "http://biflapper.com/product/bf-two-pocket-glossy-shirt-khaki/120/category/27/display/1/",
     "isPartner": true
@@ -397,12 +402,16 @@
   },
   {
     "name": "버닝",
-    "url": "http://burningstudios.co.kr/product/detail.html?product_no=436&cate_no=43&display_group=1",
+    "url": "http://burningstudios.co.kr/product/detail.html?product_no=436&cate_no=43&display_group=1"
+  },
+  {
+    "name": "빅유니온",
+    "url": "http://shop5.ox2256.cafe24.com/product/bu-quilted-pants/17597/category/502/display/1/",
     "isPartner": true
   },
   {
-    "name": "엠니",
-    "url": "http://ohkoos.com/product/detail.html?product_no=17584&cate_no=1&display_group=2",
+    "name": "빅유니온",
+    "url": "http://shop5.ox2256.cafe24.com/product/bu-quilted-pants/17597/category/502/display/1/",
     "isPartner": true
   },
   {

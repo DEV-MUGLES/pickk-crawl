@@ -110,7 +110,6 @@ export const brandNames = {
   'slowacid.com': '슬로우애시드',
   'yanthirteen.com': '얀13',
   'grooverhyme.co.kr': '그루브라임',
-  'compagno.co.kr': '꼼파뇨',
   'vastic.co.kr': '바스틱',
   'lomort.co.kr': '소버먼트',
   'thetrillion.co.kr': '트릴리온',
@@ -236,7 +235,6 @@ export const brandNames = {
   'kutletshop.com': '비얼디드키드',
   'wuzustudio.com': '우주스튜디오',
   'amfeast.co.kr': '암피스트',
-  'ohkoos.com': '빅유니온',
   'overr.co.kr': '오베르',
   'auction.co.kr': '옥션',
   'alexandermcqueen.com': '알렉산더맥퀸',
@@ -294,6 +292,10 @@ export const brandNames = {
   'coqkorea.co.kr': '씨오큐',
   'suare.co.kr': '수아레',
   'rdvz.kr': 'RDVZ',
+  'bruman.co.kr': '브루먼',
+  'mainxcx.com': '엑스씨엑스메인',
+  'glothes.co.kr': '글로즈스튜디오',
+  'cpgn.co.kr': '꼼파뇨',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
