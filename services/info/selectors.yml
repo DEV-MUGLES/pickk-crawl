@@ -1833,3 +1833,7 @@ ladyvolume.com:
   <<: *base
   images: '.detailArea img'
   isSoldout: 'div.xans-product-action div.btnArea span'
+
+shop5.ox2256.cafe24.com:
+  <<: *base
+  images: 'div.productDetailImageViewThumList img'

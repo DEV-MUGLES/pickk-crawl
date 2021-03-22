@@ -2080,6 +2080,24 @@ export const _ohkooscom = (
   });
 };
 
+export const _shop5ox2256cafe24com = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const brandKor = $('meta[name="keywords"]')
+    .attr('content')
+    .toLowerCase()
+    .includes('big union')
+    ? '빅유니온'
+    : '엠니';
+
+  return correct({
+    ...result,
+    brandKor,
+  });
+};
+
 export const _waze8690scafe24com = (
   $: CheerioStatic,
   selector: InfoSelectors
