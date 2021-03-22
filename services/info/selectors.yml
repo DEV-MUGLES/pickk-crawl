@@ -1819,3 +1819,8 @@ layerunion.net:
   imageUrl: '#zoom_image > img.detail_image'
   originalPrice: 'input#price'
   salePrice: 'input#disprice'
+
+iey.co.kr:
+  <<: *base
+  images: '#mun_productDetail img'
+  isSoldout: '#mun_paymentButton span.soldout'
