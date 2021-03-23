@@ -159,6 +159,7 @@ nbkorea.com:
 
 m.nbkorea.com:
   <<: *base
+  name: h2#displayName
   originalPrice: 'meta[property="eg:originalPrice"]'
   salePrice: 'meta[property="eg:salePrice"]'
 
