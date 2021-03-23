@@ -432,7 +432,9 @@
   {
     "name": "아브라함문",
     "url": "https://supplyroute.co.kr/product/detail.html?product_no=8857&cate_no=987&display_group=1",
-    "isPartner": true
+    "isPartner": true,
+    "skipBlankValuesCheck": true,
+    "skipBlankValuesCheckReason": "옵션이 존재하는 상품이 없음"
   },
   {
     "name": "배럴즈",

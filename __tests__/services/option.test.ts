@@ -41,7 +41,14 @@ beforeAll(async () => {
 
 describe('Test option-crawl (for partners)', () => {
   for (let i = 0; i < partnerBrands.length; ++i) {
-    const { name, html, url, skip } = partnerBrands[i];
+    const {
+      name,
+      html,
+      url,
+      skip,
+      skipBlankValuesCheck,
+      skipBlankValuesCheckReason,
+    } = partnerBrands[i];
     it(name, (done) => {
       if (skip) {
         console.log(chalk.bgYellow(name + ' 스킵됨'));
@@ -58,7 +65,14 @@ describe('Test option-crawl (for partners)', () => {
       }
       expect(data).toBeTruthy();
       expect(data.values).toBeTruthy();
-      expect(Object.keys(data.values).length).toBeGreaterThan(0);
+      if (skipBlankValuesCheck) {
+        console.log(
+          chalk.yellowBright(name + ' 옵션 Values check 스킵됨: ') +
+            skipBlankValuesCheckReason
+        );
+      } else {
+        expect(Object.keys(data.values).length).toBeGreaterThan(0);
+      }
       Object.values(data.values).forEach((optionValues) => {
         expect((optionValues as String[]).length).toBeGreaterThan(0);
       });
