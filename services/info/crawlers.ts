@@ -3252,7 +3252,7 @@ export const _ladyvolumecom = (
     ...result,
     brandKor,
     images: result.images.filter(
-      (imageUrl) => !imageUrl.match(/\/(txt|btn|ico)/g)
+      (imageUrl) => !imageUrl?.match(/\/(txt|btn|ico)/g)
     ),
   });
 };
