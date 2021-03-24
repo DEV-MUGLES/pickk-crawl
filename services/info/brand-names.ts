@@ -296,6 +296,7 @@ export const brandNames = {
   'mainxcx.com': '엑스씨엑스메인',
   'glothes.co.kr': '글로즈스튜디오',
   'cpgn.co.kr': '꼼파뇨',
+  'yohannrehand.com': '요한리핸드',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

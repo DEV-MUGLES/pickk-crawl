@@ -481,14 +481,13 @@ export const _tbhshopcokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  let { brandKor } = result;
-  if (brandKor === 'Mind Bridge') brandKor = '마인드브릿지';
-  if (brandKor === 'JUCY JUDY') brandKor = '쥬씨주디';
-  if (brandKor === 'BASIC HOUSE') brandKor = '베이직하우스';
+  const brandKor = result.brandKor.split(':')[0].trim();
+  const imageUrl = 'http:' + result.imageUrl.split('tbhshop.co.kr:443/')[1];
 
   return correct({
     ...result,
     brandKor,
+    imageUrl,
   });
 };
 
@@ -3266,5 +3265,17 @@ export const _ieycokr = (
   return correct({
     ...result,
     name: result.name.replace('IEY 이에이', '').trim(),
+  });
+};
+
+export const _yohannrehandcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    imageUrl: 'http://www.yohannrehand.com/' + result.imageUrl,
   });
 };

@@ -394,9 +394,9 @@ m.concepts1one.co.kr:
 
 tbhshop.co.kr:
   <<: *base
-  brandKor: '#core_info > div > div.prd_title > p.brand'
-  originalPrice: '#sell_prc_str'
-  salePrice: '#coupon_prc'
+  brandKor: 'title'
+  originalPrice: 'input#set_goods_fixedPrice'
+  salePrice: 'input[name="set_goods_price"]'
 
 bants.co.kr:
   <<: *base
@@ -1838,3 +1838,9 @@ ladyvolume.com:
 shop5.ox2256.cafe24.com:
   <<: *base
   images: 'div.productDetailImageViewThumList img'
+
+yohannrehand.com:
+  <<: *base
+  name: 'div.title> h2'
+  originalPrice: 'p.price'
+  imageUrl: 'div.item > div.pic > img'
