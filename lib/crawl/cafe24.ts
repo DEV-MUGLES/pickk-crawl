@@ -32,6 +32,7 @@ const getStockData = (html: string) => {
   const optionDataStr = html
     .slice(start, end)
     .replace(/\\\"/gi, '"')
+    .replace(/\\\'/gi, "'")
     .replace(/\\\\/gi, '\\');
 
   return JSON.parse(optionDataStr);
