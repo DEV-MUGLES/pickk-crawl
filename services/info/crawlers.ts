@@ -3279,3 +3279,15 @@ export const _yohannrehandcom = (
     imageUrl: 'http://www.yohannrehand.com/' + result.imageUrl,
   });
 };
+
+export const _fairplay142com = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    imageUrl: 'http://fairplay142.com' + result.imageUrl,
+  });
+};

@@ -664,10 +664,10 @@ samsonite.co.kr:
 
 fairplay142.com:
   name: 'div.dname > h3'
-  brandKor: 'div.table-opt > table > tbody > tr:nth-child(5) > td > div'
+  brandKor: 'div.dname > p.brand_name'
   imageUrl: 'div.thumb > img'
-  originalPrice: 'div.table-opt > table > tbody > tr:nth-child(1) > td > div > strike'
-  salePrice: 'div.table-opt > table > tbody > tr:nth-child(2) > td > div'
+  originalPrice: 'div.prd_price_box > #price01'
+  salePrice: 'div.prd_price_box > #price02'
 
 heights-store.com:
   <<: *base
