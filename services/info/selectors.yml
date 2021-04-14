@@ -1844,3 +1844,8 @@ yohannrehand.com:
   name: 'div.title> h2'
   originalPrice: 'p.price'
   imageUrl: 'div.item > div.pic > img'
+
+americantourister.co.kr:
+  <<: *base
+  brandKor: 'div.product-brand-name'
+  originalPrice: 'f1tgs[name=f1_products_price]'

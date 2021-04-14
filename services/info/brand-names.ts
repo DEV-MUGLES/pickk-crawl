@@ -297,6 +297,9 @@ export const brandNames = {
   'glothes.co.kr': '글로즈스튜디오',
   'cpgn.co.kr': '꼼파뇨',
   'yohannrehand.com': '요한리핸드',
+  'hangle-eyewear.com': '한글안경',
+  'demilmfg.com': '데밀',
+  'gonak.co.kr': '고낙',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

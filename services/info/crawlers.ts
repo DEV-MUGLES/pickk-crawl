@@ -3291,3 +3291,79 @@ export const _fairplay142com = (
     imageUrl: 'http://fairplay142.com' + result.imageUrl,
   });
 };
+
+export const _oldlaundrycokr = ($: CheerioStatic): InfoResult => {
+  const ldJsonObject = getLdJsonObject($);
+  const { name, image: imageUrl, brand, offers } = ldJsonObject;
+  const originalPrice = strToNumber(offers.price);
+  const salePrice = originalPrice;
+
+  return correct({
+    name,
+    imageUrl,
+    brandKor: brand,
+    originalPrice,
+    salePrice,
+  });
+};
+
+export const _hangleeyewearcom = ($: CheerioStatic): InfoResult => {
+  const ldJsonObject = getLdJsonObject($);
+  const { name, image: imageUrl, offers } = ldJsonObject;
+  const originalPrice = parseInt(offers.price);
+  const salePrice = strToNumber(
+    $('span.productDiscountPriceSpan').text().split(' ')[0]
+  );
+
+  return correct({
+    name,
+    imageUrl,
+    brandKor: '한글안경',
+    originalPrice,
+    salePrice,
+  });
+};
+
+export const _demilmfgcom = ($: CheerioStatic): InfoResult => {
+  const ldJsonObject = getLdJsonObject($, 1);
+  const { name, image: imageUrl, offers } = ldJsonObject['@graph'][1];
+  const originalPrice = strToNumber(offers[0].price);
+  const salePrice = originalPrice;
+
+  return correct({
+    name,
+    imageUrl,
+    brandKor: '데밀',
+    originalPrice,
+    salePrice,
+  });
+};
+
+export const _gonakcokr = ($: CheerioStatic): InfoResult => {
+  const ldJsonObject = getLdJsonObject($);
+  const { name, image: imageUrl, brand, offers } = ldJsonObject;
+  const originalPrice = strToNumber(offers.price);
+  const salePrice =
+    strToNumber($('span.productDiscountPriceSpan').text().split(' ')[0]) ||
+    originalPrice;
+
+  return correct({
+    name,
+    imageUrl,
+    brandKor: brand,
+    originalPrice,
+    salePrice,
+  });
+};
+
+export const _americantouristercokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    brandKor: getBrandKor(result.brandKor),
+  });
+};
