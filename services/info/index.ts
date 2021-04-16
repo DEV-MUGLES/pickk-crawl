@@ -7,7 +7,13 @@ import * as path from 'path';
 import * as crawlers from './crawlers';
 import puppeties from './puppeties';
 
-import { requestHtml, correct, selectAll, getHostName } from '../../lib';
+import {
+  requestHtml,
+  correct,
+  selectAll,
+  getHostName,
+  strToNumber,
+} from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { brandNames, getBrandKor } from './brand-names';
 
@@ -41,40 +47,53 @@ export default class InfoCrawlService {
         .then((res) => correct(res.data));
     }
 
-    const body = html || (await requestHtml(this.url));
-    const $ = cheerio.load(body);
-
     const crawlerName = '_' + this.host.replace(/\.|-|_|\//g, '');
+    const $ = await getCheerio(html, this.url);
 
     const result = correct(
-      await (crawlers[crawlerName] || selectAll)($, this.selectors, this.url)
+      await crawlers[crawlerName]($, this.selectors, this.url)
     );
 
-    const brandHost =
-      this.host.indexOf('m.') === 0 ? this.host.slice(2) : this.host;
-
-    const images =
-      result.images
-        ?.filter((image) => image)
-        ?.map((image) => {
-          try {
-            return decodeURI(
-              correctImageUrl(image, new URL(this.url).hostname)
-            );
-          } catch {
-            return null;
-          }
-        })
-        ?.filter((image) => image) || [];
-
-    return {
-      ...result,
-      brandKor: brandNames[brandHost] || getBrandKor(result.brandKor),
-      images,
-      isSoldout: result.isSoldout || false,
-    };
+    return formatResult(result, this.host, this.url);
   };
 }
+
+export const getCheerio = async (html, url) => {
+  let body;
+  try {
+    body = html || (await requestHtml(url));
+  } catch (error) {
+    body = '';
+  }
+
+  return cheerio.load(body);
+};
+
+export const formatResult = (result, host, url) => {
+  const brandHost = host.indexOf('m.') === 0 ? host.slice(2) : host;
+  const brandKor = brandNames[brandHost] || getBrandKor(result.brandKor);
+
+  const images =
+    result.images
+      ?.filter((image) => image)
+      ?.map((image) => {
+        try {
+          return decodeURI(correctImageUrl(image, new URL(url).hostname));
+        } catch {
+          return null;
+        }
+      })
+      ?.filter((image) => image) || [];
+
+  return {
+    ...result,
+    brandKor,
+    images,
+    originalPrice: strToNumber(result.originalPrice),
+    salePrice: strToNumber(result.salePrice),
+    isSoldout: result.isSoldout || false,
+  };
+};
 
 export const correctImageUrl = (imageUrl: string, hostname: string): string => {
   const baseUrl = `https://${hostname}`;

@@ -1239,19 +1239,6 @@ export const _montblanccom = (
   });
 };
 
-export const _thombrownecom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-  const [name, brandKor] = result.name.split('|');
-  return correct({
-    ...result,
-    name: name.trim(),
-    brandKor: brandKor.trim(),
-  });
-};
-
 export const _givenchycom = (
   $: CheerioStatic,
   selector: InfoSelectors
@@ -3370,5 +3357,35 @@ export const _balaancokr = async (
     imageUrl,
     originalPrice,
     salePrice,
+  });
+};
+
+export const _thombrownecom = async (
+  _$: CheerioStatic,
+  _selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const urlSplittedList = url.split('/');
+  const itemIdList = url.split('/')[urlSplittedList.length - 1].split('-');
+  const itemId = itemIdList[itemIdList.length - 1] || 13010095;
+
+  const {
+    result: { shortDescription: name },
+    imageGroups,
+    price: { formattedPriceWithoutCurrency: originalPrice },
+  } = await axios
+    .get(`https://www.thombrowne.com/kr/api/products/${itemId}`)
+    .then((res) => res.data);
+
+  const imageUrl = imageGroups[0].images.find(
+    ({ size }) => size >= parseInt('800')
+  ).url;
+
+  return correct({
+    name,
+    brandKor: '톰브라운',
+    imageUrl,
+    originalPrice,
+    salePrice: originalPrice,
   });
 };
