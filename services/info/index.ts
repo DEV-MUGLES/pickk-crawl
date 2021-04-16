@@ -7,13 +7,7 @@ import * as path from 'path';
 import * as crawlers from './crawlers';
 import puppeties from './puppeties';
 
-import {
-  requestHtml,
-  correct,
-  selectAll,
-  getHostName,
-  strToNumber,
-} from '../../lib';
+import { requestHtml, correct, getHostName } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { brandNames, getBrandKor } from './brand-names';
 
@@ -69,7 +63,11 @@ export const getCheerio = async (html, url) => {
   return cheerio.load(body);
 };
 
-export const formatResult = (result, host, url) => {
+export const formatResult = (result: InfoResult, host: string, url: string) => {
+  if (!result || !host || !url) {
+    return null;
+  }
+
   const brandHost = host.indexOf('m.') === 0 ? host.slice(2) : host;
   const brandKor = brandNames[brandHost] || getBrandKor(result.brandKor);
 
@@ -89,8 +87,6 @@ export const formatResult = (result, host, url) => {
     ...result,
     brandKor,
     images,
-    originalPrice: strToNumber(result.originalPrice),
-    salePrice: strToNumber(result.salePrice),
     isSoldout: result.isSoldout || false,
   };
 };
