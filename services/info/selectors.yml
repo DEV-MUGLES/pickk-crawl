@@ -1849,3 +1849,8 @@ americantourister.co.kr:
   <<: *base
   brandKor: 'div.product-brand-name'
   originalPrice: 'f1tgs[name=f1_products_price]'
+
+jdsports.co.kr:
+  <<: *base
+  originalPrice: 'input.devSellPrice'
+  salePrice: 'span.price__total'

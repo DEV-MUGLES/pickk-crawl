@@ -3367,3 +3367,20 @@ export const _americantouristercokr = (
     brandKor: getBrandKor(result.brandKor),
   });
 };
+
+export const _jdsportscokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const splitedName = result.name.split(']');
+  const name = splitedName[1];
+  const brandKor = splitedName[0].split('[')[1];
+
+  return correct({
+    ...result,
+    name,
+    brandKor: getBrandKor(brandKor),
+  });
+};
