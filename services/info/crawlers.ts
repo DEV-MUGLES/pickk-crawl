@@ -10,7 +10,6 @@ import {
 } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { correctImageUrl } from '.';
-import { getBrandKor } from './brand-names';
 import * as cheerio from 'cheerio';
 
 export const _storemusinsacom = (
@@ -827,7 +826,6 @@ export const _farfetchcom = (
   return correct({
     ...result,
     name: result.name.slice(0, result.name.indexOf('-') - 1),
-    brandKor: getBrandKor(result.brandKor),
   });
 };
 
@@ -1416,7 +1414,7 @@ export const _iamshoponlinecom = (
   return correct({
     ...result,
     name: result.name.slice(result.name.indexOf(':') + 1),
-    brandKor: getBrandKor(brandEng),
+    brandKor: brandEng,
   });
 };
 
@@ -1462,18 +1460,6 @@ export const _ssolantcom = (
   return correct({
     ...result,
     name: result.name.slice(result.name.indexOf(']') + 1),
-  });
-};
-
-export const _shoemarkercokr = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  return correct({
-    ...result,
-    brandKor: getBrandKor(result.brandKor),
   });
 };
 
@@ -2275,37 +2261,13 @@ export const _smartstorenavercom = (
     ...result,
     isSoldout,
     name,
-    brandKor: getBrandKor(brandKor),
+    brandKor,
     images,
     salePrice: ldJsonObject.offers.price,
   });
 };
 
 export const _msmartstorenavercom = _smartstorenavercom;
-
-export const _slowsteadyclubcom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  return correct({
-    ...result,
-    brandKor: getBrandKor(result.brandKor),
-  });
-};
-
-export const _editeditioncom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  return correct({
-    ...result,
-    brandKor: getBrandKor(result.brandKor),
-  });
-};
 
 export const _sculptorpagecom = (
   $: CheerioStatic,
@@ -2344,15 +2306,6 @@ export const _showindowcokr = (
     ...result,
     brandKor: result.brandKor.substring(1, result.brandKor.length),
   });
-};
-
-export const _idlookmallcom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  return correct({ ...result, brandKor: getBrandKor(result.brandKor) });
 };
 
 export const _newbalancecom = (
@@ -2539,7 +2492,6 @@ export const _yooxcom = (
 
   return correct({
     ...result,
-    brandKor: getBrandKor(result.brandKor),
     isSoldout,
   });
 };
@@ -2562,7 +2514,7 @@ export const _kreamcokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const brandEng = result.name.split('|')[1].trim();
+  const brandKor = result.name.split('|')[1].trim();
   const salePrices = $('ul.select_list > li span.price')
     .toArray()
     .map((object) => strToNumber(object.children[0].data))
@@ -2576,7 +2528,6 @@ export const _kreamcokr = (
   return correct({
     ...result,
     name: result.name.split('|')[0].trim(),
-    brandKor: getBrandKor(brandEng),
     originalPrice,
     salePrice,
   });
@@ -2590,12 +2541,12 @@ export const _endclothingcom = (
   const ldJsonObject = getLdJsonObject($, 2);
 
   const name = ldJsonObject.name;
-  const brandEng = ldJsonObject.brand.name;
+  const brandKor = ldJsonObject.brand.name;
 
   return correct({
     ...result,
     name,
-    brandKor: getBrandKor(brandEng),
+    brandKor,
   });
 };
 
@@ -2622,7 +2573,6 @@ export const _buffalobootscom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const brandKor = getBrandKor(result.brandKor);
   const originalPrice = Number(
     $(selector.originalPrice)
       .text()
@@ -2640,7 +2590,6 @@ export const _buffalobootscom = (
   return correct({
     ...result,
     name: result.name.replace('Shop', '').split('|')[0],
-    brandKor,
     originalPrice,
     salePrice,
   });
@@ -2665,11 +2614,12 @@ export const _niftydokr = (
   const result = selectAll($, selector);
 
   const [brandEng, name] = result.name.split(']');
+  const brandKor = brandEng.replace(/\[|\]/gi, '');
 
   return correct({
     ...result,
     name,
-    brandKor: getBrandKor(brandEng.replace(/\[|\]/gi, '')),
+    brandKor,
     salePrice: strToNumber($(selector.salePrice).text().split('원')[0]),
   });
 };
@@ -3080,21 +3030,9 @@ export const _sivillagecom = (
   return correct({
     ...result,
     name,
-    brandKor: getBrandKor(brandKor),
+    brandKor,
     originalPrice: strToNumber(opHtml?.slice(0, opHtml.indexOf('<em'))),
     salePrice: strToNumber(spHtml?.slice(0, spHtml.indexOf('<em'))),
-  });
-};
-
-export const _folderstylecom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  return correct({
-    ...result,
-    brandKor: getBrandKor(result.brandKor),
   });
 };
 
@@ -3170,12 +3108,11 @@ export const _insonlinestorecom = (
   const result = selectAll($, selector);
 
   const name = result.name.split('|')[0].split(']');
-  const brandKor = getBrandKor(name[0]);
 
   return correct({
     ...result,
     name: name[1].trim(),
-    brandKor,
+    brandKor: name[0],
   });
 };
 
@@ -3356,18 +3293,6 @@ export const _gonakcokr = ($: CheerioStatic): InfoResult => {
   });
 };
 
-export const _americantouristercokr = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  return correct({
-    ...result,
-    brandKor: getBrandKor(result.brandKor),
-  });
-};
-
 export const _jdsportscokr = (
   $: CheerioStatic,
   selector: InfoSelectors
@@ -3376,12 +3301,12 @@ export const _jdsportscokr = (
 
   const splitedName = result.name.split(']');
   const name = splitedName[1];
-  const brandKor = splitedName[0].split('[')[1];
+  const brandKor = splitedName[0].replace(/\[|\]/gi, '');
 
   return correct({
     ...result,
     name,
-    brandKor: getBrandKor(brandKor),
+    brandKor,
   });
 };
 
@@ -3395,7 +3320,7 @@ export const _reebonzcokr = (
 
   return correct({
     ...result,
-    brandKor: getBrandKor(brandKor),
+    brandKor,
   });
 };
 

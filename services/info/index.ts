@@ -9,7 +9,7 @@ import puppeties from './puppeties';
 
 import { requestHtml, correct, selectAll, getHostName } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
-import { brandNames } from './brand-names';
+import { brandNames, getBrandKor } from './brand-names';
 
 export default class InfoCrawlService {
   private url: string;
@@ -69,7 +69,7 @@ export default class InfoCrawlService {
 
     return {
       ...result,
-      brandKor: brandNames[brandHost] || result.brandKor,
+      brandKor: brandNames[brandHost] || getBrandKor(result.brandKor),
       images,
       isSoldout: result.isSoldout || false,
     };
