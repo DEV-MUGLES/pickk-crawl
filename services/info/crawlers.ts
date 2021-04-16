@@ -7,6 +7,7 @@ import {
   selectImages,
   getLdJsonObject,
   getNextPageProps,
+  requestHtml,
 } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { correctImageUrl } from '.';
@@ -3396,5 +3397,28 @@ export const _reebonzcokr = (
   return correct({
     ...result,
     brandKor: getBrandKor(brandKor),
+  });
+};
+
+export const _wonderwallkr = async (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const result = selectAll($, selector);
+
+  const urlSplittedList = url.split('/');
+  const itemId = urlSplittedList[urlSplittedList.length - 1];
+  const data = await requestHtml(
+    `https://api.wonderwall.kr/v2/goods/${itemId}`
+  );
+  const { data: item } = JSON.parse(data);
+  const originalPrice = item.originalPrice;
+  const salePrice = item.originalPrice;
+
+  return correct({
+    ...result,
+    originalPrice,
+    salePrice,
   });
 };

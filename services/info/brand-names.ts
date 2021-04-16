@@ -300,6 +300,7 @@ export const brandNames = {
   'hangle-eyewear.com': '한글안경',
   'demilmfg.com': '데밀',
   'gonak.co.kr': '고낙',
+  'wonderwall.kr': '원더월',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
