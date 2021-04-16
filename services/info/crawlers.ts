@@ -7,7 +7,6 @@ import {
   selectImages,
   getLdJsonObject,
   getNextPageProps,
-  requestHtml,
 } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { correctImageUrl } from '.';
@@ -2762,8 +2761,8 @@ export const _ocokoreacomshopMobile = (
 };
 
 export const _29cmcokr = async (
-  $: CheerioStatic,
-  selector: InfoSelectors,
+  _$: CheerioStatic,
+  _selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
   const id = url.split('/').reverse()[0].split('?')[0];
@@ -3409,12 +3408,9 @@ export const _wonderwallkr = async (
 
   const urlSplittedList = url.split('/');
   const itemId = urlSplittedList[urlSplittedList.length - 1];
-  const data = await requestHtml(
-    `https://api.wonderwall.kr/v2/goods/${itemId}`
-  );
-  const { data: item } = JSON.parse(data);
-  const originalPrice = item.originalPrice;
-  const salePrice = item.originalPrice;
+  const { originalPrice, price: salePrice } = await axios
+    .get(`https://api.wonderwall.kr/v2/goods/${itemId}`)
+    .then((res) => res.data.data);
 
   return correct({
     ...result,
