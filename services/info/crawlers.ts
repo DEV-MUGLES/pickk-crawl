@@ -3343,3 +3343,32 @@ export const _wonderwallkr = async (
     salePrice,
   });
 };
+
+export const _balaancokr = async (
+  _$: CheerioStatic,
+  _selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const SEARCH_TEXT = 'goodsno=';
+  const start = url.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = url.indexOf('&', start);
+  const itemId = url.slice(start, end !== -1 ? end : undefined);
+
+  const {
+    goodsnm: name,
+    brand: { kr_name: brandKor },
+    img_i: imageUrl,
+    consumer: originalPrice,
+    price: salePrice,
+  } = await axios
+    .get(`https://api.balaan.co.kr/v1/goods/recent?goodsnoString=${itemId}`)
+    .then((res) => res.data.data?.[itemId]);
+
+  return correct({
+    name,
+    brandKor,
+    imageUrl,
+    originalPrice,
+    salePrice,
+  });
+};
