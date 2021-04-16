@@ -1854,3 +1854,9 @@ jdsports.co.kr:
   <<: *base
   originalPrice: 'input.devSellPrice'
   salePrice: 'span.price__total'
+
+reebonz.co.kr:
+  <<: *base
+  brandKor: 'a.brand-link'
+  originalPrice: 'span.normal-price'
+  salePrice: 'span.final-price > span.price'

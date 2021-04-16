@@ -3384,3 +3384,17 @@ export const _jdsportscokr = (
     brandKor: getBrandKor(brandKor),
   });
 };
+
+export const _reebonzcokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const brandKor = result.brandKor.split('\n')[0];
+
+  return correct({
+    ...result,
+    brandKor: getBrandKor(brandKor),
+  });
+};
