@@ -3372,7 +3372,7 @@ export const _thombrownecom = async (
   const {
     result: { shortDescription: name },
     imageGroups,
-    price: { formattedPriceWithoutCurrency: originalPrice },
+    price: { formattedPriceWithoutCurrency },
   } = await axios
     .get(`https://www.thombrowne.com/kr/api/products/${itemId}`)
     .then((res) => res.data);
@@ -3380,6 +3380,8 @@ export const _thombrownecom = async (
   const imageUrl = imageGroups[0].images.find(
     ({ size }) => size >= parseInt('800')
   ).url;
+
+  const originalPrice = strToNumber(formattedPriceWithoutCurrency);
 
   return correct({
     name,
