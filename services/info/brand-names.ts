@@ -431,6 +431,7 @@ export const brandKorAlias = {
   luisvuitton: '루이비통',
   magazineb: '매거진비',
   maisonmargiela: '메종 마르지엘라',
+  maisonkitsune: '메종키츠네',
   maje: '마쥬',
   malibusandals: '말리부샌들',
   manipello: '매니펠로',
