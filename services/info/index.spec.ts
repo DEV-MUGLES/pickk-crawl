@@ -1,17 +1,15 @@
 import faker from 'faker';
 
 import { InfoResult } from 'types';
-import * as InfoCrawl from '.';
+import InfoCrawlService from '.';
 
-const { formatResult } = InfoCrawl;
-
-describe('Test InfoCrawlService', () => {
-  describe('formatResult', () => {
+describe('InfoCrawlService', () => {
+  describe('format', () => {
     const [salePrice, originalPrice] = [
       faker.random.number(),
       faker.random.number(),
     ].sort();
-    const inputResult: InfoResult = {
+    const infoResult: InfoResult = {
       name: faker.commerce.productName(),
       brandKor: faker.company.companyName(),
       imageUrl: faker.image.imageUrl(),
@@ -19,30 +17,28 @@ describe('Test InfoCrawlService', () => {
       salePrice,
     };
 
-    const host = 'suare.diskn.com';
-    const url = faker.image.imageUrl();
+    const url = faker.internet.url();
 
-    it('should return null when formatResult get null values', () => {
-      expect(formatResult(null, null, null)).toEqual(null);
-    });
+    const infoCrawlService = new InfoCrawlService(url);
 
-    it("should't return null in images", () => {
-      const result = formatResult(
-        {
-          ...inputResult,
-          images: [faker.image.imageUrl(), null, faker.image.imageUrl(), null],
-        },
-        host,
-        url
-      );
+    it('should not return null in images', () => {
+      infoCrawlService.result = {
+        ...infoResult,
+        images: [faker.image.imageUrl(), null, faker.image.imageUrl(), null],
+      };
 
+      const { result } = infoCrawlService.formatImages();
       expect(result.images).toEqual(expect.not.arrayContaining([null]));
       expect(result.images.length).toEqual(2);
     });
 
     it('result.isSoldout should be false when result.isSoldout is null', () => {
-      const result = formatResult({ ...inputResult }, host, url);
+      infoCrawlService.result = {
+        ...infoResult,
+        isSoldout: null,
+      };
 
+      const { result } = infoCrawlService.formatIsSoldout();
       expect(result.isSoldout).toEqual(false);
     });
   });
