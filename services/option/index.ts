@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+import * as scrapers from './scrapers';
 import * as crawlers from './crawlers';
 import puppeties from './puppeties';
 
@@ -24,6 +25,11 @@ export default class OptionCrawlService {
     }
 
     const html = inputHtml || (await requestHtml(this.url));
+
+    if (scrapers[this.crawlerName]) {
+      return await scrapers[this.crawlerName](this.url, html);
+    }
+
     return (crawlers[this.crawlerName] || crawlers.cafe24)(this.url, html)
       .result;
   };

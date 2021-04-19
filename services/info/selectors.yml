@@ -1864,3 +1864,9 @@ reebonz.co.kr:
 rollingstudios.co.kr:
   <<: *base
   imageUrl: 'div.swiper-wrapper > div.swiper-slide:first-child > img.ThumbImage'
+
+mainstance.co.kr:
+  <<: *base
+  originalPrice: span.sale_price
+  salePrice: span.real_price
+  images: script#prodDetailPC

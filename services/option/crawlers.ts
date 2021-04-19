@@ -1,5 +1,7 @@
 import OptionCralwer from './Crawler';
 
+import { OptionResult } from 'types';
+
 export const cafe24 = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html).cafe24();
 };

@@ -3391,3 +3391,32 @@ export const _thombrownecom = async (
     salePrice: originalPrice,
   });
 };
+
+export const _mainstancecokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const brandEng = url.match(/(\w+)-shop/i)[1];
+  const brandKor =
+    {
+      IFELSE: '이프엘스',
+      YELLOWCORVINA: '옐로우코비나',
+      ACROSSTHEUNIVERSE: '어크로스 더 유니버스',
+      AIRE: '아이레',
+    }[brandEng] || brandEng;
+
+  const images$ = cheerio.load($(selector.images).html());
+  const images = [];
+  images$('img').each((_i, ele) => {
+    images.push(ele.attribs['data-original']);
+  });
+
+  return correct({
+    ...result,
+    brandKor,
+    images,
+  });
+};
