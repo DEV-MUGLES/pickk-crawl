@@ -7,7 +7,7 @@ import * as path from 'path';
 import * as crawlers from './crawlers';
 import puppeties from './puppeties';
 
-import { requestHtml, correct, getHostName } from '../../lib';
+import { requestHtml, correct, getHostName, selectAll } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
 import { brandNames, getBrandKor } from './brand-names';
 
@@ -49,7 +49,7 @@ export default class InfoCrawlService {
     const $ = await getCheerio(html, this.url);
 
     const result = correct(
-      await crawlers[crawlerName]($, this.selectors, this.url)
+      await (crawlers[crawlerName] || selectAll)($, this.selectors, this.url)
     );
 
     this.result = result;

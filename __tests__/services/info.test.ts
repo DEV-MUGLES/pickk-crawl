@@ -25,7 +25,10 @@ beforeAll(async () => {
         new Promise(async (resolve) => {
           try {
             const infoCrawlService = new InfoCrawlService(url);
-            const data = await infoCrawlService.crawl(html);
+            const data = (await infoCrawlService.crawl(html))
+              .formatBrandKor()
+              .formatImages()
+              .formatIsSoldout().result;
             resolve(data);
           } catch (e) {
             resolve(null);
@@ -41,7 +44,7 @@ describe('Test info-crawl (for all)', () => {
     const { name, html, isPartner, url, skip } = brands[i];
     it(name, (done) => {
       if (skip) {
-        console.log(chalk.bgYellow(name + ' 스킵됨'));
+        console.log(chalk.yellow(name + ' 스킵됨'));
         done();
         return;
       }

@@ -6,8 +6,8 @@ import InfoCrawlService from '.';
 describe('InfoCrawlService', () => {
   describe('format', () => {
     const [salePrice, originalPrice] = [
-      faker.random.number(),
-      faker.random.number(),
+      faker.datatype.number(),
+      faker.datatype.number(),
     ].sort();
     const infoResult: InfoResult = {
       name: faker.commerce.productName(),
