@@ -1544,5 +1544,10 @@
   {
     "name": "발란",
     "url": "https://www.balaan.co.kr/shop/pc2m.php?landing_url=/m2/goods/view.php?goodsno=844971"
+  },
+  {
+    "name": "롤링스튜디오",
+    "url": "http://rollingstudios.co.kr/product/harrington-jacket-goatskin-suede/185/category/24/display/1/",
+    "isPartner": true
   }
 ]

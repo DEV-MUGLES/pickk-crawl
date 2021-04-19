@@ -1860,3 +1860,7 @@ reebonz.co.kr:
   brandKor: 'a.brand-link'
   originalPrice: 'span.normal-price'
   salePrice: 'span.final-price > span.price'
+
+rollingstudios.co.kr:
+  <<: *base
+  imageUrl: 'div.swiper-wrapper > div.swiper-slide:first-child > img.ThumbImage'
