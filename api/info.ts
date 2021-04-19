@@ -6,7 +6,10 @@ export default async (req: NowRequest, res: NowResponse) => {
   const infoCrawlServiceInstance = new InfoCrawlService(url.toString());
 
   try {
-    const data = await infoCrawlServiceInstance.crawl();
+    const data = (await infoCrawlServiceInstance.crawl())
+      .formatBrandKor()
+      .formatImages()
+      .formatIsSoldout().result;
     res.json({ ...data, url });
   } catch (err) {
     res.status(500).send({

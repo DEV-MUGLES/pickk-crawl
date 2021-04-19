@@ -15,6 +15,7 @@ export default class InfoCrawlService {
   private url: string;
   private host: string;
   private selectors: InfoSelectors;
+  public result: InfoResult;
 
   constructor(url: string) {
     this.url = encodeURI(url);
@@ -32,13 +33,16 @@ export default class InfoCrawlService {
     return selectors[host] || selectors['base'];
   };
 
-  public crawl = async (html?: string): Promise<InfoResult> => {
+  public crawl = async (html?: string): Promise<InfoCrawlService> => {
     if (puppeties.includes(this.host)) {
       return axios
         .get(`http://13.125.36.195/api/crawl/info/?url=${this.url}`, {
           timeout: 30000,
         })
-        .then((res) => correct(res.data));
+        .then((res) => {
+          this.result = correct(res.data);
+          return this;
+        });
     }
 
     const crawlerName = '_' + this.host.replace(/\.|-|_|\//g, '');
@@ -48,7 +52,51 @@ export default class InfoCrawlService {
       await crawlers[crawlerName]($, this.selectors, this.url)
     );
 
-    return formatResult(result, this.host, this.url);
+    this.result = result;
+    return this;
+  };
+
+  public formatBrandKor = (): InfoCrawlService => {
+    const brandHost = this.host.replace(/^m\./, '');
+
+    this.result = {
+      ...this.result,
+      brandKor: brandNames[brandHost] || getBrandKor(this.result.brandKor),
+    };
+
+    return this;
+  };
+
+  public formatImages = (): InfoCrawlService => {
+    const images =
+      this.result.images
+        ?.filter((image) => image)
+        ?.map((image) => {
+          try {
+            return decodeURI(
+              correctImageUrl(image, new URL(this.url).hostname)
+            );
+          } catch {
+            return null;
+          }
+        })
+        ?.filter((image) => image) || [];
+
+    this.result = {
+      ...this.result,
+      images,
+    };
+
+    return this;
+  };
+
+  public formatIsSoldout = (): InfoCrawlService => {
+    this.result = {
+      ...this.result,
+      isSoldout: this.result.isSoldout || false,
+    };
+
+    return this;
   };
 }
 
