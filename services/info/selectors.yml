@@ -1830,10 +1830,13 @@ coqkorea.co.kr:
   <<: *base
   isSoldout: '#mun_paymentButton span'
 
-ladyvolume.com:
+ladyvolume.com: &ladyvolume
   <<: *base
   images: '.detailArea img'
   isSoldout: 'div.xans-product-action div.btnArea span'
+
+v2korea.co.kr:
+  <<: *ladyvolume
 
 shop5.ox2256.cafe24.com:
   <<: *base

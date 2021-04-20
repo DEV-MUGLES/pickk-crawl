@@ -3180,6 +3180,8 @@ export const _ladyvolumecom = (
   });
 };
 
+export const _v2koreacokr = _ladyvolumecom;
+
 export const _ieycokr = (
   $: CheerioStatic,
   selector: InfoSelectors

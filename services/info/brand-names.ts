@@ -303,6 +303,7 @@ export const brandNames = {
   'wonderwall.kr': '원더월',
   'thombrowne.com': '톰브라운',
   'rollingstudios.co.kr': '롤링스튜디오',
+  'v2korea.co.kr': '브이투',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

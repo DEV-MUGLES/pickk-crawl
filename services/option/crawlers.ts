@@ -1,7 +1,5 @@
 import OptionCralwer from './Crawler';
 
-import { OptionResult } from 'types';
-
 export const cafe24 = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html).cafe24();
 };
@@ -160,4 +158,10 @@ export const _kutletshopcom = (url: string, html: string): OptionCralwer => {
       '#shopProductCartErrorDiv',
       (ins) => !ins.hasClass('hide')
     );
+};
+
+export const _v2koreacokr = (url: string, html: string): OptionCralwer => {
+  return new OptionCralwer(url, html)
+    .cafe24()
+    .checkitemIsSoldout('div.infoArea div.btnArea span');
 };
