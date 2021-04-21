@@ -1873,3 +1873,11 @@ mainstance.co.kr:
   originalPrice: span.sale_price
   salePrice: span.real_price
   images: script#prodDetailPC
+
+lfmall.co.kr:
+  <<: *base
+  name: 'div.detail_content > div.detail_head > div.prt-descript > h2 > span'
+  brandKor: 'div.detail_content > div.detail_head > div.prt-descript > div.brand'
+  originalPrice: 'div.price_group > div.current_price'
+  salePrice: 'div.price_group > div.prev_price'
+  images: 'div.detail_info img'

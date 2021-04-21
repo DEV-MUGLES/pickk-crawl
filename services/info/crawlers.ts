@@ -165,7 +165,7 @@ export const _lfmallcokr = (
 
   return correct({
     ...result,
-    brandKor: result.brandKor.slice(1, result.brandKor.indexOf(']')),
+    brandKor: result.brandKor.replace(/^브랜드/, ''),
   });
 };
 

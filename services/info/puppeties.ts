@@ -7,7 +7,6 @@ export default [
   'nike.com',
   'www2.hm.com',
   'matchesfashion.com',
-  'lfmall.co.kr',
   'onthelook.co.kr',
   'hyundaihmall.com',
   'ssense.com',
