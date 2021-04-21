@@ -1881,3 +1881,7 @@ lfmall.co.kr:
   originalPrice: 'div.price_group > div.current_price'
   salePrice: 'div.price_group > div.prev_price'
   images: 'div.detail_info img'
+
+anecdote.co.kr:
+  <<: *base
+  name: meta[name="keywords"]

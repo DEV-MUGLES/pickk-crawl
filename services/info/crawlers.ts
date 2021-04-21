@@ -3422,3 +3422,15 @@ export const _mainstancecokr = (
     images,
   });
 };
+
+export const _anecdotecokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.split(',')[0],
+  });
+};
