@@ -2501,7 +2501,7 @@ export const _kreamcokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const brandKor = result.name.split('|')[1].trim();
+  const splittedTitle = result.name.split('|');
   const salePrices = $('ul.select_list > li span.price')
     .toArray()
     .map((object) => strToNumber(object.children[0].data))
@@ -2514,7 +2514,8 @@ export const _kreamcokr = (
 
   return correct({
     ...result,
-    name: result.name.split('|')[0].trim(),
+    name: splittedTitle[0].trim(),
+    brandKor: splittedTitle[1].trim(),
     originalPrice,
     salePrice,
   });

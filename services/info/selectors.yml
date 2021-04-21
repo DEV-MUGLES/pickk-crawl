@@ -1440,7 +1440,6 @@ joesnewbalanceoutlet.com:
 
 adlielos.com:
   <<: *base
-  name: 'div.xans-element-.xans-product.xans-product-detail.detail_info_wrap > div > table > tbody > tr:nth-child(1) > td > span'
   originalPrice: '#span_product_price_text'
   images: '#contents > div.small_thumb_wrap > div.xans-element-.xans-product.xans-product-detail.small_thumb img'
   isSoldout: '#contents > div.detail_footer_wrap > div > div.xans-element-.xans-product.xans-product-detail.detail_footer_right > div.xans-element-.xans-product.xans-product-action.ec-base-button.gFull > a.btnSubmit.displaynone'
