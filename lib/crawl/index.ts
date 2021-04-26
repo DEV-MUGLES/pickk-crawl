@@ -15,6 +15,8 @@ export const getHostName = (url: string): string => {
   if (url.includes('ocokorea.com/shopMobile')) {
     return 'ocokorea.com/shopMobile';
   }
-
+  if (url.includes('brand.naver.com/ralphlauren')) {
+    return 'brand.naver.com/ralphlauren';
+  }
   return hostname.replace('www.', '');
 };

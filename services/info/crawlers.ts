@@ -3435,3 +3435,18 @@ export const _anecdotecokr = (
     name: result.name.split(',')[0],
   });
 };
+
+export const _brandnavercomralphlauren = ($: CheerioStatic): InfoResult => {
+  const ldJsonObject = getLdJsonObject($);
+  const { name, image: imageUrl, offers } = ldJsonObject;
+  const originalPrice = parseInt(offers.price);
+  const salePrice = originalPrice;
+
+  return correct({
+    name,
+    imageUrl,
+    brandKor: '폴로 랄프로렌',
+    originalPrice,
+    salePrice,
+  });
+};
