@@ -1886,5 +1886,5 @@ anecdote.co.kr:
   name: meta[name="keywords"]
 
 riooa.com:
-  <<: *base
+  <<: *custom_price
   images: 'div.detail_con img'
