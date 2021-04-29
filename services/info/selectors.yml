@@ -1885,3 +1885,7 @@ lfmall.co.kr:
 anecdote.co.kr:
   <<: *base
   name: meta[name="keywords"]
+
+riooa.com:
+  <<: *base
+  images: 'div.detail_con img'
