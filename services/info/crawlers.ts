@@ -3450,3 +3450,22 @@ export const _brandnavercomralphlauren = ($: CheerioStatic): InfoResult => {
     salePrice,
   });
 };
+
+export const _unboncokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const scriptHtml = $('body').html();
+
+  const SEARCH_TEXT = "var product_name = '";
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf("';", start);
+  const name = scriptHtml.slice(start, end);
+
+  return correct({
+    ...result,
+    name,
+  });
+};

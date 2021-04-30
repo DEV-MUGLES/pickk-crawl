@@ -307,6 +307,7 @@ export const brandNames = {
   'anecdote.co.kr': '아넥도트',
   'riooa.com': '리우아',
   'ironyporno.com': '아이러니 포르노',
+  'unbon.co.kr': '언본',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
