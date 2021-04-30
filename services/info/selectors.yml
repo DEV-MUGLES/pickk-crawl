@@ -1888,3 +1888,11 @@ anecdote.co.kr:
 riooa.com:
   <<: *custom_price
   images: 'div.detail_con img'
+
+gachiofficial.com:
+  <<: *base
+  name: '#sit_title'
+  imageUrl: '#sit_pvi img'
+  originalPrice: 'div.title_box > span.sct_dis'
+  salePrice: 'div.title_box > strong'
+  images: '#sit_inf img'
