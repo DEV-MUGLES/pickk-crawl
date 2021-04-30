@@ -2,7 +2,6 @@ export default [
   'ssfshop.com',
   'lookpin.co.kr',
   'g9.co.kr',
-  'hiphoper.com',
   'kolonmall.com',
   'nike.com',
   'www2.hm.com',

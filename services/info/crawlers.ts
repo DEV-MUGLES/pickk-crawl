@@ -3469,3 +3469,36 @@ export const _unboncokr = (
     name,
   });
 };
+
+export const _hiphopercom = async (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const itemCode = url.match(/\/item\/(\w+)/)[1];
+  const {
+    it_name: name,
+    br_name: brandKor,
+    it_img1: imageUrl,
+    it_price: originalPrice,
+    it_sale_price: salePrice,
+    it_explain,
+  } = await axios
+    .get(`https://shop-api.hiphoper.io/shop/api/item/${itemCode}`)
+    .then((res) => res.data.dataList.itemInfo);
+
+  const images$ = cheerio.load(it_explain);
+  const images = [];
+  images$('img').each((_i, ele) => {
+    images.push(ele.attribs['src']);
+  });
+
+  return correct({
+    name,
+    brandKor,
+    imageUrl,
+    originalPrice,
+    salePrice,
+    images,
+  });
+};
