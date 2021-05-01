@@ -1896,3 +1896,8 @@ gachiofficial.com:
   originalPrice: 'div.title_box > span.sct_dis'
   salePrice: 'div.title_box > strong'
   images: '#sit_inf img'
+
+deldio.co.kr:
+  <<: *base
+  originalPrice: '#shopProductPrice > span'
+  salePrice: 'span.productDiscountPriceSpan'
