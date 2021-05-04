@@ -3502,3 +3502,16 @@ export const _hiphopercom = async (
     images,
   });
 };
+
+export const _bbybstorecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const name = result.name.split('|')[0].trim();
+
+  return correct({
+    ...result,
+    name,
+  });
+};

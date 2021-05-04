@@ -1901,3 +1901,9 @@ deldio.co.kr:
   <<: *base
   originalPrice: '#shopProductPrice > span'
   salePrice: 'span.productDiscountPriceSpan'
+
+bbybstore.com:
+  <<: *base
+  name: 'title'
+  originalPrice: 'input[name="set_goods_price"]'
+  salePrice: 'input[name="set_total_price"]'
