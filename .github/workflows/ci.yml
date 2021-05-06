@@ -62,8 +62,8 @@ jobs:
 
       - name: Info Crawl Test
         run: |
-          yarn jest-info
+          yarn jest:info
 
       - name: Option Crawl Test
         run: |
-          yarn jest-option
+          yarn jest:option
