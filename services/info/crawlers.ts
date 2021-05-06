@@ -3515,3 +3515,17 @@ export const _bbybstorecom = (
     name,
   });
 };
+
+export const _oomstudiocokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const name = result.name.split('|')[0].trim();
+
+  return correct({
+    ...result,
+    imageUrl: result.images[0],
+    name,
+  });
+};

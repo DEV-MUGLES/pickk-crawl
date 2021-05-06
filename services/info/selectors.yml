@@ -1907,3 +1907,10 @@ bbybstore.com:
   name: 'title'
   originalPrice: 'input[name="set_goods_price"]'
   salePrice: 'input[name="set_total_price"]'
+
+oomstudio.co.kr:
+  <<: *base
+  name: title
+  originalPrice: '#main-content del > span.woocommerce-Price-amount'
+  salePrice: '#main-content span.woocommerce-Price-amount'
+  images: 'div.wpgs-for img'
