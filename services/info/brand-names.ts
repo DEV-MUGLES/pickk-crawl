@@ -316,6 +316,7 @@ export const brandNames = {
   'silentsociety.co.kr': '사일런트 소사이어티',
   'shopping.interpark.com': '인터파크',
   'calvinklein.com': '캘빈클라인',
+  'apartfromthat-store.com': '아파트프롬댓',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

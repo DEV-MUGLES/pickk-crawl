@@ -1918,3 +1918,7 @@ calvinklein.com:
   <<: *base
   originalPrice: span.price-standard
   salePrice: span.price-sales
+
+apartfromthat-store.com:
+  <<: *base
+  name: title

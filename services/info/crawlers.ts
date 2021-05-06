@@ -3528,3 +3528,15 @@ export const _oomstudiocokr = (
     name,
   });
 };
+
+export const _apartfromthatstorecom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.replace('- apart from that', '').trim(),
+  });
+};
