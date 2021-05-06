@@ -499,9 +499,8 @@ fashionplus.co.kr:
 
 itempage3.auction.co.kr:
   <<: *base
-  originalPrice: '#ucItemPrice_hdivPrice'
-  salePrice: '#frmMain > div.price_wrap > div.price > div > span > strong'
-  brandKor: 'span.text__brand > span.text'
+  originalPrice: 'span.price_original'
+  salePrice: 'strong.price_real'
 
 shopping.interpark.com:
   <<: *base

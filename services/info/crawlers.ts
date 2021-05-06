@@ -2492,7 +2492,6 @@ export const _itempage3auctioncokr = (
   return correct({
     ...result,
     name: result.name.replace(' - 옥션', ''),
-    brandKor: result.brandKor || '옥션',
   });
 };
 

@@ -237,6 +237,7 @@ export const brandNames = {
   'amfeast.co.kr': '암피스트',
   'overr.co.kr': '오베르',
   'auction.co.kr': '옥션',
+  'itempage3.auction.co.kr': '옥션',
   'alexandermcqueen.com': '알렉산더맥퀸',
   'mooseknucklescanada.kr': '무스너클',
   'waikei.co.kr': '와이케이',
