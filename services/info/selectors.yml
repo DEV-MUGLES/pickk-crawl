@@ -1913,3 +1913,8 @@ oomstudio.co.kr:
   originalPrice: '#main-content del > span.woocommerce-Price-amount'
   salePrice: '#main-content span.woocommerce-Price-amount'
   images: 'div.wpgs-for img'
+
+calvinklein.com:
+  <<: *base
+  originalPrice: span.price-standard
+  salePrice: span.price-sales
