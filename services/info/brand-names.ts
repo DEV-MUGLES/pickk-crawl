@@ -20,7 +20,7 @@ export const brandNames = {
   'nbkorea.com': '뉴발란스',
   'newbalance.com': '뉴발란스',
   'converse.co.kr': '컨버스',
-  'asics.com': '아식스',
+  'asics.co.kr': '아식스',
   'personal-pack.com': '퍼스널팩',
   'zavanas.com': '자바나스',
   'lmood.co.kr': '엘무드',
@@ -136,7 +136,6 @@ export const brandNames = {
   'jansportkorea.co.kr': '잔스포츠',
   'blackyak.com': '블랙야크',
   'dickiesmall.co.kr': '디키즈',
-  'kappakorea.net': '카파',
   'mskn2nd.com': '문수권세컨',
   'kangolkorea.com': '캉골',
   'emart.ssg.com': '데이즈',
@@ -317,6 +316,11 @@ export const brandNames = {
   'shopping.interpark.com': '인터파크',
   'calvinklein.com': '캘빈클라인',
   'apartfromthat-store.com': '아파트프롬댓',
+  'mtal.co.kr': 'MTAL',
+  'q-cumbers.com': '큐컴버스',
+  'tmaker.co.kr': '티메이커',
+  'licflo.com': '릭플로',
+  'areuban.com': '아르반',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

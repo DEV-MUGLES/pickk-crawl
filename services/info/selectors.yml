@@ -89,7 +89,7 @@ store.musinsa.com: &musinsa
   <<: *base
   brandKor: 'title'
   originalPrice: '#goods_price'
-  salePrice: 'input[name="price"]'
+  salePrice: meta[property="product:price:amount"]
   isSoldout: 'div.box-btn-buy.wrap-btn-buy > div.btn_buy > a.btn_grey'
   images: '#detail_view img'
 
@@ -176,11 +176,11 @@ converse.co.kr:
   originalPrice: 'p.product-price > span.retail'
   salePrice: 'p.product-price > span.sale'
 
-asics.com:
-  name: 'h1[itemprop="name"]'
-  imageUrl: 'ul.product-primary-image > li:nth-child(1) > span.main-image > picture > img'
-  originalPrice: 'div.product-price > span.price-standard'
-  salePrice: 'div.product-price > span.price-sales'
+asics.co.kr:
+  <<: *base
+  name: '#goodsName'
+  originalPrice: 'p.view__info-consumer-price'
+  salePrice: 'strong.view__info-price'
 
 personal-pack.com:
   name: '#mk_center > form:nth-child(16) > table:nth-child(8) > tbody > tr:nth-child(1) > td > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(1) > td > span'
@@ -866,13 +866,6 @@ givenchy.com:
   <<: *base
   name: 'head > title'
 
-ysl.com:
-  <<: *base
-  name: 'div.c-productinfos.c-productinfos--crossell > div > h1'
-  imageUrl: '#slider-images-product > div > div.c-productcarousel > ul > li:nth-child(1) > button > span > img'
-  originalPrice: 'div.c-productinfos.c-productinfos--crossell > div > div.l-pdp__prices > div > p'
-  salePrice: '#itemPrice > div > div > span.price > span.value'
-
 moncler.com:
   <<: *base
   salePrice: 'div.col-12.col-md-6.product-details > div.prices > div > span > span > span'
@@ -896,7 +889,7 @@ alexandermcqueen.com:
   <<: *base
   name: 'div.c-product .c-product__name'
   imageUrl: 'div.c-productcarousel > ul > li:nth-child(1) > button > img'
-  originalPrice: 'div.l-pdp__prices > div > p'
+  originalPrice: 'p.c-price__value--current'
 
 mooseknuckleskorea.com:
   <<: *base
@@ -1287,7 +1280,7 @@ haleineshop.com:
 hance.kr:
   <<: *base
   isSoldout: 'div.xans-product div.product-soldout'
-  images: 'div.product-images img.ThumbImage'
+  images: 'div.xans-product-addimage ul img.ThumbImage'
 
 bylegacy.co.kr:
   <<: *custom_price
@@ -1410,7 +1403,6 @@ ohkoos.com:
 
 mmglstore.com:
   <<: *custom_price
-  name: '#mun_information > ul > li:nth-child(1) > div.mun-detail-desc > span'
   images: '#mun_productDetail img'
   isSoldout: '#mun_paymentButton > span.soldout'
 
@@ -1524,18 +1516,16 @@ runningnose.kr:
 
 showindow.co.kr:
   <<: *base
-  name: 'div.product_inform > div.title > h2'
-  imageUrl: 'img.productImage'
-  brandKor: 'div.product_inform > div.pro_top > span'
-  originalPrice: 'div.product_option > div > p'
-  salePrice: 'div.product_inform > div.product_option > div > em'
+  brandKor: 'div.product_info_Wrap > div.left > div.pro_top > span'
+  originalPrice: '.dc_before_cost'
+  salePrice: '.goods_cost'
 
 idlookmall.com:
   <<: *base
   name: '#prodNm'
   brandKor: '#brandNm'
-  originalPrice: 'div.cont span.c999'
-  salePrice: '.fr > .price'
+  originalPrice: 'meta[property="recopick:price"]'
+  salePrice: 'meta[property="recopick:sale_price"]'
 
 arcteryx.co.kr:
   <<: *base
@@ -1556,7 +1546,7 @@ sw925.com:
 
 ffai.co.kr:
   <<: *base
-  images: '#prdDetail  img'
+  originalPrice: 'span.sale_price'
 
 blackhind.com:
   <<: *base
@@ -1872,14 +1862,6 @@ mainstance.co.kr:
   salePrice: span.real_price
   images: script#prodDetailPC
 
-lfmall.co.kr:
-  <<: *base
-  name: 'div.detail_content > div.detail_head > div.prt-descript > h2 > span'
-  brandKor: 'div.detail_content > div.detail_head > div.prt-descript > div.brand'
-  originalPrice: 'div.price_group > div.current_price'
-  salePrice: 'div.price_group > div.prev_price'
-  images: 'div.detail_info img'
-
 anecdote.co.kr:
   <<: *base
   name: meta[name="keywords"]
@@ -1890,7 +1872,6 @@ riooa.com:
 
 gachiofficial.com:
   <<: *base
-  name: '#sit_title'
   imageUrl: '#sit_pvi img'
   originalPrice: 'div.title_box > span.sct_dis'
   salePrice: 'div.title_box > strong'
@@ -1922,3 +1903,36 @@ calvinklein.com:
 apartfromthat-store.com:
   <<: *base
   name: title
+
+mtal.co.kr:
+  <<: *base
+  originalPrice: 'input[name="set_goods_price"]'
+  salePrice: 'input[name="set_total_price"]'
+
+tmaker.co.kr:
+  <<: *base
+  originalPrice: '#span_product_price_custom'
+
+reflyperky.co.kr:
+  <<: *base
+  originalPrice: '#span_product_price_custom'
+
+wearebraindead.com:
+  <<: *base
+  originalPrice: 'meta[property="og:price:amount"]'
+
+okmall.com:
+  <<: *base
+  name: '#ProductNameArea > span.prd_name'
+  imageUrl: 'meta[property="og:image"]'
+  brandKor: 'span.brand_tit'
+  originalPrice: 'div.value_price span.price'
+  salePrice: 'div.last_price span.price'
+
+prada.com:
+  <<: *base
+  originalPrice: 'span.price__value'
+
+licflo.com:
+  <<: *base
+  originalPrice: 'span.real_price'

@@ -9,7 +9,7 @@ import {
   getNextPageProps,
 } from '../../lib';
 import { InfoResult, InfoSelectors } from '../../types';
-import { correctImageUrl } from '.';
+import { correctImageUrl, getCheerio } from '.';
 import * as cheerio from 'cheerio';
 
 export const _storemusinsacom = (
@@ -157,16 +157,35 @@ export const _wconceptcokr = (
 
 export const _mwconceptcokr = _wconceptcokr;
 
-export const _lfmallcokr = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
+export const _lfmallcokr = async (
+  _$: CheerioStatic,
+  _selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const matches = url.match(/[?&]?PROD_CD=(\w+)/);
+  const productId = matches[1];
+  try {
+    const {
+      results: { productDetail },
+    } = await axios
+      .get(
+        `https://mapi.lfmall.co.kr/api/ver2/products/detail?productId=${productId}`,
+        {
+          timeout: 30000,
+        }
+      )
+      .then((res) => res.data);
 
-  return correct({
-    ...result,
-    brandKor: result.brandKor.replace(/^브랜드/, ''),
-  });
+    return correct({
+      name: productDetail.itemStocks[0].name,
+      brandKor: productDetail.brand.tbrandHnm,
+      imageUrl: productDetail.images[0].url,
+      originalPrice: productDetail.originalPrice,
+      salePrice: productDetail.originalSalePrice,
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const _www2hmcom = (
@@ -1732,15 +1751,19 @@ export const _kingkr = (
 
 export const _costumeoclockcom = (
   $: CheerioStatic,
-  selector: InfoSelectors
+  selector: InfoSelectors,
+  url: string
 ): InfoResult => {
   const result = selectAll($, selector);
-  const [brandKor, name] = result.name.split('[')[1].split(']');
-
+  const [, categoryId] = url.match(/category\/(\d+)\//);
+  const brandAlias = {
+    66: '커스텀어클락',
+    61: '세컨모놀로그',
+    129: '몽돌',
+  };
   return correct({
     ...result,
-    name: name.trim(),
-    brandKor,
+    brandKor: brandAlias[categoryId] ?? '커스텀어클락',
   });
 };
 
@@ -2114,8 +2137,16 @@ export const _mmglstorecom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+
+  const scriptHtml = $('#fbe_product_detail_script').html();
+  const SEARCH_TEXT = `content_name: '`;
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf(`',`, start);
+  const name = scriptHtml.slice(start, end);
+
   return correct({
     ...result,
+    name,
     images: result.images.slice(1),
   });
 };
@@ -2291,7 +2322,7 @@ export const _showindowcokr = (
 
   return correct({
     ...result,
-    brandKor: result.brandKor.substring(1, result.brandKor.length),
+    brandKor: result.brandKor.split('#').reverse()[0],
   });
 };
 
@@ -3538,5 +3569,117 @@ export const _apartfromthatstorecom = (
   return correct({
     ...result,
     name: result.name.replace('- apart from that', '').trim(),
+  });
+};
+
+export const _shoppingnavercomdepartment = (
+  $: CheerioStatic,
+  _: InfoSelectors
+): InfoResult => {
+  const ldJsonObject = getLdJsonObject($);
+  const {
+    name,
+    image: imageUrl,
+    description: brandKor,
+    offers: { price: salePrice },
+  } = ldJsonObject;
+  const scriptHtml = $('body').html();
+  const SEARCH_TEXT = 'window.__PRELOADED_STATE__=';
+  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
+  const end = scriptHtml.indexOf('</script>', start);
+  const state = scriptHtml.slice(start, end);
+  const originalPrice = JSON.parse(state).product.A.windowProduct.salePrice;
+
+  return correct({
+    name,
+    brandKor,
+    imageUrl,
+    originalPrice: originalPrice ?? salePrice,
+    salePrice,
+  });
+};
+
+export const _gachiofficialcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.split('|')[0].split('>')[0],
+  });
+};
+
+export const _okmallcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const imageUrl = $(selector.imageUrl)[0].attribs.content;
+
+  return correct({
+    ...result,
+    imageUrl: 'http:' + imageUrl,
+  });
+};
+
+export const _licflocom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    name: result.name.split(':')[0].trim(),
+    brandKor: '릭플로',
+  });
+};
+
+export const _yslcom = ($: CheerioStatic, _: InfoSelectors): InfoResult => {
+  const ldJsonObject = getLdJsonObject($);
+  const {
+    name,
+    image: imageUrl,
+    offers: { price },
+    brand: { slogan: brandKor },
+  } = ldJsonObject;
+  const salePrice = strToNumber(price);
+
+  return correct({
+    name,
+    brandKor,
+    imageUrl,
+    originalPrice: salePrice,
+    salePrice,
+  });
+};
+
+export const _ffaicokr = async (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): Promise<InfoResult> => {
+  const { originalPrice } = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+  const {
+    name,
+    image,
+    offers: { price: salePrice },
+    brand: { name: brandKor },
+  } = ldJsonObject;
+  const imageshtml = $('#prodDetailPC').html();
+  const _$ = await getCheerio(imageshtml, '');
+  const images = _$('img')
+    .toArray()
+    .map((element) => element.attribs['data-original']);
+
+  return correct({
+    name,
+    brandKor,
+    imageUrl: image[0],
+    originalPrice: originalPrice ?? salePrice,
+    salePrice,
+    images,
   });
 };
