@@ -3683,3 +3683,26 @@ export const _ffaicokr = async (
     images,
   });
 };
+
+export const _frogworldcokr = async (
+  $: CheerioStatic,
+  selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
+  const productCode = url.match(/\/product\/(\d+)/)[1];
+  const {
+    data: {
+      data: { name, brandName: brandKor, imageUrl, lowestPrice },
+    },
+  } = await axios.get(
+    `https://v2-frog-api-prod.frogbyhinter.com/product/${productCode}`
+  );
+
+  return {
+    name,
+    brandKor,
+    imageUrl,
+    originalPrice: lowestPrice,
+    salePrice: lowestPrice,
+  };
+};
