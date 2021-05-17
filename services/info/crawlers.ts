@@ -3706,3 +3706,41 @@ export const _frogworldcokr = async (
     salePrice: lowestPrice,
   };
 };
+
+export const _japangadacom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return correct({
+    ...result,
+    brandKor: result.brandKor.split('(')[0].trim(),
+  });
+};
+
+export const _ssfshopcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const priceList = $('div.tag > div.price > em')
+    .text()
+    .trim()
+    .split(/ | |\n/);
+  const salePrice = strToNumber(priceList[0]);
+  const originalPrice = strToNumber(priceList[1] ?? priceList[0]);
+  let images = [];
+  $('div.product_view img, div.detail_view img').map((_, element) => {
+    images.push('http:' + element.attribs['data-original']);
+  });
+  const isSoldout = $(selector.isSoldout).text().includes('품절');
+
+  return correct({
+    ...result,
+    originalPrice,
+    salePrice,
+    images,
+    isSoldout,
+  });
+};

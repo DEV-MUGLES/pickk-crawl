@@ -1936,3 +1936,17 @@ prada.com:
 licflo.com:
   <<: *base
   originalPrice: 'span.real_price'
+
+japangada.com:
+  <<: *base
+  originalPrice: 'form[name="form-cart-option"] > div.view-detail-info > table tr:nth-child(2) > td'
+  brandKor: 'form[name="form-cart-option"] > div.view-detail-info > table tr:nth-child(6) > td'
+  imageUrl: '.thumbnail img'
+
+ssfshop.com:
+  <<: *base
+  imageUrl: 'li.zoom-in:first-child > a > img'
+  brandKor: input[id="brndNm"]
+  originalPrice: input[id="brndNm"]
+  salePrice: input[id="lastSalePrc"]
+  isSoldout: '#restockReal'

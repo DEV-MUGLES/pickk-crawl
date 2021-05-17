@@ -1,5 +1,4 @@
 export default [
-  'ssfshop.com',
   'lookpin.co.kr',
   'g9.co.kr',
   'kolonmall.com',
