@@ -523,6 +523,9 @@ g9.co.kr:
 elandmall.com:
   <<: *recopick
 
+m.elandmall.com:
+  <<: *recopick
+
 whoau.elandmall.com:
   <<: *recopick
 
