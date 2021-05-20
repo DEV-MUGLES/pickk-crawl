@@ -1953,3 +1953,8 @@ ssfshop.com:
   originalPrice: input[id="brndNm"]
   salePrice: input[id="lastSalePrc"]
   isSoldout: '#restockReal'
+
+glpkthesouvenirshop.com:
+  <<: *base
+  originalPrice: span.real_price
+  salePrice: span.sale_price

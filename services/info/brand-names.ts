@@ -323,6 +323,7 @@ export const brandNames = {
   'areuban.com': '아르반',
   'jerusalemsandalskorea.co.kr': '예루살렘샌들',
   'arcanefunk.com': '아케인펑크',
+  'glpkthesouvenirshop.com': 'GLPK',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

@@ -3744,3 +3744,12 @@ export const _ssfshopcom = (
     isSoldout,
   });
 };
+
+export const _glpkthesouvenirshopcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return { ...result };
+};
