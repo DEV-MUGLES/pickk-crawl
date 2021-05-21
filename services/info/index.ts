@@ -66,6 +66,10 @@ export default class InfoCrawlService {
         brandUnits[brandHost] || this.result.priceUnit || ItemPriceUnit.KRW,
     };
 
+    // @TODO: 서버 옮길 때 이 코드 삭제해야한다
+    // - 현재 장고 서버가 이 property 넣으면 못 받아들여서 임시로 지워둠
+    delete this.result.priceUnit;
+
     return this;
   };
 
