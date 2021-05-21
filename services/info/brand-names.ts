@@ -325,6 +325,7 @@ export const brandNames = {
   'arcanefunk.com': '아케인펑크',
   'glpkthesouvenirshop.com': 'GLPK',
   '7hill6ros.com': '칠브로',
+  'soverment.com': '소버먼트',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
