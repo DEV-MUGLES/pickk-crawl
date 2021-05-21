@@ -62,7 +62,8 @@ export default class InfoCrawlService {
 
     this.result = {
       ...this.result,
-      priceUnit: brandUnits[brandHost] || ItemPriceUnit.KRW,
+      priceUnit:
+        brandUnits[brandHost] || this.result.priceUnit || ItemPriceUnit.KRW,
     };
 
     return this;

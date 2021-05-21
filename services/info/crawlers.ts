@@ -3753,3 +3753,21 @@ export const _glpkthesouvenirshopcom = (
 
   return { ...result };
 };
+
+export const _glamoodcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  const splitIndex = result.brandKor.indexOf(' ');
+  const brandKor = result.brandKor.slice(0, splitIndex);
+  const name = result.brandKor
+    .slice(splitIndex + 1)
+    .replace('- Glamood Outlet', '')
+    .trim();
+
+  const imageUrl = $(selector.imageUrl).attr()['data-src'];
+
+  return { ...result, brandKor, name, imageUrl };
+};

@@ -1958,3 +1958,11 @@ glpkthesouvenirshop.com:
   <<: *base
   originalPrice: span.real_price
   salePrice: span.sale_price
+
+glamood.com:
+  <<: *base
+  brandKor: title
+  imageUrl: 'div.owl-carousel > figure[itemprop="associatedMedia"]:nth-child(1) img'
+  originalPrice: 'div.prodotto__info div.prodotto__prezzo-base'
+  salePrice: 'div.prodotto__info div.prodotto__prezzo-finale'
+  priceUnit: 'div.prodotto__info div.prodotto__prezzo-finale'
