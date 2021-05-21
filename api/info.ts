@@ -7,6 +7,7 @@ export default async (req: NowRequest, res: NowResponse) => {
 
   try {
     const data = (await infoCrawlServiceInstance.crawl())
+      .formatPriceUnit()
       .formatBrandKor()
       .formatImages()
       .formatIsSoldout().result;

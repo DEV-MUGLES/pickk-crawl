@@ -6,6 +6,7 @@ export type InfoResult = {
   salePrice: number;
   images?: string[];
   isSoldout?: boolean;
+  priceUnit?: ItemPriceUnit;
 };
 
 export interface InfoSelectors {
@@ -16,4 +17,16 @@ export interface InfoSelectors {
   salePrice: string;
   images?: string;
   isSoldout?: string;
+  priceUnit?: ItemPriceUnit;
+}
+
+export enum ItemPriceUnit {
+  KRW = 'KRW',
+  USD = 'USD',
+  JPY = 'JPY',
+  CNY = 'CNY',
+  EUR = 'EUR',
+  GBP = 'GBP',
+  AUD = 'AUD',
+  CAD = 'CAD',
 }

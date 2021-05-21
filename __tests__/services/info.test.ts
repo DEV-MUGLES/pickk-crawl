@@ -26,6 +26,7 @@ beforeAll(async () => {
           try {
             const infoCrawlService = new InfoCrawlService(url);
             const data = (await infoCrawlService.crawl(html))
+              .formatPriceUnit()
               .formatBrandKor()
               .formatImages()
               .formatIsSoldout().result;

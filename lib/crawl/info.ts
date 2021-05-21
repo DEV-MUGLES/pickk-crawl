@@ -1,8 +1,8 @@
-import { strToNumber } from '../utils/Parser';
+import { strToNumber, strToPriceUnit } from '../utils/Parser';
 import { InfoResult, InfoSelectors } from 'types/info';
 
 export const selectAll = ($: CheerioStatic, selectors: InfoSelectors) => {
-  return Object.keys(selectors).reduce((acc, key) => {
+  return Object.keys(selectors).reduce((acc, key: keyof InfoSelectors) => {
     return {
       ...acc,
       [key]: parseValue($, key, selectors[key]),
@@ -45,7 +45,7 @@ export const selectImages = ($: CheerioStatic, selector: string): string[] => {
 
 export const parseValue = (
   $: CheerioStatic,
-  key: string,
+  key: keyof InfoSelectors,
   selector: string
 ): string | number | string[] | boolean => {
   if (key === 'images') {
@@ -60,6 +60,9 @@ export const parseValue = (
   }
   if (key === 'originalPrice' || key === 'salePrice') {
     return strToNumber(value);
+  }
+  if (key === 'priceUnit') {
+    return strToPriceUnit(value);
   }
   return value;
 };

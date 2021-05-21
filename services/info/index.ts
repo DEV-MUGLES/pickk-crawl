@@ -8,8 +8,9 @@ import * as crawlers from './crawlers';
 import puppeties from './puppeties';
 
 import { requestHtml, correct, getHostName, selectAll } from '../../lib';
-import { InfoResult, InfoSelectors } from '../../types';
+import { InfoResult, InfoSelectors, ItemPriceUnit } from '../../types';
 import { brandNames, getBrandKor } from './brand-names';
+import { brandUnits } from './brand-units';
 
 export default class InfoCrawlService {
   private url: string;
@@ -53,6 +54,17 @@ export default class InfoCrawlService {
     );
 
     this.result = result;
+    return this;
+  };
+
+  public formatPriceUnit = (): InfoCrawlService => {
+    const brandHost = this.host.replace(/^m\./, '');
+
+    this.result = {
+      ...this.result,
+      priceUnit: brandUnits[brandHost] || ItemPriceUnit.KRW,
+    };
+
     return this;
   };
 
