@@ -1969,3 +1969,7 @@ glamood.com:
 
 soverment.com:
   <<: *custom_price
+
+minjukim.co:
+  <<: *base
+  originalPrice: 'div.product-price span.dform-currency'

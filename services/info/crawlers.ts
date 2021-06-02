@@ -3771,3 +3771,12 @@ export const _glamoodcom = (
 
   return { ...result, brandKor, name, imageUrl };
 };
+
+export const _minjukimco = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return { ...result, name: result.name.replace('— MINJUKIM', '').trim() };
+};

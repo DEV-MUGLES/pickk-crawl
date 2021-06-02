@@ -326,6 +326,7 @@ export const brandNames = {
   'glpkthesouvenirshop.com': 'GLPK',
   '7hill6ros.com': '칠브로',
   'soverment.com': '소버먼트',
+  'minjukim.co': '민주킴',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.
@@ -471,6 +472,7 @@ export const brandKorAlias = {
   meduse: '메듀즈',
   mfpen: '엠에프펜',
   miharayasuhiro: '미하라야스히로',
+  minjukim: '민주킴',
   mlb: 'mlb',
   msgm: '엠에스지엠',
   nanamica: '나나미카',
