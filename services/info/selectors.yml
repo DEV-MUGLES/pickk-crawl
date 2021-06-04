@@ -1979,3 +1979,10 @@ shop.ciacura.jp:
   <<: *base
   brandKor: form[name="product_form"] > h1.title
   name: form[name="product_form"] h2.title.product-name
+
+stripe-inc-onlinestore.com:
+  <<: *base
+  brandKor: 'h2.product-detail__brand-name'
+  name: 'h1.product-detail__product-name'
+  originalPrice: 'div.product-detail__baseinfo div.price div.values span'
+  priceUnit: 'div.product-detail__baseinfo div.price div.values span'

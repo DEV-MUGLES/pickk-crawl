@@ -16,7 +16,7 @@ export const strToPriceUnit = (str: string): ItemPriceUnit => {
   if (str in ItemPriceUnit) {
     return str as ItemPriceUnit;
   }
-  const symbol = str.replace(/[^(원|₩|$|€|円|¥)]/g, '');
+  const symbol = str.replace(/[^(원|₩|$|€|円|¥|￥)]/g, '');
   return symbolToPriceUnit[symbol] || KRW;
 };
 
@@ -28,4 +28,5 @@ export const symbolToPriceUnit = {
   '€': EUR,
   円: JPY,
   '¥': JPY,
+  '￥': JPY,
 };
