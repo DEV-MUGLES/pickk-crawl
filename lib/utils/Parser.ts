@@ -13,6 +13,9 @@ export const cleanUpString = (str: string): string => {
 const { KRW, USD, EUR, JPY } = ItemPriceUnit;
 
 export const strToPriceUnit = (str: string): ItemPriceUnit => {
+  if (str in ItemPriceUnit) {
+    return str as ItemPriceUnit;
+  }
   const symbol = str.replace(/[^(원|₩|$|€|円|¥)]/g, '');
   return symbolToPriceUnit[symbol] || KRW;
 };

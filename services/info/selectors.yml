@@ -5,6 +5,7 @@ base: &base
   originalPrice: meta[property="product:price:amount"]
   salePrice: meta[property="product:sale_price:amount"]
   images: 'div#prdDetail div.cont img'
+  priceUnit: meta[property="product:price:currency"]
 
 rb: &rb
   name: meta[property="rb:itemName"]
@@ -1974,6 +1975,7 @@ minjukim.co:
   <<: *base
   originalPrice: 'div.product-price span.dform-currency'
 
-maroonwebstore.stores.jp:
+shop.ciacura.jp:
   <<: *base
-  priceUnit: 'div.main_content p.item_price'
+  brandKor: form[name="product_form"] > h1.title
+  name: form[name="product_form"] h2.title.product-name
