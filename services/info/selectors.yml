@@ -1973,3 +1973,7 @@ soverment.com:
 minjukim.co:
   <<: *base
   originalPrice: 'div.product-price span.dform-currency'
+
+maroonwebstore.stores.jp:
+  <<: *base
+  priceUnit: 'div.main_content p.item_price'
