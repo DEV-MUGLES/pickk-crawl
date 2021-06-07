@@ -582,6 +582,10 @@
   },
   {
     "name": "SSG.COM",
+    "url": "http://www.ssg.com/item/itemView.ssg?itemId=1000066543165"
+  },
+  {
+    "name": "SSG.COM 백화점",
     "url": "http://department.ssg.com/item/itemView.ssg?itemId=1000048898349"
   },
   {
@@ -1591,7 +1595,7 @@
     "url": "https://q-cumbers.com/product/detail.html?product_no=228&cate_no=25&display_group=1"
   },
   {
-    "name": "네이버 백화점윈도",
+    "name": "네이버 쇼핑",
     "url": "https://shopping.naver.com/department/stores/100045976/products/5364114930"
   },
   {
@@ -1646,5 +1650,9 @@
   {
     "name": "민주킴",
     "url": "https://www.minjukim.co/ko/shop/pajama-blouse-1"
+  },
+  {
+    "name": "에이랜드",
+    "url": "https://www.a-land.co.kr/shop/goods_view.php?id=1100109886"
   }
 ]

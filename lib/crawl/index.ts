@@ -18,8 +18,8 @@ export const getHostName = (url: string): string => {
   if (url.includes('brand.naver.com/ralphlauren')) {
     return 'brand.naver.com/ralphlauren';
   }
-  if (url.includes('shopping.naver.com/department')) {
-    return 'shopping.naver.com/department';
+  if (url.includes('.ssg.com')) {
+    return 'ssg.com';
   }
   return hostname.replace('www.', '');
 };

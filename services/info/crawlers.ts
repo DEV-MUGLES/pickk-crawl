@@ -621,10 +621,9 @@ export const _ssgcom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  let brandKor = unescape($(selector.brandKor).last().text().trim()).replace(
-    '#',
-    ''
-  );
+  let brandKor =
+    unescape($(selector.brandKor).last().text().trim()).replace('#', '') ||
+    '신세계몰';
   if (brandKor.includes('(')) {
     brandKor = brandKor.slice(0, brandKor.indexOf('('));
   }
@@ -704,26 +703,6 @@ export const _mariomallcokr = (
   const result = selectAll($, selector);
 
   const brandKor = result.brandKor.slice(0, result.brandKor.indexOf('브') - 1);
-
-  return correct({
-    ...result,
-    brandKor,
-  });
-};
-
-export const _departmentssgcom = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  let brandKor = unescape($(selector.brandKor).last().text().trim()).replace(
-    '#',
-    ''
-  );
-  if (brandKor.includes('(')) {
-    brandKor = brandKor.slice(0, brandKor.indexOf('('));
-  }
 
   return correct({
     ...result,
@@ -3572,7 +3551,7 @@ export const _apartfromthatstorecom = (
   });
 };
 
-export const _shoppingnavercomdepartment = (
+export const _shoppingnavercom = (
   $: CheerioStatic,
   _: InfoSelectors
 ): InfoResult => {

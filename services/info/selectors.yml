@@ -1975,6 +1975,13 @@ minjukim.co:
   <<: *base
   originalPrice: 'div.product-price span.dform-currency'
 
+a-land.co.kr:
+  <<: *base
+  brandKor: 'div.wrap-goods-name strong'
+  imageUrl: 'div.goods-info > span.thumb > img'
+  originalPrice: 'input[id="sellprice"]'
+  salePrice: 'input[id="dcprice"]'
+
 shop.ciacura.jp:
   <<: *base
   brandKor: form[name="product_form"] > h1.title
