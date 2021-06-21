@@ -1993,3 +1993,7 @@ stripe-inc-onlinestore.com:
   name: 'h1.product-detail__product-name'
   originalPrice: 'div.product-detail__baseinfo div.price div.values span'
   priceUnit: 'div.product-detail__baseinfo div.price div.values span'
+
+mailpackseoul.com:
+  <<: *base
+  originalPrice: '#prod_goods_form span.real_price'
