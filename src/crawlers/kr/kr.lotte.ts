@@ -39,9 +39,8 @@ export class KRLotteCrawler extends BaseCrawler {
           document.querySelectorAll('.tblH')
         );
 
-        const information = informationTable.querySelectorAll(
-          'tbody > tr > td'
-        );
+        const information =
+          informationTable.querySelectorAll('tbody > tr > td');
         if (information.length === 1) {
           return reject({
             code: 404,

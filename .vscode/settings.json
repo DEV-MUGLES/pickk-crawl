@@ -1,7 +1,4 @@
 {
-  "conventionalCommits.scopes": [
-    "yarn",
-    "crawler"
-  ],
+  "conventionalCommits.scopes": ["yarn", "crawler"],
   "editor.formatOnSave": true
 }
