@@ -1218,11 +1218,16 @@ export const _etcseoulcom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const [brandKor, name] = result.name.split(']');
+  // result.name이 '[brandName] name [color]' 인경우
+  // parseValue에서 양쪽 []가 trim 되어 'brandName] name [color'만 남는다
+  const splitIndex = result.name.indexOf(
+    result.name[result.name.length - 1] === ']' ? '_' : ']'
+  );
+
   return correct({
     ...result,
-    brandKor: brandKor.trim(),
-    name: name.trim() + ']',
+    brandKor: result.name.slice(0, splitIndex),
+    name: result.name.slice(splitIndex + 1).trim(),
   });
 };
 
