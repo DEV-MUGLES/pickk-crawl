@@ -2002,3 +2002,8 @@ suibom.co.kr:
   <<: *base
   originalPrice: 'span.productPriceWithDiscountSpan'
   salePrice: 'span.productDiscountPriceSpan'
+
+hazzys.com:
+  <<: *base
+  originalPrice: 'meta[property="rb:originalPrice"]'
+  salePrice: 'meta[property="rb:salePrice"]'

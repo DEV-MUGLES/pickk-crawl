@@ -3764,3 +3764,12 @@ export const _minjukimco = (
 
   return { ...result, name: result.name.replace('— MINJUKIM', '').trim() };
 };
+
+export const _hazzyscom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return { ...result, imageUrl: result.imageUrl.split('?')[0] };
+};
