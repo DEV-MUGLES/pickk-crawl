@@ -1997,3 +1997,8 @@ stripe-inc-onlinestore.com:
 mailpackseoul.com:
   <<: *base
   originalPrice: '#prod_goods_form span.real_price'
+
+suibom.co.kr:
+  <<: *base
+  originalPrice: 'span.productPriceWithDiscountSpan'
+  salePrice: 'span.productDiscountPriceSpan'
