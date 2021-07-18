@@ -88,7 +88,7 @@ m.currentstore.co.kr:
 
 store.musinsa.com: &musinsa
   <<: *base
-  brandKor: 'title'
+  brandKor: 'meta[id="fbOgTitle"]'
   originalPrice: '#goods_price'
   salePrice: meta[property="product:price:amount"]
   isSoldout: 'div.box-btn-buy.wrap-btn-buy > div.btn_buy > a.btn_grey'
