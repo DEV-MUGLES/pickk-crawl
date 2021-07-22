@@ -449,6 +449,7 @@ export const brandKorAlias = {
   jordan: '조던',
   juanhomme: '주앙옴므',
   julynine: '줄라이나인',
+  jerusalemsandals: '예루살렘 샌들',
   kamiliant: '카밀리안트',
   keith: '키이스',
   kenzo: '겐조',

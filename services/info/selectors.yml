@@ -1706,9 +1706,10 @@ senseofny.com:
 
 folderstyle.com:
   <<: *base
-  brandKor: p.b_name
-  originalPrice: .dd_price > span.discount
-  salePrice: .dd_price > span#ProductPrice
+  brandKor: '#devBrandName'
+  name: 'h3.info__name'
+  originalPrice: 'meta[property="og:listprice"]'
+  salePrice: 'meta[property="og:dcprice"]'
 
 amekaji-moaa.com:
   <<: *base
