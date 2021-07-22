@@ -3787,3 +3787,17 @@ export const _themuseumvisitorcom = (
     salePrice: ldJsonObject.offers.price,
   };
 };
+
+export const _laserbimcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const startIdx = result.name.indexOf('[');
+  const name = result.name.slice(startIdx + 1, result.name.length - 1);
+
+  return {
+    ...result,
+    name,
+  };
+};

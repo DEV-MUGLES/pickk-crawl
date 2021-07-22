@@ -2011,3 +2011,8 @@ hazzys.com:
 the--museum--visitor.com:
   <<: *base
   originalPrice: 'span.sale_price'
+
+laserbim.com:
+  <<: *base
+  originalPrice: 'input[name="price"]'
+  salePrice: 'input[name="disprice"]'
