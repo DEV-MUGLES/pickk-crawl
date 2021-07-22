@@ -2007,3 +2007,7 @@ hazzys.com:
   <<: *base
   originalPrice: 'meta[property="rb:originalPrice"]'
   salePrice: 'meta[property="rb:salePrice"]'
+
+the--museum--visitor.com:
+  <<: *base
+  originalPrice: 'span.sale_price'

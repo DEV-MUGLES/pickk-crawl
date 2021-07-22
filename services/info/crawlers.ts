@@ -3773,3 +3773,17 @@ export const _hazzyscom = (
 
   return { ...result, imageUrl: result.imageUrl.split('?')[0] };
 };
+
+export const _themuseumvisitorcom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
+
+  return {
+    ...result,
+    name: ldJsonObject.name,
+    salePrice: ldJsonObject.offers.price,
+  };
+};
