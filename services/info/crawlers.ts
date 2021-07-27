@@ -3091,7 +3091,7 @@ export const _vdrstorecom = (
   });
 };
 
-export const _uttutcokr = (
+export const _uttutcom = (
   $: CheerioStatic,
   selector: InfoSelectors
 ): InfoResult => {

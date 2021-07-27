@@ -281,7 +281,7 @@ export const brandNames = {
   'dw-store.co.kr': '드림월드',
   'graphpaper-store.com': '그라프페이퍼',
   'vdrstore.com': 'VDR',
-  'uttut.co.kr': '어텃',
+  'uttut.com': '어텃',
   'cayl.co.kr': '케일',
   'iterpeople.com': '잇터',
   'noclue.co.kr': '노클루',
