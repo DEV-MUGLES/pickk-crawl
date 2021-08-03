@@ -10,8 +10,6 @@ import infoPuppeties from '../../services/info/puppeties';
 import testCases from '../data/test-cases.json';
 import testHtmls from '../data/test-htmls.json';
 
-jest.setTimeout(50000);
-
 const brands = testCases.map((testCase) => ({
   ...testCase,
   html: testHtmls[testCase.name],
@@ -38,7 +36,7 @@ beforeAll(async () => {
     )
   );
   datas = results.map((result) => result['value']);
-});
+}, 70000);
 
 describe('Test info-crawl (for all)', () => {
   for (let i = 0; i < testCases.length; ++i) {

@@ -306,9 +306,9 @@ kr.puma.com:
 
 fila.co.kr:
   <<: *base
-  name: 'div.product_name > span'
-  originalPrice: 'span.normal_price'
-  salePrice: 'span.sale_price'
+  name: 'p.product_name'
+  originalPrice: 'meta[property="product:price:amount"]'
+  salePrice: 'meta[property="product:sale_price:amount"]'
 
 shop.adidas.co.kr:
   <<: *base
@@ -321,8 +321,8 @@ zara.com:
 
 shop.vans.co.kr:
   <<: *base
-  name: 'h1.title-wrap > a > span.tit'
-  originalPrice: 'div.price-wrap > span.price > strong'
+  name: 'h1.product-name'
+  originalPrice: 'span.price > strong'
 
 drmartens.co.kr: &drmartens
   <<: *base
@@ -493,10 +493,7 @@ department.ssg.com:
 
 fashionplus.co.kr:
   <<: *base
-  name: meta[property="og:description"]
-  brandKor: '#frmGoods > a > span'
-  originalPrice: '#frmGoods > div.priceframe > div.productprice > p'
-  salePrice: '#frmGoods > div.priceframe > div.productprice > div.pricelow'
+  originalPrice: 'div.m__product-info > p.text_price > del'
 
 itempage3.auction.co.kr:
   <<: *base
@@ -562,12 +559,6 @@ gucci.com:
   <<: *base
   originalPrice: '#markedDown_full_Price'
 
-player.co.kr:
-  <<: *base
-  brandKor: 'div.brand-intro.hidden-xs.mt-0 > div > p:nth-child(1) > a > span > span'
-  originalPrice: 'div.price-info > dl:nth-child(1) > dd > p'
-  salePrice: 'div.price-info > dl.price-with-sale > dd > span:nth-child(1)'
-
 crewbi.com:
   <<: *base
   originalPrice: 'dd.price__market--price > span'
@@ -586,6 +577,7 @@ gvg.co.kr:
   brandKor: '#ul_pcsname > li:nth-child(1) > a:nth-child(1)'
   originalPrice: '#ul_pcsinfo > li:nth-child(2) > p.p_price.normal'
   salePrice: '#ul_pcsinfo > li.li_saleprice > p.p_price'
+  imageUrl: 'input[name="ITEM_IMAGE"]'
 
 farfetch.com:
   <<: *base
@@ -633,7 +625,7 @@ justsaturday.net:
 
 label-archive.com:
   <<: *base
-  salePrice: 'div.pay_detail.full-width > div.holder > div.text-brand.pay_number'
+  originalPrice: 'span.sale_price'
 
 ziosongzio.com:
   <<: *base
@@ -684,7 +676,7 @@ urbanstoff.com:
 gncostyle.com:
   <<: *rb
   name: '.product span'
-  brandKor: '.box-info .brand'
+  brandKor: 'meta[property="og:title"]'
   imageUrl: '#gallery_01 > li:nth-child(1) > a > img'
   originalPrice: 'p.mon_top .mon'
 
@@ -1007,7 +999,7 @@ thesortie.com:
   name: meta[property="og:title"]
   originalPrice: 'span.real_price'
   isSoldout: 'div.sold_out'
-  images: 'div#pc_tab_offset'
+  images: 'div._prod_detail_detail_lazy_load img.fr-dib'
 
 deadendkr.cafe24.com:
   <<: *base
@@ -1094,7 +1086,7 @@ dgre.co.kr:
 addoff.co.kr:
   <<: *base
   isSoldout: 'div.xans-product-action div.btnArea span'
-  images: 'div.detailArea div.swiper-slide img'
+  images: 'div.detailArea div.xans-product img'
 
 ames-worldwide.com:
   <<: *base
@@ -1187,10 +1179,10 @@ mimthewardrobe.com:
 
 oddoneout.co.kr:
   <<: *base
-  name: '#prdInfo > tbody > tr:nth-child(1) > td > span'
+  name: '#totalProducts > table > tbody.displaynone td:nth-child(1)'
   salePrice: '#span_product_price_text'
   isSoldout: 'div.buttonArea button.gloBtn-blk'
-  images: '#main > div:nth-child(2) > div > img'
+  images: '#main > article > div > div:nth-child(4) > img'
 
 fanacult.com:
   <<: *base
@@ -1407,7 +1399,7 @@ ohkoos.com:
 
 mmglstore.com:
   <<: *custom_price
-  images: '#mun_productDetail img'
+  images: '#prdDetail img'
   isSoldout: '#mun_paymentButton > span.soldout'
 
 voiebit.com:
@@ -2017,3 +2009,8 @@ laserbim.com:
   <<: *base
   originalPrice: 'input[name="price"]'
   salePrice: 'input[name="disprice"]'
+
+jogunshop.com:
+  <<: *base
+  originalPrice: 'input[id="price"]'
+  salePrice: 'input[id="disprice"]'

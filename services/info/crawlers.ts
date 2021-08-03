@@ -715,14 +715,16 @@ export const _fashionpluscokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
 
-  const salePriceStr = $(selector.salePrice).html();
-  const salePrice = Number(
-    salePriceStr.slice(0, salePriceStr.indexOf('<span>')).replace(/[^0-9]/g, '')
-  );
+  const name = ldJsonObject.name;
+  const brandKor = ldJsonObject.brand.name;
+  const salePrice = strToNumber(ldJsonObject.offers.price);
 
   return correct({
     ...result,
+    name,
+    brandKor,
     salePrice,
   });
 };
@@ -902,15 +904,18 @@ export const _labelarchivecom = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
+  const ldJsonObject = getLdJsonObject($);
 
   const name = result.name.slice(
     0,
     result.name.indexOf(' : LABEL ARCHIVE 라벨 아카이브')
   );
+  const salePrice = ldJsonObject.offers.price;
 
   return correct({
     ...result,
     name,
+    salePrice,
   });
 };
 
@@ -1588,7 +1593,7 @@ export const _thesortiecom = (
     originalPrice,
     salePrice,
     images,
-    name: result.name.replace('솔티  - ', '').split(':')[0],
+    name: result.name.replace('솔티 - ', '').split(':')[0],
   });
 };
 
@@ -3799,5 +3804,20 @@ export const _laserbimcom = (
   return {
     ...result,
     name,
+  };
+};
+
+export const _shopvanscokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+  const name = $(selector.name).attr('data-name');
+  const originalPrice = $(selector.originalPrice).attr('data-price');
+
+  return {
+    ...result,
+    name,
+    originalPrice: parseInt(originalPrice),
   };
 };

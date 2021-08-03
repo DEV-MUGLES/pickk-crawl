@@ -10,8 +10,6 @@ import optionPuppeties from '../../services/option/puppeties';
 import testCases from '../data/test-cases.json';
 import testHtmls from '../data/test-htmls.json';
 
-jest.setTimeout(50000);
-
 const partnerBrands = testCases
   .map((testCase) => ({
     ...testCase,
@@ -37,7 +35,7 @@ beforeAll(async () => {
     )
   );
   datas = results.map((result) => result['value']);
-});
+}, 50000);
 
 describe('Test option-crawl (for partners)', () => {
   for (let i = 0; i < partnerBrands.length; ++i) {

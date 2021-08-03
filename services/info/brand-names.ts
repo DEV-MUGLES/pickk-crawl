@@ -332,6 +332,7 @@ export const brandNames = {
   'hazzys.com': '헤지스',
   'the--museum--visitor.com': '더뮤지엄비지터',
   'laserbim.com': '레이저빔',
+  'mimthewardrobe.com': '밈더워드로브',
 };
 
 // brandKorAlias의 key값 형식은 영문브랜드명에서 영문, 숫자 외 모든 문자를 제거한 소문자입니다.

@@ -11,3 +11,4 @@ jspm_packages
 
 # test htmls
 __tests__/data/test-htmls.json
+__tests__/data/test-htmls

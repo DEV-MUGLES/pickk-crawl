@@ -33,7 +33,7 @@
   },
   {
     "name": "수아레",
-    "url": "http://suare.co.kr/product/detail.html?product_no=1097&cate_no=24&display_group=1",
+    "url": "https://suare.co.kr/product/detail.html?product_no=1383&cate_no=26&display_group=1",
     "isPartner": true
   },
   {
@@ -72,7 +72,7 @@
   },
   {
     "name": "커렌트",
-    "url": "http://m.currentstore.co.kr/product/detail.html?product_no=679&cate_no=25&display_group=1",
+    "url": "https://m.currentstore.co.kr/product/contrast-unbalanced-top-ks-mint-gray/825/category/24/display/1/",
     "isPartner": true
   },
   {
@@ -87,7 +87,7 @@
   },
   {
     "name": "MMGL",
-    "url": "https://mmglstore.com/product/detail.html?product_no=600&cate_no=61&display_group=1",
+    "url": "https://mmglstore.com/product/stripe-blouson-wool-rich-blend/634/category/61/display/1/",
     "isPartner": true
   },
   {
@@ -152,7 +152,7 @@
   },
   {
     "name": "로씨로씨",
-    "url": "http://roccirocci.com/product/rcrc-%EC%8A%A4%EC%9B%A8%ED%8A%B8%EC%85%94%EC%B8%A0-%EC%9B%9C-%EA%B7%B8%EB%A0%88%EC%9D%B4/62/",
+    "url": "https://roccirocci.com/product/detail.html?product_no=201&cate_no=42&display_group=1",
     "isPartner": true
   },
   {
@@ -313,7 +313,8 @@
   {
     "name": "크리스크리스티",
     "url": "http://chrischristy.com/product/detail.html?product_no=921&cate_no=67&display_group=1",
-    "isPartner": true
+    "isPartner": true,
+    "skip": true
   },
   {
     "name": "오버캐스트",
@@ -433,6 +434,7 @@
     "name": "아브라함문",
     "url": "https://supplyroute.co.kr/product/detail.html?product_no=8857&cate_no=987&display_group=1",
     "isPartner": true,
+    "skip": true,
     "skipBlankValuesCheck": true,
     "skipBlankValuesCheckReason": "옵션이 존재하는 상품이 없음"
   },
@@ -450,11 +452,11 @@
   },
   {
     "name": "휠라",
-    "url": "https://www.fila.co.kr/product/view.asp?ProductNo=40155"
+    "url": "https://www.fila.co.kr/product/view.asp?ProductNo=42817"
   },
   {
     "name": "자라",
-    "url": "https://www.zara.com/kr/ko/%EC%B9%BC%EB%9D%BC-%EC%8A%A4%ED%8A%B8%EB%9F%AD%EC%B2%98-%EC%BD%94%ED%8A%B8-p00706382.html?v1=81633282&v2=1546758"
+    "url": "https://www.zara.com/kr/ko/%EC%BB%B4%ED%8F%AC%ED%8A%B8-%EC%8A%A4%ED%8A%B8%EB%9F%AD%EC%B2%98-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%80-p05762197.html?v1=114481912&v2=1886035"
   },
   {
     "name": "반스",
@@ -482,7 +484,7 @@
   },
   {
     "name": "던스트",
-    "url": "https://dunststudio.com/product/detail.html?product_no=989&cate_no=97&display_group=1"
+    "url": "https://dunststudio.com/product/detail.html?product_no=1046&cate_no=38&display_group=1"
   },
   {
     "name": "미나브",
@@ -510,7 +512,7 @@
   },
   {
     "name": "브랜디드",
-    "url": "http://brandedmall.co.kr/product/1991-water-blue-jeansloose-tapered/828/category/62/display/1/"
+    "url": "http://conic.cafe24.com/product/detail.html?product_no=873&cate_no=128&display_group=1"
   },
   {
     "name": "로파이",
@@ -550,7 +552,7 @@
   },
   {
     "name": "오베르",
-    "url": "http://overr.co.kr/product/detail.html?product_no=994&cate_no=154&display_group=1"
+    "url": "https://overr.co.kr/product/detail.html?product_no=1037&cate_no=227&display_group=1"
   },
   {
     "name": "프리즘웍스",
@@ -562,7 +564,7 @@
   },
   {
     "name": "오디너리피플",
-    "url": "https://m.ordinarypeople.co.kr/product/detail.html?product_no=1891&cate_no=123&display_group=1"
+    "url": "https://m.ordinarypeople.co.kr/product/handpainting-scribble-logo-charcoal-t-shirts/2108/category/199/display/1/"
   },
   {
     "name": "세븐셀라",
@@ -602,7 +604,7 @@
   },
   {
     "name": "패션플러스",
-    "url": "http://www.fashionplus.co.kr/mall/goods/goods.asp?goods_id=148402091&isVipOnly=2"
+    "url": "https://www.fashionplus.co.kr/goods/detail/151623483"
   },
   {
     "name": "쿠팡",
@@ -623,10 +625,6 @@
   {
     "name": "크루비",
     "url": "https://crewbi.com/app/product/detail/455462/0"
-  },
-  {
-    "name": "플레이어",
-    "url": "https://www.player.co.kr/store/detail/1522347/0"
   },
   {
     "name": "4XR",
@@ -678,7 +676,7 @@
   },
   {
     "name": "몬스터리퍼블릭",
-    "url": "https://www.monsterrepublic.co.kr/shop/goods/goods_view.php?goodsno=574&category=001007"
+    "url": "http://www.monsterrepublic.co.kr/shop/goods/goods_view.php?goodsno=548&category="
   },
   {
     "name": "이스트팩",
@@ -711,7 +709,7 @@
   },
   {
     "name": "저스트새러데이",
-    "url": "http://www.justsaturday.net/goods/goods_view.php?goodsNo=1000000749"
+    "url": "http://www.justsaturday.net/goods/goods_view.php?goodsNo=1000000758"
   },
   {
     "name": "아트이프액츠",
@@ -723,7 +721,7 @@
   },
   {
     "name": "라벨아카이브",
-    "url": "https://label-archive.com/119/?idx=738"
+    "url": "https://label-archive.com/124/?idx=943"
   },
   {
     "name": "노앙",
@@ -739,7 +737,7 @@
   },
   {
     "name": "미니멀코드",
-    "url": "https://minimalcode.co.kr/product/%EC%86%8C%ED%94%84%ED%8A%B8-%EC%99%80%ED%94%8C-%EB%8B%88%ED%8A%B8-%EC%8A%AC%EB%A6%AC%EB%B8%8C-%EB%B8%94%EB%9E%99/264/category/74/display/1/"
+    "url": "https://minimalcode.co.kr/product/detail.html?product_no=295&cate_no=1&display_group=3"
   },
   {
     "name": "쌤소나이트",
@@ -819,7 +817,7 @@
   },
   {
     "name": "프라이탁",
-    "url": "https://www.freitag.ch/ko/f133?productID=1090497"
+    "url": "https://www.freitag.ch/en/f12?v=5058306"
   },
   {
     "name": "더스토리",
@@ -839,7 +837,7 @@
   },
   {
     "name": "브아빗",
-    "url": "https://voiebit.com/product/detail.html?product_no=1065&cate_no=52&display_group=1"
+    "url": "https://voiebit.com/product/detail.html?product_no=1796&cate_no=24&display_group=1"
   },
   {
     "name": "로라로라",
@@ -851,7 +849,8 @@
   },
   {
     "name": "지플리시",
-    "url": "http://zplish.com/product/detail.html?product_no=2768&cate_no=66&display_group=1"
+    "url": "http://zplish.com/product/detail.html?product_no=2768&cate_no=66&display_group=1",
+    "skip": true
   },
   {
     "name": "유니스디자인",
@@ -955,7 +954,7 @@
   },
   {
     "name": "코오롱몰",
-    "url": "https://www.kolonmall.com/Product/SOWAW20614GYX?brand=4946"
+    "url": "https://www.kolonmall.com/Product/CWTAM21514BEX"
   },
   {
     "name": "세이코",
@@ -963,7 +962,7 @@
   },
   {
     "name": "아영상사",
-    "url": "http://ayoungcompany.com/product/detail.html?product_no=922&cate_no=1&display_group=2"
+    "url": "https://ayoungcompany.com/product/detail.html?product_no=956&cate_no=120&display_group=1"
   },
   {
     "name": "아이디룩몰",
@@ -1040,7 +1039,7 @@
   },
   {
     "name": "팀버랜드",
-    "url": "https://shop.timberland.co.kr/PRODUCT/TB0A2QNTK381"
+    "url": "https://www.timberland.co.kr/PRODUCT/TB0A2D5SBH71"
   },
   {
     "name": "젠틀몬스터",
@@ -1112,7 +1111,7 @@
   },
   {
     "name": "아이엠샵",
-    "url": "https://iamshop-online.com/product/detail.html?product_no=22807&cate_no=12&display_group=1"
+    "url": "https://iamshop-online.com/product/detail.html?product_no=22848&cate_no=736&display_group=1"
   },
   {
     "name": "우포스",
@@ -1263,7 +1262,7 @@
   },
   {
     "name": "블론드나인",
-    "url": "http://blond9.com/product/basic-knit-cardigan-5-color/1301/category/66/display/2/"
+    "url": "https://blond9.com/product/12-summer-collar-knitgray/1553/category/66/display/1/"
   },
   {
     "name": "아워레가시",
@@ -1292,7 +1291,7 @@
   },
   {
     "name": "인템포무드",
-    "url": "http://intempomood.com/product/all-day-like-slacksbeige/74/category/44/display/1/#none",
+    "url": "https://intempomood.com/product/shine-viscose-half-sleeve-shirtsilver-gray/217/category/44/display/1/",
     "isPartner": true
   },
   {
@@ -1366,7 +1365,7 @@
   },
   {
     "name": "센스오브뉴욕",
-    "url": "https://senseofny.com/shop_view/?idx=5884"
+    "url": "https://senseofny.com/2969/?idx=13352"
   },
   {
     "name": "폴더 공식 온라인 스토어",
@@ -1418,7 +1417,7 @@
   },
   {
     "name": "팀벅2",
-    "url": "http://www.attopangea.com/shop/goods/goods_view.php?goodsno=1602&category=016001"
+    "url": "https://www.attopangea.com/shop/goods/goods_view.php?goodsno=10106&category=016001"
   },
   {
     "name": "옵스큐라",
@@ -1439,7 +1438,7 @@
   },
   {
     "name": "그라프페이퍼",
-    "url": "https://graphpaper-store.com/?pid=157804824"
+    "url": "https://graphpaper-store.com/?pid=103168537"
   },
   {
     "name": "VDR",
@@ -1456,7 +1455,7 @@
   },
   {
     "name": "ins 온라인 스토어",
-    "url": "https://www.ins-online-store.com/?pid=156853276"
+    "url": "https://www.ins-online-store.com/?pid=162006875"
   },
   {
     "name": "잇터",
@@ -1572,7 +1571,7 @@
   },
   {
     "name": "인터파크",
-    "url": "http://shopping.interpark.com/product/productInfo.do?prdNo=6834852700"
+    "url": "https://shopping.interpark.com/product/productInfo.do?prdNo=6952342220&dispNo=008022001"
   },
   {
     "name": "캘빈클라인",
@@ -1580,7 +1579,7 @@
   },
   {
     "name": "아파트프롬댓",
-    "url": "http://apartfromthat-store.com/product/detail.html?product_no=587"
+    "url": "https://apartfromthat-store.com/product/detail.html?product_no=723&cate_no=49&display_group=1"
   },
   {
     "name": "mtal",
@@ -1649,7 +1648,7 @@
   },
   {
     "name": "민주킴",
-    "url": "https://www.minjukim.co/ko/shop/pajama-blouse-1"
+    "url": "https://www.minjukim.co/ko/shop/m-brary-tiger-t-shirt-blue"
   },
   {
     "name": "에이랜드",

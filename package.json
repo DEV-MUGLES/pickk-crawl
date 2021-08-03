@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "fetch": "ts-node ./__tests__/data/fetch-htmls.ts",
+    "fetch": "ts-node ./__tests__/scripts/fetch-htmls.ts",
+    "fetch:chunk": "ts-node ./__tests__/scripts/fetch-chunk-htmls.ts",
+    "fetch:chunk:all": "ts-node ./__tests__/scripts/fetch-all-chunk-htmls.ts",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "tsc": "tsc",
     "jest": "jest",
-    "jest:info": "yarn jest ./__tests__/services/info.test.ts ",
-    "jest:option": "yarn jest ./__tests__/services/option.test.ts ",
-    "test": "yarn fetch && yarn lint && yarn jest"
+    "jest:info": "yarn jest ./__tests__/services/info.test.ts",
+    "jest:option": "yarn jest ./__tests__/services/option.test.ts",
+    "test": "yarn fetch && yarn lint && yarn jest",
+    "jest:info:chunk": "yarn jest ./__tests__/services/chunks/info.chunk.test.ts --config=\"jest.chunk.config.js\"",
+    "jest:option:chunk": "yarn jest ./__tests__/services/chunks/option.chunk.test.ts --config=\"jest.chunk.config.js\"",
+    "test:chunk": "yarn fetch && yarn lint && yarn jest --config=\"jest.chunk.config.js\""
   },
   "author": "thinking-muggles",
   "license": "ISC",
@@ -43,7 +48,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "chalk": "^4.1.0",
     "eslint": "^7.6.0",
-    "jest": "^26.6.3",
+    "jest": "^27.0.6",
     "progress": "^2.0.3",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.5"

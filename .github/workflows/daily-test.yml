@@ -1,18 +1,13 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+name: Daliy Crawl Test
 
-name: CI
-
-on: [push]
+on:
+  schedule:
+    - cron: '30 8 * * *' # work every day 8:30am
 
 jobs:
-  build:
+  daliy-test:
+    name: Daliy Crawl Test
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -62,8 +57,8 @@ jobs:
 
       - name: Info Crawl Test
         run: |
-          yarn jest:info:chunk
+          yarn jest:info:chunk --reporters="default" --reporters="./__tests__/reporters/slack-reporter.ts"
 
       - name: Option Crawl Test
         run: |
-          yarn jest:option:chunk
+          yarn jest:option:chunk --reporters="default" --reporters="./__tests__/reporters/slack-reporter.ts"

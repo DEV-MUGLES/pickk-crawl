@@ -13,7 +13,6 @@ export default [
   'stoneisland.com',
   'bottegaveneta.com',
   'kr.mcmworldwide.com',
-  'player.co.kr',
   'coupang.com',
   'musinsaapp.page.link',
 ];

@@ -4,16 +4,10 @@ import Progress from 'progress';
 
 import { allSettled, requestHtml } from '../../lib';
 
-import testCases from './test-cases.json';
+import testCases from '../data/test-cases.json';
+import { FETCHED_HTMLS_ROOT_DIR } from '../constants';
 
 const { red, green, grey } = chalk;
-
-const bar = new Progress('fetching htmls... [:bar] :percent :etas', {
-  complete: '=',
-  incomplete: ' ',
-  width: 20,
-  total: testCases.length,
-});
 
 const log = {
   fail: (message: any) => {
@@ -24,10 +18,23 @@ const log = {
   },
 };
 
-const fetchHtmls = async (fileName: string) => {
+export const fetchHtmls = async (
+  fileName: string,
+  start: number = 0,
+  end: number = testCases.length - 1
+) => {
+  const slicedTestCases = testCases.slice(start, end + 1);
+  const totalTestCasesLength = slicedTestCases.length;
+  const bar = new Progress('fetching htmls... [:bar] :percent :etas', {
+    complete: '=',
+    incomplete: ' ',
+    width: 20,
+    total: totalTestCasesLength,
+  });
+
   try {
     const htmlDatas = await allSettled(
-      testCases.map(
+      slicedTestCases.map(
         ({ name, url }) =>
           new Promise(async (resolve) => {
             try {
@@ -58,9 +65,9 @@ const fetchHtmls = async (fileName: string) => {
     }
 
     log.success(
-      `fetch complete! (${testCases.length - failedHtmlDatas.length}/${
-        testCases.length
-      })`
+      `fetch complete! (${
+        totalTestCasesLength - failedHtmlDatas.length
+      }/${totalTestCasesLength})`
     );
 
     const testHtmls = {};
@@ -70,12 +77,10 @@ const fetchHtmls = async (fileName: string) => {
       }
     });
 
-    const path = `${__dirname}/${fileName}.json`;
+    const path = `${FETCHED_HTMLS_ROOT_DIR}/${fileName}.json`;
     fs.writeFileSync(path, JSON.stringify(testHtmls, undefined, 2), 'utf-8');
     log.success(`${fileName}.json generated ✨`);
   } catch (e) {
     console.log(red.inverse(' Error occured!! '));
   }
 };
-
-fetchHtmls('test-htmls');
