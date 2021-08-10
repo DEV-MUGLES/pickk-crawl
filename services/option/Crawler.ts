@@ -69,9 +69,8 @@ export default class OptionCralwer {
       if (index < startIndex) {
         return;
       }
-      const optionName = (attributeName
-        ? ele.attribs[attributeName]
-        : ele.children[0].data
+      const optionName = (
+        attributeName ? ele.attribs[attributeName] : ele.children[0].data
       )?.toString();
       this.optionNames.push(optionName);
       this.result.values[optionName] = [];
@@ -106,11 +105,7 @@ export default class OptionCralwer {
           const remain = this.optionNames
             .slice(0, containerIndex)
             .map((optionName) => this.result.values[optionName].length);
-          getAllPreCombination(
-            [valueStartIndex],
-            remain,
-            this.result.isSoldout
-          );
+          getAllPreCombination([valueIndex], remain, this.result.isSoldout);
         }
       });
     });
