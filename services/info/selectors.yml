@@ -2014,3 +2014,7 @@ jogunshop.com:
   <<: *base
   originalPrice: 'input[id="price"]'
   salePrice: 'input[id="disprice"]'
+
+kream.co.kr:
+  <<: *base
+  name: 'title'
