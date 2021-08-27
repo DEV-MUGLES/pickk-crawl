@@ -3,12 +3,14 @@ import { JSDOM } from 'jsdom';
 import qs from 'querystring';
 
 import BaseCrawler from '../base';
+import { DELIVERED_STATUS_TEXT } from '../constants';
 
 const parseStatus = (s: string) => {
   if (s.includes('집하')) return { id: 'at_pickup', text: '상품인수' };
   if (s.includes('배송출발'))
     return { id: 'out_for_delivery', text: '배송출발' };
-  if (s.includes('배송완료')) return { id: 'delivered', text: '배송완료' };
+  if (s.includes('배송완료'))
+    return { id: 'delivered', text: DELIVERED_STATUS_TEXT };
   return { id: 'in_transit', text: '이동중' };
 };
 
@@ -90,47 +92,34 @@ export class KRHanjinCrawler extends BaseCrawler {
           progresses: [],
         };
 
-        progressTable.querySelectorAll('tr').forEach((element) => {
-          const [timeEle, nameEle, statusEle] = Array.from(
-            element.querySelectorAll('th, td')
+        progressTable.querySelectorAll('tbody > tr').forEach((element) => {
+          const { progresses } = shippingInformation;
+          const [dateEle, timeEle, nameEle, statusEle] = Array.from(
+            element.querySelectorAll('td')
           );
-          // TODO : time 년도 처리 나중에 수정 해야 함 (현재 시간하고 마지막 시간하고 비교해서 마지막 시간이 미래면 작년으로 처리)
-          const curTime = new Date();
-          let time = `${curTime.getFullYear()}-${timeEle.innerHTML
-            .replace('<br>', 'T')
-            .replace(/<[^>]*>/gi, '')
-            .replace(/\./gi, '-')}:00+09:00`;
 
-          if (new Date(time) > curTime) {
-            time = `${curTime.getFullYear() - 1}${time.substring(4)}`;
-          }
+          const time = new Date(
+            `${dateEle.textContent}T${timeEle.textContent}:00+09:00`
+          );
 
-          shippingInformation.progresses.unshift({
+          progresses.unshift({
             time,
             location: {
               name: nameEle.textContent,
             },
             status: parseStatus(statusEle.textContent),
-            description: statusEle.textContent,
+            description: statusEle.textContent.trim(),
           });
         });
 
-        if (shippingInformation.progresses.length > 0) {
-          shippingInformation.state =
-            shippingInformation.progresses[
-              shippingInformation.progresses.length - 1
-            ].status;
-          shippingInformation.from.time =
-            shippingInformation.progresses[0].time;
-          if (
-            shippingInformation.progresses[
-              shippingInformation.progresses.length - 1
-            ].status.id === 'delivered'
-          )
-            shippingInformation.to.time =
-              shippingInformation.progresses[
-                shippingInformation.progresses.length - 1
-              ].time;
+        const { progresses } = shippingInformation;
+        const lastProgress = progresses[progresses.length - 1];
+        const firstProgress = progresses[0];
+        if (progresses.length > 0) {
+          shippingInformation.state = lastProgress.status;
+          shippingInformation.from.time = firstProgress.time;
+          if (lastProgress.status.id === 'delivered')
+            shippingInformation.to.time = lastProgress.time;
         } else {
           shippingInformation.state = {
             id: 'information_received',

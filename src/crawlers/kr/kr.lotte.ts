@@ -3,12 +3,14 @@ import { JSDOM } from 'jsdom';
 import qs from 'querystring';
 
 import BaseCrawler from '../base';
+import { DELIVERED_STATUS_TEXT } from '../constants';
 
 const parseStatus = (s: string) => {
   if (s.includes('상품접수')) return { id: 'at_pickup', text: '상품인수' };
   if (s.includes('배송 출발'))
     return { id: 'out_for_delivery', text: '배송출발' };
-  if (s.includes('배달 완료')) return { id: 'delivered', text: '배송완료' };
+  if (s.includes('배달 완료'))
+    return { id: 'delivered', text: DELIVERED_STATUS_TEXT };
   return { id: 'in_transit', text: '이동중' };
 };
 

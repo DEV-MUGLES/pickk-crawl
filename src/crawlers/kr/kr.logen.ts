@@ -2,13 +2,16 @@ import axios from 'axios';
 import cheerio from 'cheerio';
 
 import BaseCrawler from '../base';
+import { DELIVERED_STATUS_TEXT } from '../constants';
 
-const parseStatus = (s: string) => {
-  if (s.includes('터미널입고')) return { id: 'at_pickup', text: '상품인수' };
-  if (s.includes('배송출고'))
-    return { id: 'out_for_delivery', text: '배송출발' };
-  if (s.includes('배송완료')) return { id: 'delivered', text: '배송완료' };
-  return { id: 'in_transit', text: '이동중' };
+const parseStatus = (statusText: string, detail: string) => {
+  if (statusText.includes('배송완료')) {
+    return { id: 'delivered', text: DELIVERED_STATUS_TEXT };
+  }
+  if (statusText.includes('배송출고')) {
+    return { id: 'out_for_delivery', text: `${statusText}(${detail})` };
+  }
+  return { id: 'in_transit', text: statusText };
 };
 
 export class KRLogenCrawler extends BaseCrawler {
@@ -73,15 +76,17 @@ export class KRLogenCrawler extends BaseCrawler {
             return;
           }
           shippingInformation.progresses.push({
-            time: `${td
-              .eq(0)
-              .text()
-              .replace(' ', 'T')
-              .replace(/\./g, '-')}:00+09:00`,
+            time: new Date(
+              `${td
+                .eq(0)
+                .text()
+                .replace(' ', 'T')
+                .replace(/\./g, '-')}:00+09:00`
+            ),
             location: {
-              name: td.eq(1).text(),
+              name: td.eq(1).text().trim(),
             },
-            status: parseStatus(td.eq(2).text()),
+            status: parseStatus(td.eq(2).text().trim(), td.eq(5).text().trim()),
             description: this.tdToDescription(td, $),
           });
         });
@@ -95,7 +100,7 @@ export class KRLogenCrawler extends BaseCrawler {
         if (
           shippingInformation.progresses[
             shippingInformation.progresses.length - 1
-          ].status.id === 'delivered'
+          ].status.text === DELIVERED_STATUS_TEXT
         )
           shippingInformation.to.time =
             shippingInformation.progresses[

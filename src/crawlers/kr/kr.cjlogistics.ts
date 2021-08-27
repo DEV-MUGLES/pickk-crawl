@@ -4,6 +4,7 @@ import { Cookie } from 'tough-cookie';
 import qs from 'querystring';
 
 import BaseCrawler from '../base';
+import { DELIVERED_STATUS_TEXT } from '../constants';
 
 const STATUS_MAP = {
   null: { id: 'information_received', text: '상품준비중' },
@@ -12,7 +13,7 @@ const STATUS_MAP = {
   42: { id: 'in_transit', text: '상품이동중' }, // 원래는 배송지 도착이지만 제공하지 않음 (표준화)
   44: { id: 'in_transit', text: '상품이동중' },
   82: { id: 'out_for_delivery', text: '배송출발' },
-  91: { id: 'delivered', text: '배달완료' },
+  91: { id: 'delivered', text: DELIVERED_STATUS_TEXT },
   RMN: { id: 'in_transit', text: '상품이동중' },
 };
 

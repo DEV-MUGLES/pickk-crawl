@@ -2,13 +2,14 @@ import axios from 'axios';
 import { JSDOM } from 'jsdom';
 
 import BaseCrawler from '../base';
+import { DELIVERED_STATUS_TEXT } from '../constants';
 
 const STATUS_MAP = {
   0: { id: 'information_received', text: '방문예정' },
   1: { id: 'at_pickup', text: '상품인수' },
   2: { id: 'in_transit', text: '이동중' },
   3: { id: 'out_for_delivery', text: '배송출발' },
-  4: { id: 'delivered', text: '배송완료' },
+  4: { id: 'delivered', text: DELIVERED_STATUS_TEXT },
 };
 
 const STR_TO_STATUS = {
