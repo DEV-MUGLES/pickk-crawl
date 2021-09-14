@@ -8,7 +8,7 @@
     "fetch:chunk": "ts-node ./__tests__/scripts/fetch-chunk-htmls.ts",
     "fetch:chunk:all": "ts-node ./__tests__/scripts/fetch-all-chunk-htmls.ts",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "tsc": "tsc",
+    "type-check": "tsc --noEmit",
     "jest": "jest",
     "jest:info": "yarn jest ./__tests__/services/info.test.ts",
     "jest:option": "yarn jest ./__tests__/services/option.test.ts",

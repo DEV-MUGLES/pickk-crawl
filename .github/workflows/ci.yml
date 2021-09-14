@@ -51,19 +51,8 @@ jobs:
           steps.cache-node-modules.outputs.cache-hit != 'true'
         run: yarn
 
-      - name: Fetch htmls
-        run: yarn fetch:chunk:all
-
       - name: Lint test
         run: yarn lint
 
-      # - name: TS Test
-      #   run: yarn tsc
-
-      - name: Info Crawl Test
-        run: |
-          yarn jest:info:chunk
-
-      - name: Option Crawl Test
-        run: |
-          yarn jest:option:chunk
+      - name: Type Check
+        run: yarn tsc
