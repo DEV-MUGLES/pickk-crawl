@@ -20,11 +20,14 @@ export const _storemusinsacom = (
 
   const { name, brandKor } = result;
 
+  const salePrice = strToNumber(name.slice(name.lastIndexOf(' - ')))
+
   return {
     ...result,
-    name: name.slice(name.indexOf(') ') + 2, name.indexOf(' - ')),
+    name:  name.slice(name.indexOf(') ') + 2, name.indexOf(' - ')),
     brandKor: brandKor.slice(0, brandKor.indexOf('(')),
     isSoldout: $(selector.isSoldout).text() === '품절',
+    salePrice
   };
 };
 
