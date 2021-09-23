@@ -1154,7 +1154,7 @@ nomanual-shop.com:
   originalPrice: '#shopProductPrice > span'
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
   isSoldout: 'div#shopProductContentInfo div#shopProductCartErrorDiv'
-  images: 'div.normal-detail-img:first-child img'
+  images: 'div.detailArea img'
 
 phos333.com:
   <<: *base
