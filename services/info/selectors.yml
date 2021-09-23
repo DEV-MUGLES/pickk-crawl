@@ -1151,8 +1151,8 @@ josepht.co.kr:
 
 nomanual-shop.com:
   <<: *base
-  originalPrice: '#shopProductPrice > span'
-  salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
+  originalPrice: '#span_product_price_text'
+  salePrice: '#span_product_price_sale'
   isSoldout: 'div#shopProductContentInfo div#shopProductCartErrorDiv'
   images: 'div.detailArea img'
 
