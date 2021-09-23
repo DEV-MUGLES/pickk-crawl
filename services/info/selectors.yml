@@ -1149,7 +1149,7 @@ josepht.co.kr:
   originalPrice: 'dl.item_price > dd > strong > strong'
   images: 'div.txt-manual img'
 
-nomanual-official.com:
+nomanual-shop.com:
   <<: *base
   originalPrice: '#shopProductPrice > span'
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'

@@ -41,10 +41,7 @@ export const _josephtcokr = (url: string, html: string): OptionCralwer => {
     );
 };
 
-export const _nomanualofficialcom = (
-  url: string,
-  html: string
-): OptionCralwer => {
+export const _nomanualshopcom = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html)
     .crawlOptionNames(
       'div.shopProductOptionListDiv > div > span.custom-select-option-name'
@@ -58,9 +55,9 @@ export const _nomanualofficialcom = (
     );
 };
 
-export const _ojoskr = _nomanualofficialcom;
+export const _ojoskr = _nomanualshopcom;
 
-export const _dgrecokr = _nomanualofficialcom;
+export const _dgrecokr = _nomanualshopcom;
 
 export const _oohahhcokr = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html)
