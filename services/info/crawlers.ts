@@ -2877,11 +2877,9 @@ export const _danswercom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const scriptHtml = $('body').html();
-  const SEARCH_TEXT = `sh.setData("img",encodeURIComponent("`;
-  const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
-  const end = scriptHtml.indexOf(`"));`, start);
-  const imageUrl = scriptHtml.slice(start, end);
+  const imgEle = $('div.detail-img div.swiper-slide')
+  
+  const imageUrl = 'https://d-answer.com/' + imgEle.attr().style.replace('background-image:url(\'', '').replace("');", '');
 
   return correct({
     ...result,
