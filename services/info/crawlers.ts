@@ -1432,21 +1432,12 @@ export const _glothescokr = (
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const scriptHtml =
-    $(selector.salePrice).html() || $(selector.originalPrice).html();
-  const SEARCH_TEXT = '&#xC6D0;';
-  const salePrice = Number(
-    (scriptHtml.includes(SEARCH_TEXT)
-      ? scriptHtml.slice(0, scriptHtml.indexOf(SEARCH_TEXT))
-      : scriptHtml
-    ).replace(/[^0-9]/g, '')
-  );
+
   return correct({
     ...result,
     name: result.name
       .slice(result.name.indexOf('.') + 1)
       .replace(' - 글로즈 스튜디오', ''),
-    salePrice,
   });
 };
 
