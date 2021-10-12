@@ -3831,3 +3831,21 @@ export const _afterpraycom = (
     ),
   };
 };
+
+export const _thetrillioncokr = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return {
+    ...result,
+    imageUrl: 'http://www.thetrillion.co.kr/shop/data/goods/' + result.imageUrl,
+    images: result.images.map((v) => {
+      return (
+        'http://www.thetrillion.co.kr/shop/' +
+        v.replace(/^(.+\.\.\/\.\.\/)/g, '')
+      );
+    }),
+  };
+};

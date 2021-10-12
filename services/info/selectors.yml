@@ -707,9 +707,11 @@ lomort.co.kr:
 
 thetrillion.co.kr:
   <<: *base
-  name: 'meta[property="og:title"]'
-  originalPrice: 'div.content-content.red'
+  name: '#goods_spec div.subcate_title'
+  imageUrl: div[data-product-property="image_link"]
+  originalPrice: '#consumer'
   salePrice: '#price'
+  images: '#contents img'
 
 freitag.ch:
   <<: *base
