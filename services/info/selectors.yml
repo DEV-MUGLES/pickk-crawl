@@ -141,6 +141,7 @@ afterpray.com:
   <<: *base
   originalPrice: '#shopProductPrice > span'
   salePrice: '#shopProductPrice > span.productDiscountPriceSpan'
+  images: 'div.shopProductImgRatio'
 
 carhartt-wip.co.kr:
   <<: *base
@@ -1690,6 +1691,7 @@ d-answer.com:
   name: h2.product-name
   originalPrice: input#price
   salePrice: input#disprice
+  images: div.detail_tab > img
 
 senseofny.com:
   <<: *base

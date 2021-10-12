@@ -3814,3 +3814,20 @@ export const _shopvanscokr = (
     originalPrice: parseInt(originalPrice),
   };
 };
+
+export const _afterpraycom = (
+  $: CheerioStatic,
+  selector: InfoSelectors
+): InfoResult => {
+  const result = selectAll($, selector);
+
+  return {
+    ...result,
+    images: result.images.map(
+      (v) =>
+        'https://contents.sixshop.com/thumbnails' +
+        v.replace(/(\..+)$/g, '') +
+        '_1000.jpg'
+    ),
+  };
+};
