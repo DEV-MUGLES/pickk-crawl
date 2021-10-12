@@ -30,14 +30,20 @@ export const select = ($: CheerioStatic, selector: string): string => {
   }
 };
 
-export const selectImages = ($: CheerioStatic, selector: string): string[] => {
+export const selectImages = (
+  $: CheerioStatic,
+  selector: string,
+  attrName?: string
+): string[] => {
   const images = [];
   $(selector).each((_i, ele) => {
     images.push(
-      ele.attribs.src ||
-        ele.attribs['ec-data-src'] ||
-        ele.attribs['data-src'] ||
-        ele.attribs['imgsrc']
+      attrName
+        ? ele.attribs[attrName]
+        : ele.attribs.src ||
+            ele.attribs['ec-data-src'] ||
+            ele.attribs['data-src'] ||
+            ele.attribs['imgsrc']
     );
   });
   return images;

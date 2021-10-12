@@ -1579,15 +1579,11 @@ export const _thesortiecom = (
   const saleEnd = bodyHtml.indexOf(',', saleStart);
   const salePrice = Number(bodyHtml.slice(saleStart, saleEnd));
 
-  const SNS_BODY_SEARCH_TEXT = ',"_body":"<';
-  const snsBodyStart =
-    bodyHtml.indexOf(SNS_BODY_SEARCH_TEXT) + SNS_BODY_SEARCH_TEXT.length - 1;
-  const snsBodyEnd = bodyHtml.indexOf(',', snsBodyStart);
-  const snsBodyHtml = bodyHtml
-    .slice(snsBodyStart, snsBodyEnd)
-    .replace(/\\/gi, '');
-
-  const images = selectImages(cheerio.load(snsBodyHtml), 'img');
+  const images = selectImages(
+    cheerio.load($('script#prodDetailPC').html()),
+    'img',
+    'data-original'
+  );
 
   const isSoldout = $(selector.isSoldout).text().search('SOLDOUT') > -1;
   return correct({
@@ -2877,9 +2873,14 @@ export const _danswercom = (
 ): InfoResult => {
   const result = selectAll($, selector);
 
-  const imgEle = $('div.detail-img div.swiper-slide')
-  
-  const imageUrl = 'https://d-answer.com/' + imgEle.attr().style.replace('background-image:url(\'', '').replace("');", '');
+  const imgEle = $('div.detail-img div.swiper-slide');
+
+  const imageUrl =
+    'https://d-answer.com/' +
+    imgEle
+      .attr()
+      .style.replace("background-image:url('", '')
+      .replace("');", '');
 
   return correct({
     ...result,

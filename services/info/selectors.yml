@@ -1000,7 +1000,6 @@ thesortie.com:
   name: meta[property="og:title"]
   originalPrice: 'span.real_price'
   isSoldout: 'div.sold_out'
-  images: 'div._prod_detail_detail_lazy_load img.fr-dib'
 
 deadendkr.cafe24.com:
   <<: *base
