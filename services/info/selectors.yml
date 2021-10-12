@@ -64,6 +64,7 @@ alphaindustrieskorea.com:
 
 garment-lable.com:
   <<: *base
+  originalPrice: tbody.prd_pc td.price
   images: '#prdDetail > div.cont > img'
   isSoldout: '#viewbox_c > div > div > div.xans-element-.xans-product.xans-product-action > div.ec-base-button1 > span'
 
