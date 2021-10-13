@@ -2026,3 +2026,8 @@ jogunshop.com:
 kream.co.kr:
   <<: *base
   name: 'title'
+
+lookfantastic.co.kr:
+  <<: *base
+  originalPrice: p.productPrice_rrp
+  salePrice: p.productPrice_price
