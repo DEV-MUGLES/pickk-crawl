@@ -321,10 +321,14 @@ zara.com:
   <<: *base
   originalPrice: 'body > script'
 
-shop.vans.co.kr:
+vans.co.kr: &vans
   <<: *base
   name: 'h1.product-name'
-  originalPrice: 'span.price > strong'
+  originalPrice: span.price-sale
+  salePrice: span.price
+
+shop.vans.co.kr:
+  <<: *vans
 
 drmartens.co.kr: &drmartens
   <<: *base
