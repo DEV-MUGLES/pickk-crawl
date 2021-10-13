@@ -1226,10 +1226,14 @@ wuzustudio.com:
   isSoldout: 'div.btnArea > a.buy_btn'
   images: '#prdDetail > div.cont img'
 
-romanticmove.com:
+romanticmove.com: &romanticmove
   <<: *base
   originalPrice: '#detail_inner > div.xans-element-.xans-product.xans-product-detail.top_inner > div.detailArea > div.infoArea.soldout_displaynone > div.de_price > div.de_custom > span'
   images: 'div#prdDetail .cont img'
+
+m.romanticmove.com:
+  <<: *romanticmove
+  images: 'div#prdDetailContent img'
 
 belier.co.kr:
   <<: *base
