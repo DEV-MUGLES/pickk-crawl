@@ -3515,6 +3515,8 @@ export const _hiphopercom = async (
   });
 };
 
+export const _escrowhiphopercom = _hiphopercom;
+
 export const _bbybstorecom = (
   $: CheerioStatic,
   selector: InfoSelectors
