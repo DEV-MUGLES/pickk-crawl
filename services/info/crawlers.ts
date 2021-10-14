@@ -3851,27 +3851,3 @@ export const _thetrillioncokr = (
     }),
   };
 };
-
-export const _suarecokr = (
-  $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
-  const result = selectAll($, selector);
-
-  const supportImageTypes = [
-    'jpg',
-    'jpeg',
-    'png',
-    'gif',
-    'webp',
-    'svg',
-    'tiff',
-  ];
-
-  return {
-    ...result,
-    images: result.images.map((v) =>
-      supportImageTypes.some((type) => v.indexOf(type) >= 0) ? v : v + '.jpg'
-    ),
-  };
-};
