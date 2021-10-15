@@ -3844,6 +3844,13 @@ export const _thetrillioncokr = (
     ...result,
     imageUrl: 'http://www.thetrillion.co.kr/shop/data/goods/' + result.imageUrl,
     images: result.images.map((v) => {
+      if (
+        v.startsWith('//image.musinsa.com') ||
+        v.startsWith('http://www.thetrillion.co.kr/shop/')
+      ) {
+        return v;
+      }
+
       return (
         'http://www.thetrillion.co.kr/shop/' +
         v.replace(/^(.+\.\.\/\.\.\/)/g, '')
