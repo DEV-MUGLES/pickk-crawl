@@ -116,7 +116,7 @@ m.wconcept.co.kr:
 coor.kr:
   <<: *base
   name: 'title'
-  imageUrl: 'div.shopdetailInfoTop > figure > img'
+  imageUrl: 'meta[property="og:image"]'
   originalPrice: 'input#price'
   salePrice: 'input#disprice'
 

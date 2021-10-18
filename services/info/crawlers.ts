@@ -2957,9 +2957,10 @@ export const _coorkr = (
 
   return correct({
     ...result,
-    imageUrl: result.imageUrl
-      ? 'http://coor.kr' + result.imageUrl
-      : $('meta[property="og:image"]').last().attr().content,
+    imageUrl:
+      'https://cdn3-aka.makeshop.co.kr' +
+      new URL(result.imageUrl).pathname.replace(/(\d)\..+$/, '') +
+      '.jpg',
   });
 };
 
