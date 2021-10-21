@@ -1630,6 +1630,7 @@ worthwhilemovement.com:
 
 lab-101.com:
   <<: *base
+  imageUrl: 'div.product-images > div > img'
   images: 'div.product-images img'
   isSoldout: p.soldout
 
