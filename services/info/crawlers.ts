@@ -2227,32 +2227,41 @@ export const _thehandsomecom = (
   });
 };
 
-export const _smartstorenavercom = (
+export const _smartstorenavercom = async (
   $: CheerioStatic,
-  selector: InfoSelectors
-): InfoResult => {
+  selector: InfoSelectors,
+  url: string
+): Promise<InfoResult> => {
   const result = selectAll($, selector);
   const ldJsonObject = getLdJsonObject($);
 
   let [name, brandKor] = result.name.split(' : ');
 
-  const isSoldout =
-    $(selector.isSoldout).text().search('구매하실 수 없는') > -1;
+  const matched = url.match(/\/products\/(\d+)/);
+  const itemNo = strToNumber(matched[1]);
 
-  const images = [];
   const scriptHtml = $('body').html();
-  const SEARCH_TEXT = `nmp.registerModule(nmp.front.sellershop.product.show.detail_info, {\n\t\tsAuthenticationType : \"NORMAL\",\n\t\tbSeOne : true,\n\t\tpcHtml : \"`;
+  const SEARCH_TEXT = `"productNo":"`;
   const start = scriptHtml.indexOf(SEARCH_TEXT) + SEARCH_TEXT.length;
-  const end = scriptHtml.indexOf(`"\n    });`, start);
-  const detail = cheerio.load(scriptHtml.slice(start, end), {
+  const end = scriptHtml.indexOf(`"`, start);
+
+  const productNo = strToNumber(scriptHtml.slice(start, end));
+
+  const { data } = await axios.get(
+    `https://smartstore.naver.com/i/v1/products/${itemNo}/contents/${productNo}/PC`
+  );
+  const detail = cheerio.load(data.renderContent, {
     decodeEntities: true,
   });
+
+  const images = [];
   detail('img').each((_, ele) => {
-    const detailImageUrl = (
-      ele.attribs.src || ele.attribs['ec-data-src']
-    ).replace(/\"|\\/gi, '');
+    const detailImageUrl = ele.attribs['data-src'].replace(/\"|\\/gi, '');
     images.push(detailImageUrl);
   });
+
+  const isSoldout =
+    $(selector.isSoldout).text().search('구매하실 수 없는') > -1;
 
   return correct({
     ...result,
