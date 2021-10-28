@@ -162,3 +162,28 @@ export const _v2koreacokr = (url: string, html: string): OptionCralwer => {
     .cafe24()
     .checkitemIsSoldout('div.infoArea div.btnArea span');
 };
+
+export const _thetrillioncokr = (url: string, html: string): OptionCralwer => {
+  return new OptionCralwer(url, html)
+    .crawlOptionNames('#goods_spec > form > table th[valign="top"]')
+    .crawlValues(
+      '#goods_spec > form > table select[name="opt[]"]',
+      'option',
+      (ele) => ele.children[0].data.includes('품절'),
+      0,
+      1,
+      (value) => {
+        /**
+         * 두가지 옵션이 한가지 옵션에 있는 경우를 대응하기 위함
+         * ex) 블랙(11월 8일 예약배송)/M
+         */
+        if (value.includes('/')) {
+          const [opt1, opt2] = value.split('/');
+          return [opt1.split('(')[0], opt2].join('/');
+        }
+
+        return value.split('(')[0];
+      }
+    )
+    .godo();
+};

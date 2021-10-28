@@ -9,6 +9,8 @@ import {
   getAllPostCombination,
   cleanUpString,
   getAllPreCombination,
+  getGodoSubOptionData,
+  getGodoAddoptOptionResult,
 } from '../../lib';
 import { OptionResult } from '../../types/option';
 
@@ -54,6 +56,23 @@ export default class OptionCralwer {
     const { optionNames, result } = getMakeshopOptionData(this.html);
     this.optionNames = optionNames;
     this.result = { ...this.result, ...result };
+
+    return this;
+  };
+
+  godo = (): OptionCralwer => {
+    const optionValuesKeys = Object.keys(this.result.values);
+    if (optionValuesKeys.length > 1) {
+      const subOption = optionValuesKeys[1];
+      const result = getGodoSubOptionData(this.html);
+      this.result.values = { ...this.result.values, [subOption]: result };
+    }
+
+    const { values: addoptOptionValues } = getGodoAddoptOptionResult(
+      this.html,
+      this.$
+    );
+    this.result.values = { ...this.result.values, ...addoptOptionValues };
 
     return this;
   };
