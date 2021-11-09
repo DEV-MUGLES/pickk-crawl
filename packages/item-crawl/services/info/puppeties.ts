@@ -1,0 +1,18 @@
+export default [
+  'lookpin.co.kr',
+  'g9.co.kr',
+  'kolonmall.com',
+  'nike.com',
+  'www2.hm.com',
+  'matchesfashion.com',
+  'onthelook.co.kr',
+  'hyundaihmall.com',
+  'ssense.com',
+  'gucci.com',
+  'dior.com',
+  'stoneisland.com',
+  'bottegaveneta.com',
+  'kr.mcmworldwide.com',
+  'coupang.com',
+  'musinsaapp.page.link',
+];
