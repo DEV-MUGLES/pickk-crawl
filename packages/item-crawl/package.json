@@ -38,7 +38,7 @@
     "@types/charset": "^1.0.1",
     "@types/cheerio": "0.22.16",
     "@types/faker": "^5.5.2",
-    "@types/jest": "^26.0.15",
+    "@types/jest": "^27.0.2",
     "@types/js-yaml": "^3.12.3",
     "@types/node": "^13.7.4",
     "@types/progress": "^2.0.3",
