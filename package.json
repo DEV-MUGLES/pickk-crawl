@@ -1,3 +1,7 @@
 {
-  "name": "pickk-crawl"
+  "name": "pickk-crawl",
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*"
+  ]
 }
