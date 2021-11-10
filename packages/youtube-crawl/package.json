@@ -5,9 +5,11 @@
     "vercel": "^23.1.2"
   },
   "scripts": {
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "vercel dev"
   },
   "devDependencies": {
-    "@vercel/node": "^1.12.1"
+    "@vercel/node": "^1.12.1",
+    "eslint": "^8.2.0"
   }
 }

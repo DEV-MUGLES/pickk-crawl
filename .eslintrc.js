@@ -8,5 +8,6 @@ module.exports = {
     ecmaFeatures: {
       modules: true,
     },
+    project: ['./packages/*/tsconfig.json'],
   },
 };
