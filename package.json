@@ -3,5 +3,13 @@
   "version": "1.0.0",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "run:item-crawl": "yarn workspace item-crawl run",
+    "start:item-crawl": "yarn run:item-crawl start",
+    "lint:item-crawl": "yarn run:item-crawl lint",
+    "type-check:item-crawl": "yarn run:item-crawl type-check",
+    "lint:all": "yarn workspaces foreach run lint",
+    "type-check:all": "yarn workspaces foreach run type-check"
+  }
 }
