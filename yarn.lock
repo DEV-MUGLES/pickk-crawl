@@ -5607,6 +5607,7 @@ __metadata:
     babel-plugin-transform-class-properties: ^6.24.1
     chalk: ^4.1.0
     charset: ^1.0.1
+    eslint: ^8.2.0
     faker: ^5.5.3
     iconv-lite: ^0.5.1
     jest: ^27.0.6
