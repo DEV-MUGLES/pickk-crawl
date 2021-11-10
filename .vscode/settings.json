@@ -1,4 +1,9 @@
 {
-  "conventionalCommits.scopes": ["root", "item-crawl", "delivery-tracker"],
+  "conventionalCommits.scopes": [
+    "root",
+    "item-crawl",
+    "delivery-tracker",
+    "youtube-crawl"
+  ],
   "editor.formatOnSave": true
 }
