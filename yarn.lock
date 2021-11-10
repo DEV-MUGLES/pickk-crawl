@@ -2137,17 +2137,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^16.11.6":
+"@types/node@npm:*, @types/node@npm:^16.11.7":
   version: 16.11.7
   resolution: "@types/node@npm:16.11.7"
   checksum: 2706403e6efc4aa40fdce8f0b5d9884d5600c3c8610aedc7fa5e7e298d30366f7e8b7296028d52898dca3edef4c3e827b03bf20952c4780f13fa4e79864f7a86
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^13.7.4":
-  version: 13.13.52
-  resolution: "@types/node@npm:13.13.52"
-  checksum: 8f1afff497ebeba209e2dc340d823284e087a47632afe99a7daa30eaff80893e520f222ad400cd1f2d3b8288e93cf3eaded52a8e64eaefb8aacfe6c35de98f42
   languageName: node
   linkType: hard
 
@@ -3825,7 +3818,6 @@ __metadata:
     "@types/charset": ^1.0.1
     "@types/jest": ^26.0.15
     "@types/jsdom": ^16.2.5
-    "@types/node": ^13.7.4
     "@types/request": ^2.48.4
     "@typescript-eslint/eslint-plugin": ^3.9.0
     "@typescript-eslint/parser": ^3.9.0
@@ -3841,8 +3833,6 @@ __metadata:
     querystring: ^0.2.0
     request: ^2.88.2
     tough-cookie: ^4.0.0
-    ts-node: ^9.0.0
-    typescript: ^4.0.5
     url: ^0.11.0
   languageName: unknown
   linkType: soft
@@ -5521,7 +5511,6 @@ __metadata:
     "@types/faker": ^5.5.2
     "@types/jest": ^27.0.2
     "@types/js-yaml": ^3.12.3
-    "@types/node": ^13.7.4
     "@types/progress": ^2.0.3
     "@types/request": ^2.48.4
     "@typescript-eslint/eslint-plugin": ^3.9.0
@@ -5537,8 +5526,6 @@ __metadata:
     jschardet: ^2.1.1
     progress: ^2.0.3
     request: ^2.88.2
-    ts-node: ^9.0.0
-    typescript: ^4.0.5
     url: ^0.11.0
   languageName: unknown
   linkType: soft
@@ -7530,8 +7517,11 @@ __metadata:
   resolution: "pickk-crawl@workspace:."
   dependencies:
     "@types/cheerio": ^0.22.30
+    "@types/node": ^16.11.7
     axios: ^0.24.0
     cheerio: ^1.0.0-rc.10
+    ts-node: ^10.4.0
+    typescript: ^4.4.4
   languageName: unknown
   linkType: soft
 
@@ -8847,27 +8837,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:^9.0.0":
-  version: 9.1.1
-  resolution: "ts-node@npm:9.1.1"
-  dependencies:
-    arg: ^4.1.0
-    create-require: ^1.1.0
-    diff: ^4.0.1
-    make-error: ^1.1.1
-    source-map-support: ^0.5.17
-    yn: 3.1.1
-  peerDependencies:
-    typescript: ">=2.7"
-  bin:
-    ts-node: dist/bin.js
-    ts-node-script: dist/bin-script.js
-    ts-node-transpile-only: dist/bin-transpile.js
-    ts-script: dist/bin-script-deprecated.js
-  checksum: 356e2647b8b1e6ab00380c0537fa569b63bd9b6f006cc40fd650f81fae1817bd8fecc075300036950d8f45c1d85b95be33cd1e48a1a424a7d86c3dbb42bf60e5
-  languageName: node
-  linkType: hard
-
 "tslib@npm:^1.8.1, tslib@npm:^1.9.3":
   version: 1.14.1
   resolution: "tslib@npm:1.14.1"
@@ -8991,7 +8960,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.0.5, typescript@npm:^4.4.4":
+"typescript@npm:^4.4.4":
   version: 4.4.4
   resolution: "typescript@npm:4.4.4"
   bin:
@@ -9021,7 +8990,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^4.0.5#~builtin<compat/typescript>, typescript@patch:typescript@^4.4.4#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.4.4#~builtin<compat/typescript>":
   version: 4.4.4
   resolution: "typescript@patch:typescript@npm%3A4.4.4#~builtin<compat/typescript>::version=4.4.4&hash=ddd1e8"
   bin:
@@ -9555,10 +9524,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "youtube-crawl@workspace:packages/youtube-crawl"
   dependencies:
-    "@types/node": ^16.11.6
     "@vercel/node": ^1.12.1
-    ts-node: ^10.4.0
-    typescript: ^4.4.4
     vercel: ^23.1.2
   languageName: unknown
   linkType: soft

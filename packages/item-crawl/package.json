@@ -38,7 +38,6 @@
     "@types/faker": "^5.5.2",
     "@types/jest": "^27.0.2",
     "@types/js-yaml": "^3.12.3",
-    "@types/node": "^13.7.4",
     "@types/progress": "^2.0.3",
     "@types/request": "^2.48.4",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
@@ -47,8 +46,6 @@
     "chalk": "^4.1.0",
     "eslint": "^7.6.0",
     "jest": "^27.0.6",
-    "progress": "^2.0.3",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.5"
+    "progress": "^2.0.3"
   }
 }

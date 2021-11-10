@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio';
 
-import { OptionResult } from 'types';
+import { OptionResult } from '../../types';
 
 export const getGodoSubOptionData = (html: string): string[] => {
   const SEARCH_TEXT = "opt['1'] = new Array";

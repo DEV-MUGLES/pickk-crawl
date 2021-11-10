@@ -1,6 +1,6 @@
 import faker from 'faker';
 
-import { InfoResult } from 'types';
+import { InfoResult } from '../../types';
 import InfoCrawlService from '.';
 
 describe('InfoCrawlService', () => {

@@ -1,5 +1,5 @@
 import { strToNumber, strToPriceUnit } from '../utils/Parser';
-import { InfoResult, InfoSelectors } from 'types/info';
+import { InfoResult, InfoSelectors } from '../../types/info';
 
 export const selectAll = ($: cheerio.Root, selectors: InfoSelectors) => {
   return Object.keys(selectors).reduce((acc, key: keyof InfoSelectors) => {
