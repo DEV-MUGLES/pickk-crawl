@@ -5,11 +5,15 @@
     "vercel": "^23.1.2"
   },
   "scripts": {
+    "type-check": "tsc --noEmit",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "vercel dev"
   },
   "devDependencies": {
+    "@types/node": "^16.11.7",
     "@vercel/node": "^1.12.1",
-    "eslint": "^8.2.0"
+    "eslint": "^8.2.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
   }
 }

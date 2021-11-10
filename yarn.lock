@@ -3836,6 +3836,7 @@ __metadata:
     "@types/charset": ^1.0.1
     "@types/jest": ^26.0.15
     "@types/jsdom": ^16.2.5
+    "@types/node": ^16.11.7
     "@types/request": ^2.48.4
     babel-plugin-transform-class-properties: ^6.24.1
     charset: ^1.0.1
@@ -3849,6 +3850,8 @@ __metadata:
     querystring: ^0.2.0
     request: ^2.88.2
     tough-cookie: ^4.0.0
+    ts-node: ^10.4.0
+    typescript: ^4.4.4
     url: ^0.11.0
   languageName: unknown
   linkType: soft
@@ -5598,12 +5601,12 @@ __metadata:
     "@types/faker": ^5.5.2
     "@types/jest": ^27.0.2
     "@types/js-yaml": ^3.12.3
+    "@types/node": ^16.11.7
     "@types/progress": ^2.0.3
     "@types/request": ^2.48.4
     babel-plugin-transform-class-properties: ^6.24.1
     chalk: ^4.1.0
     charset: ^1.0.1
-    eslint: ^8.2.0
     faker: ^5.5.3
     iconv-lite: ^0.5.1
     jest: ^27.0.6
@@ -5611,6 +5614,8 @@ __metadata:
     jschardet: ^2.1.1
     progress: ^2.0.3
     request: ^2.88.2
+    ts-node: ^10.4.0
+    typescript: ^4.4.4
     url: ^0.11.0
   languageName: unknown
   linkType: soft
@@ -7613,14 +7618,10 @@ __metadata:
   resolution: "pickk-crawl@workspace:."
   dependencies:
     "@types/cheerio": ^0.22.30
-    "@types/node": ^16.11.7
     "@typescript-eslint/eslint-plugin": ^5.3.1
     "@typescript-eslint/parser": ^5.3.1
     axios: ^0.24.0
     cheerio: ^1.0.0-rc.10
-    eslint: ^8.2.0
-    ts-node: ^10.4.0
-    typescript: ^4.4.4
   languageName: unknown
   linkType: soft
 
@@ -9615,8 +9616,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "youtube-crawl@workspace:packages/youtube-crawl"
   dependencies:
+    "@types/node": ^16.11.7
     "@vercel/node": ^1.12.1
     eslint: ^8.2.0
+    ts-node: ^10.4.0
+    typescript: ^4.4.4
     vercel: ^23.1.2
   languageName: unknown
   linkType: soft
