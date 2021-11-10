@@ -46,7 +46,7 @@ GET /api/view-count?code=dMBYI7pTR4Q
 response
 
 ```json
-49703
+{ "viewCount": 49703 }
 ```
 
 #### duration Crawl
@@ -76,5 +76,5 @@ GET /api/duration?code=dMBYI7pTR4Q
 response
 
 ```json
-1639491
+{ "duration": 1639491 }
 ```

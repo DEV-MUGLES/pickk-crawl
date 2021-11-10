@@ -7,7 +7,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     const { code } = req.query;
     const $youtube = await YoutubeCrawlService.load(code as string);
     const { durationMs } = await $youtube.scrapVideoData();
-    res.status(200).send(durationMs);
+    res.json({ duration: durationMs });
   } catch (err) {
     res.status(400).send({ error: err });
   }
