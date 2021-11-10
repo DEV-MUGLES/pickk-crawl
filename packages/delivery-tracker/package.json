@@ -1,5 +1,5 @@
 {
-  "name": "pickk-delivery-tracker",
+  "name": "delivery-tracker",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "tsc": "tsc --noEmit",
     "jest": "jest",
-    "test": "yarn format && yarn lint && yarn tsc && yarn jest"
+    "test": "yarn format && yarn lint && yarn tsc && yarn jest",
+    "start": "vercel dev"
   },
   "author": "thinking-muggles",
   "license": "ISC",
