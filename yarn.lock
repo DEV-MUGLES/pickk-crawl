@@ -2026,15 +2026,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cheerio@npm:0.22.16":
-  version: 0.22.16
-  resolution: "@types/cheerio@npm:0.22.16"
-  dependencies:
-    "@types/node": "*"
-  checksum: fcc99246548edf066cf0dc6a8ee5cbf3c25c470713b3d7df82285f194f30a02a513723f84668b5db8cc9df3443fdbc5f843611be519d0589d5e369807c15101b
-  languageName: node
-  linkType: hard
-
 "@types/cheerio@npm:^0.22.30":
   version: 0.22.30
   resolution: "@types/cheerio@npm:0.22.30"
@@ -2708,24 +2699,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.19.2":
-  version: 0.19.2
-  resolution: "axios@npm:0.19.2"
-  dependencies:
-    follow-redirects: 1.5.10
-  checksum: dcace11a0a25fdf9b3b97fc9d011d23dd9c67cc13d91778080482ddddbbfe731f7410a090b11aa0bbbdf83686c5911ccb4289fd3683b7488c1b0c4d3c882380c
-  languageName: node
-  linkType: hard
-
-"axios@npm:^0.21.4":
-  version: 0.21.4
-  resolution: "axios@npm:0.21.4"
-  dependencies:
-    follow-redirects: ^1.14.0
-  checksum: 44245f24ac971e7458f3120c92f9d66d1fc695e8b97019139de5b0cc65d9b8104647db01e5f46917728edfc0cfd88eb30fc4c55e6053eef4ace76768ce95ff3c
-  languageName: node
-  linkType: hard
-
 "axios@npm:^0.24.0":
   version: 0.24.0
   resolution: "axios@npm:0.24.0"
@@ -3334,7 +3307,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cheerio@npm:^1.0.0-rc.10, cheerio@npm:^1.0.0-rc.3":
+"cheerio@npm:^1.0.0-rc.10":
   version: 1.0.0-rc.10
   resolution: "cheerio@npm:1.0.0-rc.10"
   dependencies:
@@ -3715,15 +3688,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:=3.1.0":
-  version: 3.1.0
-  resolution: "debug@npm:3.1.0"
-  dependencies:
-    ms: 2.0.0
-  checksum: 0b52718ab957254a5b3ca07fc34543bc778f358620c206a08452251eb7fc193c3ea3505072acbf4350219c14e2d71ceb7bdaa0d3370aa630b50da790458d08b3
-  languageName: node
-  linkType: hard
-
 "debug@npm:^2.2.0, debug@npm:^2.3.3, debug@npm:^2.6.8":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
@@ -3859,17 +3823,14 @@ __metadata:
     "@now/node": ^1.5.0
     "@sentry/node": ^5.29.2
     "@types/charset": ^1.0.1
-    "@types/cheerio": 0.22.16
     "@types/jest": ^26.0.15
     "@types/jsdom": ^16.2.5
     "@types/node": ^13.7.4
     "@types/request": ^2.48.4
     "@typescript-eslint/eslint-plugin": ^3.9.0
     "@typescript-eslint/parser": ^3.9.0
-    axios: ^0.19.2
     babel-plugin-transform-class-properties: ^6.24.1
     charset: ^1.0.1
-    cheerio: ^1.0.0-rc.3
     eslint: ^7.6.0
     html-entities: ^1.4.0
     iconv-lite: ^0.5.1
@@ -4541,16 +4502,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:1.5.10":
-  version: 1.5.10
-  resolution: "follow-redirects@npm:1.5.10"
-  dependencies:
-    debug: =3.1.0
-  checksum: 0edc4b74e37e7b88ee716188a8f2a790238877c1d954f00c7b78d560f3bef40061c130536d13bee8e47b4e8e71edf1175a2de2729e51ab8206e4646b2370e484
-  languageName: node
-  linkType: hard
-
-"follow-redirects@npm:^1.14.0, follow-redirects@npm:^1.14.4":
+"follow-redirects@npm:^1.14.4":
   version: 1.14.5
   resolution: "follow-redirects@npm:1.14.5"
   peerDependenciesMeta:
@@ -5566,7 +5518,6 @@ __metadata:
     "@babel/preset-typescript": ^7.12.1
     "@now/node": ^1.5.0
     "@types/charset": ^1.0.1
-    "@types/cheerio": 0.22.16
     "@types/faker": ^5.5.2
     "@types/jest": ^27.0.2
     "@types/js-yaml": ^3.12.3
@@ -5575,11 +5526,9 @@ __metadata:
     "@types/request": ^2.48.4
     "@typescript-eslint/eslint-plugin": ^3.9.0
     "@typescript-eslint/parser": ^3.9.0
-    axios: ^0.21.4
     babel-plugin-transform-class-properties: ^6.24.1
     chalk: ^4.1.0
     charset: ^1.0.1
-    cheerio: ^1.0.0-rc.3
     eslint: ^7.6.0
     faker: ^5.5.3
     iconv-lite: ^0.5.1
@@ -7579,6 +7528,10 @@ __metadata:
 "pickk-crawl@workspace:.":
   version: 0.0.0-use.local
   resolution: "pickk-crawl@workspace:."
+  dependencies:
+    "@types/cheerio": ^0.22.30
+    axios: ^0.24.0
+    cheerio: ^1.0.0-rc.10
   languageName: unknown
   linkType: soft
 
@@ -9602,11 +9555,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "youtube-crawl@workspace:packages/youtube-crawl"
   dependencies:
-    "@types/cheerio": ^0.22.30
     "@types/node": ^16.11.6
     "@vercel/node": ^1.12.1
-    axios: ^0.24.0
-    cheerio: ^1.0.0-rc.10
     ts-node: ^10.4.0
     typescript: ^4.4.4
     vercel: ^23.1.2

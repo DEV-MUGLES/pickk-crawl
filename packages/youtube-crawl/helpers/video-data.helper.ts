@@ -4,7 +4,7 @@ import {
   DURATION_REGEX,
 } from '../constants';
 
-export const hasVideoData = ({ data }: CheerioElement) => {
+export const hasVideoData = ({ data }: cheerio.Element) => {
   if (!data) {
     return false;
   }

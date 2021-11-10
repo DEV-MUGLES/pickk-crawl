@@ -1,7 +1,7 @@
 import { strToNumber, strToPriceUnit } from '../utils/Parser';
 import { InfoResult, InfoSelectors } from 'types/info';
 
-export const selectAll = ($: CheerioStatic, selectors: InfoSelectors) => {
+export const selectAll = ($: cheerio.Root, selectors: InfoSelectors) => {
   return Object.keys(selectors).reduce((acc, key: keyof InfoSelectors) => {
     return {
       ...acc,
@@ -10,7 +10,7 @@ export const selectAll = ($: CheerioStatic, selectors: InfoSelectors) => {
   }, {} as InfoResult);
 };
 
-export const select = ($: CheerioStatic, selector: string): string => {
+export const select = ($: cheerio.Root, selector: string): string => {
   try {
     if (selector.includes('meta[')) {
       return $(selector).last().attr().content;
@@ -31,7 +31,7 @@ export const select = ($: CheerioStatic, selector: string): string => {
 };
 
 export const selectImages = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: string,
   attrName?: string
 ): string[] => {
@@ -39,18 +39,18 @@ export const selectImages = (
   $(selector).each((_i, ele) => {
     images.push(
       attrName
-        ? ele.attribs[attrName]
-        : ele.attribs.src ||
-            ele.attribs['ec-data-src'] ||
-            ele.attribs['data-src'] ||
-            ele.attribs['imgsrc']
+        ? (ele as cheerio.TagElement).attribs[attrName]
+        : (ele as cheerio.TagElement).attribs['src'] ||
+            (ele as cheerio.TagElement).attribs['ec-data-src'] ||
+            (ele as cheerio.TagElement).attribs['data-src'] ||
+            (ele as cheerio.TagElement).attribs['imgsrc']
     );
   });
   return images;
 };
 
 export const parseValue = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   key: keyof InfoSelectors,
   selector: string
 ): string | number | string[] | boolean => {
@@ -73,22 +73,25 @@ export const parseValue = (
   return value;
 };
 
-export const getLdJsonObject = ($: CheerioStatic, index: number = 0): any => {
+export const getLdJsonObject = ($: cheerio.Root, index: number = 0): any => {
   const scriptEles = $('script[type ="application/ld+json"]')?.toArray();
   if (!scriptEles?.length) {
     return {};
   }
 
-  return JSON.parse(scriptEles[index].firstChild.data);
+  return JSON.parse((scriptEles[index] as cheerio.TagElement).firstChild.data);
 };
 
-export const getNextPageProps = ($: CheerioStatic, index: number = 0): any => {
+export const getNextPageProps = ($: cheerio.Root, index: number = 0): any => {
   const scriptEles = $('script#__NEXT_DATA__')?.toArray();
   if (!scriptEles?.length) {
     return {};
   }
 
-  return JSON.parse(scriptEles[index].firstChild.data)?.props?.pageProps || {};
+  return (
+    JSON.parse((scriptEles[index] as cheerio.TagElement).firstChild.data)?.props
+      ?.pageProps || {}
+  );
 };
 
 export const correct = (result: InfoResult): InfoResult => {

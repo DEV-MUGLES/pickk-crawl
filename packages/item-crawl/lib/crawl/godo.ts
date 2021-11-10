@@ -29,7 +29,7 @@ const formatGodoAddoptOptionName = (name: string) => {
 
 export const getGodoAddoptOptionResult = (
   html: string,
-  $: CheerioStatic
+  $: cheerio.Root
 ): OptionResult => {
   const values = {};
 
@@ -40,7 +40,9 @@ export const getGodoAddoptOptionResult = (
   $(addoptOptionSelector).each((i, container) => {
     const inner$ = cheerio.load(container);
     const optionName = formatGodoAddoptOptionName(
-      inner$(valueSelector)[0].children[0].data.toString()
+      (inner$(
+        valueSelector
+      )[0] as cheerio.TagElement).children[0].data.toString()
     );
     values[optionName] = [];
     inner$(valueSelector).each((j, ele) => {
@@ -50,7 +52,10 @@ export const getGodoAddoptOptionResult = (
       }
 
       values[optionName].push(
-        ele.children[0].data.split('(')[0].toString().trim()
+        (ele as cheerio.TagElement).children[0].data
+          .split('(')[0]
+          .toString()
+          .trim()
       );
     });
   });

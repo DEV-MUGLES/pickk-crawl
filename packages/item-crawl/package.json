@@ -21,9 +21,7 @@
   "author": "thinking-muggles",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.4",
     "charset": "^1.0.1",
-    "cheerio": "^1.0.0-rc.3",
     "faker": "^5.5.3",
     "iconv-lite": "^0.5.1",
     "js-yaml": "^3.13.1",
@@ -37,7 +35,6 @@
     "@babel/preset-typescript": "^7.12.1",
     "@now/node": "^1.5.0",
     "@types/charset": "^1.0.1",
-    "@types/cheerio": "0.22.16",
     "@types/faker": "^5.5.2",
     "@types/jest": "^27.0.2",
     "@types/js-yaml": "^3.12.3",

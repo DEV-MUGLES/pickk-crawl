@@ -25,10 +25,10 @@ export const _mainstancecokr = async (
   const $ = cheerio.load(optionData.option_html);
 
   $('div.dropdown-item > a > span.margin-bottom-lg').each((_, ele) => {
-    values.Size.push(ele.children[0].data);
+    values.Size.push((ele as cheerio.TagElement).children[0].data);
   });
   $('div.dropdown-item > a > span.no-margin > strong').each((index, ele) => {
-    if (ele.children[0].data.includes('품절')) {
+    if ((ele as cheerio.TagElement).children[0].data.includes('품절')) {
       isSoldout.push([index]);
     }
   });

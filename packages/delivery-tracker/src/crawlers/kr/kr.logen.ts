@@ -114,7 +114,7 @@ export class KRLogenCrawler extends BaseCrawler {
     });
   };
 
-  tdToDescription = (td: Cheerio, $: CheerioStatic) => {
+  tdToDescription = (td: cheerio.Cheerio, $: cheerio.Root) => {
     const headers = [
       '발송점',
       '도착점',

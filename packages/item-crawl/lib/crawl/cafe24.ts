@@ -86,11 +86,18 @@ const formatOptionDefaultData = (
       .children()
       .each((i, ele) => {
         if (i >= 2) {
-          option.values[optionNames[index]].push(ele.children[0].data);
-          if (optionPriceVariantsKeys.includes(ele.attribs.value)) {
+          option.values[optionNames[index]].push(
+            (ele as cheerio.TagElement).children[0].data
+          );
+          if (
+            optionPriceVariantsKeys.includes(
+              (ele as cheerio.TagElement).attribs.value
+            )
+          ) {
             option.optionPriceVariants.push({
               option: [index, i - 2],
-              price: optionPriceVariants[ele.attribs.value],
+              price:
+                optionPriceVariants[(ele as cheerio.TagElement).attribs.value],
             });
           }
         }

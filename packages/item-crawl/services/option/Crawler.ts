@@ -18,7 +18,7 @@ export default class OptionCralwer {
   private url: string;
   private html: string;
   private optionNames: string[];
-  private $: CheerioStatic;
+  private $: cheerio.Root;
   result: OptionResult;
 
   constructor(url: string, html: string) {
@@ -88,8 +88,9 @@ export default class OptionCralwer {
       if (index < startIndex) {
         return;
       }
-      const optionName = (
-        attributeName ? ele.attribs[attributeName] : ele.children[0].data
+      const optionName = (attributeName
+        ? (ele as cheerio.TagElement).attribs[attributeName]
+        : (ele as cheerio.TagElement).children[0].data
       )?.toString();
       this.optionNames.push(optionName);
       this.result.values[optionName] = [];
@@ -101,7 +102,7 @@ export default class OptionCralwer {
   crawlValues = (
     containerSelector: string,
     valueSelector: string,
-    checkIsSoldout: (ele: CheerioElement) => boolean,
+    checkIsSoldout: (ele: cheerio.Element) => boolean,
     containerStartIndex: number = 0,
     valueStartIndex: number = 0,
     formatValue: (str: string) => string = (str) => str
@@ -118,7 +119,11 @@ export default class OptionCralwer {
           return;
         }
         this.result.values[this.optionNames[containerIndex]].push(
-          formatValue(cleanUpString(ele.children[0].data.toString())).trim()
+          formatValue(
+            cleanUpString(
+              (ele as cheerio.TagElement).children[0].data.toString()
+            )
+          ).trim()
         );
         if (checkIsSoldout?.(ele)) {
           const remain = this.optionNames
@@ -134,7 +139,7 @@ export default class OptionCralwer {
   // 옵션 단위 품절 check가 불가능하고, 아이템 단위 품절 check만 가능할 때 사용합니다. 아이템이 품절인 경우 모든 옵션을 품절로 처리합니다.
   checkitemIsSoldout = (
     selector: string,
-    checkIsSoldout?: (ins: Cheerio) => boolean
+    checkIsSoldout?: (ins: cheerio.Cheerio) => boolean
   ): OptionCralwer => {
     const cheerioInstance = this.$(selector);
     const isSoldout = checkIsSoldout

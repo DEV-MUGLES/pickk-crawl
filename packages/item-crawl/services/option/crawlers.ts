@@ -23,7 +23,7 @@ const sixshop = (url: string, html: string): OptionCralwer => {
     .crawlValues(
       '#shopProductContentInfo > div.shopProductOptionListDiv > div.productOption > div.customSelectDiv > div.selectBox > div.custom-select-box-list-inner',
       'div.custom-select-option > div.custom-select-option-info',
-      (ele) => ele.children[0].data.includes('품절'),
+      (ele) => (ele as cheerio.TagElement).children[0].data.includes('품절'),
       0,
       1
     );
@@ -35,7 +35,7 @@ export const _josephtcokr = (url: string, html: string): OptionCralwer => {
     .crawlValues(
       'div.item_add_option_box > dl > dd > select',
       'option',
-      (ele) => ele.children[0].data.includes('품절'),
+      (ele) => (ele as cheerio.TagElement).children[0].data.includes('품절'),
       0,
       1
     );
@@ -49,7 +49,7 @@ export const _nomanualshopcom = (url: string, html: string): OptionCralwer => {
     .crawlValues(
       'div.shopProductOptionListDiv > div.productOption > div.customSelectDiv',
       'div.custom-select-option-info',
-      (ele) => ele.children[0].data.includes('품절'),
+      (ele) => (ele as cheerio.TagElement).children[0].data.includes('품절'),
       1,
       1
     );
@@ -88,7 +88,7 @@ export const _coorkr = (url: string, html: string): OptionCralwer => {
     .crawlValues(
       '#form1 > div > div.table-opt > table > tbody > tr:nth-child(2) > td > div > dl:nth-child(1) > dd > select',
       'option',
-      (ele) => ele.children[0].data.includes('품절'),
+      (ele) => (ele as cheerio.TagElement).children[0].data.includes('품절'),
       0,
       1
     )
@@ -104,7 +104,7 @@ export const _personalpackcom = (url: string, html: string): OptionCralwer => {
     .crawlValues(
       '#optionlist_0',
       'option',
-      (ele) => ele.children[0].data.includes('품절'),
+      (ele) => (ele as cheerio.TagElement).children[0].data.includes('품절'),
       0,
       1
     )
@@ -124,7 +124,8 @@ export const _aecawhitecom = (url: string, html: string): OptionCralwer => {
     .crawlValues(
       'select',
       'option',
-      (ele) => ele.children[0].data.includes('SOLD OUT'),
+      (ele) =>
+        (ele as cheerio.TagElement).children[0].data.includes('SOLD OUT'),
       0,
       2,
       (value) => value.split('[')[0]
@@ -146,7 +147,7 @@ export const _kutletshopcom = (url: string, html: string): OptionCralwer => {
     .crawlValues(
       '#shopProductContentInfo div.productOption > div.customSelectDiv',
       'div.custom-select-option-info',
-      (ele) => ele.children[0].data.includes('품절'),
+      (ele) => (ele as cheerio.TagElement).children[0].data.includes('품절'),
       0,
       1,
       (value) => value.split('(')[0].trim()
@@ -169,7 +170,7 @@ export const _thetrillioncokr = (url: string, html: string): OptionCralwer => {
     .crawlValues(
       '#goods_spec > form > table select[name="opt[]"]',
       'option',
-      (ele) => ele.children[0].data.includes('품절'),
+      (ele) => (ele as cheerio.TagElement).children[0].data.includes('품절'),
       0,
       1,
       (value) => {

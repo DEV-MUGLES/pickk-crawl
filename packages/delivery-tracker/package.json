@@ -15,9 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@sentry/node": "^5.29.2",
-    "axios": "^0.19.2",
     "charset": "^1.0.1",
-    "cheerio": "^1.0.0-rc.3",
     "html-entities": "^1.4.0",
     "iconv-lite": "^0.5.1",
     "jschardet": "^2.1.1",
@@ -33,7 +31,6 @@
     "@babel/preset-typescript": "^7.12.1",
     "@now/node": "^1.5.0",
     "@types/charset": "^1.0.1",
-    "@types/cheerio": "0.22.16",
     "@types/jest": "^26.0.15",
     "@types/jsdom": "^16.2.5",
     "@types/node": "^13.7.4",

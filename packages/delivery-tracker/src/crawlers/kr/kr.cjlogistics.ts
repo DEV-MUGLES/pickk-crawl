@@ -127,7 +127,7 @@ export class KRCjlogicsticsCrawler extends BaseCrawler {
       .get('https://www.cjlogistics.com/ko/tool/parcel/tracking')
       .then((res) => {
         const cookie = res.headers['set-cookie']
-          .map(Cookie.parse)
+          .map((v) => Cookie.parse(v))
           .map((c) => c.cookieString())
           .join('; ');
         const $ = cheerio.load(res.data);

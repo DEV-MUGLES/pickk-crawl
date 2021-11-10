@@ -13,7 +13,7 @@ import { correctImageUrl, getCheerio } from '.';
 import * as cheerio from 'cheerio';
 
 export const _storemusinsacom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -34,7 +34,7 @@ export const _storemusinsacom = (
 export const _mstoremusinsacom = _storemusinsacom;
 
 export const _espionagecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -48,7 +48,7 @@ export const _espionagecokr = (
 };
 
 export const _noirlarmescokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -62,7 +62,7 @@ export const _noirlarmescokr = (
 };
 
 export const _conversecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -78,7 +78,7 @@ export const _conversecokr = (
 };
 
 export const _zavanascom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -100,7 +100,7 @@ export const _zavanascom = (
 };
 
 export const _giordanocokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -112,7 +112,7 @@ export const _giordanocokr = (
 };
 
 export const _spaoelandmallcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -126,7 +126,7 @@ export const _spaoelandmallcom = (
 };
 
 export const _shoopenelandmallcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -140,7 +140,7 @@ export const _shoopenelandmallcom = (
 };
 
 export const _wconceptcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -161,7 +161,7 @@ export const _wconceptcokr = (
 export const _mwconceptcokr = _wconceptcokr;
 
 export const _lfmallcokr = async (
-  _$: CheerioStatic,
+  _$: cheerio.Root,
   _selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
@@ -192,7 +192,7 @@ export const _lfmallcokr = async (
 };
 
 export const _www2hmcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -211,7 +211,7 @@ export const _www2hmcom = (
 };
 
 export const _romanticpiratescom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -223,7 +223,7 @@ export const _romanticpiratescom = (
 };
 
 export const _jemutshopcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -235,7 +235,7 @@ export const _jemutshopcom = (
 };
 
 export const _beslowcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -270,7 +270,7 @@ export const _beslowcokr = (
 };
 
 export const _stussycokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -282,7 +282,7 @@ export const _stussycokr = (
 };
 
 export const _barrelscokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -299,7 +299,7 @@ export const _barrelscokr = (
 };
 
 export const _underarmourcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -313,7 +313,7 @@ export const _underarmourcokr = (
 };
 
 export const _thenorthfacekoreacokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -329,7 +329,7 @@ export const _thenorthfacekoreacokr = (
 };
 
 export const _shopadidascokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -358,16 +358,16 @@ export const _shopadidascokr = (
 };
 
 export const _zaracom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
 
   let scriptHtml;
   $(selector.originalPrice).each((i, e) => {
-    if (e?.children[0]?.data !== undefined) {
-      if (e.children[0].data.indexOf('price') > -1) {
-        scriptHtml = e.children[0].data;
+    if ((e as cheerio.TagElement)?.children[0]?.data !== undefined) {
+      if ((e as cheerio.TagElement).children[0].data.indexOf('price') > -1) {
+        scriptHtml = (e as cheerio.TagElement).children[0].data;
       }
     }
   });
@@ -396,7 +396,7 @@ export const _zaracom = (
 };
 
 export const _drmartenscokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -414,7 +414,7 @@ export const _drmartenscokr = (
 export const _mdrmartenscokr = _drmartenscokr;
 
 export const _naturestorecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -428,7 +428,7 @@ export const _naturestorecokr = (
 };
 
 export const _eduardocokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -442,7 +442,7 @@ export const _eduardocokr = (
 };
 
 export const _personalpackcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -454,7 +454,7 @@ export const _personalpackcom = (
 };
 
 export const _mngucokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -484,7 +484,7 @@ export const _mngucokr = (
 };
 
 export const _leirecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -498,7 +498,7 @@ export const _leirecokr = (
 };
 
 export const _tbhshopcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -513,7 +513,7 @@ export const _tbhshopcokr = (
 };
 
 export const _lludcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -525,7 +525,7 @@ export const _lludcokr = (
 };
 
 export const _ativekr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -537,7 +537,7 @@ export const _ativekr = (
 };
 
 export const goodnationcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -549,7 +549,7 @@ export const goodnationcokr = (
 };
 
 export const _lambydcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -561,7 +561,7 @@ export const _lambydcom = (
 };
 
 export const _monsterrepubliccokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -580,7 +580,7 @@ export const _monsterrepubliccokr = (
 };
 
 export const _ziosongziocom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -592,7 +592,7 @@ export const _ziosongziocom = (
 };
 
 export const _topten10mallcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -619,7 +619,7 @@ export const _topten10mallcom = (
 };
 
 export const _ssgcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -640,7 +640,7 @@ export const _ssgcom = (
 export const _mssgcom = _ssgcom;
 
 export const _goodsellottecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -654,7 +654,7 @@ export const _goodsellottecom = (
 };
 
 export const _hyundaihmallcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -666,7 +666,7 @@ export const _hyundaihmallcom = (
 };
 
 export const _akmallcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -680,7 +680,7 @@ export const _akmallcom = (
 };
 
 export const _thehyundaicom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -700,7 +700,7 @@ export const _thehyundaicom = (
 };
 
 export const _mariomallcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -714,7 +714,7 @@ export const _mariomallcokr = (
 };
 
 export const _fashionpluscokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -733,7 +733,7 @@ export const _fashionpluscokr = (
 };
 
 export const _shoppinginterparkcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -768,7 +768,7 @@ export const _shoppinginterparkcom = (
 };
 
 export const _g9cokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -782,7 +782,7 @@ export const _g9cokr = (
 };
 
 export const _4xrcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -807,7 +807,7 @@ export const _4xrcokr = (
 };
 
 export const _gvgcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -821,7 +821,7 @@ export const _gvgcokr = (
 };
 
 export const _farfetchcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -833,7 +833,7 @@ export const _farfetchcom = (
 };
 
 export const _abokinet = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -845,7 +845,7 @@ export const _abokinet = (
 };
 
 export const _jogunshopcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -859,7 +859,7 @@ export const _jogunshopcom = (
 };
 
 export const _timemeccacokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -875,7 +875,7 @@ export const _timemeccacokr = (
 };
 
 export const _snuvcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -903,7 +903,7 @@ export const _snuvcokr = (
 };
 
 export const _labelarchivecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -923,7 +923,7 @@ export const _labelarchivecom = (
 };
 
 export const _wvprojectcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -935,7 +935,7 @@ export const _wvprojectcokr = (
 };
 
 export const _heightsstorecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -953,7 +953,7 @@ export const _heightsstorecom = (
 };
 
 export const _urbanstoffcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -964,7 +964,7 @@ export const _urbanstoffcom = (
 };
 
 export const _gncostylecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -981,7 +981,7 @@ export const _gncostylecom = (
 };
 
 export const _yanthirteencom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1003,7 +1003,7 @@ export const _yanthirteencom = (
 };
 
 export const _hfashionmallcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1025,7 +1025,7 @@ export const _hfashionmallcom = (
 };
 
 export const _guglobalcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1036,7 +1036,7 @@ export const _guglobalcom = (
 };
 
 export const _shinwonmallcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1054,7 +1054,7 @@ export const _shinwonmallcom = (
 };
 
 export const _shopreebokcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1090,7 +1090,7 @@ export const _shopreebokcokr = (
 };
 
 export const _toptentopten10mallcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1106,7 +1106,7 @@ export const _toptentopten10mallcom = (
 };
 
 export const _skonoshopcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1120,7 +1120,7 @@ export const _skonoshopcom = (
 };
 
 export const _guesskoreacom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1132,7 +1132,7 @@ export const _guesskoreacom = (
 };
 
 export const _wooyoungmicom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1144,7 +1144,7 @@ export const _wooyoungmicom = (
 };
 
 export const _shopmangocom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1170,7 +1170,7 @@ export const _shopmangocom = (
 };
 
 export const _stylenandacom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1182,7 +1182,7 @@ export const _stylenandacom = (
 };
 
 export const _stylelqcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1210,7 +1210,7 @@ export const _stylelqcom = (
 };
 
 export const _bottegavenetacom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1222,7 +1222,7 @@ export const _bottegavenetacom = (
 };
 
 export const _etcseoulcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1240,7 +1240,7 @@ export const _etcseoulcom = (
 };
 
 export const _montblanccom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1251,7 +1251,7 @@ export const _montblanccom = (
 };
 
 export const _givenchycom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1278,7 +1278,7 @@ export const _givenchycom = (
 };
 
 export const _monclercom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1289,7 +1289,7 @@ export const _monclercom = (
 };
 
 export const _acnestudioscom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1300,7 +1300,7 @@ export const _acnestudioscom = (
 };
 
 export const _stoneislandcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1311,7 +1311,7 @@ export const _stoneislandcom = (
 };
 
 export const _alexandermcqueencom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1322,7 +1322,7 @@ export const _alexandermcqueencom = (
 };
 
 export const _diorcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1340,7 +1340,7 @@ export const _diorcom = (
 };
 
 export const _shoptimberlandcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1351,7 +1351,7 @@ export const _shoptimberlandcokr = (
 };
 
 export const _acha1com = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1368,7 +1368,7 @@ export const _acha1com = (
 };
 
 export const _coucoustorecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1385,7 +1385,7 @@ export const _coucoustorecom = (
 };
 
 export const _unalloyedkr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1402,7 +1402,7 @@ export const _unalloyedkr = (
 };
 
 export const _iamshoponlinecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1417,7 +1417,7 @@ export const _iamshoponlinecom = (
 };
 
 export const _derobekr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1428,7 +1428,7 @@ export const _derobekr = (
 };
 
 export const _glothescokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1442,7 +1442,7 @@ export const _glothescokr = (
 };
 
 export const _ssolantcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1453,7 +1453,7 @@ export const _ssolantcom = (
 };
 
 export const _filsonkoreacokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1464,7 +1464,7 @@ export const _filsonkoreacokr = (
 };
 
 export const _savagecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1475,7 +1475,7 @@ export const _savagecokr = (
 };
 
 export const _hotsunglasscokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1486,7 +1486,7 @@ export const _hotsunglasscokr = (
 };
 
 export const _istyle24com = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1501,7 +1501,7 @@ export const _istyle24com = (
 };
 
 export const _patagoniacokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1512,7 +1512,7 @@ export const _patagoniacokr = (
 };
 
 export const _varzarcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1523,7 +1523,7 @@ export const _varzarcom = (
 };
 
 export const _layerstorekr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1539,7 +1539,7 @@ export const _layerstorekr = (
 };
 
 export const _byccokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1552,7 +1552,7 @@ export const _byccokr = (
 };
 
 export const _thesortiecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1588,7 +1588,7 @@ export const _thesortiecom = (
 };
 
 export const _deadendkrcafe24com = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1608,7 +1608,7 @@ export const _deadendkrcafe24com = (
 };
 
 export const _shopamoebaculturecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1619,7 +1619,7 @@ export const _shopamoebaculturecom = (
 };
 
 export const _fillikecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1631,7 +1631,7 @@ export const _fillikecom = (
 };
 
 export const _hagokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1654,7 +1654,7 @@ export const _hagokr = (
 };
 
 export const _madgoatofficialcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1677,7 +1677,7 @@ export const _madgoatofficialcom = (
 };
 
 export const _wuzustudiocom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1715,7 +1715,7 @@ export const _wuzustudiocom = (
 };
 
 export const _kingkr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1729,7 +1729,7 @@ export const _kingkr = (
 };
 
 export const _costumeoclockcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): InfoResult => {
@@ -1747,7 +1747,7 @@ export const _costumeoclockcom = (
 };
 
 export const _nodearchivecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1755,7 +1755,10 @@ export const _nodearchivecom = (
   $(selector.images)
     .find('img')
     .each((_, ele) => {
-      images.push(ele.attribs.src || ele.attribs['ec-data-src']);
+      images.push(
+        (ele as cheerio.TagElement).attribs.src ||
+          (ele as cheerio.TagElement).attribs['ec-data-src']
+      );
     });
 
   return correct({
@@ -1766,7 +1769,7 @@ export const _nodearchivecom = (
 };
 
 export const _ourscopecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1774,7 +1777,10 @@ export const _ourscopecokr = (
   $(selector.images)
     .find('img')
     .each((_, ele) => {
-      images.push(ele.attribs.src || ele.attribs['ec-data-src']);
+      images.push(
+        (ele as cheerio.TagElement).attribs.src ||
+          (ele as cheerio.TagElement).attribs['ec-data-src']
+      );
     });
 
   return correct({
@@ -1784,7 +1790,7 @@ export const _ourscopecokr = (
 };
 
 export const _mimthewardrobecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1793,7 +1799,10 @@ export const _mimthewardrobecom = (
     .first()
     .find('img')
     .each((_, ele) => {
-      images.push(ele.attribs.src || ele.attribs['ec-data-src']);
+      images.push(
+        (ele as cheerio.TagElement).attribs.src ||
+          (ele as cheerio.TagElement).attribs['ec-data-src']
+      );
     });
 
   return correct({
@@ -1803,7 +1812,7 @@ export const _mimthewardrobecom = (
 };
 
 export const _dgrecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1814,14 +1823,18 @@ export const _dgrecokr = (
     .find('span.productPriceWithDiscountSpan')
     ?.each(
       (_, ele) =>
-        (originalPrice = Number(ele.children[0].data.replace(/[^0-9]/g, '')))
+        (originalPrice = Number(
+          (ele as cheerio.TagElement).children[0].data.replace(/[^0-9]/g, '')
+        ))
     );
 
   $(selector.originalPrice)
     .find('span.productPriceSpan')
     ?.each(
       (_, ele) =>
-        (originalPrice = Number(ele.children[0].data.replace(/[^0-9]/g, '')))
+        (originalPrice = Number(
+          (ele as cheerio.TagElement).children[0].data.replace(/[^0-9]/g, '')
+        ))
     );
 
   return correct({
@@ -1832,7 +1845,7 @@ export const _dgrecokr = (
 };
 
 export const _esfaicokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1841,7 +1854,10 @@ export const _esfaicokr = (
   $(selector.images)
     .find('img')
     .each((_, ele) => {
-      images.push(ele.attribs.src || ele.attribs['ec-data-src']);
+      images.push(
+        (ele as cheerio.TagElement).attribs.src ||
+          (ele as cheerio.TagElement).attribs['ec-data-src']
+      );
     });
 
   if (result.name.search(']') > -1) {
@@ -1857,7 +1873,7 @@ export const _esfaicokr = (
 };
 
 export const _easestorecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1870,7 +1886,7 @@ export const _easestorecokr = (
 };
 
 export const _flareupcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1883,7 +1899,7 @@ export const _flareupcokr = (
 };
 
 export const _ojoskr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1895,7 +1911,7 @@ export const _ojoskr = (
 };
 
 export const _kutletshopcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1907,7 +1923,7 @@ export const _kutletshopcom = (
 };
 
 export const _hyojicokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1920,7 +1936,7 @@ export const _hyojicokr = (
 };
 
 export const _nomanualshopcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1932,7 +1948,7 @@ export const _nomanualshopcom = (
 };
 
 export const _inrowscokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1957,7 +1973,7 @@ export const _inrowscokr = (
 };
 
 export const _13monthcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1978,7 +1994,7 @@ export const _13monthcom = (
 };
 
 export const _chindownkr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -1991,7 +2007,7 @@ export const _chindownkr = (
 };
 
 export const _paulcorecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2008,7 +2024,7 @@ export const _paulcorecokr = (
 };
 
 export const _maisonminedcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2026,7 +2042,7 @@ export const _maisonminedcom = (
 };
 
 export const _namerclothingcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2042,7 +2058,7 @@ export const _namerclothingcom = (
 };
 
 export const _ohkooscom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2055,7 +2071,7 @@ export const _ohkooscom = (
 };
 
 export const _shop5ox2256cafe24com = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2073,7 +2089,7 @@ export const _shop5ox2256cafe24com = (
 };
 
 export const _waze8690scafe24com = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2085,7 +2101,7 @@ export const _waze8690scafe24com = (
 };
 
 export const _oohahhcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2100,7 +2116,7 @@ export const _oohahhcokr = (
 };
 
 export const _charmskr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2112,7 +2128,7 @@ export const _charmskr = (
 };
 
 export const _mmglstorecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2131,7 +2147,7 @@ export const _mmglstorecom = (
 };
 
 export const _edenmadecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2143,7 +2159,7 @@ export const _edenmadecokr = (
 };
 
 export const _msskr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2159,7 +2175,7 @@ export const _msskr = (
 };
 
 export const _oryanycokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2174,7 +2190,7 @@ export const _oryanycokr = (
 };
 
 export const _adlieloscom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2186,7 +2202,7 @@ export const _adlieloscom = (
 };
 
 export const _brumancokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2198,7 +2214,7 @@ export const _brumancokr = (
 };
 
 export const _solidhommecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2210,7 +2226,7 @@ export const _solidhommecom = (
 };
 
 export const _thehandsomecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2228,7 +2244,7 @@ export const _thehandsomecom = (
 };
 
 export const _smartstorenavercom = async (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
@@ -2256,7 +2272,9 @@ export const _smartstorenavercom = async (
 
   const images = [];
   detail('img').each((_, ele) => {
-    const detailImageUrl = ele.attribs['data-src'].replace(/\"|\\/gi, '');
+    const detailImageUrl = (ele as cheerio.TagElement).attribs[
+      'data-src'
+    ].replace(/\"|\\/gi, '');
     images.push(detailImageUrl);
   });
 
@@ -2276,7 +2294,7 @@ export const _smartstorenavercom = async (
 export const _msmartstorenavercom = _smartstorenavercom;
 
 export const _sculptorpagecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2291,7 +2309,7 @@ export const _sculptorpagecom = (
 };
 
 export const _polyterustorecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2303,7 +2321,7 @@ export const _polyterustorecom = (
 };
 
 export const _showindowcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2315,7 +2333,7 @@ export const _showindowcokr = (
 };
 
 export const _newbalancecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2326,7 +2344,7 @@ export const _newbalancecom = (
 };
 
 export const _aecawhitecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2344,7 +2362,7 @@ export const _aecawhitecom = (
 };
 
 export const _krburberrycom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2359,7 +2377,7 @@ export const _krburberrycom = (
 };
 
 export const _applecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2379,7 +2397,7 @@ export const _applecom = (
 };
 
 export const _beamscojp = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2392,7 +2410,7 @@ export const _beamscojp = (
 };
 
 export const _haharchivenet = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2404,7 +2422,7 @@ export const _haharchivenet = (
 };
 
 export const _agingccccom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): InfoResult => {
@@ -2425,7 +2443,7 @@ export const _agingccccom = (
 };
 
 export const _uniongarmentscokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2437,7 +2455,7 @@ export const _uniongarmentscokr = (
 };
 
 export const _lotuffcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2451,7 +2469,7 @@ export const _lotuffcokr = (
 };
 
 export const _blond9com = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2465,7 +2483,7 @@ export const _blond9com = (
 };
 
 export const _ourlegacyse = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const nextPageProps = getNextPageProps($);
@@ -2489,7 +2507,7 @@ export const _ourlegacyse = (
 };
 
 export const _yooxcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2503,7 +2521,7 @@ export const _yooxcom = (
 };
 
 export const _itempage3auctioncokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2515,14 +2533,16 @@ export const _itempage3auctioncokr = (
 };
 
 export const _kreamcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
   const splittedTitle = result.name.split('|');
   const salePrices = $('ul.select_list > li span.price')
     .toArray()
-    .map((object) => strToNumber(object.children[0].data))
+    .map((object) =>
+      strToNumber((object as cheerio.TagElement).children[0].data)
+    )
     .filter((price) => price !== 0);
   const salePrice =
     salePrices?.length > 0
@@ -2540,7 +2560,7 @@ export const _kreamcokr = (
 };
 
 export const _endclothingcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2557,7 +2577,7 @@ export const _endclothingcom = (
 };
 
 export const _worthwhilemovementcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2575,7 +2595,7 @@ export const _worthwhilemovementcom = (
 };
 
 export const _buffalobootscom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2602,7 +2622,7 @@ export const _buffalobootscom = (
 };
 
 export const _riseandbelowcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2614,7 +2634,7 @@ export const _riseandbelowcom = (
 };
 
 export const _niftydokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2631,7 +2651,7 @@ export const _niftydokr = (
 };
 
 export const _kaneiteicom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2644,7 +2664,7 @@ export const _kaneiteicom = (
 };
 
 export const _longvacakr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2657,7 +2677,7 @@ export const _longvacakr = (
   );
 
   $('#productDescriptionDetailPage img').each((_i, ele) => {
-    images.push(ele.attribs['data-src']);
+    images.push((ele as cheerio.TagElement).attribs['data-src']);
   });
 
   return correct({
@@ -2669,7 +2689,7 @@ export const _longvacakr = (
 };
 
 export const _begin202com = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2681,7 +2701,7 @@ export const _begin202com = (
 };
 
 export const _lacostecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2694,7 +2714,7 @@ export const _lacostecom = (
 };
 
 export const _ocokoreacomshopMobile = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2717,7 +2737,7 @@ export const _ocokoreacomshopMobile = (
 };
 
 export const _29cmcokr = async (
-  _$: CheerioStatic,
+  _$: cheerio.Root,
   _selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
@@ -2742,7 +2762,7 @@ export const _29cmcokr = async (
 };
 
 export const _hivercokr = async (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
@@ -2774,7 +2794,7 @@ export const _hivercokr = async (
 };
 
 export const _vacantkr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2787,7 +2807,7 @@ export const _vacantkr = (
 };
 
 export const _mamagaricom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): InfoResult => {
@@ -2800,7 +2820,7 @@ export const _mamagaricom = (
 };
 
 export const _hundredmakercom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): InfoResult => {
@@ -2813,7 +2833,7 @@ export const _hundredmakercom = (
 };
 
 export const _samsonitecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): InfoResult => {
@@ -2827,7 +2847,7 @@ export const _samsonitecokr = (
 };
 
 export const _newcheapchicstore = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2840,7 +2860,7 @@ export const _newcheapchicstore = (
 };
 
 export const _thefabrickr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2853,7 +2873,7 @@ export const _thefabrickr = (
 };
 
 export const _concepts1onecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2868,7 +2888,7 @@ export const _concepts1onecokr = (
 };
 
 export const _danswercom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2889,7 +2909,7 @@ export const _danswercom = (
 };
 
 export const _senseofnycom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2909,7 +2929,7 @@ export const _senseofnycom = (
 };
 
 export const _bylegacycokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2922,7 +2942,7 @@ export const _bylegacycokr = (
 };
 
 export const _googongfastcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2934,7 +2954,7 @@ export const _googongfastcom = (
 };
 
 export const _krmoscotcom = async (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): Promise<InfoResult> => {
   const result = selectAll($, selector);
@@ -2959,7 +2979,7 @@ export const _krmoscotcom = async (
 };
 
 export const _coorkr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2974,7 +2994,7 @@ export const _coorkr = (
 };
 
 export const _ourpascom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2986,7 +3006,7 @@ export const _ourpascom = (
 };
 
 export const _combatcinemacokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -2998,7 +3018,7 @@ export const _combatcinemacokr = (
 };
 
 export const _freitagch = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3026,7 +3046,7 @@ export const _freitagch = (
 };
 
 export const _sivillagecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3047,7 +3067,7 @@ export const _sivillagecom = (
 };
 
 export const _obscurastorecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3059,7 +3079,7 @@ export const _obscurastorecom = (
 };
 
 export const _mamagaricomm = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3071,7 +3091,7 @@ export const _mamagaricomm = (
 };
 
 export const _dwstorecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3088,7 +3108,7 @@ export const _dwstorecokr = (
 };
 
 export const _vdrstorecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3100,7 +3120,7 @@ export const _vdrstorecom = (
 };
 
 export const _uttutcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3112,7 +3132,7 @@ export const _uttutcom = (
 };
 
 export const _insonlinestorecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3127,7 +3147,7 @@ export const _insonlinestorecom = (
 };
 
 export const _iterpeoplecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3142,7 +3162,7 @@ export const _iterpeoplecom = (
 };
 
 export const _nocluecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3158,7 +3178,7 @@ export const _nocluecokr = (
 
 // price currency: SEK
 export const _soundslifekr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3170,7 +3190,7 @@ export const _soundslifekr = (
 };
 
 export const _layerunionnet = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3182,7 +3202,7 @@ export const _layerunionnet = (
 };
 
 export const _ladyvolumecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): InfoResult => {
@@ -3206,7 +3226,7 @@ export const _ladyvolumecom = (
 export const _v2koreacokr = _ladyvolumecom;
 
 export const _ieycokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3218,7 +3238,7 @@ export const _ieycokr = (
 };
 
 export const _yohannrehandcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3230,7 +3250,7 @@ export const _yohannrehandcom = (
 };
 
 export const _fairplay142com = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3241,7 +3261,7 @@ export const _fairplay142com = (
   });
 };
 
-export const _oldlaundrycokr = ($: CheerioStatic): InfoResult => {
+export const _oldlaundrycokr = ($: cheerio.Root): InfoResult => {
   const ldJsonObject = getLdJsonObject($);
   const { name, image: imageUrl, brand, offers } = ldJsonObject;
   const originalPrice = strToNumber(offers.price);
@@ -3256,7 +3276,7 @@ export const _oldlaundrycokr = ($: CheerioStatic): InfoResult => {
   });
 };
 
-export const _hangleeyewearcom = ($: CheerioStatic): InfoResult => {
+export const _hangleeyewearcom = ($: cheerio.Root): InfoResult => {
   const ldJsonObject = getLdJsonObject($);
   const { name, image: imageUrl, offers } = ldJsonObject;
   const originalPrice = parseInt(offers.price);
@@ -3273,7 +3293,7 @@ export const _hangleeyewearcom = ($: CheerioStatic): InfoResult => {
   });
 };
 
-export const _demilmfgcom = ($: CheerioStatic): InfoResult => {
+export const _demilmfgcom = ($: cheerio.Root): InfoResult => {
   const ldJsonObject = getLdJsonObject($, 1);
   const { name, image: imageUrl, offers } = ldJsonObject['@graph'][1];
   const originalPrice = strToNumber(offers[0].price);
@@ -3288,7 +3308,7 @@ export const _demilmfgcom = ($: CheerioStatic): InfoResult => {
   });
 };
 
-export const _gonakcokr = ($: CheerioStatic): InfoResult => {
+export const _gonakcokr = ($: cheerio.Root): InfoResult => {
   const ldJsonObject = getLdJsonObject($);
   const { name, image: imageUrl, brand, offers } = ldJsonObject;
   const originalPrice = strToNumber(offers.price);
@@ -3306,7 +3326,7 @@ export const _gonakcokr = ($: CheerioStatic): InfoResult => {
 };
 
 export const _jdsportscokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3323,7 +3343,7 @@ export const _jdsportscokr = (
 };
 
 export const _reebonzcokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3337,7 +3357,7 @@ export const _reebonzcokr = (
 };
 
 export const _wonderwallkr = async (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
@@ -3357,7 +3377,7 @@ export const _wonderwallkr = async (
 };
 
 export const _balaancokr = async (
-  _$: CheerioStatic,
+  _$: cheerio.Root,
   _selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
@@ -3386,7 +3406,7 @@ export const _balaancokr = async (
 };
 
 export const _thombrownecom = async (
-  _$: CheerioStatic,
+  _$: cheerio.Root,
   _selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
@@ -3418,7 +3438,7 @@ export const _thombrownecom = async (
 };
 
 export const _mainstancecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): InfoResult => {
@@ -3436,7 +3456,7 @@ export const _mainstancecokr = (
   const images$ = cheerio.load($(selector.images).html());
   const images = [];
   images$('img').each((_i, ele) => {
-    images.push(ele.attribs['data-original']);
+    images.push((ele as cheerio.TagElement).attribs['data-original']);
   });
 
   return correct({
@@ -3447,7 +3467,7 @@ export const _mainstancecokr = (
 };
 
 export const _anecdotecokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3458,7 +3478,7 @@ export const _anecdotecokr = (
   });
 };
 
-export const _brandnavercomralphlauren = ($: CheerioStatic): InfoResult => {
+export const _brandnavercomralphlauren = ($: cheerio.Root): InfoResult => {
   const ldJsonObject = getLdJsonObject($);
   const { name, image: imageUrl, offers } = ldJsonObject;
   const originalPrice = parseInt(offers.price);
@@ -3474,7 +3494,7 @@ export const _brandnavercomralphlauren = ($: CheerioStatic): InfoResult => {
 };
 
 export const _unboncokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3493,7 +3513,7 @@ export const _unboncokr = (
 };
 
 export const _hiphopercom = async (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
@@ -3512,7 +3532,7 @@ export const _hiphopercom = async (
   const images$ = cheerio.load(it_explain);
   const images = [];
   images$('img').each((_i, ele) => {
-    images.push(ele.attribs['src']);
+    images.push((ele as cheerio.TagElement).attribs['src']);
   });
 
   return correct({
@@ -3528,7 +3548,7 @@ export const _hiphopercom = async (
 export const _escrowhiphopercom = _hiphopercom;
 
 export const _bbybstorecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3541,7 +3561,7 @@ export const _bbybstorecom = (
 };
 
 export const _oomstudiocokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3555,7 +3575,7 @@ export const _oomstudiocokr = (
 };
 
 export const _apartfromthatstorecom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3567,7 +3587,7 @@ export const _apartfromthatstorecom = (
 };
 
 export const _shoppingnavercom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   _: InfoSelectors
 ): InfoResult => {
   const ldJsonObject = getLdJsonObject($);
@@ -3594,7 +3614,7 @@ export const _shoppingnavercom = (
 };
 
 export const _gachiofficialcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3606,11 +3626,12 @@ export const _gachiofficialcom = (
 };
 
 export const _okmallcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
-  const imageUrl = $(selector.imageUrl)[0].attribs.content;
+  const imageUrl = ($(selector.imageUrl)[0] as cheerio.TagElement).attribs
+    .content;
 
   return correct({
     ...result,
@@ -3619,7 +3640,7 @@ export const _okmallcom = (
 };
 
 export const _licflocom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3631,7 +3652,7 @@ export const _licflocom = (
   });
 };
 
-export const _yslcom = ($: CheerioStatic, _: InfoSelectors): InfoResult => {
+export const _yslcom = ($: cheerio.Root, _: InfoSelectors): InfoResult => {
   const ldJsonObject = getLdJsonObject($);
   const {
     name,
@@ -3651,7 +3672,7 @@ export const _yslcom = ($: CheerioStatic, _: InfoSelectors): InfoResult => {
 };
 
 export const _ffaicokr = async (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): Promise<InfoResult> => {
   const { originalPrice } = selectAll($, selector);
@@ -3666,7 +3687,7 @@ export const _ffaicokr = async (
   const _$ = await getCheerio(imageshtml, '');
   const images = _$('img')
     .toArray()
-    .map((element) => element.attribs['data-original']);
+    .map((element) => (element as cheerio.TagElement).attribs['data-original']);
 
   return correct({
     name,
@@ -3679,7 +3700,7 @@ export const _ffaicokr = async (
 };
 
 export const _frogworldcokr = async (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors,
   url: string
 ): Promise<InfoResult> => {
@@ -3702,7 +3723,7 @@ export const _frogworldcokr = async (
 };
 
 export const _japangadacom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3714,7 +3735,7 @@ export const _japangadacom = (
 };
 
 export const _ssfshopcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3726,7 +3747,9 @@ export const _ssfshopcom = (
   const originalPrice = strToNumber(priceList[1] ?? priceList[0]);
   let images = [];
   $('div.product_view img, div.detail_view img').map((_, element) => {
-    images.push('http:' + element.attribs['data-original']);
+    images.push(
+      'http:' + (element as cheerio.TagElement).attribs['data-original']
+    );
   });
   const isSoldout = $(selector.isSoldout).text().includes('품절');
 
@@ -3740,7 +3763,7 @@ export const _ssfshopcom = (
 };
 
 export const _glpkthesouvenirshopcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3749,7 +3772,7 @@ export const _glpkthesouvenirshopcom = (
 };
 
 export const _glamoodcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3767,7 +3790,7 @@ export const _glamoodcom = (
 };
 
 export const _minjukimco = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3776,7 +3799,7 @@ export const _minjukimco = (
 };
 
 export const _hazzyscom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3785,7 +3808,7 @@ export const _hazzyscom = (
 };
 
 export const _themuseumvisitorcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3799,7 +3822,7 @@ export const _themuseumvisitorcom = (
 };
 
 export const _laserbimcom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3813,7 +3836,7 @@ export const _laserbimcom = (
 };
 
 export const _shopvanscokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3828,7 +3851,7 @@ export const _shopvanscokr = (
 };
 
 export const _afterpraycom = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
@@ -3845,7 +3868,7 @@ export const _afterpraycom = (
 };
 
 export const _thetrillioncokr = (
-  $: CheerioStatic,
+  $: cheerio.Root,
   selector: InfoSelectors
 ): InfoResult => {
   const result = selectAll($, selector);
