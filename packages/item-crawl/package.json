@@ -23,7 +23,7 @@
   "dependencies": {
     "charset": "^1.0.1",
     "faker": "^5.5.3",
-    "iconv-lite": "^0.5.1",
+    "iconv-lite": "^0.6.0",
     "js-yaml": "^3.13.1",
     "jschardet": "^2.1.1",
     "request": "^2.88.2",
