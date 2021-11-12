@@ -7,10 +7,16 @@
   "scripts": {
     "run:item-crawl": "yarn workspace item-crawl run",
     "run:delivery-tracker": "yarn workspace delivery-tracker run",
+    "run:youtube-crawl": "yarn workspace youtube-crawl run",
     "start:item-crawl": "yarn run:item-crawl start",
     "start:delivery-tracker": "yarn run:delivery-tracker start",
+    "start:youtube-crawl": "yarn run:youtube-crawl start",
     "lint:item-crawl": "yarn run:item-crawl lint",
+    "lint:delivery-tracker": "yarn run:delivery-tracker lint",
+    "lint:youtube-crawl": "yarn run:youtube-crawl lint",
     "type-check:item-crawl": "yarn run:item-crawl type-check",
+    "type-check:delivery-traker": "yarn run:delivery-traker type-check",
+    "type-check:youtube-crawl": "yarn run:youtube-crawl type-check",
     "lint:all": "yarn workspaces foreach run lint",
     "type-check:all": "yarn workspaces foreach run type-check"
   },
