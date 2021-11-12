@@ -2,7 +2,12 @@ import axios from 'axios';
 import * as cheerio from 'cheerio';
 
 import { YOUTUBE_BASE_URL } from '../constants';
-import { getViewCountFrom, hasVideoData, getDurationFrom } from '../helpers';
+import {
+  getViewCountFrom,
+  hasVideoData,
+  getDurationMsFrom,
+  convertToSecond,
+} from '../helpers';
 import { VideoData } from '../types';
 
 export class YoutubeCrawlService {
@@ -27,7 +32,7 @@ export class YoutubeCrawlService {
     return {
       code: this.code,
       viewCount: getViewCountFrom(data),
-      durationMs: getDurationFrom(data),
+      duration: convertToSecond(getDurationMsFrom(data)),
     };
   }
 }

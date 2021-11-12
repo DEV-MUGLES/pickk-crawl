@@ -1,6 +1,6 @@
 export type VideoData = {
   code: string;
   viewCount: number;
-  /**ms단위입니다 */
-  durationMs: number;
+  /**초단위입니다 */
+  duration: number;
 };

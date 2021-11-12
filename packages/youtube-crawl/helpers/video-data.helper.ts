@@ -1,7 +1,7 @@
 import {
   VIDEO_DATA_REGEX,
   VIEW_COUNT_REGEX,
-  DURATION_REGEX,
+  DURATION_MS_REGEX,
 } from '../constants';
 
 export const hasVideoData = ({ data }: cheerio.Element) => {
@@ -18,9 +18,9 @@ export const getViewCountFrom = (data: string) => {
   return Number(VIEW_COUNT_REGEX.exec(data)[1]);
 };
 
-export const getDurationFrom = (data: string) => {
+export const getDurationMsFrom = (data: string) => {
   if (!data) {
     return 0;
   }
-  return Number(DURATION_REGEX.exec(data)[1]);
+  return Number(DURATION_MS_REGEX.exec(data)[1]);
 };
