@@ -14,7 +14,7 @@
   "author": "thinking-muggles",
   "license": "ISC",
   "dependencies": {
-    "@sentry/node": "^5.29.2",
+    "@sentry/node": "^6.0.0",
     "charset": "^1.0.1",
     "html-entities": "^1.4.0",
     "iconv-lite": "^0.5.1",
