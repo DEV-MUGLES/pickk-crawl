@@ -3,7 +3,11 @@
 
 name: CI
 
-on: [push]
+on:
+  # master 브랜치에 push할 때
+  push:
+    branches:
+      - master
 
 jobs:
   build:
