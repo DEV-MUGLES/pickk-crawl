@@ -3336,7 +3336,7 @@ __metadata:
     charset: ^1.0.1
     eslint: 8.2.0
     html-entities: ^1.4.0
-    iconv-lite: ^0.5.1
+    iconv-lite: ^0.6.0
     jest: 27.3.1
     jschardet: ^2.1.1
     jsdom: ^16.4.0
@@ -4362,16 +4362,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iconv-lite@npm:^0.5.1":
-  version: 0.5.2
-  resolution: "iconv-lite@npm:0.5.2"
-  dependencies:
-    safer-buffer: ">= 2.1.2 < 3"
-  checksum: aa184914b74db7a23feb98cad3e4ed22058f2aa27c5613a127327423b3230a0b934665c2aecf5dc657a58a59891c92fd1e721ed160d1b2f3c682bc26e3fe3f14
-  languageName: node
-  linkType: hard
-
-"iconv-lite@npm:^0.6.2":
+"iconv-lite@npm:^0.6.0, iconv-lite@npm:^0.6.2":
   version: 0.6.3
   resolution: "iconv-lite@npm:0.6.3"
   dependencies:
@@ -4728,7 +4719,7 @@ __metadata:
     charset: ^1.0.1
     eslint: 8.2.0
     faker: ^5.5.3
-    iconv-lite: ^0.5.1
+    iconv-lite: ^0.6.0
     jest: 27.3.1
     js-yaml: ^3.13.1
     jschardet: ^2.1.1
