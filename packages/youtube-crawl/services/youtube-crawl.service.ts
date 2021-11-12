@@ -6,21 +6,17 @@ import { getViewCountFrom, hasVideoData, getDurationFrom } from '../helpers';
 import { VideoData } from '../types';
 
 export class YoutubeCrawlService {
-  private readonly html: string;
-
-  constructor(html: string) {
-    this.html = html;
-  }
+  constructor(private readonly html: string, private readonly code: string) {}
 
   static async load(code: string) {
-    const { data } = await axios({
+    const { data: html } = await axios({
       method: 'get',
       baseURL: YOUTUBE_BASE_URL,
       params: {
         v: code,
       },
     });
-    return new YoutubeCrawlService(data);
+    return new YoutubeCrawlService(html, code);
   }
 
   async scrapVideoData(): Promise<VideoData> {
@@ -29,6 +25,7 @@ export class YoutubeCrawlService {
     const { data } = scripts.filter(hasVideoData)[0];
 
     return {
+      code: this.code,
       viewCount: getViewCountFrom(data),
       durationMs: getDurationFrom(data),
     };
