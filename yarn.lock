@@ -3363,7 +3363,7 @@ __metadata:
     html-entities: ^2.0.0
     iconv-lite: ^0.6.0
     jest: 27.3.1
-    jschardet: ^2.1.1
+    jschardet: ^3.0.0
     jsdom: ^18.0.0
     prettier: 2.4.1
     querystring: ^0.2.0
@@ -4787,7 +4787,7 @@ __metadata:
     iconv-lite: ^0.6.0
     jest: 27.3.1
     js-yaml: ^3.13.1
-    jschardet: ^2.1.1
+    jschardet: ^3.0.0
     progress: 2.0.3
     request: ^2.88.2
     ts-node: 10.4.0
@@ -5334,10 +5334,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jschardet@npm:^2.1.1":
-  version: 2.3.0
-  resolution: "jschardet@npm:2.3.0"
-  checksum: c8d2fd38b761d64629fec431b8821f345d42e47f22077f863a14722a9e97ebc48f8365e3418f03d23300820981d3d92fc85b58db41c990f7ab7d03c1aec02260
+"jschardet@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "jschardet@npm:3.0.0"
+  checksum: f391df4512bbd7edf97f82be09ba841a80cb4408c3ab96cf7e9c307737bd08cd8b3d10986f3db844d04151530395dcd174b3288f17144206d42675ecf482c286
   languageName: node
   linkType: hard
 
