@@ -18,14 +18,20 @@ const makeshop = (url: string, html: string): OptionCralwer => {
 const sixshop = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html)
     .crawlOptionNames(
-      '#shopProductContentInfo > div.shopProductOptionListDiv > div.productOption > span.custom-select-option-name'
+      '#shopProductContentInfo span.custom-select-option-name',
+      0
     )
     .crawlValues(
-      '#shopProductContentInfo > div.shopProductOptionListDiv > div.productOption > div.customSelectDiv > div.selectBox > div.custom-select-box-list-inner',
-      'div.custom-select-option > div.custom-select-option-info',
+      '#shopProductContentInfo div.productOption > div.customSelectDiv',
+      'div.custom-select-option-info',
       (ele) => (ele as cheerio.TagElement).children[0].data.includes('품절'),
       0,
-      1
+      1,
+      (value) => value.split('(')[0].trim()
+    )
+    .checkitemIsSoldout(
+      '#shopProductCartErrorDiv',
+      (ins) => !ins.hasClass('hide')
     );
 };
 
@@ -138,25 +144,7 @@ export const _aecawhitecom = (url: string, html: string): OptionCralwer => {
 
 export const _longvacakr = sixshop;
 
-export const _kutletshopcom = (url: string, html: string): OptionCralwer => {
-  return new OptionCralwer(url, html)
-    .crawlOptionNames(
-      '#shopProductContentInfo span.custom-select-option-name',
-      0
-    )
-    .crawlValues(
-      '#shopProductContentInfo div.productOption > div.customSelectDiv',
-      'div.custom-select-option-info',
-      (ele) => (ele as cheerio.TagElement).children[0].data.includes('품절'),
-      0,
-      1,
-      (value) => value.split('(')[0].trim()
-    )
-    .checkitemIsSoldout(
-      '#shopProductCartErrorDiv',
-      (ins) => !ins.hasClass('hide')
-    );
-};
+export const _kutletshopcom = sixshop;
 
 export const _v2koreacokr = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html)
