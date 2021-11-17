@@ -15,8 +15,7 @@
     "test": "yarn fetch && yarn lint && yarn jest",
     "jest:info:chunk": "yarn jest ./__tests__/services/chunks/info.chunk.test.ts --config=\"jest.chunk.config.js\"",
     "jest:option:chunk": "yarn jest ./__tests__/services/chunks/option.chunk.test.ts --config=\"jest.chunk.config.js\"",
-    "test:chunk": "yarn fetch && yarn lint && yarn jest --config=\"jest.chunk.config.js\"",
-    "start": "vercel dev"
+    "test:chunk": "yarn fetch && yarn lint && yarn jest --config=\"jest.chunk.config.js\""
   },
   "author": "thinking-muggles",
   "license": "ISC",

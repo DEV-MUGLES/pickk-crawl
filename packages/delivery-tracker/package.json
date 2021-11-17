@@ -8,8 +8,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "type-check": "tsc --noEmit",
     "jest": "jest",
-    "test": "yarn format && yarn lint && yarn tsc && yarn jest",
-    "start": "vercel dev"
+    "test": "yarn format && yarn lint && yarn tsc && yarn jest"
   },
   "author": "thinking-muggles",
   "license": "ISC",

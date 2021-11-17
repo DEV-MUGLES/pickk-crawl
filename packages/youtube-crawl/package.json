@@ -6,8 +6,7 @@
   },
   "scripts": {
     "type-check": "tsc --noEmit",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "start": "vercel dev"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "devDependencies": {
     "@types/node": "16.11.7",
