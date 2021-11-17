@@ -9,3 +9,6 @@
 #/.pnp.*
 
 node_modules
+.vercel
+.env
+

@@ -8,9 +8,6 @@
     "run:item-crawl": "yarn workspace item-crawl run",
     "run:delivery-tracker": "yarn workspace delivery-tracker run",
     "run:youtube-crawl": "yarn workspace youtube-crawl run",
-    "start:item-crawl": "yarn run:item-crawl start",
-    "start:delivery-tracker": "yarn run:delivery-tracker start",
-    "start:youtube-crawl": "yarn run:youtube-crawl start",
     "lint:item-crawl": "yarn run:item-crawl lint",
     "lint:delivery-tracker": "yarn run:delivery-tracker lint",
     "lint:youtube-crawl": "yarn run:youtube-crawl lint",
@@ -18,7 +15,13 @@
     "type-check:delivery-tracker": "yarn run:delivery-tracker type-check",
     "type-check:youtube-crawl": "yarn run:youtube-crawl type-check",
     "lint:all": "yarn workspaces foreach run lint",
-    "type-check:all": "yarn workspaces foreach run type-check"
+    "type-check:all": "yarn workspaces foreach run type-check",
+    "vercel:item-crawl": "cp .env.item-crawl .env && dotenv vercel",
+    "vercel:delivery-tracker": "cp .env.delivery-tracker .env && dotenv vercel",
+    "vercel:youtube-crawl": "cp .env.youtube-crawl .env && dotenv vercel",
+    "start:item-crawl": "yarn vercel:item-crawl dev",
+    "start:delivery-tracker": "yarn vercel:delivery-tracker dev",
+    "start:youtube-crawl": "yarn vercel:youtube-crawl dev"
   },
   "dependencies": {
     "axios": "0.24.0",
@@ -27,6 +30,8 @@
   "devDependencies": {
     "@types/cheerio": "0.22.30",
     "@typescript-eslint/eslint-plugin": "5.4.0",
-    "@typescript-eslint/parser": "5.4.0"
+    "@typescript-eslint/parser": "5.4.0",
+    "dotenv": "^10.0.0",
+    "dotenv-cli": "^4.1.0"
   }
 }
