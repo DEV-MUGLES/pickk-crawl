@@ -146,6 +146,8 @@ export const _longvacakr = sixshop;
 
 export const _kutletshopcom = sixshop;
 
+export const _afterpraycom = sixshop;
+
 export const _v2koreacokr = (url: string, html: string): OptionCralwer => {
   return new OptionCralwer(url, html)
     .cafe24()
