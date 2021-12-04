@@ -3465,7 +3465,7 @@ __metadata:
     iconv-lite: ^0.6.0
     jest: 27.4.3
     jschardet: ^3.0.0
-    jsdom: ^18.0.0
+    jsdom: ^19.0.0
     prettier: 2.5.1
     querystring: ^0.2.0
     request: ^2.88.2
@@ -5551,9 +5551,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsdom@npm:^18.0.0":
-  version: 18.0.1
-  resolution: "jsdom@npm:18.0.1"
+"jsdom@npm:^19.0.0":
+  version: 19.0.0
+  resolution: "jsdom@npm:19.0.0"
   dependencies:
     abab: ^2.0.5
     acorn: ^8.5.0
@@ -5587,7 +5587,7 @@ __metadata:
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: 475475d4ba6316d92e7098aa803e33aa6b0968db9180aedb4bf7aeeaa93ca4629e4976b506213f7fdf40c5a8bb50d41e3cc4b8227f2c09daa9161f08257e4975
+  checksum: 94b693bf4a394097dd96705550bb7b6cd3c8db3c5414e6e9c92a0995ed8b61067597da2f37fca6bed4b5a2f1ef33960ee759522156dccd0b306311988ea87cfb
   languageName: node
   linkType: hard
 
