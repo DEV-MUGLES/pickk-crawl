@@ -2151,10 +2151,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:16.11.13":
-  version: 16.11.13
-  resolution: "@types/node@npm:16.11.13"
-  checksum: 7c9d62c024537d7c9f2229097b9e7a93a60bc60efbc9171977f172819e229b01d0b6ed276d335996d39b0096aed2cefa58c4a34b264d712ae3595449e8d96ab7
+"@types/node@npm:16.11.14":
+  version: 16.11.14
+  resolution: "@types/node@npm:16.11.14"
+  checksum: 0bd4333fb4e56532db7f5174732268b18089913ddbb0e97957228e64f9fe3babf9923c77ce6f07d3d354445cfbb8d31b95c1f8be3c0f7426308bd8b93d3aaa02
   languageName: node
   linkType: hard
 
@@ -3615,7 +3615,7 @@ __metadata:
     "@types/charset": 1.0.2
     "@types/jest": 27.0.3
     "@types/jsdom": 16.2.13
-    "@types/node": 16.11.13
+    "@types/node": 16.11.14
     "@types/request": 2.48.7
     babel-plugin-transform-class-properties: 6.24.1
     charset: ^1.0.1
@@ -5085,7 +5085,7 @@ __metadata:
     "@types/faker": 5.5.9
     "@types/jest": 27.0.3
     "@types/js-yaml": 3.12.7
-    "@types/node": 16.11.13
+    "@types/node": 16.11.14
     "@types/progress": 2.0.5
     "@types/request": 2.48.7
     babel-plugin-transform-class-properties: 6.24.1
@@ -8116,7 +8116,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "youtube-crawl@workspace:packages/youtube-crawl"
   dependencies:
-    "@types/node": 16.11.13
+    "@types/node": 16.11.14
     "@vercel/node": 1.12.1
     eslint: 8.4.1
     ts-node: 10.4.0
