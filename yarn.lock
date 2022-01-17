@@ -3994,10 +3994,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:13.0.1":
-  version: 13.0.1
-  resolution: "dotenv@npm:13.0.1"
-  checksum: 5bf1b8a6871b8f33d0bf3abe4b430b13ffc375568474e9fbb8a603af354d23b415fc0d21d1f55dab3abddf7cadcfc2894e08efed8dd63c13256de677fe33c6e6
+"dotenv@npm:14.1.0":
+  version: 14.1.0
+  resolution: "dotenv@npm:14.1.0"
+  checksum: 9e7afe54688c6ddd270797766b1f51421cc1d38cce5a470750537d598cc1719e1b6effcb35022fccd949f2da701b5f186d4c0da44a72fb3a8bd1e2513159a9d2
   languageName: node
   linkType: hard
 
@@ -6712,7 +6712,7 @@ __metadata:
     "@typescript-eslint/parser": 5.9.1
     axios: 0.24.0
     cheerio: 1.0.0-rc.10
-    dotenv: 13.0.1
+    dotenv: 14.1.0
     dotenv-cli: 4.1.1
   languageName: unknown
   linkType: soft
