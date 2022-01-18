@@ -9,7 +9,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "devDependencies": {
-    "@types/node": "16.11.20",
+    "@types/node": "16.11.21",
     "@vercel/node": "1.12.1",
     "eslint": "8.7.0",
     "ts-node": "10.4.0",
