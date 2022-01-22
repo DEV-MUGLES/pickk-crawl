@@ -29,7 +29,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.10",
+    "@babel/core": "7.16.12",
     "@babel/preset-env": "7.16.11",
     "@babel/preset-typescript": "7.16.7",
     "@now/node": "1.8.5",
