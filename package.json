@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@types/cheerio": "0.22.30",
-    "@typescript-eslint/eslint-plugin": "5.10.0",
-    "@typescript-eslint/parser": "5.10.0",
+    "@typescript-eslint/eslint-plugin": "5.10.1",
+    "@typescript-eslint/parser": "5.10.1",
     "dotenv": "14.2.0",
     "dotenv-cli": "4.1.1"
   }
