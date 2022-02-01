@@ -32,7 +32,7 @@
     "@types/charset": "1.0.2",
     "@types/jest": "27.4.0",
     "@types/jsdom": "16.2.14",
-    "@types/node": "16.11.21",
+    "@types/node": "16.11.22",
     "@types/request": "2.48.8",
     "babel-plugin-transform-class-properties": "6.24.1",
     "eslint": "8.8.0",
