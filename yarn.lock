@@ -2356,12 +2356,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cheerio@npm:0.22.30":
-  version: 0.22.30
-  resolution: "@types/cheerio@npm:0.22.30"
+"@types/cheerio@npm:0.22.31":
+  version: 0.22.31
+  resolution: "@types/cheerio@npm:0.22.31"
   dependencies:
     "@types/node": "*"
-  checksum: 2aba93f57c0c88964bd83c3403b1f9ad98c377d00e0d638417a943ab483f0a638925c9a4f2e25d923db2a293ffb59f833cd49fa76c6299684494633becea54de
+  checksum: 8d73d22fdd384c290514dad6f9f4a436f5a90bc836bbe9b46fe4f557041a03484f0547291d0347185a806149f465355fc225dc87477b8cf5af5be307bb75e6a4
   languageName: node
   linkType: hard
 
@@ -6840,7 +6840,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pickk-crawl@workspace:."
   dependencies:
-    "@types/cheerio": 0.22.30
+    "@types/cheerio": 0.22.31
     "@typescript-eslint/eslint-plugin": 5.10.2
     "@typescript-eslint/parser": 5.10.2
     axios: 0.24.0
