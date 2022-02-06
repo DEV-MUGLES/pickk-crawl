@@ -32,6 +32,6 @@
     "@typescript-eslint/eslint-plugin": "5.10.2",
     "@typescript-eslint/parser": "5.10.2",
     "dotenv": "16.0.0",
-    "dotenv-cli": "4.1.1"
+    "dotenv-cli": "5.0.0"
   }
 }
