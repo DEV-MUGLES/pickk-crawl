@@ -2669,6 +2669,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/node-bridge@npm:2.2.2":
+  version: 2.2.2
+  resolution: "@vercel/node-bridge@npm:2.2.2"
+  checksum: a512cf631f82a27dee0a0addba0be13431980f97ef3e1733f0e6dd8a8e7cf55629fc520c9135a4d3859c1721db4929608fb4b6acc72a00b97560536bcc47a6df
+  languageName: node
+  linkType: hard
+
 "@vercel/node@npm:1.12.1":
   version: 1.12.1
   resolution: "@vercel/node@npm:1.12.1"
@@ -2677,6 +2684,18 @@ __metadata:
     ts-node: 8.9.1
     typescript: 4.3.4
   checksum: 15a0bae4af01e4eb96dfc4b097db70125a2945c606ab1290b4644484a242ddd262705bf4745cec016f2ca62649f8eb7079025f39027210d3aa0d7739d7509255
+  languageName: node
+  linkType: hard
+
+"@vercel/node@npm:1.15.4":
+  version: 1.15.4
+  resolution: "@vercel/node@npm:1.15.4"
+  dependencies:
+    "@types/node": "*"
+    "@vercel/node-bridge": 2.2.2
+    ts-node: 8.9.1
+    typescript: 4.3.4
+  checksum: c8f384c26979248b215c3ebbc393f9ad7902f841b3cb8f90346eaf4a49a77b2959213f441f1353897b906dde106457bab28eb432eb5115e3ed291e20405284a7
   languageName: node
   linkType: hard
 
@@ -8518,7 +8537,7 @@ __metadata:
   resolution: "youtube-crawl@workspace:packages/youtube-crawl"
   dependencies:
     "@types/node": 16.11.41
-    "@vercel/node": 1.12.1
+    "@vercel/node": 1.15.4
     eslint: 8.8.0
     ts-node: 10.5.0
     typescript: 4.5.5
