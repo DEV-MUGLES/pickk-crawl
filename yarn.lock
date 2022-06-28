@@ -4123,7 +4123,7 @@ __metadata:
     request: ^2.88.2
     tough-cookie: ^4.0.0
     ts-node: 10.5.0
-    typescript: 4.5.5
+    typescript: 4.7.4
     url: ^0.11.0
   languageName: unknown
   linkType: soft
@@ -5583,7 +5583,7 @@ __metadata:
     progress: 2.0.3
     request: ^2.88.2
     ts-node: 10.5.0
-    typescript: 4.5.5
+    typescript: 4.7.4
     url: ^0.11.0
   languageName: unknown
   linkType: soft
@@ -8171,13 +8171,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:4.5.5":
-  version: 4.5.5
-  resolution: "typescript@npm:4.5.5"
+"typescript@npm:4.7.4":
+  version: 4.7.4
+  resolution: "typescript@npm:4.7.4"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 506f4c919dc8aeaafa92068c997f1d213b9df4d9756d0fae1a1e7ab66b585ab3498050e236113a1c9e57ee08c21ec6814ca7a7f61378c058d79af50a4b1f5a5e
+  checksum: 5750181b1cd7e6482c4195825547e70f944114fb47e58e4aa7553e62f11b3f3173766aef9c281783edfd881f7b8299cf35e3ca8caebe73d8464528c907a164df
   languageName: node
   linkType: hard
 
@@ -8201,13 +8201,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@4.5.5#~builtin<compat/typescript>":
-  version: 4.5.5
-  resolution: "typescript@patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=ddd1e8"
+"typescript@patch:typescript@4.7.4#~builtin<compat/typescript>":
+  version: 4.7.4
+  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=ddd1e8"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 9cdde4aae20b2904431f3f2ca8acaf3b0cc52faddf68aa88b288c9d0520221817da43783a756fce7ab9360033ada0371c3ff93dfc4bdb4b13f6e9bac64e1658d
+  checksum: 96d3030cb01143570567cb4f3a616b10df65f658f0e74e853e77a089a6a954e35c800be7db8b9bfe9a1ae05d9c2897e281359f65e4caa1caf266368e1c4febd3
   languageName: node
   linkType: hard
 
@@ -8693,7 +8693,7 @@ __metadata:
     "@vercel/node": 1.15.4
     eslint: 8.18.0
     ts-node: 10.5.0
-    typescript: 4.5.5
+    typescript: 4.7.4
     vercel: 23.1.2
   languageName: unknown
   linkType: soft
