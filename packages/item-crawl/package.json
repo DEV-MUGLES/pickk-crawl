@@ -35,7 +35,7 @@
     "@now/node": "1.8.5",
     "@types/charset": "1.0.2",
     "@types/faker": "5.5.9",
-    "@types/jest": "27.5.2",
+    "@types/jest": "28.1.3",
     "@types/js-yaml": "3.12.7",
     "@types/node": "16.11.41",
     "@types/progress": "2.0.5",
@@ -43,7 +43,7 @@
     "babel-plugin-transform-class-properties": "6.24.1",
     "chalk": "5.0.1",
     "eslint": "8.18.0",
-    "jest": "27.5.1",
+    "jest": "28.1.1",
     "progress": "2.0.3",
     "ts-node": "10.8.1",
     "typescript": "4.7.4"
