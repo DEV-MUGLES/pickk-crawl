@@ -13,7 +13,7 @@
   "author": "thinking-muggles",
   "license": "ISC",
   "dependencies": {
-    "@sentry/node": "^6.0.0",
+    "@sentry/node": "^7.0.0",
     "charset": "^1.0.1",
     "html-entities": "^2.0.0",
     "iconv-lite": "^0.6.0",
