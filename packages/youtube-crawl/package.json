@@ -1,6 +1,6 @@
 {
   "name": "youtube-crawl",
-  "packageManager": "yarn@3.1.0",
+  "packageManager": "yarn@3.2.2",
   "dependencies": {
     "vercel": "23.1.2"
   },
